@@ -1809,6 +1809,7 @@ footer {
 .footer-bottom-link:hover {
     color: var(--color-primary);
 }
+
 /* Styles spécifiques à la page des services */
 .service-detail {
     grid-column: span 12;

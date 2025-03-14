@@ -1,4 +1,604 @@
-<a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services | CarpConnect | Stratégie Digitale Spécialisée Pêche à la Carpe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* CSS spécifique à la page des services */
+        .service-detail {
+            grid-column: span 12;
+            margin-bottom: 100px;
+        }
+        .service-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .service-detail-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .service-detail-image {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow, 0 10px 30px rgba(0, 0, 0, 0.1));
+        }
+        .service-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(110%) saturate(90%);
+            transition: transform 0.5s ease;
+        }
+        .service-detail-image:hover img {
+            transform: scale(1.03);
+        }
+        .detail-title {
+            font-size: 36px;
+            color: var(--color-primary, #464a3e);
+            margin-bottom: 20px;
+        }
+        .detail-description {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--color-text-light, #697065);
+            margin-bottom: 30px;
+        }
+        .detail-features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .service-process {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 50px 0;
+            border-top: 1px solid var(--color-border, #e0dfd8);
+            padding-top: 50px;
+        }
+        .process-title {
+            font-size: 24px;
+            color: var(--color-primary, #464a3e);
+            margin-bottom: 30px;
+        }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .process-step {
+            background-color: var(--color-bg-alt, #f8f7f4);
+            padding: 30px;
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-accent, #bf9c40);
+            color: var(--color-inverse, #f3f2eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display, 'Montserrat', sans-serif);
+            font-weight: 600;
+        }
+        .step-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--color-primary, #464a3e);
+        }
+        .step-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--color-text-light, #697065);
+        }
+        .service-results {
+            margin: 80px 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .result-card {
+            padding: 30px;
+            background-color: var(--color-bg-alt, #f8f7f4);
+            text-align: center;
+            border-left: 2px solid var(--color-accent, #bf9c40);
+        }
+        .result-value {
+            font-family: var(--font-display, 'Montserrat', sans-serif);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-primary, #464a3e);
+            margin-bottom: 10px;
+        }
+        .result-label {
+            font-family: var(--font-display, 'Montserrat', sans-serif);
+            font-size: 16px;
+            color: var(--color-text-light, #697065);
+            line-height: 1.4;
+        }
+        .services-cta {
+            text-align: center;
+            margin: 80px 0;
+            padding: 60px;
+            background-color: var(--color-primary, #464a3e);
+            color: var(--color-inverse, #f3f2eb);
+        }
+        .services-cta h2 {
+            font-size: 36px;
+            color: var(--color-inverse, #f3f2eb);
+            margin-bottom: 20px;
+        }
+        .services-cta p {
+            font-size: 18px;
+            color: rgba(243, 242, 235, 0.8);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Définitions des variables CSS si elles ne sont pas dans styles.css */
+        :root {
+            --color-primary: #464a3e;
+            --color-accent: #bf9c40;
+            --color-bg-alt: #f8f7f4;
+            --color-text-light: #697065;
+            --color-inverse: #f3f2eb;
+            --color-border: #e0dfd8;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --font-display: 'Montserrat', sans-serif;
+        }
+        /* Responsive Adjustments for Services Page */
+        @media (max-width: 1200px) {
+            .service-detail-grid {
+                gap: 40px;
+            }
+        }
+        @media (max-width: 992px) {
+            .service-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .service-results {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-results {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-cta {
+                padding: 40px 20px;
+            }
+            
+            .services-cta h2 {
+                font-size: 28px;
+            }
+        }
+        
+        /* Ajout de styles pour les éléments qui pourraient manquer dans styles.css */
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent, #bf9c40);
+        }
+        
+        .service-number {
+            font-size: 60px;
+            font-weight: 700;
+            color: rgba(70, 74, 62, 0.1);
+            line-height: 1;
+            font-family: var(--font-display, 'Montserrat', sans-serif);
+        }
+        
+        .big-cta-button {
+            display: inline-block;
+            background-color: var(--color-accent, #bf9c40);
+            color: var(--color-inverse, #f3f2eb);
+            padding: 15px 30px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .big-cta-button:hover {
+            background-color: #a58835;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-symbol"></div>
+                    <span>CARPCONNECT</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="services.html" class="nav-link">SERVICES</a>
+                    <a href="methode.html" class="nav-link">MÉTHODE</a>
+                    <a href="realisations.html" class="nav-link">RÉALISATIONS</a>
+                    <a href="temoignages.html" class="nav-link">TÉMOIGNAGES</a>
+                </nav>
+                <a href="contact.html" class="cta-button">CONTACT</a>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li><a href="services.html" class="nav-link">SERVICES</a></li>
+            <li><a href="methode.html" class="nav-link">MÉTHODE</a></li>
+            <li><a href="realisations.html" class="nav-link">RÉALISATIONS</a></li>
+            <li><a href="temoignages.html" class="nav-link">TÉMOIGNAGES</a></li>
+        </ul>
+        <a href="contact.html" class="cta-button">CONTACT</a>
+    </div>
+
+    <div class="overlay"></div>
+
+    <section class="hero" style="padding: 160px 0 100px;">
+        <div class="container">
+            <div class="grid">
+                <div class="hero-content" style="grid-column: 1 / 13; text-align: center; max-width: 800px; margin: 0 auto;">
+                    <div class="coordinates">ID:CARP-SERV-01</div>
+                    <div class="tag">NOS SERVICES</div>
+                    <h1 class="hero-title">Solutions tactiques spécialisées pour l'univers de la <span class="highlight">pêche à la carpe</span></h1>
+                    <p class="hero-description" style="max-width: 700px; margin: 0 auto 40px;">Découvrez notre gamme de services conçus spécifiquement pour les marques et fabricants de l'univers de la pêche à la carpe. Des stratégies qui font la différence sur un marché exigeant.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="service-detail">
+                <div class="service-detail-grid">
+                    <div class="service-detail-content">
+                        <div class="service-number">01</div>
+                        <h2 class="detail-title">Sites E-commerce Haute Conversion</h2>
+                        <p class="detail-description">Nous créons des plateformes e-commerce optimisées spécifiquement pour le marché de la pêche à la carpe, avec une attention particulière au parcours d'achat, à l'expérience utilisateur et aux taux de conversion. Chaque élément est pensé pour transformer les visiteurs en acheteurs.</p>
+                        <div class="detail-features">
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Architecture des pages produits optimisée pour la conversion</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Parcours d'achat simplifié et adapté aux attentes des carpistes</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Intégration de contenu technique persuasif pour rassurer l'acheteur</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Systèmes de cross-selling et up-selling basés sur les comportements d'achat</div>
+                            </div>
+                        </div>
+                        <a href="ecommerce.html" class="cta-button">DÉCOUVRIR CE SERVICE</a>
+                    </div>
+                    <div class="service-detail-image">
+                        <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=E-commerce+haute+conversion" alt="E-commerce haute conversion">
+                    </div>
+                </div>
+                
+                <div class="service-process">
+                    <h3 class="process-title">Notre processus pour votre e-commerce</h3>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <h4 class="step-title">Audit & Analyse</h4>
+                            <p class="step-description">Nous analysons votre site actuel, vos données de vente et le comportement utilisateur pour identifier les opportunités d'amélioration.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <h4 class="step-title">Conception UX/UI</h4>
+                            <p class="step-description">Nous créons une expérience utilisateur intuitive et des interfaces attrayantes spécifiquement conçues pour votre cible.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <h4 class="step-title">Développement</h4>
+                            <p class="step-description">Notre équipe développe une plateforme robuste, performante et parfaitement adaptée aux besoins de votre marque.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <h4 class="step-title">Optimisation Continue</h4>
+                            <p class="step-description">Nous analysons les données et optimisons continuellement pour maximiser vos taux de conversion et votre chiffre d'affaires.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-results">
+                    <div class="result-card">
+                        <div class="result-value">+53%</div>
+                        <div class="result-label">AMÉLIORATION MOYENNE DU TAUX DE CONVERSION DE NOS CLIENTS</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value">-28%</div>
+                        <div class="result-label">RÉDUCTION DU TAUX D'ABANDON DE PANIER</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value">+41%</div>
+                        <div class="result-label">AUGMENTATION DE LA VALEUR PANIER MOYENNE</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-detail">
+                <div class="service-detail-grid">
+                    <div class="service-detail-image">
+                        <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Production+visuelle+technique" alt="Production visuelle technique">
+                    </div>
+                    <div class="service-detail-content">
+                        <div class="service-number">02</div>
+                        <h2 class="detail-title">Production Visuelle Technique</h2>
+                        <p class="detail-description">Nous créons des contenus visuels qui mettent en valeur les caractéristiques techniques de vos produits tout en captivant l'attention des carpistes passionnés. Notre approche combine expertise technique et créativité pour générer un impact maximal.</p>
+                        <div class="detail-features">
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Photographies techniques haute résolution mettant en valeur chaque détail</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Vidéos de démonstration en situation réelle de pêche</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Animations 3D pour illustrer les caractéristiques invisibles</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Infographies explicatives pour valoriser vos innovations</div>
+                            </div>
+                        </div>
+                        <a href="production-visuelle.html" class="cta-button">DÉCOUVRIR CE SERVICE</a>
+                    </div>
+                </div>
+                
+                <div class="service-process">
+                    <h3 class="process-title">Notre processus de production visuelle</h3>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <h4 class="step-title">Briefing & Stratégie</h4>
+                            <p class="step-description">Nous définissons vos objectifs, votre cible et les caractéristiques techniques à mettre en valeur pour chaque produit.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <h4 class="step-title">Pré-production</h4>
+                            <p class="step-description">Nous planifions minutieusement chaque séance, les angles de prise de vue et les caractéristiques à souligner.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <h4 class="step-title">Production</h4>
+                            <p class="step-description">Notre équipe utilise des équipements de pointe pour capturer chaque détail avec une précision technique absolue.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <h4 class="step-title">Post-production</h4>
+                            <p class="step-description">Nous optimisons et enrichissons chaque visuel pour une intégration parfaite dans votre stratégie marketing.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-results">
+                    <div class="result-card">
+                        <div class="result-value">+68%</div>
+                        <div class="result-label">AMÉLIORATION DU TAUX D'ENGAGEMENT SUR LES PAGES PRODUITS</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value">+43%</div>
+                        <div class="result-label">AUGMENTATION DU TEMPS PASSÉ SUR LES FICHES PRODUITS</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value">+37%</div>
+                        <div class="result-label">CROISSANCE DES PARTAGES SUR LES RÉSEAUX SOCIAUX</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-detail">
+                <div class="service-detail-grid">
+                    <div class="service-detail-content">
+                        <div class="service-number">03</div>
+                        <h2 class="detail-title">Stratégies d'Acquisition Ciblées</h2>
+                        <p class="detail-description">Nous développons des stratégies d'acquisition précisément calibrées pour attirer des acheteurs qualifiés dans l'univers de la pêche à la carpe. Notre connaissance approfondie des comportements et centres d'intérêt des carpistes nous permet de cibler efficacement votre audience idéale.</p>
+                        <div class="detail-features">
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>SEO spécialisé sur les termes techniques et les problématiques de carpistes</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Publicités digitales hyper-ciblées sur les comportements des passionnés</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Marketing d'influence avec des carpistes reconnus du secteur</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Stratégies de contenu technique à forte valeur ajoutée</div>
+                            </div>
+                        </div>
+                        <a href="acquisition.html" class="cta-button">DÉCOUVRIR CE SERVICE</a>
+                    </div>
+                    <div class="service-detail-image">
+                        <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Stratégies+d'acquisition" alt="Stratégies d'acquisition ciblées">
+                    </div>
+                </div>
+                
+                <div class="service-process">
+                    <h3 class="process-title">Notre processus d'acquisition</h3>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <h4 class="step-title">Analyse & Segmentation</h4>
+                            <p class="step-description">Nous définissons précisément vos personas et segmentons votre audience cible selon leur comportement et intérêts.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <h4 class="step-title">Stratégie d'Acquisition</h4>
+                            <p class="step-description">Nous élaborons un mix marketing optimal et déterminons les canaux les plus pertinents pour votre cible.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <h4 class="step-title">Déploiement</h4>
+                            <p class="step-description">Nous lançons vos campagnes et séquences d'acquisition en suivant un calendrier stratégique.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <h4 class="step-title">Optimisation & Scaling</h4>
+                            <p class="step-description">Nous analysons les performances, optimisons le ROI et amplifions les stratégies gagnantes.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-results">
+                    <div class="result-card">
+                        <div class="result-value">+195%</div>
+                        <div class="result-label">CROISSANCE MOYENNE DU TRAFIC QUALIFIÉ EN 6 MOIS</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value">-32%</div>
+                        <div class="result-label">RÉDUCTION DU COÛT D'ACQUISITION CLIENT</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value">+87%</div>
+                        <div class="result-label">AUGMENTATION DU ROI DES CAMPAGNES MARKETING</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-detail">
+                <div class="service-detail-grid">
+                    <div class="service-detail-image">
+                        <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Engagement+communautaire" alt="Engagement communautaire">
+                    </div>
+                    <div class="service-detail-content">
+                        <div class="service-number">04</div>
+                        <h2 class="detail-title">Engagement Communautaire</h2>
+                        <p class="detail-description">Nous construisons et animons des communautés engagées autour de votre marque, transformant vos clients en véritables ambassadeurs. Notre approche combine expertise technique et passion authentique pour la pêche à la carpe.</p>
+                        <div class="detail-features">
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Animation experte des réseaux sociaux spécialisés</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Programmes d'ambassadeurs et de fidélité exclusifs</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Production de contenu technique et éducatif à forte valeur</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <div>Animation d'événements digitaux et physiques créateurs de liens</div>
+                            </div>
+                        </div>
+                        <a href="engagement.html" class="cta-button">DÉCOUVRIR CE SERVICE</a>
+                    </div>
+                </div>
+                
+                <div class="service-process">
+                    <h3 class="process-title">Notre processus d'engagement</h3>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <h4 class="step-title">Audit & Stratégie</h4>
+                            <p class="step-description">Nous analysons votre écosystème social et définissons une stratégie d'engagement alignée avec votre identité de marque.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <h4 class="step-title">Création de Contenu</h4>
+                            <p class="step-description">Nous produisons un contenu de qualité qui résonne avec les passions et les attentes des carpistes.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <h4 class="step-title">Animation Communautaire</h4>
+                            <p class="step-description">Nous animons votre communauté au quotidien avec une expertise technique et une connaissance parfaite du secteur.</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <h4 class="step-title">Analyse & Évolution</h4>
+                            <p class="step-description">Nous mesurons l'engagement, recueillons les feedbacks et faisons évoluer notre approche pour maximiser les résultats.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-results">
+                    <div class="result-card">
+                        <div class="result-value">+72%</div>
+                        <div class="result-label">AUGMENTATION MOYENNE DE L'ENGAGEMENT SOCIAL</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value">+65%</div>
+                        <div class="result-label">CROISSANCE DU TAUX DE FIDÉLISATION CLIENT</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value">+108%</div>
+                        <div class="result-label">AUGMENTATION DU USER GENERATED CONTENT</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="services-cta">
+                <h2>Prêt à transformer votre présence digitale?</h2>
+                <p>Prenons rendez-vous pour discuter de vos besoins spécifiques et élaborer une stratégie sur mesure qui répond parfaitement aux attentes de votre marque.</p>
+                <a href="contact.html" class="big-cta-button">DEMANDER UN AUDIT STRATÉGIQUE GRATUIT</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-pattern"></div>
+        <div class="container">
+            <div class="grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">CARPCONNECT</div>
+                    <p class="footer-description">Agence digitale spécialisée dans les stratégies de croissance pour les marques et fabricants de l'univers de la pêche à la carpe. Nous transformons les passionnés en clients fidèles avec des approches tactiques et mesurables.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     </div>

@@ -59,87 +59,8 @@
                 </div>
                 
                 <div class="hero-visual" style="grid-column: 8 / 13; position: relative; z-index: 1;">
-                    <!-- SVG illustration de carpe en flat style -->
-                    <svg width="100%" height="400" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
-                        <style>
-                            .carp-body { fill: #A49869; }
-                            .carp-details { fill: #85794D; }
-                            .carp-fins { fill: #BDB391; }
-                            .carp-eye { fill: #F3F2EB; }
-                            .carp-pupil { fill: #2B2C25; }
-                            .water { fill: #464A3E; opacity: 0.1; }
-                            .bubble { fill: #F3F2EB; opacity: 0.6; }
-                            @keyframes swim {
-                                0% { transform: translateX(0) translateY(0); }
-                                25% { transform: translateX(20px) translateY(10px); }
-                                50% { transform: translateX(0) translateY(20px); }
-                                75% { transform: translateX(-20px) translateY(10px); }
-                                100% { transform: translateX(0) translateY(0); }
-                            }
-                            @keyframes fin-move {
-                                0% { transform: rotate(0deg); }
-                                50% { transform: rotate(10deg); }
-                                100% { transform: rotate(0deg); }
-                            }
-                            @keyframes bubble-rise {
-                                0% { transform: translateY(0); opacity: 0.6; }
-                                100% { transform: translateY(-100px); opacity: 0; }
-                            }
-                            .carp { animation: swim 8s ease-in-out infinite; }
-                            .fin { animation: fin-move 2s ease-in-out infinite; }
-                            .bubble1 { animation: bubble-rise 4s ease-in-out infinite; }
-                            .bubble2 { animation: bubble-rise 6s ease-in-out infinite 1s; }
-                            .bubble3 { animation: bubble-rise 5s ease-in-out infinite 2s; }
-                        </style>
-                        
-                        <!-- Water background -->
-                        <path class="water" d="M0 150 C200 50, 600 50, 800 150 L800 500 L0 500 Z" />
-                        
-                        <!-- Carp group -->
-                        <g class="carp">
-                            <!-- Carp body -->
-                            <path class="carp-body" d="M200 250 C300 200, 500 200, 600 250 C650 280, 650 320, 600 350 C500 400, 300 400, 200 350 C150 320, 150 280, 200 250 Z" />
-                            
-                            <!-- Tail fin -->
-                            <path class="carp-fins fin" d="M600 250 C650 200, 700 200, 750 150 C700 250, 700 350, 750 450 C700 400, 650 400, 600 350 Z" />
-                            
-                            <!-- Top fin -->
-                            <path class="carp-fins fin" d="M400 200 C450 150, 470 100, 450 50 C430 100, 410 150, 400 200 Z" />
-                            
-                            <!-- Bottom fin -->
-                            <path class="carp-fins fin" d="M400 400 C430 450, 450 480, 430 500 C410 480, 390 450, 400 400 Z" />
-                            
-                            <!-- Side fin top -->
-                            <path class="carp-fins fin" d="M300 230 C280 200, 250 190, 220 200 C250 210, 280 220, 300 230 Z" />
-                            
-                            <!-- Side fin bottom -->
-                            <path class="carp-fins fin" d="M300 370 C280 400, 250 410, 220 400 C250 390, 280 380, 300 370 Z" />
-                            
-                            <!-- Scales pattern -->
-                            <path class="carp-details" d="M300 250 C320 240, 340 240, 360 250 C340 260, 320 260, 300 250 Z" />
-                            <path class="carp-details" d="M330 280 C350 270, 370 270, 390 280 C370 290, 350 290, 330 280 Z" />
-                            <path class="carp-details" d="M360 310 C380 300, 400 300, 420 310 C400 320, 380 320, 360 310 Z" />
-                            <path class="carp-details" d="M390 340 C410 330, 430 330, 450 340 C430 350, 410 350, 390 340 Z" />
-                            <path class="carp-details" d="M300 320 C320 310, 340 310, 360 320 C340 330, 320 330, 300 320 Z" />
-                            <path class="carp-details" d="M330 350 C350 340, 370 340, 390 350 C370 360, 350 360, 330 350 Z" />
-                            
-                            <!-- Eye -->
-                            <circle class="carp-eye" cx="220" cy="280" r="15" />
-                            <circle class="carp-pupil" cx="220" cy="280" r="7" />
-                            
-                            <!-- Gills -->
-                            <path class="carp-details" d="M240 260 C245 270, 245 290, 240 300" stroke="#85794D" stroke-width="2" fill="none" />
-                            <path class="carp-details" d="M250 255 C255 270, 255 290, 250 305" stroke="#85794D" stroke-width="2" fill="none" />
-                            
-                            <!-- Mouth -->
-                            <path class="carp-details" d="M180 290 C190 295, 200 295, 210 290" stroke="#85794D" stroke-width="2" fill="none" />
-                        </g>
-                        
-                        <!-- Bubbles -->
-                        <circle class="bubble bubble1" cx="230" cy="260" r="5" />
-                        <circle class="bubble bubble2" cx="240" cy="280" r="3" />
-                        <circle class="bubble bubble3" cx="225" cy="270" r="4" />
-                    </svg>
+                    <!-- Remplacer la carpe par une photo -->
+                    <img src="https://placehold.co/800x500/464a3e/f3f2eb?text=Photo+de+pêcheur" style="width: 100%; height: auto; object-fit: cover; border-radius: 8px;">
                     
                     <div class="target-marks"></div>
                     <div class="tech-frame"></div>
@@ -148,10 +69,10 @@
         </div>
     </section>
 
-    <!-- NAVIGATION DE SERVICES AVEC ANCRES -->
-    <section id="services" style="padding: 80px 0; background-color: var(--color-bg);">
+    <!-- NAVIGATION DE SERVICES AVEC ANCRES - Espace réduit -->
+    <section id="services" style="padding: 40px 0; background-color: var(--color-bg);">
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 80px;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 40px;">
                 <a href="#ecommerce" style="text-decoration: none; background-color: var(--color-bg-alt); padding: 20px 30px; border-radius: 8px; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; align-items: center; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <div style="width: 40px; height: 40px; background-color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-inverse); font-weight: 700;">1</div>
                     <div>
@@ -184,13 +105,13 @@
         </div>
     </section>
 
-    <!-- SERVICE 1: E-COMMERCE - Style plein écran horizontal -->
+    <!-- SERVICE 1: E-COMMERCE - Ajout d'un mockup de site -->
     <section id="ecommerce" style="padding: 0; min-height: 100vh; display: flex; align-items: center; background-color: var(--color-bg);">
         <div style="display: flex; flex-direction: row; width: 100%;">
             <!-- Image à gauche plein écran -->
             <div style="flex: 1; position: relative; min-height: 100vh; display: flex; align-items: center;">
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
-                    <img src="https://placehold.co/1000x1600/464a3e/f3f2eb?text=E-commerce+haute+conversion" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8) contrast(1.1);">
+                    <img src="https://placehold.co/1000x1600/464a3e/f3f2eb?text=Mockup+Site+E-commerce" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8) contrast(1.1);">
                 </div>
                 
                 <!-- Overlay avec stats clés -->
@@ -268,7 +189,7 @@
                         </div>
                     </div>
                     
-                    <a href="ecommerce.html" style="display: inline-flex; align-items: center; gap: 15px; background-color: var(--color-primary); color: var(--color-inverse); padding: 15px 30px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; margin-top: 20px;">
+                    <a href="ecommerce.html" style="display: inline-flex; align-items: center; gap: 15px; background-color: var(--color-primary); color: var(--color-inverse); padding: 12px 24px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; margin-top: 20px; font-size: 14px;">
                         VOIR NOTRE APPROCHE E-COMMERCE
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -277,10 +198,10 @@
         </div>
     </section>
 
-    <!-- SERVICE 2: PRODUCTION VISUELLE - Style grille en cascade -->
-    <section id="visuel" style="padding: 120px 0; background-color: var(--color-primary); color: var(--color-inverse);">
+    <!-- SERVICE 2: PRODUCTION VISUELLE - Simplifié avec vidéo et photos -->
+    <section id="visuel" style="padding: 100px 0; background-color: var(--color-primary); color: var(--color-inverse);">
         <div class="container">
-            <div style="max-width: 800px; margin: 0 auto 80px; text-align: center;">
+            <div style="max-width: 800px; margin: 0 auto 60px; text-align: center;">
                 <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-accent); margin-bottom: 30px; font-size: 24px; font-weight: 600;">02</div>
                 
                 <h2 style="font-size: 48px; margin-bottom: 30px; color: var(--color-inverse); line-height: 1.2;">Production visuelle qui met en valeur chaque détail technique</h2>
@@ -288,80 +209,43 @@
                 <p style="font-size: 18px; color: rgba(243, 242, 235, 0.9); line-height: 1.7;">Le carpiste n'achète pas un simple produit – il investit dans une promesse technique. Nos visuels révèlent ce que l'œil ne peut voir : la qualité des matériaux, l'ingéniosité des mécanismes, la robustesse des constructions.</p>
             </div>
             
-            <!-- Grille en cascade -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: auto; gap: 20px; margin-bottom: 80px;">
-                <!-- Grande image principale -->
-                <div style="grid-column: span 2; grid-row: span 2; position: relative; overflow: hidden; border-radius: 8px; height: 600px;">
-                    <img src="https://placehold.co/900x900/464a3e/f3f2eb?text=Photo+technique" style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- Grille simplifiée -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 20px; margin-bottom: 60px;">
+                <!-- Grande vidéo principale -->
+                <div style="grid-column: 1; grid-row: span 2; position: relative; overflow: hidden; border-radius: 8px; height: 600px;">
+                    <img src="https://placehold.co/900x900/464a3e/f3f2eb?text=Vidéo+technique" style="width: 100%; height: 100%; object-fit: cover;">
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-                        <div style="font-weight: 600; font-size: 24px; margin-bottom: 10px;">Photographie technique</div>
-                        <p style="color: rgba(243, 242, 235, 0.8);">Révéler les détails invisibles qui justifient l'investissement</p>
+                        <div style="font-weight: 600; font-size: 24px; margin-bottom: 10px;">Vidéos en action</div>
+                        <p style="color: rgba(243, 242, 235, 0.8);">Montrer l'équipement en situation réelle</p>
                     </div>
                 </div>
                 
-                <!-- Images plus petites -->
+                <!-- Photos -->
                 <div style="position: relative; overflow: hidden; border-radius: 8px; height: 290px;">
-                    <img src="https://placehold.co/500x500/464a3e/f3f2eb?text=Vidéo" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="https://placehold.co/500x500/464a3e/f3f2eb?text=Photo+1" style="width: 100%; height: 100%; object-fit: cover;">
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-                        <div style="font-weight: 600; font-size: 18px;">Vidéos en action</div>
+                        <div style="font-weight: 600; font-size: 18px;">Photographie technique</div>
                     </div>
                 </div>
                 
                 <div style="position: relative; overflow: hidden; border-radius: 8px; height: 290px;">
-                    <img src="https://placehold.co/500x500/464a3e/f3f2eb?text=3D" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="https://placehold.co/500x500/464a3e/f3f2eb?text=Photo+2" style="width: 100%; height: 100%; object-fit: cover;">
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-                        <div style="font-weight: 600; font-size: 18px;">Animations 3D</div>
+                        <div style="font-weight: 600; font-size: 18px;">Mise en scène</div>
                     </div>
                 </div>
                 
                 <div style="position: relative; overflow: hidden; border-radius: 8px; height: 290px;">
-                    <img src="https://placehold.co/500x500/464a3e/f3f2eb?text=Infographie" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="https://placehold.co/500x500/464a3e/f3f2eb?text=Photo+3" style="width: 100%; height: 100%; object-fit: cover;">
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
                         <div style="font-weight: 600; font-size: 18px;">Infographies techniques</div>
                     </div>
                 </div>
                 
                 <div style="position: relative; overflow: hidden; border-radius: 8px; height: 290px;">
-                    <img src="https://placehold.co/500x500/464a3e/f3f2eb?text=Accessoires" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="https://placehold.co/500x500/464a3e/f3f2eb?text=Photo+4" style="width: 100%; height: 100%; object-fit: cover;">
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-                        <div style="font-weight: 600; font-size: 18px;">Mise en scène</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Résultats -->
-            <div style="background-color: var(--color-accent); padding: 40px; border-radius: 8px; margin-bottom: 60px;">
-                <h3 style="text-align: center; margin-bottom: 40px; font-size: 24px;">Impact mesuré de notre production visuelle</h3>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-weight: 600;">Engagement</span>
-                            <span style="font-weight: 700;">+68%</span>
-                        </div>
-                        <div style="height: 6px; background-color: rgba(255,255,255,0.2); border-radius: 3px;">
-                            <div style="height: 100%; width: 68%; background-color: var(--color-inverse); border-radius: 3px;"></div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-weight: 600;">Temps passé</span>
-                            <span style="font-weight: 700;">+43%</span>
-                        </div>
-                        <div style="height: 6px; background-color: rgba(255,255,255,0.2); border-radius: 3px;">
-                            <div style="height: 100%; width: 43%; background-color: var(--color-inverse); border-radius: 3px;"></div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <span style="font-weight: 600;">Partages</span>
-                            <span style="font-weight: 700;">+37%</span>
-                        </div>
-                        <div style="height: 6px; background-color: rgba(255,255,255,0.2); border-radius: 3px;">
-                            <div style="height: 100%; width: 37%; background-color: var(--color-inverse); border-radius: 3px;"></div>
-                        </div>
+                        <div style="font-weight: 600; font-size: 18px;">Composition produit</div>
                     </div>
                 </div>
             </div>
@@ -370,7 +254,7 @@
             <div style="text-align: center; margin-bottom: 30px;">
                 <h3 style="font-size: 28px; margin-bottom: 60px;">Notre processus créatif</h3>
                 
-                <div style="display: flex; justify-content: space-between; position: relative; margin-bottom: 80px;">
+                <div style="display: flex; justify-content: space-between; position: relative; margin-bottom: 60px;">
                     <!-- Ligne connectant les étapes -->
                     <div style="position: absolute; top: 50px; left: 80px; right: 80px; height: 1px; background-color: var(--color-accent); z-index: 0;"></div>
                     
@@ -414,7 +298,7 @@
             </div>
             
             <div style="text-align: center;">
-                <a href="production-visuelle.html" style="display: inline-flex; align-items: center; gap: 15px; background-color: var(--color-accent); color: var(--color-inverse); padding: 15px 30px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border-radius: 4px;">
+                <a href="production-visuelle.html" style="display: inline-flex; align-items: center; gap: 15px; background-color: var(--color-accent); color: var(--color-inverse); padding: 12px 24px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border-radius: 4px; font-size: 14px;">
                     EXPLORER NOTRE PRODUCTION VISUELLE
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -422,7 +306,7 @@
         </div>
     </section>
 
-    <!-- SERVICE 3: ACQUISITION - Style dashboard avec graphiques -->
+    <!-- SERVICE 3: ACQUISITION - Avec mention du long terme -->
     <section id="acquisition" style="padding: 80px 0; background-color: var(--color-bg);">
         <div class="container">
             <!-- En-tête de section avec métriques clés -->
@@ -510,7 +394,7 @@
                 <div style="flex: 1;">
                     <div style="padding: 40px; background-color: var(--color-bg-alt); border-radius: 8px; margin-bottom: 30px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-                            <h3 style="font-size: 24px; color: var(--color-primary);">Réduction du coût d'acquisition</h3>
+                            <h3 style="font-size: 24px; color: var(--color-primary);">Réduction du coût d'acquisition<br>sur le long terme</h3>
                             <div style="position: relative; width: 100px; height: 100px; border-radius: 50%; background-color: var(--color-bg); display: flex; justify-content: center; align-items: center; font-size: 28px; font-weight: 700; color: var(--color-primary);">
                                 <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 6px solid var(--color-accent); border-right-color: transparent; transform: rotate(-32deg);"></div>
                                 -32%
@@ -541,24 +425,17 @@
                     <div style="text-align: center; padding: 40px; background-color: var(--color-primary); color: var(--color-inverse); border-radius: 8px;">
                         <div style="font-size: 18px; font-weight: 600; margin-bottom: 15px;">Demandez une analyse gratuite</div>
                         <p style="margin-bottom: 25px; color: rgba(243, 242, 235, 0.9);">Découvrez comment nous pouvons optimiser votre stratégie d'acquisition</p>
-                        <a href="contact.html" style="display: inline-block; background-color: var(--color-accent); padding: 12px 24px; border-radius: 4px; color: var(--color-inverse); text-decoration: none; font-weight: 600;">Prendre rendez-vous</a>
+                        <a href="contact.html" style="display: inline-block; background-color: var(--color-accent); padding: 12px 24px; border-radius: 4px; color: var(--color-inverse); text-decoration: none; font-weight: 600; font-size: 14px;">Prendre rendez-vous</a>
                     </div>
                 </div>
-            </div>
-            
-            <div style="text-align: center;">
-                <a href="acquisition.html" style="display: inline-flex; align-items: center; gap: 15px; background-color: var(--color-primary); color: var(--color-inverse); padding: 15px 30px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border-radius: 4px;">
-                    EXPLORER NOS STRATÉGIES D'ACQUISITION
-                    <i class="fas fa-arrow-right"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- SERVICE 4: COMMUNITY MANAGEMENT - Version modifiée -->
-    <section id="communaute" style="padding: 120px 0; background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);">
+    <!-- SERVICE 4: COMMUNITY MANAGEMENT - Version simplifiée et alignée sans résultats type -->
+    <section id="communaute" style="padding: 100px 0; background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);">
         <div class="container">
-            <div style="max-width: 800px; margin: 0 auto 80px; text-align: center;">
+            <div style="max-width: 800px; margin: 0 auto 60px; text-align: center;">
                 <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-primary); margin-bottom: 30px; font-size: 24px; font-weight: 600; color: var(--color-inverse);">04</div>
                 
                 <h2 style="font-size: 48px; margin-bottom: 30px; color: var(--color-primary); line-height: 1.2;">Community Management spécialisé pêche à la carpe</h2>
@@ -567,7 +444,7 @@
             </div>
             
             <!-- Cartes des services de community management -->
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 80px;">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 60px;">
                 <div style="background-color: var(--color-bg); border-radius: 8px; padding: 40px; box-shadow: var(--box-shadow);">
                     <div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 30px;">
                         <div style="font-size: 40px; color: var(--color-accent); line-height: 1;"><i class="fas fa-comments"></i></div>
@@ -588,12 +465,6 @@
                                     <span style="color: var(--color-text-light);">Stratégie de contenu adaptée au calendrier de pêche</span>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
-                    <div style="padding-top: 20px; border-top: 1px solid var(--color-border);">
-                        <div style="text-align: center; background-color: var(--color-primary); padding: 15px; border-radius: 4px; color: var(--color-inverse);">
-                            <div style="font-size: 14px; margin-bottom: 5px;">RÉSULTAT TYPE</div>
-                            <div style="font-size: 28px; font-weight: 700;">+72% d'engagement</div>
                         </div>
                     </div>
                 </div>
@@ -620,12 +491,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div style="padding-top: 20px; border-top: 1px solid var(--color-border);">
-                        <div style="text-align: center; background-color: var(--color-primary); padding: 15px; border-radius: 4px; color: var(--color-inverse);">
-                            <div style="font-size: 14px; margin-bottom: 5px;">RÉSULTAT TYPE</div>
-                            <div style="font-size: 28px; font-weight: 700;">+65% de fidélisation</div>
-                        </div>
-                    </div>
                 </div>
                 
                 <div style="background-color: var(--color-bg); border-radius: 8px; padding: 40px; box-shadow: var(--box-shadow);">
@@ -650,12 +515,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div style="padding-top: 20px; border-top: 1px solid var(--color-border);">
-                        <div style="text-align: center; background-color: var(--color-primary); padding: 15px; border-radius: 4px; color: var(--color-inverse);">
-                            <div style="font-size: 14px; margin-bottom: 5px;">RÉSULTAT TYPE</div>
-                            <div style="font-size: 28px; font-weight: 700;">3.2x temps sur site</div>
-                        </div>
-                    </div>
                 </div>
                 
                 <div style="background-color: var(--color-bg); border-radius: 8px; padding: 40px; box-shadow: var(--box-shadow);">
@@ -674,24 +533,17 @@
                                     <span style="color: var(--color-text-light);">Concours et challenges engageants</span>
                                 </li>
                                 <li style="display: flex; align-items: center; gap: 10px;">
-                                  <li style="display: flex; align-items: center; gap: 10px;">
                                     <i class="fas fa-check" style="color: var(--color-accent);"></i>
                                     <span style="color: var(--color-text-light);">Rencontres exclusives pour votre communauté</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div style="padding-top: 20px; border-top: 1px solid var(--color-border);">
-                        <div style="text-align: center; background-color: var(--color-primary); padding: 15px; border-radius: 4px; color: var(--color-inverse);">
-                            <div style="font-size: 14px; margin-bottom: 5px;">RÉSULTAT TYPE</div>
-                            <div style="font-size: 28px; font-weight: 700;">+108% de UGC</div>
-                        </div>
-                    </div>
                 </div>
             </div>
             
             <div style="text-align: center;">
-                <a href="engagement.html" style="display: inline-flex; align-items: center; gap: 15px; background-color: var(--color-primary); color: var(--color-inverse); padding: 15px 30px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border-radius: 4px;">
+                <a href="engagement.html" style="display: inline-flex; align-items: center; gap: 15px; background-color: var(--color-primary); color: var(--color-inverse); padding: 12px 24px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border-radius: 4px; font-size: 14px;">
                     DÉCOUVRIR NOTRE APPROCHE COMMUNITY MANAGEMENT
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -699,19 +551,17 @@
         </div>
     </section>
     
-    <!-- CALL TO ACTION FINALE -->
+    <!-- CALL TO ACTION FINALE - Sans pattern -->
     <section style="padding: 0; margin-bottom: 100px;">
         <div class="container">
             <div style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-                <div style="position: absolute; top: 0; right: 0; width: 400px; height: 100%; background-image: url('https://placehold.co/800x1200/464a3e/f3f2eb?text=Pattern'); background-size: cover; opacity: 0.03;"></div>
-                
                 <div style="display: flex; padding: 80px;">
                     <div style="flex: 3; position: relative; z-index: 1; color: var(--color-inverse);">
                         <h2 style="font-size: 42px; margin-bottom: 30px; line-height: 1.2;">Prêt à franchir une étape décisive?</h2>
                         
                         <p style="font-size: 20px; max-width: 700px; margin-bottom: 40px; color: rgba(243, 242, 235, 0.9); line-height: 1.7;">Discutons de votre situation actuelle et définissons ensemble la stratégie qui transformera votre marque en référence incontournable de la pêche à la carpe.</p>
                         
-                        <a href="contact.html" style="display: inline-flex; align-items: center; gap: 15px; background-color: var(--color-accent); color: var(--color-inverse); padding: 18px 36px; font-size: 18px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                        <a href="contact.html" style="display: inline-flex; align-items: center; gap: 15px; background-color: var(--color-accent); color: var(--color-inverse); padding: 15px 30px; font-size: 16px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                             RÉSERVER UN APPEL STRATÉGIQUE GRATUIT
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -788,38 +638,4 @@
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="contact-text">Annecy, France<br>Lyon - Paris - Bordeaux</div>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="cta-button">PRENDRE RENDEZ-VOUS</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="copyright">
-                    <span class="copyright-icon">C</span>
-                    <span>2025 CarpConnect. Tous droits réservés</span>
-                </div>
-                <div class="footer-bottom-links">
-                    <a href="mentions-legales.html" class="footer-bottom-link">Mentions Légales</a>
-                    <a href="confidentialite.html" class="footer-bottom-link">Politique de Confidentialité</a>
-                    <a href="plan-site.html" class="footer-bottom-link">Plan du Site</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <div class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <style>
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
-
-    <script src="main.js"></script>
-</body>
-</html>
+                            <div class="contact-

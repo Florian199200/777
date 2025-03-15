@@ -43,58 +43,57 @@
 
     <div class="overlay"></div>
 
-    <!-- HÉRO DANS LE STYLE DE LA PAGE D'ACCUEIL - Sans illustration et sans bouton découvrir services -->
+    <!-- HÉRO DANS LE STYLE DE LA PAGE D'ACCUEIL - Avec viseur à droite -->
     <section class="hero" style="padding: 180px 0 140px; min-height: 60vh; display: flex; align-items: center; position: relative; overflow: hidden; background-color: var(--color-bg);">
         <div class="container">
             <div class="grid">
-                <div class="hero-content" style="grid-column: 1 / 13; position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto;">
-                    <div class="coordinates" style="margin-bottom: 10px;">LAT:45°52'N LONG:6°10'E</div>
-                    <div class="tag" style="margin-bottom: 20px;">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
-                    <h1 class="hero-title" style="font-size: 54px; margin-bottom: 25px; line-height: 1.2;">Quatre stratégies pour <span class="highlight">conquérir le marché</span> de la pêche à la carpe</h1>
-                    <p class="hero-description" style="font-size: 18px; line-height: 1.7; margin-bottom: 35px; max-width: 800px; margin-left: auto; margin-right: auto;">Nous ne proposons pas de services génériques. Chacune de nos solutions est forgée dans la connaissance intime du carpiste et de ses comportements d'achat. Découvrez comment nous transformons cette expertise en résultats mesurables.</p>
+                <div class="hero-content" style="grid-column: 1 / 8; position: relative; z-index: 2;">
+                    <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
+                    <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
+                    <h1 class="hero-title">Quatre stratégies pour <span class="highlight">conquérir le marché</span> de la pêche à la carpe</h1>
+                    <p class="hero-description">Nous ne proposons pas de services génériques. Chacune de nos solutions est forgée dans la connaissance intime du carpiste et de ses comportements d'achat. Découvrez comment nous transformons cette expertise en résultats mesurables.</p>
                     <div class="hero-cta">
                         <a href="contact.html" class="secondary-button">DEMANDER UN AUDIT</a>
                     </div>
+                </div>
+                
+                <div class="hero-visual" style="grid-column: 8 / 13; position: relative; z-index: 1; display: flex; justify-content: center; align-items: center;">
+                    <!-- Viseur stratégique -->
+                    <div style="position: relative; width: 300px; height: 300px;">
+                        <!-- Cercle extérieur -->
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 2px solid var(--color-accent); border-radius: 50%; opacity: 0.6;"></div>
+                        
+                        <!-- Cercle milieu -->
+                        <div style="position: absolute; top: 15%; left: 15%; width: 70%; height: 70%; border: 1px solid var(--color-accent); border-radius: 50%; opacity: 0.8;"></div>
+                        
+                        <!-- Cercle intérieur -->
+                        <div style="position: absolute; top: 30%; left: 30%; width: 40%; height: 40%; border: 3px solid var(--color-accent); border-radius: 50%;"></div>
+                        
+                        <!-- Lignes de visée horizontales et verticales -->
+                        <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background-color: var(--color-accent); opacity: 0.7;"></div>
+                        <div style="position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background-color: var(--color-accent); opacity: 0.7;"></div>
+                        
+                        <!-- Points cardinaux -->
+                        <div style="position: absolute; top: 5%; left: 50%; transform: translateX(-50%); color: var(--color-accent); font-size: 14px;">N</div>
+                        <div style="position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%); color: var(--color-accent); font-size: 14px;">S</div>
+                        <div style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); color: var(--color-accent); font-size: 14px;">W</div>
+                        <div style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); color: var(--color-accent); font-size: 14px;">E</div>
+                        
+                        <!-- Marques de graduation -->
+                        <div style="position: absolute; top: 50%; left: 25%; width: 5px; height: 1px; background-color: var(--color-accent);"></div>
+                        <div style="position: absolute; top: 50%; left: 75%; width: 5px; height: 1px; background-color: var(--color-accent);"></div>
+                        <div style="position: absolute; top: 25%; left: 50%; width: 1px; height: 5px; background-color: var(--color-accent);"></div>
+                        <div style="position: absolute; top: 75%; left: 50%; width: 1px; height: 5px; background-color: var(--color-accent);"></div>
+                    </div>
+                    
+                    <div class="target-marks"></div>
+                    <div class="tech-frame"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NAVIGATION DE SERVICES AVEC ANCRES - Style unifié -->
-    <section id="services" style="padding: 0 0 20px; background-color: var(--color-bg);">
-        <div class="container">
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 0; transform: translateY(-30px);">
-                <a href="#ecommerce" style="text-decoration: none; background-color: var(--color-bg-alt); padding: 15px 25px; border-radius: 8px; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; align-items: center; gap: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
-                    <div style="width: 36px; height: 36px; background-color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-inverse); font-weight: 700;">1</div>
-                    <div>
-                        <div style="font-weight: 600; color: var(--color-primary); font-size: 15px;">E-commerce</div>
-                        <div style="font-size: 13px; color: var(--color-text-light);">Ventes optimisées</div>
-                    </div>
-                </a>
-                <a href="#communaute" style="text-decoration: none; background-color: var(--color-bg-alt); padding: 15px 25px; border-radius: 8px; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; align-items: center; gap: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
-                    <div style="width: 36px; height: 36px; background-color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-inverse); font-weight: 700;">2</div>
-                    <div>
-                        <div style="font-weight: 600; color: var(--color-primary); font-size: 15px;">Community Management</div>
-                        <div style="font-size: 13px; color: var(--color-text-light);">Engagement fidèle</div>
-                    </div>
-                </a>
-                <a href="#visuel" style="text-decoration: none; background-color: var(--color-bg-alt); padding: 15px 25px; border-radius: 8px; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; align-items: center; gap: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
-                    <div style="width: 36px; height: 36px; background-color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-inverse); font-weight: 700;">3</div>
-                    <div>
-                        <div style="font-weight: 600; color: var(--color-primary); font-size: 15px;">Photo & Vidéo</div>
-                        <div style="font-size: 13px; color: var(--color-text-light);">Détails techniques</div>
-                    </div>
-                </a>
-                <a href="#acquisition" style="text-decoration: none; background-color: var(--color-bg-alt); padding: 15px 25px; border-radius: 8px; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; align-items: center; gap: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
-                    <div style="width: 36px; height: 36px; background-color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-inverse); font-weight: 700;">4</div>
-                    <div>
-                        <div style="font-weight: 600; color: var(--color-primary); font-size: 15px;">Acquisition</div>
-                        <div style="font-size: 13px; color: var(--color-text-light);">Ciblage précis</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- Suppression des modules de navigation en dessous du titre et passage direct aux sections de services -->
 
     <!-- DESIGN UNIFORME POUR TOUS LES SERVICES -->
     <!-- Mixin de style pour les sections de service -->

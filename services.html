@@ -330,8 +330,10 @@
         
         <!-- Contenu de la section -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
-            <div>
-                <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+            <!-- Colonne de gauche -->
+            <div style="display: flex; flex-direction: column; gap: 30px;">
+                <!-- Premier bloc -->
+                <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); height: 100%;">
                     <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-bullseye"></i></div>
                     <h3 style="font-size: 20px; margin-bottom: 20px; color: var(--color-primary); font-weight: 600;">Ce que nous faisons différemment</h3>
                     <ul style="padding-left: 0; list-style: none; margin-bottom: 0;">
@@ -383,8 +385,10 @@
                 </div>
             </div>
             
-            <div>
-                <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 30px;">
+            <!-- Colonne de droite -->
+            <div style="display: flex; flex-direction: column; gap: 30px;">
+                <!-- Premier bloc -->
+                <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
                     <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-chart-pie"></i></div>
                     <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Réduction du coût d'acquisition sur le long terme</h3>
                     <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light); margin-bottom: 20px;">Notre approche stratégique permet de diminuer progressivement le coût par client acquis grâce à un ciblage affiné et une optimisation continue de tous les canaux.</p>
@@ -408,6 +412,7 @@
                     </ul>
                 </div>
                 
+                <!-- Deuxième bloc -->
                 <div style="background-color: var(--color-primary); color: var(--color-inverse); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
                     <div style="font-size: 36px; margin-bottom: 20px; color: var(--color-inverse);"><i class="fas fa-chart-line"></i></div>
                     <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-inverse); font-weight: 600;">Audit gratuit de votre stratégie</h3>

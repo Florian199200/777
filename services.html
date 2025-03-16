@@ -44,6 +44,132 @@
     <div class="overlay"></div>
 
     <!-- HÉRO - Style similaire à la page d'accueil avec viseur à droite -->
+    <section class="hero" style="padding: 200px 0 160px; min-height: 80vh; display: flex; align-items: center;">
+        <div class="container">
+            <div class="grid">
+                <div class="hero-content" style="grid-column: 1 / 8; position: relative; z-index: 2;">
+                    <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
+                    <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
+                    <h1 class="hero-title">Quatre stratégies pour <span class="highlight">conquérir le marché</span> de la pêche à la carpe</h1>
+                    <p class="hero-description">Nous ne proposons pas de services génériques. Chacune de nos solutions est forgée dans la connaissance intime du carpiste et de ses comportements d'achat. Découvrez comment nous transformons cette expertise en résultats mesurables.</p>
+                    <div class="hero-cta">
+                        <a href="contact.html" class="secondary-button">DEMANDER UN AUDIT</a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual" style="grid-column: 8 / 13; position: relative; z-index: 1; display: flex; justify-content: center; align-items: center;">
+                    <!-- Viseur stratégique -->
+                    <div style="position: relative; width: 300px; height: 300px;">
+                        <!-- Cercle extérieur -->
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 2px solid var(--color-accent); border-radius: 50%; opacity: 0.6;"></div>
+                        
+                        <!-- Cercle milieu -->
+                        <div style="position: absolute; top: 15%; left: 15%; width: 70%; height: 70%; border: 1px solid var(--color-accent); border-radius: 50%; opacity: 0.8;"></div>
+                        
+                        <!-- Cercle intérieur -->
+                        <div style="position: absolute; top: 30%; left: 30%; width: 40%; height: 40%; border: 3px solid var(--color-accent); border-radius: 50%;"></div>
+                        
+                        <!-- Lignes de visée horizontales et verticales -->
+                        <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background-color: var(--color-accent); opacity: 0.7;"></div>
+                        <div style="position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background-color: var(--color-accent); opacity: 0.7;"></div>
+                        
+                        <!-- Points cardinaux -->
+                        <div style="position: absolute; top: 5%; left: 50%; transform: translateX(-50%); color: var(--color-accent); font-size: 14px;">N</div>
+                        <div style="position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%); color: var(--color-accent); font-size: 14px;">S</div>
+                        <div style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); color: var(--color-accent); font-size: 14px;">W</div>
+                        <div style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); color: var(--color-accent); font-size: 14px;">E</div>
+                        
+                        <!-- Marques de graduation -->
+                        <div style="position: absolute; top: 50%; left: 25%; width: 5px; height: 1px; background-color: var(--color-accent);"></div>
+                        <div style="position: absolute; top: 50%; left: 75%; width: 5px; height: 1px; background-color: var(--color-accent);"></div>
+                        <div style="position: absolute; top: 25%; left: 50%; width: 1px; height: 5px; background-color: var(--color-accent);"></div>
+                        <div style="position: absolute; top: 75%; left: 50%; width: 1px; height: 5px; background-color: var(--color-accent);"></div>
+                    </div>
+                    
+                    <div class="target-marks"></div>
+                    <div class="tech-frame"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 1: E-COMMERCE -->
+    <section id="ecommerce" style="padding: 100px 0; background-color: var(--color-bg); border-bottom: 1px solid rgba(70, 74, 62, 0.1);">
+        <div class="container">
+            <!-- En-tête de section -->
+            <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-primary); color: var(--color-inverse); font-size: 24px; font-weight: 600; margin-bottom: 30px;">01</div>
+                <h2 style="font-size: 42px; margin-bottom: 30px; color: var(--color-primary); line-height: 1.2;">E-commerce qui convertit les passionnés en clients</h2>
+                <p style="font-size: 18px; color: var(--color-text-light); line-height: 1.7;">Un site e-commerce ordinaire peut vendre des produits. Le nôtre transforme les carpistes passionnés en acheteurs réguliers. La différence? Notre compréhension intime de ce qui déclenche l'achat chez un pêcheur spécialisé.</p>
+            </div>
+            
+            <!-- Contenu de la section -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                <!-- Image à gauche -->
+                <div style="overflow: hidden; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
+                    <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Boutique+E-commerce" style="width: 100%; height: auto; display: block;">
+                </div>
+                
+                <!-- Caractéristiques à droite -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-fish"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Pages produits persuasives</h3>
+                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Conçues pour parler au carpiste, pas juste à son portefeuille. Nous mettons en avant les caractéristiques qui comptent vraiment.</p>
+                    </div>
+                    
+                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-route"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Parcours d'achat optimisé</h3>
+                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Calqué sur la psychologie du pêcheur technique pour fluidifier l'expérience et maximiser les conversions.</p>
+                    </div>
+                    
+                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-certificate"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Arguments techniques</h3>
+                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Qui justifient l'investissement dans du matériel premium grâce à une présentation détaillée et experte.</p>
+                    </div>
+                    
+                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-sync-alt"></i></div>
+                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Recommandations personnalisées</h3>
+                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Basées sur les habitudes réelles de session de pêche pour augmenter la valeur du panier moyen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 2: COMMUNITY MANAGEMENT -->
+    <section id="communaute" style="padding: 100px 0; background-color: var(--color-bg-alt); border-bottom: 1px solid rgba(70, 74, 62, 0.1);">
+        <div class="container">
+            <!-- En-tête de section -->
+            <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-primary); color: var(--color-inverse); font-size: 24px; font-weight: 600; margin-bottom: 30px;">02</div>
+                <h2 style="font-size: 42px; margin-bottom: 30px; color: var(--color-primary); line-height: 1.2;">Community Management spécialisé pêche à la carpe</h2>
+                <p style="font-size: 18px; color: var(--color-text-light); line-height: 1.7;">La pêche à la carpe n'est pas un simple loisir, c'est une passion dévorante. Nous animons pour votre marque une communauté active qui ne se contente pas d'acheter, mais défend et promeut vos produits avec conviction.</p>
+            </div>
+            
+            <!-- Contenu de la section -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="font-size: 40px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-comments"></i></div>
+                        <h3 style="color: var(--color-primary); margin-bottom: 15px; font-size: 22px;">Animation quotidienne</h3>
+                    </div>
+                    <p style="color: var(--color-text-light); line-height: 1.6; font-size: 15px; margin-bottom: 20px; text-align: center;">Nous animons vos plateformes sociales avec une expertise unique du secteur de la pêche à la carpe.</p>
+                    <ul style="padding-left: 0; list-style: none; margin-bottom: 0;">
+                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
+                            <span style="color: var(--color-text-light);">Données techniques illustrées</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 4: ACQUISITION -->
     <section id="acquisition" style="padding: 100px 0; background-color: var(--color-bg-alt);">
         <div class="container">
             <!-- En-tête de section -->
@@ -249,125 +375,7 @@
 
     <script src="main.js"></script>
 </body>
-</html>
-    <section class="hero" style="padding: 200px 0 160px; min-height: 80vh; display: flex; align-items: center;">
-        <div class="container">
-            <div class="grid">
-                <div class="hero-content" style="grid-column: 1 / 8; position: relative; z-index: 2;">
-                    <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
-                    <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
-                    <h1 class="hero-title">Quatre stratégies pour <span class="highlight">conquérir le marché</span> de la pêche à la carpe</h1>
-                    <p class="hero-description">Nous ne proposons pas de services génériques. Chacune de nos solutions est forgée dans la connaissance intime du carpiste et de ses comportements d'achat. Découvrez comment nous transformons cette expertise en résultats mesurables.</p>
-                    <div class="hero-cta">
-                        <a href="contact.html" class="secondary-button">DEMANDER UN AUDIT</a>
-                    </div>
-                </div>
-                
-                <div class="hero-visual" style="grid-column: 8 / 13; position: relative; z-index: 1; display: flex; justify-content: center; align-items: center;">
-                    <!-- Viseur stratégique -->
-                    <div style="position: relative; width: 300px; height: 300px;">
-                        <!-- Cercle extérieur -->
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 2px solid var(--color-accent); border-radius: 50%; opacity: 0.6;"></div>
-                        
-                        <!-- Cercle milieu -->
-                        <div style="position: absolute; top: 15%; left: 15%; width: 70%; height: 70%; border: 1px solid var(--color-accent); border-radius: 50%; opacity: 0.8;"></div>
-                        
-                        <!-- Cercle intérieur -->
-                        <div style="position: absolute; top: 30%; left: 30%; width: 40%; height: 40%; border: 3px solid var(--color-accent); border-radius: 50%;"></div>
-                        
-                        <!-- Lignes de visée horizontales et verticales -->
-                        <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background-color: var(--color-accent); opacity: 0.7;"></div>
-                        <div style="position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background-color: var(--color-accent); opacity: 0.7;"></div>
-                        
-                        <!-- Points cardinaux -->
-                        <div style="position: absolute; top: 5%; left: 50%; transform: translateX(-50%); color: var(--color-accent); font-size: 14px;">N</div>
-                        <div style="position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%); color: var(--color-accent); font-size: 14px;">S</div>
-                        <div style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); color: var(--color-accent); font-size: 14px;">W</div>
-                        <div style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); color: var(--color-accent); font-size: 14px;">E</div>
-                        
-                        <!-- Marques de graduation -->
-                        <div style="position: absolute; top: 50%; left: 25%; width: 5px; height: 1px; background-color: var(--color-accent);"></div>
-                        <div style="position: absolute; top: 50%; left: 75%; width: 5px; height: 1px; background-color: var(--color-accent);"></div>
-                        <div style="position: absolute; top: 25%; left: 50%; width: 1px; height: 5px; background-color: var(--color-accent);"></div>
-                        <div style="position: absolute; top: 75%; left: 50%; width: 1px; height: 5px; background-color: var(--color-accent);"></div>
-                    </div>
-                    
-                    <div class="target-marks"></div>
-                    <div class="tech-frame"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICE 1: E-COMMERCE -->
-    <section id="ecommerce" style="padding: 100px 0; background-color: var(--color-bg); border-bottom: 1px solid rgba(70, 74, 62, 0.1);">
-        <div class="container">
-            <!-- En-tête de section -->
-            <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-primary); color: var(--color-inverse); font-size: 24px; font-weight: 600; margin-bottom: 30px;">01</div>
-                <h2 style="font-size: 42px; margin-bottom: 30px; color: var(--color-primary); line-height: 1.2;">E-commerce qui convertit les passionnés en clients</h2>
-                <p style="font-size: 18px; color: var(--color-text-light); line-height: 1.7;">Un site e-commerce ordinaire peut vendre des produits. Le nôtre transforme les carpistes passionnés en acheteurs réguliers. La différence? Notre compréhension intime de ce qui déclenche l'achat chez un pêcheur spécialisé.</p>
-            </div>
-            
-            <!-- Contenu de la section -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                <!-- Image à gauche -->
-                <div style="overflow: hidden; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
-                    <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Boutique+E-commerce" style="width: 100%; height: auto; display: block;">
-                </div>
-                
-                <!-- Caractéristiques à droite -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
-                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-fish"></i></div>
-                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Pages produits persuasives</h3>
-                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Conçues pour parler au carpiste, pas juste à son portefeuille. Nous mettons en avant les caractéristiques qui comptent vraiment.</p>
-                    </div>
-                    
-                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-route"></i></div>
-                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Parcours d'achat optimisé</h3>
-                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Calqué sur la psychologie du pêcheur technique pour fluidifier l'expérience et maximiser les conversions.</p>
-                    </div>
-                    
-                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-certificate"></i></div>
-                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Arguments techniques</h3>
-                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Qui justifient l'investissement dans du matériel premium grâce à une présentation détaillée et experte.</p>
-                    </div>
-                    
-                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-sync-alt"></i></div>
-                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Recommandations personnalisées</h3>
-                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Basées sur les habitudes réelles de session de pêche pour augmenter la valeur du panier moyen.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICE 2: COMMUNITY MANAGEMENT -->
-    <section id="communaute" style="padding: 100px 0; background-color: var(--color-bg-alt); border-bottom: 1px solid rgba(70, 74, 62, 0.1);">
-        <div class="container">
-            <!-- En-tête de section -->
-            <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-primary); color: var(--color-inverse); font-size: 24px; font-weight: 600; margin-bottom: 30px;">02</div>
-                <h2 style="font-size: 42px; margin-bottom: 30px; color: var(--color-primary); line-height: 1.2;">Community Management spécialisé pêche à la carpe</h2>
-                <p style="font-size: 18px; color: var(--color-text-light); line-height: 1.7;">La pêche à la carpe n'est pas un simple loisir, c'est une passion dévorante. Nous animons pour votre marque une communauté active qui ne se contente pas d'acheter, mais défend et promeut vos produits avec conviction.</p>
-            </div>
-            
-            <!-- Contenu de la section -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
-                <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                    <div style="text-align: center; margin-bottom: 30px;">
-                        <div style="font-size: 40px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-comments"></i></div>
-                        <h3 style="color: var(--color-primary); margin-bottom: 15px; font-size: 22px;">Animation quotidienne</h3>
-                    </div>
-                    <p style="color: var(--color-text-light); line-height: 1.6; font-size: 15px; margin-bottom: 20px; text-align: center;">Nous animons vos plateformes sociales avec une expertise unique du secteur de la pêche à la carpe.</p>
-                    <ul style="padding-left: 0; list-style: none; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Gestion professionnelle des réseaux sociaux</span>
+</html>Gestion professionnelle des réseaux sociaux</span>
                         </li>
                         <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
                             <i class="fas fa-check" style="color: var(--color-accent);"></i>
@@ -468,15 +476,15 @@
                     <ul style="padding-left: 0; list-style: none; margin-top: 20px; margin-bottom: 0;">
                         <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
                             <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Macro-photographie détaillée</span>
+                            <span style="color: var(--color-text-light);">Valeur perçue du produit</span>
                         </li>
                         <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
                             <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Mise en scène contextuelle</span>
+                            <span style="color: var(--color-text-light);">Photographie impactante et cinématique</span>
                         </li>
                         <li style="display: flex; align-items: center; gap: 10px;">
                             <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Éclairage professionnel</span>
+                            <span style="color: var(--color-text-light);">Macro-photographie</span>
                         </li>
                     </ul>
                 </div>
@@ -516,12 +524,4 @@
                         </li>
                         <li style="display: flex; align-items: center; gap: 10px;">
                             <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Données techniques illustrées</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICE 4: ACQUISITION
+                            <span style="color: var(--color-text-light);">

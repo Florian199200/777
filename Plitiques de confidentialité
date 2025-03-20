@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité | CarpConnect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .privacy-section {
+            padding: 120px 0 80px;
+        }
+        
+        .privacy-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .privacy-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .privacy-content h3 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #464a3e;
+            font-size: 1.5rem;
+        }
+        
+        .privacy-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .privacy-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .privacy-content li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        
+        .privacy-content .highlight {
+            background-color: rgba(70, 74, 62, 0.1);
+            padding: 20px;
+            border-radius: 4px;
+            margin: 30px 0;
+        }
+        
+        .last-updated {
+            margin-top: 60px;
+            font-style: italic;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-symbol"></div>
+                    <span>CARPCONNECT</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="services.html" class="nav-link">SERVICES</a>
+                    <a href="methode.html" class="nav-link">MÉTHODE</a>
+                    <a href="realisations.html" class="nav-link">RÉALISATIONS</a>
+                    <a href="temoignages.html" class="nav-link">TÉMOIGNAGES</a>
+                </nav>
+                <a href="contact.html" class="cta-button">CONTACT</a>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li><a href="services.html" class="nav-link">SERVICES</a></li>
+            <li><a href="methode.html" class="nav-link">MÉTHODE</a></li>
+            <li><a href="realisations.html" class="nav-link">RÉALISATIONS</a></li>
+            <li><a href="temoignages.html" class="nav-link">TÉMOIGNAGES</a></li>
+        </ul>
+        <a href="contact.html" class="cta-button">CONTACT</a>
+    </div>
+
+    <div class="overlay"></div>
+
+    <section class="privacy-section">
+        <div class="container privacy-container">
+            <div class="privacy-header">
+                <div class="coordinates">DOC:RGPD-2025</div>
+                <div class="tag">INFORMATIONS LÉGALES</div>
+                <h1 class="section-title">Politique de Confidentialité</h1>
+                <p class="section-description">Nous accordons une importance capitale à la protection de vos données personnelles. Cette politique détaille notre approche concernant la collecte, l'utilisation et la protection de vos informations.</p>
+            </div>
+            
+            <div class="privacy-content">
+                <h3>1. Collecte des données</h3>
+                <p>CarpConnect peut collecter les informations suivantes vous concernant :</p>
+                <ul>
+                    <li>Informations d'identification (nom, prénom, adresse e-mail, numéro de téléphone)</li>
+                    <li>Données de navigation (adresse IP, cookies, données de connexion)</li>
+                    <li>Informations professionnelles lorsque vous nous contactez dans un cadre professionnel</li>
+                    <li>Préférences marketing si vous vous inscrivez à notre newsletter</li>
+                </ul>
+                
+                <h3>2. Utilisation des données</h3>
+                <p>Nous utilisons vos données personnelles pour les finalités suivantes :</p>
+                <ul>
+                    <li>Vous fournir les services et informations demandés</li>
+                    <li>Répondre à vos demandes et questions</li>
+                    <li>Améliorer notre site web et nos services</li>
+                    <li>Vous envoyer des communications marketing (avec votre consentement)</li>
+                    <li>Respecter nos obligations légales et réglementaires</li>
+                </ul>
+                
+                <div class="highlight">
+                    <h3>Engagement spécifique secteur pêche à la carpe</h3>
+                    <p>En tant qu'agence spécialisée dans le secteur de la pêche à la carpe, nous nous engageons à ne jamais partager vos données personnelles avec des organisations de protection animale opposées à la pratique de la pêche, ni à utiliser vos données pour des finalités contraires aux intérêts de la communauté des carpistes.</p>
+                </div>
+                
+                <h3>3. Base légale du traitement</h3>
+                <p>Nous traitons vos données personnelles sur les bases légales suivantes :</p>
+                <ul>
+                    <li>Votre consentement explicite</li>
+                    <li>L'exécution d'un contrat auquel vous êtes partie</li>
+                    <li>Le respect de nos obligations légales</li>
+                    <li>Nos intérêts légitimes (amélioration de nos services, sécurité)</li>
+                </ul>
+                
+                <h3>4. Durée de conservation</h3>
+                <p>Nous conservons vos données personnelles uniquement pendant la durée nécessaire aux finalités pour lesquelles elles ont été collectées, conformément aux exigences légales et réglementaires.</p>
+                
+                <h3>5. Partage des données</h3>
+                <p>Nous pouvons partager vos données avec :</p>
+                <ul>
+                    <li>Nos sous-traitants techniques (hébergement, services IT, CRM)</li>
+                    <li>Nos partenaires commerciaux (avec votre consentement)</li>
+                    <li>Les autorités légales en cas d'obligation légale</li>
+                </ul>
+                <p>Nous ne vendons jamais vos données personnelles à des tiers.</p>
+                
+                <h3>6. Sécurité des données</h3>
+                <p>Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, altération, divulgation ou destruction.</p>
+                
+                <h3>7. Vos droits</h3>
+                <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p>
+                <ul>
+                    <li>Droit d'accès à vos données</li>
+                    <li>Droit de rectification</li>
+                    <li>Droit à l'effacement (droit à l'oubli)</li>
+                    <li>Droit à la limitation du traitement</li>
+                    <li>Droit à la portabilité de vos données</li>
+                    <li>Droit d'opposition</li>
+                    <li>Droit de retirer votre consentement à tout moment</li>
+                </ul>
+                <p>Pour exercer ces droits, contactez-nous à l'adresse email : <a href="mailto:privacy@carpconnect.com">privacy@carpconnect.com</a></p>
+                
+                <h3>8. Cookies et technologies similaires</h3>
+                <p>Notre site utilise des cookies pour améliorer votre expérience. Pour plus d'informations sur notre utilisation des cookies, veuillez consulter notre politique de cookies.</p>
+                
+                <h3>9. Modifications de notre politique</h3>
+                <p>Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Les modifications prendront effet dès leur publication sur notre site web.</p>
+                
+                <p class="last-updated">Dernière mise à jour : 15 janvier 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-pattern"></div>
+        <div class="container">
+            <div class="grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">CARPCONNECT</div>
+                    <p class="footer-description">Agence digitale spécialisée dans les stratégies de croissance pour les marques et fabricants de l'univers de la pêche à la carpe. Nous transformons les passionnés en clients fidèles avec des approches tactiques et mesurables.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">SERVICES</h3>
+                    <ul class="footer-links">
+                        <li><a href="ecommerce.html" class="footer-link">E-commerce Haute Conversion</a></li>
+                        <li><a href="production-visuelle.html" class="footer-link">Production Visuelle Technique</a></li>
+                        <li><a href="acquisition.html" class="footer-link">Stratégies d'Acquisition</a></li>
+                        <li><a href="engagement.html" class="footer-link">Engagement Communautaire</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">RESSOURCES</h3>
+                    <ul class="footer-links">
+                        <li><a href="realisations.html" class="footer-link">Études de Cas</a></li>
+                        <li><a href="blog.html" class="footer-link">Guide Stratégique</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog d'Expertise</a></li>
+                        <li><a href="ressources.html" class="footer-link">Outils & Templates</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">ENTREPRISE</h3>
+                    <ul class="footer-links">
+                        <li><a href="a-propos.html" class="footer-link">À Propos</a></li>
+                        <li><a href="a-propos.html#equipe" class="footer-link">Notre Équipe</a></li>
+                        <li><a href="carrieres.html" class="footer-link">Carrières</a></li>
+                        <li><a href="partenaires.html" class="footer-link">Partenaires</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="footer-heading">CONTACT</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text"><a href="mailto:contact@carpconnect.com">contact@carpconnect.com</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-text"><a href="tel:+33612345678">+33 6 12 34 56 78</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-text">Annecy, France<br>Lyon - Paris - Bordeaux</div>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="cta-button">PRENDRE RENDEZ-VOUS</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <span class="copyright-icon">C</span>
+                    <span>2025 CarpConnect. Tous droits réservés</span>
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="confidentialite.html" class="footer-bottom-link">Politique de Confidentialité</a>
+                    <a href="plan-site.html" class="footer-bottom-link">Plan du Site</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

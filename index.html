@@ -340,11 +340,18 @@
                 }
                 
                 .approach-section {
-                    background-color: #f3f2eb;
-                    color: #464a3e;
+                    background-color: #464a3e; /* Vert kaki cohérent avec le site */
+                    color: #f3f2eb; /* Texte clair pour contraste */
                     padding: 100px 0;
                     position: relative;
                     overflow: hidden;
+                }
+                
+                .section-header.centered .section-title,
+                .section-header.centered .section-description,
+                .section-header.centered .coordinates,
+                .section-header.centered .tag {
+                    color: #f3f2eb; /* Texte clair pour meilleur contraste */
                 }
                 
                 .roadmap-container {
@@ -360,7 +367,7 @@
                     left: 50%;
                     width: 6px;
                     height: 100%;
-                    background-color: #d8d7d3;
+                    background-color: rgba(243, 242, 235, 0.3); /* Ligne plus claire et transparente */
                     transform: translateX(-50%);
                     z-index: 1;
                 }
@@ -371,8 +378,8 @@
                     left: 0;
                     width: 100%;
                     height: 0;
-                    background-color: #464a3e;
-                    transition: height 1s ease-in-out;
+                    background-color: #f3f2eb; /* Couleur de la jauge de progression en clair pour contraste */
+                    transition: height 0.5s ease-in-out;
                 }
                 
                 .roadmap-steps {
@@ -405,13 +412,15 @@
                     left: 50%;
                     width: 30px;
                     height: 30px;
-                    background-color: #464a3e;
+                    background-color: #f3f2eb;
                     border-radius: 50%;
                     transform: translate(-50%, -50%);
+                    border: 3px solid #464a3e;
                 }
                 
                 .active .node-dot {
-                    background-color: #464a3e;
+                    background-color: #f3f2eb;
+                    border-color: #f3f2eb;
                 }
                 
                 .node-pulse {
@@ -420,7 +429,7 @@
                     left: 50%;
                     width: 60px;
                     height: 60px;
-                    background-color: rgba(70, 74, 62, 0.2);
+                    background-color: rgba(243, 242, 235, 0.4);
                     border-radius: 50%;
                     transform: translate(-50%, -50%) scale(0);
                     animation: pulse 2s infinite;
@@ -447,26 +456,28 @@
                 
                 .roadmap-content {
                     flex: 1;
-                    background-color: white;
+                    background-color: rgba(243, 242, 235, 0.05); /* Fond légèrement transparent */
                     border-radius: 8px;
                     padding: 30px;
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-                    border-left: 5px solid #464a3e;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                    border-left: 5px solid #f3f2eb;
                     position: relative;
                     transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    color: #f3f2eb; /* Texte clair pour meilleur contraste */
                 }
                 
                 .roadmap-step:hover .roadmap-content {
                     transform: translateY(-5px);
-                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+                    background-color: rgba(243, 242, 235, 0.1); /* Plus clair au survol */
                 }
                 
                 .roadmap-number {
                     display: inline-block;
                     width: 40px;
                     height: 40px;
-                    background-color: #464a3e;
-                    color: #f3f2eb;
+                    background-color: #f3f2eb;
+                    color: #464a3e;
                     border-radius: 50%;
                     text-align: center;
                     line-height: 40px;
@@ -478,11 +489,12 @@
                 .roadmap-title {
                     font-size: 22px;
                     margin-bottom: 15px;
-                    color: #464a3e;
+                    color: #f3f2eb;
+                    font-weight: 600;
                 }
                 
                 .roadmap-details {
-                    color: #555;
+                    color: rgba(243, 242, 235, 0.9);
                 }
                 
                 .roadmap-details p {
@@ -508,18 +520,19 @@
                     position: absolute;
                     left: 0;
                     top: 0;
-                    color: #464a3e;
+                    color: #f3f2eb;
                     font-weight: bold;
                 }
                 
                 .roadmap-time {
                     display: inline-block;
-                    background-color: #f3f2eb;
+                    background-color: rgba(243, 242, 235, 0.2);
                     padding: 8px 15px;
                     border-radius: 20px;
                     font-size: 14px;
-                    color: #464a3e;
+                    color: #f3f2eb;
                     font-weight: 600;
+                    border: 1px solid rgba(243, 242, 235, 0.3);
                 }
                 
                 /* Alternance gauche/droite pour écrans larges */
@@ -534,9 +547,9 @@
                         flex-direction: row-reverse;
                     }
                     
-                    .roadmap-step:nth-child(even) .roadmap-content {
+                .roadmap-step:nth-child(even) .roadmap-content {
                         border-left: none;
-                        border-right: 5px solid #464a3e;
+                        border-right: 5px solid #f3f2eb;
                     }
                 }
                 
@@ -560,18 +573,27 @@
                 document.addEventListener('DOMContentLoaded', function() {
                     const steps = document.querySelectorAll('.roadmap-step');
                     const progress = document.querySelector('.roadmap-progress');
+                    const roadmapSection = document.querySelector('.roadmap-container');
                     
                     // Animation de défilement
                     function animateOnScroll() {
-                        const scrollPosition = window.scrollY + window.innerHeight * 0.7;
+                        const scrollPosition = window.scrollY + window.innerHeight * 0.6;
+                        const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
+                        const sectionHeight = roadmapSection.offsetHeight;
+                        const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
                         
+                        // Limiter la progression entre 0 et 1
+                        const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+                        
+                        // Appliquer la hauteur à la barre de progression
+                        progress.style.height = (limitedProgress * 100) + '%';
+                        
+                        // Activer les étapes en fonction du défilement
                         steps.forEach((step, index) => {
-                            const stepPosition = step.getBoundingClientRect().top + window.scrollY;
+                            const stepTop = step.getBoundingClientRect().top + window.scrollY;
                             
-                            if (scrollPosition > stepPosition) {
+                            if (scrollPosition > stepTop) {
                                 step.classList.add('active');
-                                const progressHeight = ((index + 1) / steps.length) * 100;
-                                progress.style.height = progressHeight + '%';
                             } else {
                                 step.classList.remove('active');
                             }
@@ -583,7 +605,10 @@
                     window.addEventListener('resize', animateOnScroll);
                     
                     // Déclencher une fois au chargement
-                    setTimeout(animateOnScroll, 500);
+                    setTimeout(animateOnScroll, 300);
+                    
+                    // Assurer que l'animation fonctionne même sur les longs chargements
+                    window.addEventListener('load', animateOnScroll);
                 });
             </script>
         </div>

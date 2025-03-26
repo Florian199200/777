@@ -1,4 +1,304 @@
-<!DOCTYPE html>
+<footer>
+        <div class="footer-pattern"></div>
+        <div class="container">
+            <div class="grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg class="footer-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                            <!-- Logo placeholder - replace with your actual logo SVG -->
+                            <rect width="100" height="100" fill="none"/>
+                            <path d="M20,50 C20,32.3 34.3,18 52,18 C69.7,18 84,32.3 84,50 C84,67.7 69.7,82 52,82 C34.3,82 20,67.7 20,50 Z" stroke="#f3f2eb" stroke-width="4" fill="none"/>
+                            <path d="M35,40 L70,40 L70,65 C70,72.7 63.7,79 56,79 L35,79 L35,40 Z" stroke="#f3f2eb" stroke-width="4" fill="none"/>
+                            <path d="M54,25 L54,35 M54,65 L54,75" stroke="#f3f2eb" stroke-width="4" fill="none"/>
+                        </svg>
+                        CARPCONNECT
+                    </div>
+                    <p class="footer-description">Agence digitale spécialisée dans les stratégies de croissance pour les marques et fabricants de l'univers de la pêche à la carpe. Nous transformons les passionnés en clients fidèles avec des approches tactiques et mesurables.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">RESSOURCES</h3>
+                    <ul class="footer-links">
+                        <li><a href="realisations.html" class="footer-link">Études de Cas</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="guides.html" class="footer-link">Guides Pratiques</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">ENTREPRISE</h3>
+                    <ul class="footer-links">
+                        <li><a href="a-propos.html" class="footer-link">À Propos</a></li>
+                        <li><a href="equipe.html" class="footer-link">Notre Équipe</a></li>
+                        <li><a href="carrieres.html" class="footer-link">Carrières</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="footer-heading">CONTACT</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text"><a href="mailto:contact@carpconnect.com">contact@carpconnect.com</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="contact-text"><a href="tel:+33612345678">+33 6 12 34 56 78</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-text">Annecy, France<br>Lyon - Paris - Bordeaux</div>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="cta-button">PRENDRE RENDEZ-VOUS</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <span class="copyright-icon">C</span>
+                    <span>2025 CarpConnect. Tous droits réservés</span>
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="./confidentialite.html" class="footer-bottom-link">Politique de Confidentialité</a>
+                    <a href="./mentions-legales.html" class="footer-bottom-link">Mentions Légales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu mobile
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const overlay = document.querySelector('.overlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-links li a');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    mobileNav.classList.toggle('active');
+                    overlay.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                });
+            }
+            
+            if (overlay) {
+                overlay.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                });
+            }
+            
+            // Fermer le menu si on clique sur un lien
+            if (mobileNavLinks) {
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenuToggle.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        overlay.classList.remove('active');
+                        document.body.classList.remove('no-scroll');
+                    });
+                });
+            }
+            
+            // Animation des chiffres
+            const animateValue = (obj, start, end, duration) => {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const value = Math.floor(progress * (end - start) + start);
+                    obj.innerHTML = value + '%';
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            };
+            
+            // Observer pour démarrer l'animation quand les éléments sont visibles
+            const observeElements = () => {
+                const metricObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const metricValues = document.querySelectorAll('.metric-value');
+                            metricValues.forEach(metric => {
+                                const value = parseInt(metric.getAttribute('data-value'));
+                                animateValue(metric, 0, value, 2000); // animation sur 2 secondes
+                            });
+                            metricObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                const metrics = document.querySelector('.hero-metrics');
+                if (metrics) {
+                    metricObserver.observe(metrics);
+                }
+                
+                // Animation des éléments au scroll
+                const animationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate-fade-in');
+                            animationObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+                
+                const serviceCards = document.querySelectorAll('.service-card');
+                serviceCards.forEach(card => {
+                    animationObserver.observe(card);
+                });
+                
+                const ctaContent = document.querySelector('.cta-content');
+                if (ctaContent) {
+                    animationObserver.observe(ctaContent);
+                }
+            };
+            
+            observeElements();
+            
+            // Animation de la roadmap
+            const animateRoadmap = () => {
+                const steps = document.querySelectorAll('.roadmap-step');
+                const progress = document.querySelector('.roadmap-progress');
+                const roadmapSection = document.querySelector('.roadmap-container');
+                
+                if (!roadmapSection) return;
+                
+                const scrollPosition = window.scrollY + window.innerHeight * 0.6;
+                const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
+                const sectionHeight = roadmapSection.offsetHeight;
+                const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+                
+                // Limiter la progression entre 0 et 1
+                const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+                
+                // Appliquer la hauteur à la barre de progression
+                if (progress) {
+                    progress.style.height = (limitedProgress * 100) + '%';
+                }
+                
+                // Activer les étapes en fonction du défilement
+                steps.forEach((step, index) => {
+                    const stepTop = step.getBoundingClientRect().top + window.scrollY;
+                    
+                    if (scrollPosition > stepTop) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+            };
+            
+            // Bouton de retour en haut
+            const scrollTopButton = document.querySelector('.scroll-top');
+            
+            const toggleScrollTopButton = () => {
+                if (window.scrollY > 300) {
+                    scrollTopButton.classList.add('active');
+                } else {
+                    scrollTopButton.classList.remove('active');
+                }
+            };
+            
+            if (scrollTopButton) {
+                scrollTopButton.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                
+                window.addEventListener('scroll', toggleScrollTopButton);
+            }
+            
+            // Animation du header au scroll
+            const header = document.querySelector('header');
+            let lastScrollTop = 0;
+            
+            const headerTransform = () => {
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                
+                if (scrollTop > 100) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+                
+                lastScrollTop = scrollTop;
+            };
+            
+            // Navigation fluide pour les ancres
+            const smoothScroll = () => {
+                const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+                
+                anchorLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            const headerHeight = header.offsetHeight;
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Fermer le menu mobile si ouvert
+                            if (mobileMenuToggle && mobileMenuToggle.classList.contains('active')) {
+                                mobileMenuToggle.click();
+                            }
+                        }
+                    });
+                });
+            };
+            
+            smoothScroll();
+            
+            // Événements de défilement
+            window.addEventListener('scroll', () => {
+                animateRoadmap();
+                toggleScrollTopButton();
+                headerTransform();
+            });
+            
+            window.addEventListener('resize', animateRoadmap);
+            
+            // Initialisation
+            toggleScrollTopButton();
+            animateRoadmap();
+            headerTransform();
+            
+            // Animation du chargement de la page
+            window.addEventListener('load', function() {
+                document.body.classList.add('page-loaded');
+            });
+        });
+    </script>
+</body>
+</html>
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text"><a href="mailto:contact@carpconnect.com">contact@carpconnect.com</a></div>
+                        </div>
+                        <div class="contact-item<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -158,7 +458,6 @@
             transform: translateY(-9px) rotate(-45deg);
         }
         
-        /* Menu mobile */
         .mobile-nav {
             position: fixed;
             top: 70px;
@@ -485,6 +784,18 @@
             overflow: hidden;
         }
         
+        .approach-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(243, 242, 235, 0.05) 2px, transparent 2px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
         .approach-section .section-title,
         .approach-section .section-description,
         .approach-section .step-title,
@@ -538,7 +849,7 @@
             left: 0;
             width: 100%;
             height: 0;
-            background-color: #f3f2eb;
+            background-color: var(--light-color);
             transition: height 0.5s ease-in-out;
         }
         
@@ -572,15 +883,15 @@
             left: 50%;
             width: 30px;
             height: 30px;
-            background-color: #f3f2eb;
+            background-color: var(--light-color);
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            border: 3px solid #464a3e;
+            border: 3px solid var(--primary-color);
         }
         
         .active .node-dot {
-            background-color: #f3f2eb;
-            border-color: #f3f2eb;
+            background-color: var(--light-color);
+            border-color: var(--light-color);
         }
         
         .node-pulse {
@@ -620,10 +931,10 @@
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border-left: 5px solid #f3f2eb;
+            border-left: 5px solid var(--light-color);
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            color: #f3f2eb;
+            color: var(--light-color);
         }
         
         .roadmap-step:hover .roadmap-content {
@@ -636,8 +947,8 @@
             display: inline-block;
             width: 40px;
             height: 40px;
-            background-color: #f3f2eb;
-            color: #464a3e;
+            background-color: var(--light-color);
+            color: var(--primary-color);
             border-radius: 50%;
             text-align: center;
             line-height: 40px;
@@ -649,7 +960,7 @@
         .roadmap-title {
             font-size: 22px;
             margin-bottom: 15px;
-            color: #f3f2eb;
+            color: var(--light-color);
             font-weight: 600;
         }
         
@@ -680,7 +991,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: #f3f2eb;
+            color: var(--light-color);
             font-weight: bold;
         }
         
@@ -690,9 +1001,27 @@
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 14px;
-            color: #f3f2eb;
+            color: var(--light-color);
             font-weight: 600;
             border: 1px solid rgba(243, 242, 235, 0.3);
+        }
+        
+        /* Alternance gauche/droite pour écrans larges */
+        @media (min-width: 992px) {
+            .roadmap-step {
+                padding-left: 50%;
+            }
+            
+            .roadmap-step:nth-child(even) {
+                padding-left: 0;
+                padding-right: 50%;
+                flex-direction: row-reverse;
+            }
+            
+            .roadmap-step:nth-child(even) .roadmap-content {
+                border-left: none;
+                border-right: 5px solid var(--light-color);
+            }
         }
         
         /* CTA Section */
@@ -704,10 +1033,24 @@
             overflow: hidden;
         }
         
+        .cta-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(243, 242, 235, 0.05) 2px, transparent 2px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
         .cta-content {
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         .cta-title {
@@ -772,14 +1115,34 @@
             position: relative;
         }
         
+        .footer-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(243, 242, 235, 0.03) 2px, transparent 2px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+        
         .footer-brand {
             grid-column: span 4;
+            position: relative;
         }
         
         .footer-logo {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo-svg {
+            height: 30px;
+            width: 30px;
+            margin-right: 10px;
         }
         
         .footer-description {
@@ -808,16 +1171,30 @@
         .social-link:hover {
             background-color: var(--light-color);
             color: var(--secondary-color);
+            transform: translateY(-3px);
         }
         
         .footer-nav {
             grid-column: span 2;
+            position: relative;
         }
         
         .footer-heading {
             font-size: 16px;
             margin-bottom: 20px;
             letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: -8px;
+            left: 0;
         }
         
         .footer-links {
@@ -836,10 +1213,12 @@
         .footer-link:hover {
             opacity: 1;
             padding-left: 5px;
+            color: var(--accent-color);
         }
         
         .footer-contact {
             grid-column: span 4;
+            position: relative;
         }
         
         .contact-info {
@@ -874,6 +1253,7 @@
             padding-top: 30px;
             margin-top: 30px;
             border-top: 1px solid rgba(243, 242, 235, 0.2);
+            position: relative;
         }
         
         .copyright {
@@ -903,6 +1283,7 @@
         
         .footer-bottom-link:hover {
             opacity: 1;
+            color: var(--accent-color);
         }
         
         .scroll-top {
@@ -919,221 +1300,4 @@
             justify-content: center;
             text-decoration: none;
             transition: var(--transition);
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 999;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .scroll-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .scroll-top:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-5px);
-        }
-        
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .service-card {
-                grid-column: span 6;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .hero-content {
-                grid-column: 1 / 13;
-                padding-right: 0;
-                text-align: center;
-                margin-bottom: 50px;
-            }
-            
-            .hero-visual {
-                grid-column: 1 / 13;
-            }
-            
-            .hero-metrics {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-brand, .footer-nav, .footer-contact {
-                grid-column: span 6;
-                margin-bottom: 30px;
-            }
-            
-            /* Roadmap responsive */
-            .roadmap-line {
-                left: 30px;
-            }
-            
-            .roadmap-node {
-                margin: 0 15px 0 0;
-            }
-            
-            .roadmap-step {
-                padding-left: 60px;
-            }
-            
-            .roadmap-step:nth-child(even) {
-                padding-left: 60px;
-                padding-right: 0;
-                flex-direction: row;
-            }
-            
-            .roadmap-step:nth-child(even) .roadmap-content {
-                border-left: 5px solid #f3f2eb;
-                border-right: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .main-nav, .cta-button {
-                display: none;
-            }
-            
-            .mobile-menu-toggle {
-                display: flex;
-            }
-            
-            .mobile-nav.active {
-                display: block;
-            }
-            
-            .hero-title {
-                font-size: 32px;
-            }
-            
-            .section-title, .cta-title {
-                font-size: 28px;
-            }
-            
-            .service-card {
-                grid-column: span 12;
-            }
-            
-            .hero-metrics {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .footer-brand, .footer-nav, .footer-contact {
-                grid-column: span 12;
-                margin-bottom: 30px;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero {
-                padding: 100px 0 60px;
-            }
-            
-            .hero-cta {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .roadmap-content {
-                padding: 20px;
-            }
-            
-            .footer {
-                padding: 60px 0 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                        <!-- Logo placeholder - replace with your actual logo SVG -->
-                        <rect width="100" height="100" fill="none"/>
-                        <path d="M20,50 C20,32.3 34.3,18 52,18 C69.7,18 84,32.3 84,50 C84,67.7 69.7,82 52,82 C34.3,82 20,67.7 20,50 Z" stroke="#f3f2eb" stroke-width="4" fill="none"/>
-                        <path d="M35,40 L70,40 L70,65 C70,72.7 63.7,79 56,79 L35,79 L35,40 Z" stroke="#f3f2eb" stroke-width="4" fill="none"/>
-                        <path d="M54,25 L54,35 M54,65 L54,75" stroke="#f3f2eb" stroke-width="4" fill="none"/>
-                    </svg>
-                    <span>CARPCONNECT</span>
-                </a>
-                <nav class="main-nav">
-                    <a href="services.html" class="nav-link">NOS SERVICES</a>
-                    <a href="a-propos.html" class="nav-link">À PROPOS</a>
-                </nav>
-                <a href="contact.html" class="cta-button">CONTACT</a>
-                <div class="mobile-menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="mobile-nav">
-        <ul class="mobile-nav-links">
-            <li><a href="services.html" class="nav-link">SERVICES</a></li>
-            <li><a href="realisations.html" class="nav-link">RÉALISATIONS</a></li>
-            <li><a href="a-propos.html" class="nav-link">À PROPOS</a></li>
-        </ul>
-        <a href="contact.html" class="cta-button">CONTACT</a>
-    </div>
-
-    <div class="overlay"></div>
-
-    <section class="hero">
-        <div class="container">
-            <div class="grid">
-                <div class="hero-content">
-                    <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
-                    <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
-                    <h1 class="hero-title">Convertissez les <span class="highlight">passionnés</span> en clients <span class="highlight">fidèles</span></h1>
-                    <p class="hero-description">Nous transformons la présence digitale des marques de pêche à la carpe avec des stratégies éprouvées qui captent l'attention, génèrent du trafic qualifié et augmentent les ventes.</p>
-                    <div class="hero-cta">
-                        <a href="services.html" class="cta-button">DÉCOUVRIR NOS SERVICES</a>
-                        <a href="realisations.html" class="secondary-button">EXPLORER NOS PROJETS</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-image">
-                        <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Pêcheur+à+la+carpe" alt="Pêcheur à la carpe en action">
-                    </div>
-                </div>
-            </div>
-            <div class="hero-metrics">
-                <div class="metric">
-                    <div class="metric-value" data-value="85">0</div>
-                    <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value" data-value="195">0</div>
-                    <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value" data-value="72">0</div>
-                    <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value" data-value="53">0</div>
-                    <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
-                </div>
-            </div>
-        </div>
+            cursor: pointer

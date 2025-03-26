@@ -1,4 +1,154 @@
-<!DOCTYPE html>
+/* Style pour la connexion entre la roadmap et le CTA */
+        .roadmap-cta-connector {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            width: 6px;
+            height: 30px;
+            background-color: transparent;
+            transform: translateX(-50%);
+            z-index: 2;
+            transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+        
+        .roadmap-cta-connector.active {
+            background-color: #f3f2eb;
+            box-shadow: 0 0 15px 3px rgba(243, 242, 235, 0.4);
+            animation: connectorPulse 1.5s infinite;
+        }
+        
+        @keyframes connectorPulse {
+            0% {
+                box-shadow: 0 0 5px 1px rgba(243, 242, 235, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 15px 5px rgba(243, 242, 235, 0.6);
+            }
+            100% {
+                box-shadow: 0 0 5px 1px rgba(243, 242, 235, 0.4);
+            }
+        }            // Animation au défilement
+            window.addEventListener('scroll', animateOnScroll);
+            window.addEventListener('resize', animateOnScroll);
+            
+            // Déclencher une fois au chargement
+            setTimeout(animateOnScroll, 300);
+            
+            // Animation des compteurs pour les métriques
+            function animateMetrics() {
+                const metrics = document.querySelectorAll('.metric-value');
+                
+                metrics.forEach(metric => {
+                    const target = metric.getAttribute('data-target');
+                    const numericValue = parseInt(target.replace(/[^\d]/g, ''));
+                    let count = 0;
+                    
+                    const increment = Math.ceil(numericValue / 50); // Diviser en 50 étapes
+                    
+                    const counter = setInterval(() => {
+                        count += increment;
+                        
+                        if (count >= numericValue) {
+                            metric.textContent = target;
+                            clearInterval(counter);
+                        } else {
+                            metric.textContent = "+" + count + "%";
+                        }
+                    }, 40);
+                });
+            }
+            
+            // Déclencher l'animation lorsque les métriques sont visibles
+            const metricsSection = document.querySelector('.hero-metrics');
+            
+            function checkIfInView() {
+                const bounding = metricsSection.getBoundingClientRect();
+                
+                if (
+                    bounding.top >= 0 &&
+                    bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+                ) {
+                    animateMetrics();
+                    window.removeEventListener('scroll', checkIfInView);
+                }
+            }
+            
+            window.addEventListener('scroll', checkIfInView);
+            // Vérifier également au chargement de la page
+            setTimeout(checkIfInView, 500);
+            
+            // Animation spéciale pour la connexion entre roadmap et CTA
+            function checkRoadmapCta() {
+                const roadmapContainer = document.querySelector('.roadmap-container');
+                const ctaSection = document.querySelector('.cta-section');
+                const ctaButton = document.querySelector('.big-cta-button');
+                const connector = document.querySelector('.roadmap-cta-connector');
+                
+                if (!roadmapContainer || !ctaSection || !ctaButton || !connector) return;
+                
+                const roadmapBottom = roadmapContainer.getBoundingClientRect().bottom;
+                const viewportBottom = window.innerHeight;
+                
+                // Si le bas de la roadmap est visible
+                if (roadmapBottom < viewportBottom + 100) {
+                    // Activer le connecteur
+                    connector.classList.add('active');
+                    
+                    // Ajouter l'effet de pulsation au bouton CTA
+                    setTimeout(() => {
+                        ctaButton.classList.add('pulse');
+                    }, 500); // Un délai pour permettre à l'effet de connexion de s'établir visuellement
+                }
+            }
+            
+            // Vérifier la position pour l'animation roadmap-CTA
+            window.addEventListener('scroll', checkRoadmapCta);
+            setTimeout(checkRoadmapCta, 1000); // Vérifier après chargement
+            
+            // Assurer que l'animation fonctionne même sur les longs chargements
+            window.addEventListener('load', function() {
+                animateOnScroll();
+                checkRoadmapCta();
+            });
+        });        .big-secondary-button {
+            border: 2px solid #f3f2eb;
+            color: #f3f2eb;
+            padding: 15px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .big-secondary-button:hover {
+            background-color: #f3f2eb;
+            color: #464a3e;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .big-secondary-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .big-secondary-button:hover::after {
+            left: 100%;
+        }        /* Animation des chiffres de performance */
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333; /* Même teinte que le reste du texte */
+        }<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -535,11 +685,16 @@
         
         /* Approach Section */
         .approach-section {
-            background-color: #2c2e27; /* Retour à la couleur originale */
+            background-color: #464a3e; /* Retour au kaki original */
             color: #f3f2eb;
             padding: 100px 0;
             position: relative;
             overflow: hidden;
+            /* Quadrillage plus discret et plus espacé */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center center;
         }
         
         .approach-section .section-title,
@@ -578,15 +733,17 @@
             padding: 40px 0;
         }
         
+        /* Améliorations pour l'animation de la roadmap */
         .roadmap-line {
             position: absolute;
             top: 0;
             left: 50%;
             width: 6px;
             height: 100%;
-            background-color: rgba(243, 242, 235, 0.3);
+            background-color: rgba(243, 242, 235, 0.2); /* Ligne plus claire */
             transform: translateX(-50%);
             z-index: 1;
+            overflow: hidden; /* Pour contenir l'effet de pulse */
         }
         
         .roadmap-progress {
@@ -595,8 +752,68 @@
             left: 0;
             width: 100%;
             height: 0;
+            background-color: #f3f2eb; /* Couleur de la jauge de progression */
+            transition: height 0.7s ease-in-out;
+            box-shadow: 0 0 15px 3px rgba(243, 242, 235, 0.4); /* Effet de lueur */
+        }
+        
+        /* Particule qui descend le long de la ligne */
+        .roadmap-progress::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
             background-color: #f3f2eb;
-            transition: height 0.5s ease-in-out;
+            border-radius: 50%;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 50%);
+            box-shadow: 0 0 20px 10px rgba(243, 242, 235, 0.6);
+            animation: pulseParticle 2s infinite;
+        }
+        
+        @keyframes pulseParticle {
+            0% {
+                box-shadow: 0 0 20px 5px rgba(243, 242, 235, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 25px 10px rgba(243, 242, 235, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 20px 5px rgba(243, 242, 235, 0.6);
+            }
+        }
+        
+        /* Effet spécial sur le CTA quand la roadmap est complète */
+        .cta-connection {
+            position: absolute;
+            width: 6px;
+            height: 0;
+            background-color: #f3f2eb;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            opacity: 0;
+            box-shadow: 0 0 15px 5px rgba(243, 242, 235, 0.4);
+            transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+        
+        .big-cta-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .big-cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease-out;
         }
         
         .roadmap-steps {
@@ -824,14 +1041,15 @@
         
         /* CTA Section - Mise à jour pour suivre le style de la section méthodologie */
         .cta-section {
-            background-color: #2c2e27; /* Même couleur que la section méthodologie */
+            background-color: #464a3e; /* Même couleur kaki que la section méthodologie */
             color: #f3f2eb;
             padding: 80px 0;
             position: relative;
             overflow: hidden;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
+            /* Quadrillage plus discret et plus espacé */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
             background-position: center center;
         }
         
@@ -861,6 +1079,7 @@
             gap: 20px;
         }
         
+        /* Animation pour le bouton CTA qui reçoit la fin de la roadmap */
         .big-cta-button {
             background-color: #f3f2eb;
             color: #464a3e;
@@ -868,26 +1087,79 @@
             border-radius: 4px;
             text-decoration: none;
             font-weight: 500;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 5;
         }
         
         .big-cta-button:hover {
             background-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .big-secondary-button {
-            border: 2px solid #f3f2eb;
-            color: #f3f2eb;
-            padding: 15px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s, color 0.3s;
+        .big-cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: transform 0.4s ease-out, opacity 0.4s ease-out;
         }
         
-        .big-secondary-button:hover {
+        .big-cta-button:hover::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .big-cta-button.pulse {
+            animation: buttonPulse 2s infinite;
+        }
+        
+        @keyframes buttonPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(243, 242, 235, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(243, 242, 235, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(243, 242, 235, 0);
+            }
+        }
+        
+        .roadmap-cta-connector {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            width: 6px;
+            height: 30px;
+            background-color: transparent;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .roadmap-cta-connector.active {
             background-color: #f3f2eb;
-            color: #464a3e;
+            box-shadow: 0 0 15px 3px rgba(243, 242, 235, 0.4);
+            animation: connectorPulse 1.5s infinite;
+        }
+        
+        @keyframes connectorPulse {
+            0% {
+                box-shadow: 0 0 5px 1px rgba(243, 242, 235, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 15px 5px rgba(243, 242, 235, 0.6);
+            }
+            100% {
+                box-shadow: 0 0 5px 1px rgba(243, 242, 235, 0.4);
+            }
         }
         
         @media (max-width: 768px) {
@@ -927,30 +1199,40 @@
             overflow: hidden;
         }
         
-        /* Ajustement des couleurs du footer */
-        .footer-logo, .footer-description, .footer-heading {
+        /* Footer links - amélioration du contraste */
+        .footer-link, .footer-bottom-link {
+            color: #464a3e;
+            font-weight: 600; /* Plus lisibles */
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover, .footer-bottom-link:hover {
             color: #333;
+            text-decoration: underline;
         }
         
-        .footer-link, .contact-text a, .footer-bottom-link {
-            color: #464a3e;
-        }
-        
-        .contact-icon {
-            color: #464a3e;
-        }
-        
-        .social-link {
-            background-color: rgba(70, 74, 62, 0.1);
-            color: #464a3e;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(70, 74, 62, 0.1);
-        }
-        
-        .copyright {
+        .footer-heading {
             color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #464a3e;
+        }
+        
+        .contact-text a {
+            color: #464a3e;
+            font-weight: 600;
         }
         
         .footer-brand {
@@ -1221,12 +1503,56 @@
             background-position: center center;
         }
         
-        /* Animation des chiffres de performance */
-        .metric-value {
-            font-size: 32px;
+        /* Ajustements complémentaires du footer */
+        .footer-logo {
+            color: #333;
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 10px;
-            color: #333; /* Même teinte que le reste du texte */
+            margin-bottom: 20px;
+        }
+        
+        .footer-description {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .contact-icon {
+            color: #464a3e;
+            width: 20px;
+            margin-right: 10px;
+        }
+        
+        .social-link {
+            background-color: rgba(70, 74, 62, 0.1);
+            color: #464a3e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: #464a3e;
+            color: #fff;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(70, 74, 62, 0.1);
+            padding-top: 30px;
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            color: #555;
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -1542,6 +1868,8 @@
                 </div>
             </div>
         </div>
+        <!-- Élément pour l'effet de connexion avec la roadmap -->
+        <div class="roadmap-cta-connector"></div>
     </section>
 
     <footer>
@@ -1661,6 +1989,106 @@
                 const scrollPosition = window.scrollY + window.innerHeight * 0.6;
                 const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
                 const sectionHeight = roadmapSection.offsetHeight;
+                const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+                
+                // Limiter la progression entre 0 et 1
+                const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+                
+                // Appliquer la hauteur à la barre de progression
+                progress.style.height = (limitedProgress * 100) + '%';
+                
+                // Activer les étapes en fonction du défilement
+                steps.forEach((step, index) => {
+                    const stepTop = step.getBoundingClientRect().top + window.scrollY;
+                    
+                    if (scrollPosition > stepTop) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+                
+                // Effets d'animation sur le CTA quand la roadmap est complète
+                const ctaSection = document.querySelector('.cta-section');
+                const ctaButton = document.querySelector('.big-cta-button');
+                
+                if (limitedProgress >= 0.98) { // Presque complet
+                    // Créer la connexion si elle n'existe pas déjà
+                    let ctaConnection = document.querySelector('.cta-connection');
+                    if (!ctaConnection) {
+                        ctaConnection = document.createElement('div');
+                        ctaConnection.className = 'cta-connection';
+                        document.body.appendChild(ctaConnection);
+                        
+                        // Positionner la connexion
+                        const roadmapBottom = roadmapSection.getBoundingClientRect().bottom + window.scrollY;
+                        const ctaTop = ctaSection.getBoundingClientRect().top + window.scrollY;
+                        const ctaButtonTop = ctaButton.getBoundingClientRect().top + window.scrollY;
+                        
+                        ctaConnection.style.top = roadmapBottom + 'px';
+                        ctaConnection.style.height = (ctaButtonTop - roadmapBottom) + 'px';
+                        ctaConnection.style.opacity = '1';
+                        
+                        // Effet de flash sur le bouton
+                        setTimeout(() => {
+                            ctaButton.style.boxShadow = '0 0 20px 5px rgba(243, 242, 235, 0.7)';
+                            setTimeout(() => {
+                                ctaButton.style.boxShadow = '';
+                            }, 1000);
+                        }, 500);
+                    }
+                }
+            }Height;
+                const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+                
+                // Limiter la progression entre 0 et 1
+                const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+                
+                // Appliquer la hauteur à la barre de progression
+                progress.style.height = (limitedProgress * 100) + '%';
+                
+                // Activer les étapes en fonction du défilement
+                steps.forEach((step, index) => {
+                    const stepTop = step.getBoundingClientRect().top + window.scrollY;
+                    
+                    if (scrollPosition > stepTop) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+                
+                // Effets d'animation sur le CTA quand la roadmap est complète
+                const ctaSection = document.querySelector('.cta-section');
+                const ctaButton = document.querySelector('.big-cta-button');
+                
+                if (limitedProgress >= 0.98) { // Presque complet
+                    // Créer la connexion si elle n'existe pas déjà
+                    let ctaConnection = document.querySelector('.cta-connection');
+                    if (!ctaConnection) {
+                        ctaConnection = document.createElement('div');
+                        ctaConnection.className = 'cta-connection';
+                        document.body.appendChild(ctaConnection);
+                        
+                        // Positionner la connexion
+                        const roadmapBottom = roadmapSection.getBoundingClientRect().bottom + window.scrollY;
+                        const ctaTop = ctaSection.getBoundingClientRect().top + window.scrollY;
+                        const ctaButtonTop = ctaButton.getBoundingClientRect().top + window.scrollY;
+                        
+                        ctaConnection.style.top = roadmapBottom + 'px';
+                        ctaConnection.style.height = (ctaButtonTop - roadmapBottom) + 'px';
+                        ctaConnection.style.opacity = '1';
+                        
+                        // Effet de flash sur le bouton
+                        setTimeout(() => {
+                            ctaButton.style.boxShadow = '0 0 20px 5px rgba(243, 242, 235, 0.7)';
+                            setTimeout(() => {
+                                ctaButton.style.boxShadow = '';
+                            }, 1000);
+                        }, 500);
+                    }
+                }
+            }Height;
                 const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
                 
                 // Limiter la progression entre 0 et 1

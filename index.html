@@ -210,7 +210,6 @@
             grid-column: span 6;
             position: relative;
             z-index: 2;
-            color: #000;
         }
         
         .hero-visual {
@@ -223,14 +222,14 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 10px;
-            color: #000;
+            color: #333;
         }
         
         .tag {
             display: inline-block;
             padding: 5px 10px;
             background-color: #f3f2eb;
-            color: #000;
+            color: #333;
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -242,14 +241,14 @@
             font-size: 48px;
             line-height: 1.2;
             margin-bottom: 20px;
-            color: #000;
+            color: #333;
         }
         
         .hero-description {
             font-size: 18px;
             line-height: 1.6;
             margin-bottom: 30px;
-            color: #000;
+            color: #333;
         }
         
         .hero-cta {
@@ -536,20 +535,11 @@
         
         /* Approach Section */
         .approach-section {
-            background-color: #000; /* Fond noir comme demandé */
+            background-color: #2c2e27; /* Retour à la couleur originale */
             color: #f3f2eb;
             padding: 100px 0;
             position: relative;
             overflow: hidden;
-        }
-        
-        /* Conservation du fond vert kaki pour les cartes de méthodologie */
-        .roadmap-content {
-            background-color: #464a3e !important;
-        }
-        
-        .approach-section .roadmap-content:hover {
-            background-color: #5a5f50 !important;
         }
         
         .approach-section .section-title,
@@ -642,7 +632,7 @@
             background-color: #f3f2eb;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            border: 3px solid #000;
+            border: 3px solid #2c2e27; /* Retour à la couleur originale */
         }
         
         .active .node-dot {
@@ -704,7 +694,7 @@
             width: 40px;
             height: 40px;
             background-color: #f3f2eb;
-            color: #000;
+            color: #2c2e27; /* Retour à la couleur originale */
             border-radius: 50%;
             text-align: center;
             line-height: 40px;
@@ -926,37 +916,11 @@
         
         /* Footer */
         footer {
-            background-color: #fff;
-            color: #333;
+            background-color: #2c3e50; /* Retour à la couleur originale */
+            color: #f3f2eb;
             padding: 80px 0 40px;
             position: relative;
             overflow: hidden;
-        }
-        
-        /* Ajustement des couleurs du footer */
-        .footer-logo, .footer-description, .footer-heading {
-            color: #333;
-        }
-        
-        .footer-link, .contact-text a, .footer-bottom-link {
-            color: #464a3e;
-        }
-        
-        .contact-icon {
-            color: #464a3e;
-        }
-        
-        .social-link {
-            background-color: rgba(70, 74, 62, 0.1);
-            color: #464a3e;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(70, 74, 62, 0.1);
-        }
-        
-        .copyright {
-            color: #333;
         }
         
         .footer-brand {
@@ -1214,13 +1178,13 @@
             animation: fadeIn 0.8s ease-in-out forwards;
         }
         
-        /* Retrait du quadrillage sur fond blanc */
+        /* Retrait du quadrillage sur fond blanc - On garde ceci */
         .grid {
             background-image: none !important;
         }
         
-        /* Ajustement des textes en noir sur fond blanc */
-        .services-section .section-title,
+        /* On retire cette personnalisation pour revenir aux couleurs d'origine */
+        /* .services-section .section-title,
         .services-section .section-description,
         .services-section .coordinates,
         .services-section .tag,
@@ -1229,7 +1193,7 @@
         .hero .coordinates,
         .hero .tag {
             color: #000;
-        }
+        } */
         
         /* Animation des chiffres de performance */
         .metric-value {

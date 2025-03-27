@@ -7,1031 +7,32 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Variables CSS pour cohérence de design */
-        :root {
-          --main-bg-color: #f3f2eb;
-          --main-text-color: #464a3e;
-          --accent-color: #2c2e27;
-          --header-bg-color: #464a3e;
-          --header-height: 80px;
-        }
-
-        /* Reset et styles de base */
-        * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-
-        body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          line-height: 1.6;
-          color: var(--main-text-color);
-          background-color: var(--main-bg-color);
-          overflow-x: hidden;
-        }
-
-        .container {
-          width: 100%;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 20px;
-        }
-
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          gap: 30px;
-        }
-
-        /* Header opaque */
-        header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          background-color: var(--header-bg-color);
-          z-index: 1000;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-          height: var(--header-height);
-        }
-
-        .header-content {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          height: var(--header-height);
-        }
-
-        .logo {
-          display: flex;
-          align-items: center;
-          text-decoration: none;
-          color: var(--main-bg-color);
-          font-weight: 700;
-          font-size: 1.2rem;
-        }
-
-        /* Logo SVG container */
-        .logo-symbol {
-          width: 40px;
-          height: 40px;
-          margin-right: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .main-nav {
-          display: flex;
-        }
-
-        .nav-link {
-          color: var(--main-bg-color);
-          text-decoration: none;
-          padding: 0 15px;
-          transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-          color: rgba(243, 242, 235, 0.7);
-        }
-
-        .cta-button {
-          background-color: var(--main-bg-color);
-          color: var(--main-text-color);
-          padding: 10px 20px;
-          border-radius: 4px;
-          text-decoration: none;
-          font-weight: 600;
-          transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-          background-color: rgba(243, 242, 235, 0.9);
-          transform: translateY(-2px);
-        }
-
-        /* Mobile menu */
-        .mobile-menu-toggle {
-          display: none;
-          flex-direction: column;
-          justify-content: space-between;
-          width: 30px;
-          height: 20px;
-          cursor: pointer;
-        }
-
-        .mobile-menu-toggle span {
-          height: 2px;
-          width: 100%;
-          background-color: var(--main-bg-color);
-          transition: all 0.3s ease;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(1) {
-          transform: translateY(9px) rotate(45deg);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-          opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-          transform: translateY(-9px) rotate(-45deg);
-        }
-
-        .mobile-nav {
-          position: fixed;
-          top: var(--header-height);
-          left: 0;
-          width: 100%;
-          height: 0;
-          background-color: var(--header-bg-color);
-          z-index: 999;
-          overflow: hidden;
-          transition: height 0.3s ease;
-        }
-
-        .mobile-nav.active {
-          height: auto;
-          padding: 20px 0;
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .mobile-nav-links {
-          list-style: none;
-          padding: 0;
-          margin: 0 0 20px 0;
-        }
-
-        .mobile-nav-links li {
-          margin-bottom: 15px;
-          text-align: center;
-        }
-
-        .mobile-nav .cta-button {
-          display: block;
-          width: 80%;
-          margin: 0 auto;
-          text-align: center;
-        }
-
-        .overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.5);
-          z-index: 998;
-          opacity: 0;
-          visibility: hidden;
-          transition: all 0.3s ease;
-        }
-
-        .overlay.active {
-          opacity: 1;
-          visibility: visible;
-        }
-
-        /* Hero section responsive */
-        .hero {
-          padding: 120px 0 60px 0;
-          background-color: var(--main-bg-color);
-        }
-
-        .hero-content {
-          grid-column: 1 / 7;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-
-        .hero-visual {
-          grid-column: 7 / 13;
-          position: relative;
-        }
-
-        .hero-image {
-          width: 100%;
-          border-radius: 8px;
-          overflow: hidden;
-        }
-
-        .hero-image img {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
-
-        /* Suppression des éléments décoratifs */
-        .target-marks, .tech-frame {
-          display: none;
-        }
-
-        .coordinates {
-          font-size: 0.8rem;
-          color: rgba(70, 74, 62, 0.7);
-          margin-bottom: 10px;
-          letter-spacing: 2px;
-        }
-
-        .tag {
-          background-color: rgba(70, 74, 62, 0.1);
-          color: var(--main-text-color);
-          display: inline-block;
-          padding: 5px 10px;
-          border-radius: 4px;
-          font-size: 0.8rem;
-          letter-spacing: 1px;
-          margin-bottom: 20px;
-        }
-
-        .hero-title {
-          font-size: 2.5rem;
-          line-height: 1.2;
-          margin-bottom: 20px;
-          color: var(--main-text-color);
-        }
-
-        .highlight {
-          color: #876445;
-        }
-
-        .hero-description {
-          font-size: 1.1rem;
-          margin-bottom: 30px;
-          color: rgba(70, 74, 62, 0.9);
-          max-width: 90%;
-        }
-
-        .hero-cta {
-          display: flex;
-          gap: 15px;
-          margin-top: 10px;
-        }
-
-        .secondary-button {
-          background-color: transparent;
-          color: var(--main-text-color);
-          padding: 10px 20px;
-          border-radius: 4px;
-          text-decoration: none;
-          font-weight: 600;
-          border: 2px solid var(--main-text-color);
-          transition: all 0.3s ease;
-        }
-
-        .secondary-button:hover {
-          background-color: rgba(70, 74, 62, 0.1);
-          transform: translateY(-2px);
-        }
-
-        /* Hero metrics responsive */
-        .hero-metrics {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 20px;
-          margin-top: 60px;
-        }
-
-        .metric {
-          background-color: #fff;
-          padding: 20px;
-          border-radius: 8px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-          text-align: center;
-          opacity: 0;
-        }
-
-        .metric.animated {
-          animation: countUp 0.5s forwards;
-        }
-
-        .metric-value {
-          font-size: 2rem;
-          font-weight: 700;
-          color: #876445;
-          margin-bottom: 10px;
-        }
-
-        .metric-label {
-          font-size: 0.8rem;
-          color: var(--main-text-color);
-          letter-spacing: 1px;
-        }
-
-        /* Services Section */
-        .services-section {
-          padding: 100px 0;
-        }
-
-        .section-header {
-          grid-column: 1 / 13;
-          margin-bottom: 50px;
-        }
-
-        .section-title {
-          font-size: 2.2rem;
-          margin: 10px 0 20px;
-          line-height: 1.2;
-        }
-
-        .section-description {
-          font-size: 1.1rem;
-          color: rgba(70, 74, 62, 0.9);
-          max-width: 800px;
-        }
-
-        .service-card {
-          background-color: #fff;
-          border-radius: 8px;
-          padding: 30px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          grid-column: span 3;
-        }
-
-        .service-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-number {
-          font-size: 3rem;
-          font-weight: 800;
-          color: rgba(70, 74, 62, 0.1);
-          line-height: 1;
-          margin-bottom: 20px;
-        }
-
-        .service-title {
-          font-size: 1.2rem;
-          margin-bottom: 15px;
-        }
-
-        .service-description {
-          color: rgba(70, 74, 62, 0.8);
-          margin-bottom: 20px;
-        }
-
-        .service-features {
-          margin-bottom: 20px;
-        }
-
-        .feature-item {
-          display: flex;
-          margin-bottom: 10px;
-          align-items: flex-start;
-        }
-
-        .feature-icon {
-          color: #876445;
-          margin-right: 10px;
-          margin-top: 3px;
-        }
-
-        .service-link {
-          display: flex;
-          align-items: center;
-          color: #876445;
-          text-decoration: none;
-          font-weight: 600;
-        }
-
-        .service-link svg {
-          margin-left: 5px;
-          transition: transform 0.3s ease;
-        }
-
-        .service-link:hover svg {
-          transform: translateX(5px);
-        }
-
-        /* Approche/Methodology Section et CTA partagent le même fond */
-        .combined-dark-sections {
-          background-color: #2c2e27;
-          color: #f3f2eb;
-          position: relative;
-          overflow: hidden;
-        }
-
+        /* Amélioration du contraste pour la section méthodologie */
         .approach-section {
-          padding: 100px 0 50px;
-          position: relative;
+            background-color: #2c2e27; /* Fond plus foncé pour meilleur contraste */
         }
-
-        .cta-section {
-          padding: 50px 0 100px;
-          position: relative;
-          margin-top: 0;
-        }
-
+        
         .approach-section .section-title,
         .approach-section .section-description,
+        .approach-section .step-title,
+        .approach-section .step-description,
         .approach-section .coordinates,
-        .approach-section .tag,
-        .cta-section .cta-title,
-        .cta-section .cta-text,
-        .cta-section .coordinates,
-        .cta-section .tag {
-          color: #f3f2eb;
-        }
-
-        /* Style spécifique pour la section méthodologie */
-        .roadmap-container {
-          position: relative;
-          max-width: 1000px;
-          margin: 0 auto;
-          padding: 40px 0;
-        }
-
-        .roadmap-line {
-          position: absolute;
-          top: 0;
-          left: 50%;
-          width: 6px;
-          height: 100%;
-          background-color: rgba(243, 242, 235, 0.3);
-          transform: translateX(-50%);
-          z-index: 1;
-        }
-
-        .roadmap-progress {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 0;
-          background-color: #f3f2eb;
-          transition: height 0.5s ease-in-out;
-        }
-
-        .roadmap-steps {
-          position: relative;
-          z-index: 2;
-        }
-
-        .roadmap-step {
-          display: flex;
-          margin-bottom: 80px;
-          opacity: 0.6;
-          transition: opacity 0.3s ease;
-        }
-
-        .roadmap-step.active {
-          opacity: 1;
-        }
-
-        .roadmap-node {
-          position: relative;
-          width: 30px;
-          height: 30px;
-          margin: 0 35px;
-          z-index: 3;
-        }
-
-        .node-dot {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 30px;
-          height: 30px;
-          background-color: #f3f2eb;
-          border-radius: 50%;
-          transform: translate(-50%, -50%);
-          border: 3px solid #464a3e;
-        }
-
-        .active .node-dot {
-          background-color: #f3f2eb;
-          border-color: #f3f2eb;
-        }
-
-        .node-pulse {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 60px;
-          height: 60px;
-          background-color: rgba(243, 242, 235, 0.4);
-          border-radius: 50%;
-          transform: translate(-50%, -50%) scale(0);
-          animation: pulse 2s infinite;
-          opacity: 0;
-        }
-
-        .active .node-pulse {
-          opacity: 1;
-        }
-
-        @keyframes pulse {
-          0% {
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 1;
-          }
-          70% {
-            opacity: 0.5;
-          }
-          100% {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 0;
-          }
-        }
-
-        .roadmap-content {
-          flex: 1;
-          background-color: rgba(243, 242, 235, 0.05);
-          border-radius: 8px;
-          padding: 30px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-          border-left: 5px solid #f3f2eb;
-          position: relative;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          color: #f3f2eb;
-        }
-
-        .roadmap-step:hover .roadmap-content {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-          background-color: rgba(243, 242, 235, 0.1);
-        }
-
-        .roadmap-number {
-          display: inline-block;
-          width: 40px;
-          height: 40px;
-          background-color: #f3f2eb;
-          color: #464a3e;
-          border-radius: 50%;
-          text-align: center;
-          line-height: 40px;
-          font-weight: bold;
-          font-size: 18px;
-          margin-bottom: 15px;
-        }
-
-        .roadmap-title {
-          font-size: 22px;
-          margin-bottom: 15px;
-          color: #f3f2eb;
-          font-weight: 600;
-        }
-
-        .roadmap-details {
-          color: rgba(243, 242, 235, 0.9);
-        }
-
-        .roadmap-details p {
-          margin-bottom: 15px;
-          line-height: 1.6;
-        }
-
-        .roadmap-checklist {
-          list-style: none;
-          padding-left: 0;
-          margin-bottom: 15px;
-        }
-
-        .roadmap-checklist li {
-          position: relative;
-          padding-left: 30px;
-          margin-bottom: 10px;
-          line-height: 1.5;
-        }
-
-        .roadmap-checklist li:before {
-          content: '✓';
-          position: absolute;
-          left: 0;
-          top: 0;
-          color: #f3f2eb;
-          font-weight: bold;
-        }
-
-        .roadmap-time {
-          display: inline-block;
-          background-color: rgba(243, 242, 235, 0.2);
-          padding: 8px 15px;
-          border-radius: 20px;
-          font-size: 14px;
-          color: #f3f2eb;
-          font-weight: 600;
-          border: 1px solid rgba(243, 242, 235, 0.3);
-        }
-
-        /* CTA Section */
-        .cta-content {
-          text-align: center;
-          max-width: 800px;
-          margin: 0 auto;
-        }
-
-        .cta-title {
-          font-size: 2.2rem;
-          margin: 10px 0 20px;
-          line-height: 1.2;
-        }
-
-        .cta-text {
-          font-size: 1.1rem;
-          margin-bottom: 30px;
-        }
-
-        .cta-buttons {
-          display: flex;
-          justify-content: center;
-          gap: 20px;
-          flex-wrap: wrap;
-        }
-
-        .big-cta-button {
-          background-color: #f3f2eb;
-          color: #2c2e27;
-          padding: 15px 30px;
-          border-radius: 4px;
-          text-decoration: none;
-          font-weight: 600;
-          transition: all 0.3s ease;
-          font-size: 1rem;
-        }
-
-        .big-cta-button:hover {
-          background-color: #fff;
-          transform: translateY(-5px);
-        }
-
-        .big-secondary-button {
-          background-color: transparent;
-          color: #f3f2eb;
-          padding: 15px 30px;
-          border-radius: 4px;
-          text-decoration: none;
-          font-weight: 600;
-          border: 2px solid #f3f2eb;
-          transition: all 0.3s ease;
-          font-size: 1rem;
-        }
-
-        .big-secondary-button:hover {
-          background-color: rgba(243, 242, 235, 0.1);
-          transform: translateY(-5px);
-        }
-
-        /* Footer */
-        footer {
-          background-color: #464a3e;
-          color: #f3f2eb;
-          padding: 80px 0 30px;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .footer-brand {
-          grid-column: span 4;
-        }
-
-        .footer-logo {
-          font-size: 1.5rem;
-          font-weight: 700;
-          margin-bottom: 20px;
-        }
-
-        .footer-description {
-          margin-bottom: 20px;
-          opacity: 0.8;
-        }
-
-        .social-links {
-          display: flex;
-          gap: 15px;
-        }
-
-        .social-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          height: 40px;
-          background-color: rgba(243, 242, 235, 0.1);
-          border-radius: 50%;
-          color: #f3f2eb;
-          transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-          background-color: rgba(243, 242, 235, 0.2);
-          transform: translateY(-3px);
-        }
-
-        .footer-nav {
-          grid-column: span 2;
-        }
-
-        .footer-heading {
-          font-size: 1rem;
-          margin-bottom: 20px;
-          letter-spacing: 1px;
-        }
-
-        .footer-links {
-          list-style: none;
-        }
-
-        .footer-link {
-          display: block;
-          color: rgba(243, 242, 235, 0.8);
-          text-decoration: none;
-          margin-bottom: 10px;
-          transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-          color: #f3f2eb;
-        }
-
-        .footer-contact {
-          grid-column: span 4;
-        }
-
-        .contact-info {
-          margin-bottom: 20px;
-        }
-
-        .contact-item {
-          display: flex;
-          margin-bottom: 15px;
-        }
-
-        .contact-icon {
-          margin-right: 15px;
-          color: #f3f2eb;
-        }
-
-        .contact-text {
-          color: rgba(243, 242, 235, 0.8);
-        }
-
-        .contact-text a {
-          color: inherit;
-          text-decoration: none;
-          transition: color 0.3s ease;
-        }
-
-        .contact-text a:hover {
-          color: #f3f2eb;
-        }
-
-        .footer-bottom {
-          grid-column: 1 / 13;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding-top: 30px;
-          margin-top: 50px;
-          border-top: 1px solid rgba(243, 242, 235, 0.1);
-        }
-
-        .copyright {
-          display: flex;
-          align-items: center;
-          opacity: 0.6;
-        }
-
-        .copyright-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 20px;
-          height: 20px;
-          border: 1px solid currentColor;
-          border-radius: 50%;
-          margin-right: 10px;
-          font-size: 0.7rem;
-        }
-
-        .footer-bottom-links a {
-          color: rgba(243, 242, 235, 0.6);
-          text-decoration: none;
-          transition: color 0.3s ease;
-        }
-
-        .footer-bottom-links a:hover {
-          color: #f3f2eb;
-        }
-
-        .scroll-top {
-          position: fixed;
-          bottom: 30px;
-          right: 30px;
-          width: 50px;
-          height: 50px;
-          background-color: #464a3e;
-          color: #f3f2eb;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          opacity: 0;
-          visibility: hidden;
-          transition: all 0.3s ease;
-          z-index: 100;
-        }
-
-        .scroll-top.active {
-          opacity: 1;
-          visibility: visible;
-        }
-
-        .scroll-top:hover {
-          background-color: #2c2e27;
-          transform: translateY(-5px);
-        }
-
-        /* Animations des métriques */
-        @keyframes countUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        /* Animations des sections */
-        .fade-in {
-          opacity: 0;
-          transform: translateY(20px);
-          transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        /* Media Queries pour Responsive Design */
-        @media (max-width: 1199px) {
-          .container {
-            max-width: 960px;
-          }
-          
-          .hero-title {
-            font-size: 2.2rem;
-          }
-          
-          .service-card {
-            grid-column: span 6;
-          }
-          
-          .hero-metrics {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media (max-width: 991px) {
-          .container {
-            max-width: 720px;
-          }
-          
-          .hero-content {
-            grid-column: 1 / 13;
-            text-align: center;
-            margin-bottom: 40px;
-          }
-          
-          .hero-description {
-            max-width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-          }
-          
-          .hero-visual {
-            grid-column: 1 / 13;
-          }
-          
-          .hero-cta {
-            justify-content: center;
-          }
-          
-          .footer-brand,
-          .footer-nav,
-          .footer-contact {
-            grid-column: span 6;
-            margin-bottom: 30px;
-          }
-          
-          .footer-brand {
-            grid-column: span 12;
-          }
-          
-          .main-nav {
-            display: none;
-          }
-          
-          .mobile-menu-toggle {
-            display: flex;
-          }
-          
-          .header-content .cta-button {
-            display: none;
-          }
-          
-          /* Mise à jour pour les étapes de la roadmap */
-          .roadmap-node {
-            margin: 0 15px 0 0;
-          }
-          
-          .roadmap-line {
-            left: 30px;
-          }
-          
-          .roadmap-step {
-            padding-left: 60px;
-          }
-        }
-
-        @media (max-width: 767px) {
-          .container {
-            max-width: 540px;
-          }
-          
-          .grid {
-            gap: 20px;
-          }
-          
-          .hero {
-            padding: 100px 0 40px;
-          }
-          
-          .hero-title {
-            font-size: 1.8rem;
-          }
-          
-          .service-card,
-          .footer-nav,
-          .footer-contact {
-            grid-column: span 12;
-          }
-          
-          .hero-metrics {
-            grid-template-columns: 1fr;
-          }
-          
-          .cta-buttons {
-            flex-direction: column;
-            align-items: center;
-          }
-          
-          .footer-bottom {
-            flex-direction: column;
-            text-align: center;
-          }
-          
-          .footer-bottom-links {
-            margin-top: 15px;
-          }
-          
-          .scroll-top {
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-          }
-        }
-
-        @media (max-width: 575px) {
-          .container {
-            padding: 0 15px;
-          }
-          
-          .hero {
-            padding: 90px 0 30px;
-          }
-          
-          .hero-title {
-            font-size: 1.6rem;
-          }
-          
-          .section-title,
-          .cta-title {
-            font-size: 1.8rem;
-          }
-          
-          .hero-cta {
-            flex-direction: column;
-            gap: 10px;
-          }
-          
-          .hero-cta .cta-button,
-          .hero-cta .secondary-button {
-            width: 100%;
-            text-align: center;
-          }
+        .approach-section .tag {
+            color: #f3f2eb; /* Texte plus clair pour meilleur contraste */
+            font-weight: 500; /* Texte légèrement plus épais */
+        }
+        
+        .approach-step {
+            background-color: rgba(243, 242, 235, 0.1); /* Fond légèrement plus clair pour les étapes */
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        
+        .step-number {
+            background-color: #f3f2eb;
+            color: #2c2e27;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -1040,11 +41,598 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">
-                    <div class="logo-symbol">
-                        <!-- Logo SVG sera injecté ici via JavaScript -->
+                    <div class="logo-symbol"></div>
+                    <span>CARPCONNECT</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="services.html" class="nav-link"> NOS SERVICES</a>
+                    <a href="a-propos.html" class="nav-link">À PROPOS</a>
+                </nav>
+                <a href="contact.html" class="cta-button">CONTACT</a>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li><a href="services.html" class="nav-link">SERVICES</a></li>
+            <li><a href="realisations.html" class="nav-link">RÉALISATIONS</a></li>
+            <li><a href="a-propos.html" class="nav-link">À PROPOS</a></li>
+        </ul>
+        <a href="contact.html" class="cta-button">CONTACT</a>
+    </div>
+
+    <div class="overlay"></div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="grid">
+                <div class="hero-content">
+                    <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
+                    <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
+                    <h1 class="hero-title">Convertissez les <span class="highlight">passionnés</span> en clients <span class="highlight">fidèles</span></h1>
+                    <p class="hero-description">Nous transformons la présence digitale des marques de pêche à la carpe avec des stratégies éprouvées qui captent l'attention, génèrent du trafic qualifié et augmentent les ventes.</p>
+                    <div class="hero-cta">
+                        <a href="services.html" class="cta-button">DÉCOUVRIR NOS SERVICES</a>
+                        <a href="realisations.html" class="secondary-button">EXPLORER NOS PROJETS</a>
                     </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image">
+                        <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Pêcheur+à+la+carpe" alt="Pêcheur à la carpe en action">
+                    </div>
+                    <div class="target-marks"></div>
+                    <div class="tech-frame"></div>
+                </div>
+            </div>
+            <div class="hero-metrics">
+                <div class="metric">
+                    <div class="metric-value">+85%</div>
+                    <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">+195%</div>
+                    <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">+72%</div>
+                    <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">+53%</div>
+                    <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section services-section">
+        <div class="container">
+            <div class="grid">
+                <div class="section-header">
+                    <div class="coordinates">ID:CARP-SERV-01</div>
+                    <div class="tag">NOTRE ARSENAL STRATÉGIQUE</div>
+                    <h2 class="section-title">Solutions tactiques pour dominer votre marché</h2>
+                    <p class="section-description">Nous déployons un ensemble d'outils et de stratégies spécifiquement calibrés pour l'écosystème des marques de pêche à la carpe.</p>
+                </div>
+            </div>
+            
+            <div class="grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <h3 class="service-title">Sites E-commerce Haute Conversion</h3>
+                    <p class="service-description">Transformez les visiteurs en acheteurs avec des plateformes optimisées pour le secteur de la pêche à la carpe.</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Parcours d'achat optimisé pour les carpistes</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Pages produits conçues pour convertir</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Intégration de contenus techniques persuasifs</div>
+                        </div>
+                    </div>
+                    <a href="ecommerce.html" class="service-link">
+                        Découvrir nos solutions
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">02</div>
+                    <h3 class="service-title">Production Visuelle Technique</h3>
+                    <p class="service-description">Sublimez vos produits avec des contenus visuels qui parlent directement aux passionnés exigeants.</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Photos techniques mettant en valeur les caractéristiques</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Vidéos de démonstration en situation réelle</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Contenu d'expertise valorisant vos produits</div>
+                        </div>
+                    </div>
+                    <a href="production-visuelle.html" class="service-link">
+                        Explorer notre approche
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <h3 class="service-title">Stratégies d'Acquisition Ciblées</h3>
+                    <p class="service-description">Attirez les acheteurs qualifiés avec des campagnes marketing précisément adaptées au comportement des carpistes.</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Campagnes publicitaires segmentées par profil</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Contenu SEO spécialisé à forte intention d'achat</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Partenariats stratégiques avec les influenceurs du secteur</div>
+                        </div>
+                    </div>
+                    <a href="acquisition.html" class="service-link">
+                        Analyser nos stratégies
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">04</div>
+                    <h3 class="service-title">Engagement Communautaire</h3>
+                    <p class="service-description">Développez une communauté fidèle et transformez vos clients en ambassadeurs de votre marque.</p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Animation sociale experte et community management</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Programmes de fidélité et d'ambassadeurs</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-check"></i></div>
+                            <div>Événements digitaux créateurs de valeur</div>
+                        </div>
+                    </div>
+                    <a href="engagement.html" class="service-link">
+                        Découvrir nos méthodes
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="approach" class="approach-section">
+        <div class="approach-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <div class="coordinates">ID:CARP-PROC-01</div>
+                <div class="tag">NOTRE MÉTHODOLOGIE</div>
+                <h2 class="section-title">Processus tactique pour des résultats prévisibles</h2>
+                <p class="section-description">Notre démarche structurée garantit des résultats mesurables et progressifs pour chaque marque que nous accompagnons.</p>
+            </div>
+            
+            <div class="roadmap-container">
+                <div class="roadmap-line">
+                    <div class="roadmap-progress"></div>
+                </div>
+                
+                <div class="roadmap-steps">
+                    <div class="roadmap-step active" data-step="1">
+                        <div class="roadmap-node">
+                            <div class="node-dot"></div>
+                            <div class="node-pulse"></div>
+                        </div>
+                        <div class="roadmap-content">
+                            <div class="roadmap-number">01</div>
+                            <h3 class="roadmap-title">Analyse & Reconnaissance</h3>
+                            <div class="roadmap-details">
+                                <p>Nous cartographions votre écosystème actuel, analysons vos concurrents et identifions les opportunités de croissance inexploitées dans votre secteur spécifique.</p>
+                                <ul class="roadmap-checklist">
+                                    <li>Audit complet de votre présence digitale</li>
+                                    <li>Analyse concurrentielle approfondie</li>
+                                    <li>Identification des opportunités de marché</li>
+                                </ul>
+                                <div class="roadmap-time">Durée moyenne: 2 semaines</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-step" data-step="2">
+                        <div class="roadmap-node">
+                            <div class="node-dot"></div>
+                            <div class="node-pulse"></div>
+                        </div>
+                        <div class="roadmap-content">
+                            <div class="roadmap-number">02</div>
+                            <h3 class="roadmap-title">Planification Stratégique</h3>
+                            <div class="roadmap-details">
+                                <p>Nous élaborons une feuille de route tactique alignée avec vos objectifs commerciaux, en établissant des KPIs précis pour mesurer chaque avancée.</p>
+                                <ul class="roadmap-checklist">
+                                    <li>Définition des objectifs SMART</li>
+                                    <li>Élaboration des stratégies d'acquisition</li>
+                                    <li>Création d'un calendrier d'exécution</li>
+                                </ul>
+                                <div class="roadmap-time">Durée moyenne: 10 jours</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-step" data-step="3">
+                        <div class="roadmap-node">
+                            <div class="node-dot"></div>
+                            <div class="node-pulse"></div>
+                        </div>
+                        <div class="roadmap-content">
+                            <div class="roadmap-number">03</div>
+                            <h3 class="roadmap-title">Déploiement Tactique</h3>
+                            <div class="roadmap-details">
+                                <p>Nous mettons en œuvre votre stratégie digitale avec une exécution rigoureuse et une attention aux détails qui fait la différence face à vos concurrents.</p>
+                                <ul class="roadmap-checklist">
+                                    <li>Mise en place des optimisations techniques</li>
+                                    <li>Création et déploiement des contenus</li>
+                                    <li>Lancement des campagnes d'acquisition</li>
+                                </ul>
+                                <div class="roadmap-time">Durée moyenne: 4 semaines</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-step" data-step="4">
+                        <div class="roadmap-node">
+                            <div class="node-dot"></div>
+                            <div class="node-pulse"></div>
+                        </div>
+                        <div class="roadmap-content">
+                            <div class="roadmap-number">04</div>
+                            <h3 class="roadmap-title">Optimisation Continue</h3>
+                            <div class="roadmap-details">
+                                <p>Nous analysons méthodiquement les données de performance pour ajuster la stratégie et maximiser constamment votre retour sur investissement.</p>
+                                <ul class="roadmap-checklist">
+                                    <li>Suivi hebdomadaire des KPIs</li>
+                                    <li>Optimisation basée sur les données</li>
+                                    <li>Rapports mensuels d'avancement</li>
+                                </ul>
+                                <div class="roadmap-time">Processus continu à long terme</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <style>
+                .section-header.centered {
+                    text-align: center;
+                    max-width: 800px;
+                    margin: 0 auto 60px;
+                }
+                
+                .approach-section {
+                    background-color: #464a3e; /* Vert kaki cohérent avec le site */
+                    color: #f3f2eb; /* Texte clair pour contraste */
+                    padding: 100px 0;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .section-header.centered .section-title,
+                .section-header.centered .section-description,
+                .section-header.centered .coordinates,
+                .section-header.centered .tag {
+                    color: #f3f2eb; /* Texte clair pour meilleur contraste */
+                }
+                
+                .roadmap-container {
+                    position: relative;
+                    max-width: 1000px;
+                    margin: 0 auto;
+                    padding: 40px 0;
+                }
+                
+                .roadmap-line {
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    width: 6px;
+                    height: 100%;
+                    background-color: rgba(243, 242, 235, 0.3); /* Ligne plus claire et transparente */
+                    transform: translateX(-50%);
+                    z-index: 1;
+                }
+                
+                .roadmap-progress {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 0;
+                    background-color: #f3f2eb; /* Couleur de la jauge de progression en clair pour contraste */
+                    transition: height 0.5s ease-in-out;
+                }
+                
+                .roadmap-steps {
+                    position: relative;
+                    z-index: 2;
+                }
+                
+                .roadmap-step {
+                    display: flex;
+                    margin-bottom: 80px;
+                    opacity: 0.6;
+                    transition: opacity 0.3s ease;
+                }
+                
+                .roadmap-step.active {
+                    opacity: 1;
+                }
+                
+                .roadmap-node {
+                    position: relative;
+                    width: 30px;
+                    height: 30px;
+                    margin: 0 35px;
+                    z-index: 3;
+                }
+                
+                .node-dot {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 30px;
+                    height: 30px;
+                    background-color: #f3f2eb;
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%);
+                    border: 3px solid #464a3e;
+                }
+                
+                .active .node-dot {
+                    background-color: #f3f2eb;
+                    border-color: #f3f2eb;
+                }
+                
+                .node-pulse {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 60px;
+                    height: 60px;
+                    background-color: rgba(243, 242, 235, 0.4);
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%) scale(0);
+                    animation: pulse 2s infinite;
+                    opacity: 0;
+                }
+                
+                .active .node-pulse {
+                    opacity: 1;
+                }
+                
+                @keyframes pulse {
+                    0% {
+                        transform: translate(-50%, -50%) scale(0);
+                        opacity: 1;
+                    }
+                    70% {
+                        opacity: 0.5;
+                    }
+                    100% {
+                        transform: translate(-50%, -50%) scale(1);
+                        opacity: 0;
+                    }
+                }
+                
+                .roadmap-content {
+                    flex: 1;
+                    background-color: rgba(243, 242, 235, 0.05); /* Fond légèrement transparent */
+                    border-radius: 8px;
+                    padding: 30px;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                    border-left: 5px solid #f3f2eb;
+                    position: relative;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    color: #f3f2eb; /* Texte clair pour meilleur contraste */
+                }
+                
+                .roadmap-step:hover .roadmap-content {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+                    background-color: rgba(243, 242, 235, 0.1); /* Plus clair au survol */
+                }
+                
+                .roadmap-number {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    background-color: #f3f2eb;
+                    color: #464a3e;
+                    border-radius: 50%;
+                    text-align: center;
+                    line-height: 40px;
+                    font-weight: bold;
+                    font-size: 18px;
+                    margin-bottom: 15px;
+                }
+                
+                .roadmap-title {
+                    font-size: 22px;
+                    margin-bottom: 15px;
+                    color: #f3f2eb;
+                    font-weight: 600;
+                }
+                
+                .roadmap-details {
+                    color: rgba(243, 242, 235, 0.9);
+                }
+                
+                .roadmap-details p {
+                    margin-bottom: 15px;
+                    line-height: 1.6;
+                }
+                
+                .roadmap-checklist {
+                    list-style: none;
+                    padding-left: 0;
+                    margin-bottom: 15px;
+                }
+                
+                .roadmap-checklist li {
+                    position: relative;
+                    padding-left: 30px;
+                    margin-bottom: 10px;
+                    line-height: 1.5;
+                }
+                
+                .roadmap-checklist li:before {
+                    content: '✓';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    color: #f3f2eb;
+                    font-weight: bold;
+                }
+                
+                .roadmap-time {
+                    display: inline-block;
+                    background-color: rgba(243, 242, 235, 0.2);
+                    padding: 8px 15px;
+                    border-radius: 20px;
+                    font-size: 14px;
+                    color: #f3f2eb;
+                    font-weight: 600;
+                    border: 1px solid rgba(243, 242, 235, 0.3);
+                }
+                
+                /* Alternance gauche/droite pour écrans larges */
+                @media (min-width: 992px) {
+                    .roadmap-step {
+                        padding-left: 50%;
+                    }
+                    
+                    .roadmap-step:nth-child(even) {
+                        padding-left: 0;
+                        padding-right: 50%;
+                        flex-direction: row-reverse;
+                    }
+                    
+                .roadmap-step:nth-child(even) .roadmap-content {
+                        border-left: none;
+                        border-right: 5px solid #f3f2eb;
+                    }
+                }
+                
+                /* Responsive */
+                @media (max-width: 991px) {
+                    .roadmap-line {
+                        left: 30px;
+                    }
+                    
+                    .roadmap-node {
+                        margin: 0 15px 0 0;
+                    }
+                    
+                    .roadmap-step {
+                        padding-left: 60px;
+                    }
+                }
+            </style>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const steps = document.querySelectorAll('.roadmap-step');
+                    const progress = document.querySelector('.roadmap-progress');
+                    const roadmapSection = document.querySelector('.roadmap-container');
+                    
+                    // Animation de défilement
+                    function animateOnScroll() {
+                        const scrollPosition = window.scrollY + window.innerHeight * 0.6;
+                        const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
+                        const sectionHeight = roadmapSection.offsetHeight;
+                        const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+                        
+                        // Limiter la progression entre 0 et 1
+                        const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+                        
+                        // Appliquer la hauteur à la barre de progression
+                        progress.style.height = (limitedProgress * 100) + '%';
+                        
+                        // Activer les étapes en fonction du défilement
+                        steps.forEach((step, index) => {
+                            const stepTop = step.getBoundingClientRect().top + window.scrollY;
+                            
+                            if (scrollPosition > stepTop) {
+                                step.classList.add('active');
+                            } else {
+                                step.classList.remove('active');
+                            }
+                        });
+                    }
+                    
+                    // Initialisation
+                    window.addEventListener('scroll', animateOnScroll);
+                    window.addEventListener('resize', animateOnScroll);
+                    
+                    // Déclencher une fois au chargement
+                    setTimeout(animateOnScroll, 300);
+                    
+                    // Assurer que l'animation fonctionne même sur les longs chargements
+                    window.addEventListener('load', animateOnScroll);
+                });
+            </script>
+        </div>
+    </section>
+
+    
+
+
+
+    <section id="contact" class="cta-section">
+        <div class="cta-pattern"></div>
+        <div class="container">
+            <div class="cta-content">
+                <div class="coordinates">OBJET:DISCUSSION-STRATÉGIQUE</div>
+                <div class="tag">PASSEZ À L'ACTION</div>
+                <h2 class="cta-title">Prêt à augmenter significativement vos résultats?</h2>
+                <p class="cta-text">Prenons rendez-vous pour discuter de votre situation actuelle et identifier les opportunités de croissance pour votre marque dans l'univers de la pêche à la carpe.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="big-cta-button">DEMANDER UN AUDIT STRATÉGIQUE</a>
+                    <a href="realisations.html" class="big-secondary-button">DÉCOUVRIR NOS ÉTUDES DE CAS</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
+        <div class="footer-pattern"></div>
         <div class="container">
             <div class="grid">
                 <div class="footer-brand">
@@ -1108,474 +696,6 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Script JavaScript pour les animations et fonctionnalités -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Variables
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileNav = document.querySelector('.mobile-nav');
-            const overlay = document.querySelector('.overlay');
-            const scrollTop = document.querySelector('.scroll-top');
-            const metrics = document.querySelectorAll('.metric');
-            const animatedElements = document.querySelectorAll('.fade-in');
-            
-            // Ajout du logo SVG
-            const logoContainer = document.querySelector('.logo-symbol');
-            addLogoSVG(logoContainer);
-            
-            // Mobile Menu Toggle
-            if (mobileMenuToggle) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    mobileNav.classList.toggle('active');
-                    overlay.classList.toggle('active');
-                    document.body.classList.toggle('no-scroll');
-                });
-            }
-            
-            // Overlay Click Close
-            if (overlay) {
-                overlay.addEventListener('click', function() {
-                    mobileMenuToggle.classList.remove('active');
-                    mobileNav.classList.remove('active');
-                    this.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                });
-            }
-            
-            // Scroll to Top
-            if (scrollTop) {
-                window.addEventListener('scroll', function() {
-                    if (window.pageYOffset > 500) {
-                        scrollTop.classList.add('active');
-                    } else {
-                        scrollTop.classList.remove('active');
-                    }
-                });
-                
-                scrollTop.addEventListener('click', function() {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-            
-            // Animation des métriques lors du défilement
-            const observerMetrics = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateMetrics(); 
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            if (metrics.length > 0) {
-                observerMetrics.observe(document.querySelector('.hero-metrics'));
-            }
-            
-            // Animation des éléments au défilement
-            const observerElements = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            animatedElements.forEach(element => {
-                observerElements.observe(element);
-            });
-            
-            // Fonction pour animer les compteurs de statistiques
-            function animateMetrics() {
-                metrics.forEach((metric, index) => {
-                    setTimeout(() => {
-                        metric.classList.add('animated');
-                        
-                        const valueElement = metric.querySelector('.metric-value');
-                        const targetValue = valueElement.textContent;
-                        const formattedValue = targetValue.replace(/[^0-9.]/g, '');
-                        const numericValue = parseFloat(formattedValue);
-                        const prefix = targetValue.startsWith('+') ? '+' : '';
-                        const suffix = targetValue.includes('%') ? '%' : '';
-                        
-                        valueElement.textContent = prefix + '0' + suffix;
-                        
-                        // Animation de comptage
-                        let startTime;
-                        const duration = 2000; // 2 secondes
-                        
-                        function updateCounter(timestamp) {
-                            if (!startTime) startTime = timestamp;
-                            const progress = Math.min((timestamp - startTime) / duration, 1);
-                            const currentValue = numericValue * progress;
-                            
-                            if (Number.isInteger(numericValue)) {
-                                valueElement.textContent = prefix + Math.floor(currentValue) + suffix;
-                            } else {
-                                valueElement.textContent = prefix + currentValue.toFixed(1) + suffix;
-                            }
-                            
-                            if (progress < 1) {
-                                requestAnimationFrame(updateCounter);
-                            }
-                        }
-                        
-                        requestAnimationFrame(updateCounter);
-                    }, index * 200); // Délai progressif pour chaque métrique
-                });
-            }
-            
-            // Fonction pour ajouter le logo SVG 
-            function addLogoSVG(container) {
-                if (!container) return;
-                
-                const svgLogo = `
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#f3f2eb" stroke-width="2" />
-                    <path d="M30,35 Q50,20 70,35 Q85,50 70,65 Q50,80 30,65 Q15,50 30,35 Z" fill="none" stroke="#f3f2eb" stroke-width="2" />
-                    <circle cx="50" cy="50" r="5" fill="#f3f2eb" />
-                    <path d="M33,50 Q50,60 67,50" fill="none" stroke="#f3f2eb" stroke-width="2" />
-                </svg>`;
-                
-                container.innerHTML = svgLogo;
-            }
-            
-            // Animation pour la section d'approche/méthodologie
-            const roadmapSteps = document.querySelectorAll('.roadmap-step');
-            const roadmapProgress = document.querySelector('.roadmap-progress');
-            
-            if (roadmapSteps.length > 0 && roadmapProgress) {
-                const observerRoadmap = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const step = entry.target;
-                            const stepNumber = parseInt(step.getAttribute('data-step'));
-                            const totalSteps = roadmapSteps.length;
-                            
-                            // Activer l'étape courante
-                            step.classList.add('active');
-                            
-                            // Mettre à jour la barre de progression
-                            const progressPercentage = (stepNumber / totalSteps) * 100;
-                            roadmapProgress.style.height = `${progressPercentage}%`;
-                        }
-                    });
-                }, { threshold: 0.4 });
-                
-                roadmapSteps.forEach(step => {
-                    observerRoadmap.observe(step);
-                });
-            }
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
-                    <span>CARPCONNECT</span>
-                </a>
-                <nav class="main-nav">
-                    <a href="services.html" class="nav-link">NOS SERVICES</a>
-                    <a href="a-propos.html" class="nav-link">À PROPOS</a>
-                </nav>
-                <a href="contact.html" class="cta-button">CONTACT</a>
-                <div class="mobile-menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="mobile-nav">
-        <ul class="mobile-nav-links">
-            <li><a href="services.html" class="nav-link">SERVICES</a></li>
-            <li><a href="realisations.html" class="nav-link">RÉALISATIONS</a></li>
-            <li><a href="a-propos.html" class="nav-link">À PROPOS</a></li>
-        </ul>
-        <a href="contact.html" class="cta-button">CONTACT</a>
-    </div>
-
-    <div class="overlay"></div>
-
-    <section class="hero">
-        <div class="container">
-            <div class="grid">
-                <div class="hero-content fade-in">
-                    <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
-                    <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
-                    <h1 class="hero-title">Convertissez les <span class="highlight">passionnés</span> en clients <span class="highlight">fidèles</span></h1>
-                    <p class="hero-description">Nous transformons la présence digitale des marques de pêche à la carpe avec des stratégies éprouvées qui captent l'attention, génèrent du trafic qualifié et augmentent les ventes.</p>
-                    <div class="hero-cta">
-                        <a href="services.html" class="cta-button">DÉCOUVRIR NOS SERVICES</a>
-                        <a href="realisations.html" class="secondary-button">EXPLORER NOS PROJETS</a>
-                    </div>
-                </div>
-                <div class="hero-visual fade-in">
-                    <div class="hero-image">
-                        <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Pêcheur+à+la+carpe" alt="Pêcheur à la carpe en action">
-                    </div>
-                    <!-- Éléments décoratifs supprimés -->
-                </div>
-            </div>
-            <div class="hero-metrics">
-                <div class="metric">
-                    <div class="metric-value">+85%</div>
-                    <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value">+195%</div>
-                    <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value">+72%</div>
-                    <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value">+53%</div>
-                    <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section unique pour la méthodologie et le CTA avec le même fond -->
-    <div class="combined-dark-sections">
-        <!-- Section Méthodologie -->
-        <section id="approach" class="approach-section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <div class="coordinates">ID:CARP-PROC-01</div>
-                    <div class="tag">NOTRE MÉTHODOLOGIE</div>
-                    <h2 class="section-title">Processus tactique pour des résultats prévisibles</h2>
-                    <p class="section-description">Notre démarche structurée garantit des résultats mesurables et progressifs pour chaque marque que nous accompagnons.</p>
-                </div>
-                
-                <div class="roadmap-container">
-                    <div class="roadmap-line">
-                        <div class="roadmap-progress"></div>
-                    </div>
-                    
-                    <div class="roadmap-steps">
-                        <div class="roadmap-step" data-step="1">
-                            <div class="roadmap-node">
-                                <div class="node-dot"></div>
-                                <div class="node-pulse"></div>
-                            </div>
-                            <div class="roadmap-content">
-                                <div class="roadmap-number">01</div>
-                                <h3 class="roadmap-title">Analyse & Reconnaissance</h3>
-                                <div class="roadmap-details">
-                                    <p>Nous cartographions votre écosystème actuel, analysons vos concurrents et identifions les opportunités de croissance inexploitées dans votre secteur spécifique.</p>
-                                    <ul class="roadmap-checklist">
-                                        <li>Audit complet de votre présence digitale</li>
-                                        <li>Analyse concurrentielle approfondie</li>
-                                        <li>Identification des opportunités de marché</li>
-                                    </ul>
-                                    <div class="roadmap-time">Durée moyenne: 2 semaines</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="roadmap-step" data-step="2">
-                            <div class="roadmap-node">
-                                <div class="node-dot"></div>
-                                <div class="node-pulse"></div>
-                            </div>
-                            <div class="roadmap-content">
-                                <div class="roadmap-number">02</div>
-                                <h3 class="roadmap-title">Planification Stratégique</h3>
-                                <div class="roadmap-details">
-                                    <p>Nous élaborons une feuille de route tactique alignée avec vos objectifs commerciaux, en établissant des KPIs précis pour mesurer chaque avancée.</p>
-                                    <ul class="roadmap-checklist">
-                                        <li>Définition des objectifs SMART</li>
-                                        <li>Élaboration des stratégies d'acquisition</li>
-                                        <li>Création d'un calendrier d'exécution</li>
-                                    </ul>
-                                    <div class="roadmap-time">Durée moyenne: 10 jours</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="roadmap-step" data-step="3">
-                            <div class="roadmap-node">
-                                <div class="node-dot"></div>
-                                <div class="node-pulse"></div>
-                            </div>
-                            <div class="roadmap-content">
-                                <div class="roadmap-number">03</div>
-                                <h3 class="roadmap-title">Déploiement Tactique</h3>
-                                <div class="roadmap-details">
-                                    <p>Nous mettons en œuvre votre stratégie digitale avec une exécution rigoureuse et une attention aux détails qui fait la différence face à vos concurrents.</p>
-                                    <ul class="roadmap-checklist">
-                                        <li>Mise en place des optimisations techniques</li>
-                                        <li>Création et déploiement des contenus</li>
-                                        <li>Lancement des campagnes d'acquisition</li>
-                                    </ul>
-                                    <div class="roadmap-time">Durée moyenne: 4 semaines</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="roadmap-step" data-step="4">
-                            <div class="roadmap-node">
-                                <div class="node-dot"></div>
-                                <div class="node-pulse"></div>
-                            </div>
-                            <div class="roadmap-content">
-                                <div class="roadmap-number">04</div>
-                                <h3 class="roadmap-title">Optimisation Continue</h3>
-                                <div class="roadmap-details">
-                                    <p>Nous analysons méthodiquement les données de performance pour ajuster la stratégie et maximiser constamment votre retour sur investissement.</p>
-                                    <ul class="roadmap-checklist">
-                                        <li>Suivi hebdomadaire des KPIs</li>
-                                        <li>Optimisation basée sur les données</li>
-                                        <li>Rapports mensuels d'avancement</li>
-                                    </ul>
-                                    <div class="roadmap-time">Processus continu à long terme</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section CTA (Continuité visuelle) -->
-        <section id="contact" class="cta-section">
-            <div class="container">
-                <div class="cta-content fade-in">
-                    <div class="coordinates">OBJET:DISCUSSION-STRATÉGIQUE</div>
-                    <div class="tag">PASSEZ À L'ACTION</div>
-                    <h2 class="cta-title">Prêt à augmenter significativement vos résultats?</h2>
-                    <p class="cta-text">Prenons rendez-vous pour discuter de votre situation actuelle et identifier les opportunités de croissance pour votre marque dans l'univers de la pêche à la carpe.</p>
-                    <div class="cta-buttons">
-                        <a href="contact.html" class="big-cta-button">DEMANDER UN AUDIT STRATÉGIQUE</a>
-                        <a href="realisations.html" class="big-secondary-button">DÉCOUVRIR NOS ÉTUDES DE CAS</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <section id="services" class="section services-section">
-        <div class="container">
-            <div class="grid">
-                <div class="section-header fade-in">
-                    <div class="coordinates">ID:CARP-SERV-01</div>
-                    <div class="tag">NOTRE ARSENAL STRATÉGIQUE</div>
-                    <h2 class="section-title">Solutions tactiques pour dominer votre marché</h2>
-                    <p class="section-description">Nous déployons un ensemble d'outils et de stratégies spécifiquement calibrés pour l'écosystème des marques de pêche à la carpe.</p>
-                </div>
-            </div>
-            
-            <div class="grid">
-                <div class="service-card fade-in">
-                    <div class="service-number">01</div>
-                    <h3 class="service-title">Sites E-commerce Haute Conversion</h3>
-                    <p class="service-description">Transformez les visiteurs en acheteurs avec des plateformes optimisées pour le secteur de la pêche à la carpe.</p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Parcours d'achat optimisé pour les carpistes</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Pages produits conçues pour convertir</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Intégration de contenus techniques persuasifs</div>
-                        </div>
-                    </div>
-                    <a href="ecommerce.html" class="service-link">
-                        Découvrir nos solutions
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"></path>
-                            <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-number">02</div>
-                    <h3 class="service-title">Production Visuelle Technique</h3>
-                    <p class="service-description">Sublimez vos produits avec des contenus visuels qui parlent directement aux passionnés exigeants.</p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Photos techniques mettant en valeur les caractéristiques</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Vidéos de démonstration en situation réelle</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Contenu d'expertise valorisant vos produits</div>
-                        </div>
-                    </div>
-                    <a href="production-visuelle.html" class="service-link">
-                        Explorer notre approche
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"></path>
-                            <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-number">03</div>
-                    <h3 class="service-title">Stratégies d'Acquisition Ciblées</h3>
-                    <p class="service-description">Attirez les acheteurs qualifiés avec des campagnes marketing précisément adaptées au comportement des carpistes.</p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Campagnes publicitaires segmentées par profil</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Contenu SEO spécialisé à forte intention d'achat</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Partenariats stratégiques avec les influenceurs du secteur</div>
-                        </div>
-                    </div>
-                    <a href="acquisition.html" class="service-link">
-                        Analyser nos stratégies
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"></path>
-                            <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-number">04</div>
-                    <h3 class="service-title">Engagement Communautaire</h3>
-                    <p class="service-description">Développez une communauté fidèle et transformez vos clients en ambassadeurs de votre marque.</p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Animation sociale experte et community management</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Programmes de fidélité et d'ambassadeurs</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Événements digitaux créateurs de valeur</div>
-                        </div>
-                    </div>
-                    <a href="engagement.html" class="service-link">
-                        Découvrir nos méthodes
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"></path>
-                            <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>

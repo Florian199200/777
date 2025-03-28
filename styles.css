@@ -143,9 +143,11 @@ header {
 
 .header-content {
     display: flex;
-    align-items: center;
+    align-items: center;  /* Centre verticalement tous les éléments */
     justify-content: space-between;
-    padding: 0 24px;
+    padding: 0 24px; /* Padding horizontal pour un espacement cohérent */
+    max-width: 1320px; /* Ajuster la largeur maximale pour correspondre à la page de service */
+    margin: 0 auto; /* Centrer le contenu horizontalement */
 }
     justify-content: space-between;
 }
@@ -157,14 +159,17 @@ header {
 }
 
 .logo {
-    margin-left: 50px; /* Ajustez cette valeur pour obtenir l'alignement souhaité */
+    flex: 1; /* Prend 1 part de l'espace disponible */
+    display: flex;
+    align-items: center;  /* Centre verticalement le logo */
+    margin-left: 24px; /* Alignement avec les sections inférieures */
 }
 
 .main-nav {
     display: flex;
     justify-content: center;
     gap: 40px; /* Ajoutez un écart entre les liens de navigation */
-    flex: 1;
+    flex: 2; /* Prend 2 parts de l'espace disponible */
 }
 
 .cta-button {
@@ -176,13 +181,12 @@ header {
     font-weight: 500;
     letter-spacing: -0.5px;
     transition: all var(--transition-speed) ease;
-    margin-left: auto; /* Déplace le bouton à droite */
-    margin-right: 24px; /* Ajoute une marge droite cohérente */
-    align-self: center; /* Centre verticalement par rapport à la navigation */
-    white-space: nowrap;
-    border-radius: 4px; /* Arrondir les angles */
     background-color: var(--color-primary);
     color: var(--color-inverse);
+    border-radius: 4px;
+    margin-right: 24px; /* Alignement avec les sections inférieures */
+    align-self: center; /* Centre verticalement par rapport à la navigation */
+    flex: 1; /* Prend 1 part de l'espace disponible */
 }
     max-width: 1320px; /* Ajuster la largeur maximale pour correspondre à la page de service */
     margin: 0 auto;

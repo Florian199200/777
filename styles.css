@@ -168,22 +168,19 @@ header {
 }
 
 .cta-button {
+    margin-left: auto; /* Déplace le bouton à droite */
+    align-self: center; /* Centre verticalement par rapport à la navigation */
+    padding: 12px 28px;
     font-family: var(--font-display);
     display: inline-block;
-    padding: 12px 28px;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.5px;
     transition: all var(--transition-speed) ease;
-    position: relative; /* Changez de absolute à relative */
-    overflow: hidden;
-    z-index: 1;
-    white-space: nowrap;
-    border-radius: 4px;
     background-color: var(--color-primary);
     color: var(--color-inverse);
-    margin-left: 40px; /* Ajoutez une marge à gauche pour l'aligner avec les éléments de navigation */
+    border-radius: 4px;
 }
     position: relative;
 }

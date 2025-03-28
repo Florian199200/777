@@ -143,11 +143,12 @@ header {
 
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
+    position: relative;
 }
     max-width: 1320px; /* Ajuster la largeur maximale pour correspondre à la page de service */
     margin: 0 auto;

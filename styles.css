@@ -126,15 +126,16 @@ h1, h2, h3, h4, h5 {
 }
 
 /* Header */
+/* Header */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000; /* Assurez-vous que z-index est suffisamment élevé */
-    padding: 10px 0; /* Ajuster le padding vertical */
+    padding: 10px 0; /* Ajuster le padding vertical pour correspondre à la page de service */
     background-color: rgba(8, 8, 8, 0.9); /* Couleur noire avec 90% d'opacité */
-    height: auto; /* Ajuster la hauteur selon vos besoins */
+    height: auto; /* Ajuster la hauteur pour correspondre à la page de service */
     backdrop-filter: none;
     border-bottom: none;
     transition: background-color 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease;
@@ -144,9 +145,16 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1001; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */
+    max-width: 1320px; /* Ajuster la largeur maximale pour correspondre à la page de service */
+    margin: 0 auto;
+    padding: 0 24px; /* Ajuster le padding horizontal pour correspondre à la page de service */
 }
 
+.logo, .main-nav {
+    z-index: 1002; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */
+}
+
+/* Logo */
 .logo {
     font-family: var(--font-display);
     font-weight: 700;
@@ -157,7 +165,7 @@ header {
     display: flex;
     align-items: center;
     gap: 8px;
-    z-index: 1002; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */
+    padding: 10px 0; /* Ajuster l'épaisseur du padding pour correspondre à la page de service */
 }
 
 .logo-symbol {
@@ -167,7 +175,6 @@ header {
     width: 32px;
     height: 32px;
     position: relative;
-    z-index: 1002; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */
 }
 
 .logo-symbol::before {
@@ -177,7 +184,6 @@ header {
     height: 20px;
     border: 2px solid var(--color-accent);
     border-radius: 50%;
-    z-index: 1002; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */
 }
 
 .logo-symbol::after {
@@ -187,7 +193,6 @@ header {
     height: 6px;
     background-color: var(--color-accent);
     border-radius: 50%;
-    z-index: 1002; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */
 }
 
 .main-nav {

@@ -127,18 +127,17 @@ h1, h2, h3, h4, h5 {
 
 /* Header */
 129| header {
-130|     max-width: 80%; /* Ajustez la largeur selon vos besoins */
-131|     background-color: rgba(85, 107, 47, 0.8); /* Kaki foncé légèrement transparent */
-132|     margin: 0 auto; /* Centrer le header */
-133|     position: fixed;
-134|     top: 0;
-135|     left: 0;
-136|     width: 100%;
-137|     z-index: 1000;
-138|     padding: 20px 0;
-139|     backdrop-filter: none;
-140|     border-bottom: none;
-
+130|     position: fixed;
+131|     top: 0;
+132|     left: 0;
+133|     width: 100%;
+134|     z-index: 1000;
+135|     padding: 20px 0;
+136|     background-color: transparent;
+137|     backdrop-filter: none;
+138|     border-bottom: none;
+139|     transition: background-color 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease;
+140| }
 header.scrolled {
     background-color: rgba(243, 242, 235, 0.9);
     backdrop-filter: blur(10px);

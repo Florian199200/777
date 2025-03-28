@@ -2013,3 +2013,7 @@ footer {
         font-size: 28px;
     }
 }
+.common-background {
+    background: url('path/to/your/background-image.jpg') no-repeat center center;
+    background-size: cover;
+}

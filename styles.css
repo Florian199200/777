@@ -168,21 +168,21 @@ header {
 }
 
 .cta-button {
-    margin-left: auto; /* Déplace le bouton à droite */
-    align-self: center; /* Centre verticalement par rapport à la navigation */
-    padding: 12px 28px;
     font-family: var(--font-display);
     display: inline-block;
+    padding: 12px 28px;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.5px;
     transition: all var(--transition-speed) ease;
+    margin-left: auto; /* Déplace le bouton à droite */
+    margin-right: 24px; /* Ajoute une marge droite cohérente */
+    align-self: center; /* Centre verticalement par rapport à la navigation */
+    white-space: nowrap;
+    border-radius: 4px; /* Arrondir les angles */
     background-color: var(--color-primary);
     color: var(--color-inverse);
-    border-radius: 4px;
-}
-    position: relative;
 }
     max-width: 1320px; /* Ajuster la largeur maximale pour correspondre à la page de service */
     margin: 0 auto;

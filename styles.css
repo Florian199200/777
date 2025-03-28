@@ -430,16 +430,18 @@ header {
     font-weight: 500;
     letter-spacing: -0.5px;
     transition: all var(--transition-speed) ease;
-    position: absolute; /* Position absolue */
-    top: 20px; /* Positionnement en haut */
-    right: 20px; /* Positionnement à droite */
-    overflow: hidden;
-    z-index: 1;
-    white-space: nowrap;
-    border-radius: 4px; /* Arrondir les angles */
-    background-color: var(--color-primary);
-    color: var(--color-inverse);
-}
+    433| .cta-button {
+434|     position: absolute; /* Position absolue */
+435|     bottom: 20px; /* Positionnement en bas */
+436|     left: 50%; /* Centrage horizontal */
+437|     transform: translateX(-50%); /* Ajustement pour centrer parfaitement */
+438|     overflow: hidden;
+439|     z-index: 1;
+440|     white-space: nowrap;
+441|     border-radius: 4px; /* Arrondir les angles */
+442|     background-color: var(--color-primary);
+443|     color: var(--color-inverse);
+444| }
 
 /* Styles de base pour tous les boutons */
 .cta-button {

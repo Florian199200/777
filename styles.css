@@ -126,18 +126,18 @@ h1, h2, h3, h4, h5 {
 }
 
 /* Header */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 20px 0;
-    background-color: transparent;
-    backdrop-filter: none;
-    border-bottom: none;
-    transition: background-color 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease;
-}
+129| header {
+130|     max-width: 80%; /* Ajustez la largeur selon vos besoins */
+131|     background-color: rgba(85, 107, 47, 0.8); /* Kaki foncé légèrement transparent */
+132|     margin: 0 auto; /* Centrer le header */
+133|     position: fixed;
+134|     top: 0;
+135|     left: 0;
+136|     width: 100%;
+137|     z-index: 1000;
+138|     padding: 20px 0;
+139|     backdrop-filter: none;
+140|     border-bottom: none;
 
 header.scrolled {
     background-color: rgba(243, 242, 235, 0.9);

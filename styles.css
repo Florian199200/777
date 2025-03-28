@@ -131,73 +131,27 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
-    padding: 5px 0; /* Ajuster le padding vertical */
-    background-color: rgba(8, 8, 8, 0.9); /* Couleur noire avec 80% d'opacité */
-    height: 5px; /* Ajuster la hauteur selon vos besoins */
+    z-index: 1000; /* Assurez-vous que z-index est suffisamment élevé */
+    padding: 10px 0; /* Ajuster le padding vertical */
+    background-color: rgba(8, 8, 8, 0.9); /* Couleur noire avec 90% d'opacité */
+    height: auto; /* Ajuster la hauteur selon vos besoins */
     backdrop-filter: none;
     border-bottom: none;
     transition: background-color 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease;
-}
-
-header.scrolled {
-    background-color: rgba(8, 8, 8, 0.9); /* Couleur noire avec 80% d'opacité */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-border);
-    padding: 5px 0; /* Ajuster le padding vertical */
-    height: 5px; /* Ajuster la hauteur selon vos besoins */
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 1001; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */
 }
 
-.logo {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 22px;
-    text-decoration: none;
-    color: var(--color-primary);
-    letter-spacing: -0.5px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.logo, .main-nav {
+    z-index: 1002; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */
 }
 
-.logo-symbol {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    position: relative;
-}
-
-.logo-symbol::before {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--color-accent);
-    border-radius: 50%;
-}
-
-.logo-symbol::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background-color: var(--color-accent);
-    border-radius: 50%;
-}
-
-.main-nav {
-    display: flex;
-    gap: 40px;
-}
-
+/* Exemple de classe pour les liens de navigation */
 .nav-link {
     font-family: var(--font-display);
     font-size: 14px;
@@ -209,27 +163,8 @@ header.scrolled {
     padding: 5px 0;
     transition: color var(--transition-speed) ease;
     white-space: nowrap;
-}
-
-.nav-link:hover {
-    color: var(--color-accent);
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--color-accent);
-    transition: width var(--transition-speed) ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-/* Responsive Design */
+    z-index: 1002; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */
+}/* Responsive Design */
 @media (max-width: 375px) {
     .container {
         padding: 10px;

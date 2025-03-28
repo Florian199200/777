@@ -161,12 +161,29 @@ header {
 }
 
 .main-nav {
-    margin: 0 auto; /* Centrer les liens de navigation */
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Ajoutez un écart entre les liens de navigation */
+    flex: 1;
 }
 
-.contact-button {
-    position: absolute;
-    right: 0; /* Positionner le bouton de contact à droite */
+.cta-button {
+    font-family: var(--font-display);
+    display: inline-block;
+    padding: 12px 28px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    transition: all var(--transition-speed) ease;
+    position: relative; /* Changez de absolute à relative */
+    overflow: hidden;
+    z-index: 1;
+    white-space: nowrap;
+    border-radius: 4px;
+    background-color: var(--color-primary);
+    color: var(--color-inverse);
+    margin-left: 40px; /* Ajoutez une marge à gauche pour l'aligner avec les éléments de navigation */
 }
     position: relative;
 }

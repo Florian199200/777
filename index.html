@@ -93,6 +93,12 @@
         .target-marks, .tech-frame {
             display: none; /* Or remove these elements from the HTML */
         }
+
+        /* Ajout du fond dynamique kaki foncé pour les sections */
+        .dynamic-background {
+            background-color: #464a3e; /* Kaki foncé */
+            color: #f3f2eb; /* Texte clair pour contraste */
+        }
     </style>
 </head>
 <body>
@@ -133,185 +139,47 @@
     <div class="overlay"></div>
 
     <section class="hero">
-    <div class="container">
-        <div class="grid">
-            <div class="hero-content">
-                <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
-                <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
-                <h1 class="hero-title">Convertissez les <span class="highlight">passionnés</span> en clients <span class="highlight">fidèles</span></h1>
-                <p class="hero-description">Nous transformons la présence digitale des marques de pêche à la carpe avec des stratégies éprouvées qui captent l'attention, génèrent du trafic qualifié et augmentent les conversions.</p>
-                <div class="hero-cta">
-                    <a href="services.html" class="cta-button">DÉCOUVRIR NOS SERVICES</a>
-                    <a href="realisations.html" class="secondary-button">EXPLORER NOS PROJETS</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-image">
-                    <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Pêcheur+à+la+carpe" alt="Pêcheur à la carpe en action">
-                </div>
-            </div>
-        </div>
-        <div class="hero-metrics">
-            <div class="metric">
-                <div class="metric-value" data-target="85">+0%</div>
-                <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value" data-target="195">+0%</div>
-                <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value" data-target="72">+0%</div>
-                <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value" data-target="53">+0%</div>
-                <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const metrics = document.querySelectorAll('.metric .metric-value');
-        metrics.forEach(metric => {
-            const target = +metric.getAttribute('data-target');
-            const updateCount = () => {
-                const current = +metric.innerText.replace('+', '').replace('%', '');
-                const increment = target / 200;
-                if (current < target) {
-                    metric.innerText = `+${Math.ceil(current + increment)}%`;
-                    setTimeout(updateCount, 20);
-                } else {
-                    metric.innerText = `+${target}%`;
-                }
-            };
-            updateCount();
-        });
-    });
-</script>
-
-    <section id="services" class="section services-section">
         <div class="container">
             <div class="grid">
-                <div class="section-header">
-                    <div class="coordinates">ID:CARP-SERV-01</div>
-                    <div class="tag">NOTRE ARSENAL STRATÉGIQUE</div>
-                    <h2 class="section-title">Solutions tactiques pour dominer votre marché</h2>
-                    <p class="section-description">Nous déployons un ensemble d'outils et de stratégies spécifiquement calibrés pour l'écosystème des marques de pêche à la carpe.</p>
+                <div class="hero-content">
+                    <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
+                    <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
+                    <h1 class="hero-title">Convertissez les <span class="highlight">passionnés</span> en clients <span class="highlight">fidèles</span></h1>
+                    <p class="hero-description">Nous transformons la présence digitale des marques de pêche à la carpe avec des stratégies éprouvées qui captent l'attention, génèrent du trafic qualifié et augmentent les conversions.</p>
+                    <div class="hero-cta">
+                        <a href="services.html" class="cta-button">DÉCOUVRIR NOS SERVICES</a>
+                        <a href="realisations.html" class="secondary-button">EXPLORER NOS PROJETS</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image">
+                        <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Pêcheur+à+la+carpe" alt="Pêcheur à la carpe en action">
+                    </div>
                 </div>
             </div>
-            
-            <div class="grid">
-                <div class="service-card">
-                    <div class="service-number">01</div>
-                    <h3 class="service-title">Sites E-commerce Haute Conversion</h3>
-                    <p class="service-description">Transformez les visiteurs en acheteurs avec des plateformes optimisées pour le secteur de la pêche à la carpe.</p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Parcours d'achat optimisé pour les carpistes</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Pages produits conçues pour convertir</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Intégration de contenus techniques persuasifs</div>
-                        </div>
-                    </div>
-                    <a href="ecommerce.html" class="service-link">
-                        Découvrir nos solutions
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"></path>
-                            <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                    </a>
+            <div class="hero-metrics">
+                <div class="metric">
+                    <div class="metric-value" data-target="85">+0%</div>
+                    <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
                 </div>
-                <div class="service-card">
-                    <div class="service-number">02</div>
-                    <h3 class="service-title">Production Visuelle Technique</h3>
-                    <p class="service-description">Sublimez vos produits avec des contenus visuels qui parlent directement aux passionnés exigeants.</p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Photos techniques mettant en valeur les caractéristiques</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Vidéos de démonstration en situation réelle</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Contenu d'expertise valorisant vos produits</div>
-                        </div>
-                    </div>
-                    <a href="production-visuelle.html" class="service-link">
-                        Explorer notre approche
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"></path>
-                            <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                    </a>
+                <div class="metric">
+                    <div class="metric-value" data-target="195">+0%</div>
+                    <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
                 </div>
-                <div class="service-card">
-                    <div class="service-number">03</div>
-                    <h3 class="service-title">Stratégies d'Acquisition Ciblées</h3>
-                    <p class="service-description">Attirez les acheteurs qualifiés avec des campagnes marketing précisément adaptées au comportement des carpistes.</p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Campagnes publicitaires segmentées par profil</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Contenu SEO spécialisé à forte intention d'achat</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Partenariats stratégiques avec les influenceurs du secteur</div>
-                        </div>
-                    </div>
-                    <a href="acquisition.html" class="service-link">
-                        Analyser nos stratégies
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"></path>
-                            <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                    </a>
+                <div class="metric">
+                    <div class="metric-value" data-target="72">+0%</div>
+                    <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
                 </div>
-                <div class="service-card">
-                    <div class="service-number">04</div>
-                    <h3 class="service-title">Engagement Communautaire</h3>
-                    <p class="service-description">Développez une communauté fidèle et transformez vos clients en ambassadeurs de votre marque.</p>
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Animation sociale experte et community management</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Programmes de fidélité et d'ambassadeurs</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-check"></i></div>
-                            <div>Événements digitaux créateurs de valeur</div>
-                        </div>
-                    </div>
-                    <a href="engagement.html" class="service-link">
-                        Découvrir nos méthodes
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"></path>
-                            <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                    </a>
+                <div class="metric">
+                    <div class="metric-value" data-target="53">+0%</div>
+                    <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
                 </div>
             </div>
         </div>
     </section>
-        <section id="approach" class="approach-section">
+
+    <!-- Section "Notre Méthodologie" avec fond dynamique kaki foncé -->
+    <section id="approach" class="approach-section dynamic-background">
         <div class="approach-pattern"></div>
         <div class="container">
             <div class="section-header">
@@ -393,7 +261,7 @@
                             <div class="node-pulse"></div>
                         </div>
                         <div class="roadmap-content">
-                                                      <div class="roadmap-number">04</div>
+                            <div class="roadmap-number">04</div>
                             <h3 class="roadmap-title">Optimisation Continue</h3>
                             <div class="roadmap-details">
                                 <p>Nous analysons méthodiquement les données de performance pour ajuster la stratégie et maximiser constamment votre retour sur investissement.</p>
@@ -597,102 +465,136 @@
                     position: absolute;
                     left: 0;
                     top: 0;
-                    color: #f3f2eb;
-                    font-weight: bold;
-                }
-                
-                .roadmap-time {
-                    display: inline-block;
-                    background-color: rgba(243, 242, 235, 0.2);
-                    padding: 8px 15px;
-                    border-radius: 20px;
-                    font-size: 14px;
-                    color: #f3f2eb;
-                    font-weight: 600;
-                    border: 1px solid rgba(243, 242, 235, 0.3);
-                }
-                
-                /* Alternance gauche/droite pour écrans larges */
-                @media (min-width: 992px) {
-                    .roadmap-step {
-                        padding-left: 50%;
-                    }
-                    
-                    .roadmap-step:nth-child(even) {
-                        padding-left: 0;
-                        padding-right: 50%;
-                        flex-direction: row-reverse;
-                    }
-                    
-                .roadmap-step:nth-child(even) .roadmap-content {
-                        border-left: none;
-                        border-right: 5px solid #f3f2eb;
-                    }
-                }
-                
-                /* Responsive */
-                @media (max-width: 991px) {
-                    .roadmap-line {
-                        left: 30px;
-                    }
-                    
-                    .roadmap-node {
-                        margin: 0 15px 0 0;
-                    }
-                    
-                    .roadmap-step {
-                        padding-left: 60px;
-                    }
-                }
-            </style>
-            
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const steps = document.querySelectorAll('.roadmap-step');
-                    const progress = document.querySelector('.roadmap-progress');
-                    const roadmapSection = document.querySelector('.roadmap-container');
-                    
-                    // Animation de défilement
-                    function animateOnScroll() {
-                        const scrollPosition = window.scrollY + window.innerHeight * 0.6;
-                        const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
-                        const sectionHeight = roadmapSection.offsetHeight;
-                        const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
-                        
-                        // Limiter la progression entre 0 et 1
-                        const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
-                        
-                        // Appliquer la hauteur à la barre de progression
-                        progress.style.height = (limitedProgress * 100) + '%';
-                        
-                        // Activer les étapes en fonction du défilement
-                        steps.forEach((step, index) => {
-                            const stepTop = step.getBoundingClientRect().top + window.scrollY;
-                            
-                            if (scrollPosition > stepTop) {
-                                step.classList.add('active');
-                            } else {
-                                step.classList.remove('active');
-                            }
-                        });
-                    }
-                    
-                    // Initialisation
-                    window.addEventListener('scroll', animateOnScroll);
-                    window.addEventListener('resize', animateOnScroll);
-                    
-                    // Déclencher une fois au chargement
-                    setTimeout(animateOnScroll, 300);
-                    
-                    // Assurer que l'animation fonctionne même sur les longs chargements
-                    window.addEventListener('load', animateOnScroll);
-                });
-            </script>
+                    color: #f3f2eb
+ Public code references from 2 repositories
+non je veux juste que ça soit valable sur la section " notre méthodologie " ert celle qui suit après
+Pour appliquer un fond dynamique avec un kaki foncé uniquement aux sections "Notre Méthodologie" et "Passez à l'Action", vous pouvez mettre à jour les styles CSS et les sections correspondantes dans le fichier index.html.
+
+Voici le code mis à jour pour ces sections :
+
+HTML
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarpConnect | Stratégie Digitale Spécialisée Pêche à la Carpe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Styles pour le fond dynamique kaki foncé */
+        .dynamic-background {
+            background-color: #464a3e; /* Kaki foncé */
+            color: #f3f2eb; /* Texte clair pour contraste */
+        }
+        
+        .dynamic-background .section-title,
+        .dynamic-background .section-description,
+        .dynamic-background .coordinates,
+        .dynamic-background .tag,
+        .dynamic-background .roadmap-title,
+        .dynamic-background .roadmap-details,
+        .dynamic-background .roadmap-number,
+        .dynamic-background .cta-title,
+        .dynamic-background .cta-text,
+        .dynamic-background .cta-button,
+        .dynamic-background .big-secondary-button {
+            color: #f3f2eb; /* Texte clair pour meilleur contraste */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-symbol">
+                        <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Place your SVG content here -->
+                        </svg>
+                    </div>
+                    <span>CARPCONNECT</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="services.html" class="nav-link"> NOS SERVICES</a>
+                    <a href="a-propos.html" class="nav-link">À PROPOS</a>
+                </nav>
+                <a href="contact.html" class="cta-button">CONTACT</a>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav">
+        <ul class="mobile-nav-links">
+            <li><a href="services.html" class="nav-link">SERVICES</a></li>
+            <li><a href="realisations.html" class="nav-link">RÉALISATIONS</a></li>
+            <li><a href="a-propos.html" class="nav-link">À PROPOS</a></li>
+        </ul>
+        <a href="contact.html" class="cta-button">CONTACT</a>
+    </div>
+
+    <div class="overlay"></div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="grid">
+                <div class="hero-content">
+                    <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
+                    <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
+                    <h1 class="hero-title">Convertissez les <span class="highlight">passionnés</span> en clients <span class="highlight">fidèles</span></h1>
+                    <p class="hero-description">Nous transformons la présence digitale des marques de pêche à la carpe avec des stratégies éprouvées qui captent l'attention, génèrent du trafic qualifié et augmentent les conversions.</p>
+                    <div class="hero-cta">
+                        <a href="services.html" class="cta-button">DÉCOUVRIR NOS SERVICES</a>
+                        <a href="realisations.html" class="secondary-button">EXPLORER NOS PROJETS</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image">
+                        <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Pêcheur+à+la+carpe" alt="Pêcheur à la carpe en action">
+                    </div>
+                </div>
+            </div>
+            <div class="hero-metrics">
+                <div class="metric">
+                    <div class="metric-value" data-target="85">+0%</div>
+                    <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" data-target="195">+0%</div>
+                    <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" data-target="72">+0%</div>
+                    <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" data-target="53">+0%</div>
+                    <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
+                </div>
+            </div>
         </div>
     </section>
-    
-    <section id="contact" class="cta-section">
-        <div class="cta-pattern"></div>
+
+    <!-- Section "Notre Méthodologie" avec fond dynamique kaki foncé -->
+    <section id="approach" class="approach-section dynamic-background">
+        <div class="container">
+            <div class="section-header centered">
+                <div class="coordinates">ID:CARP-PROC-01</div>
+                <div class="tag">NOTRE MÉTHODOLOGIE</div>
+                <h2 class="section-title">Processus tactique pour des résultats prévisibles</h2>
+                <p class="section-description">Notre démarche structurée garantit des résultats mesurables et progressifs pour chaque marque que nous accompagnons.</p>
+            </div>
+            <!-- Content of "Notre Méthodologie" section -->
+        </div>
+    </section>
+
+    <!-- Section "Passez à l'Action" avec fond dynamique kaki foncé -->
+    <section id="contact" class="cta-section dynamic-background">
         <div class="container">
             <div class="cta-content">
                 <div class="coordinates">OBJET:DISCUSSION-STRATÉGIQUE</div>
@@ -713,7 +615,7 @@
             <div class="grid">
                 <div class="footer-brand">
                     <div class="footer-logo">CARPCONNECT</div>
-                    <p class="footer-description">Agence digitale spécialisée dans les stratégies de croissance pour les marques et fabricants de l'univers de la pêche à la carpe. Nous transformons votre présence digitale avec des solutions innovantes et mesurables.</p>
+                    <p class="footer-description">Agence digitale spécialisée dans les stratégies de croissance pour les marques et fabricants de l'univers de la pêche à la carpe. Nous transformons des passionnés en clients fidèles.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>

@@ -142,12 +142,29 @@ header {
 }
 
 .header-content {
+ .header-content {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centrer les éléments de navigation */
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    left: 0; /* Positionner le logo à gauche */
+}
+
+.main-nav {
+    margin: 0 auto; /* Centrer les liens de navigation */
+}
+
+.contact-button {
+    position: absolute;
+    right: 0; /* Positionner le bouton de contact à droite */
+}
     position: relative;
 }
     max-width: 1320px; /* Ajuster la largeur maximale pour correspondre à la page de service */

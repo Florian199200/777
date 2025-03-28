@@ -133,44 +133,64 @@
     <div class="overlay"></div>
 
     <section class="hero">
-        <div class="container">
-            <div class="grid">
-                <div class="hero-content">
-                    <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
-                    <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
-                    <h1 class="hero-title">Convertissez les <span class="highlight">passionnés</span> en clients <span class="highlight">fidèles</span></h1>
-                    <p class="hero-description">Nous transformons la présence digitale des marques de pêche à la carpe avec des stratégies éprouvées qui captent l'attention, génèrent du trafic qualifié, et augmentent les ventes.</p>
-                    <div class="hero-cta">
-                        <a href="services.html" class="cta-button">DÉCOUVRIR NOS SERVICES</a>
-                        <a href="realisations.html" class="secondary-button">EXPLORER NOS PROJETS</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-image">
-                        <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Pêcheur+à+la+carpe" alt="Pêcheur à la carpe en action">
-                    </div>
+    <div class="container">
+        <div class="grid">
+            <div class="hero-content">
+                <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
+                <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
+                <h1 class="hero-title">Convertissez les <span class="highlight">passionnés</span> en clients <span class="highlight">fidèles</span></h1>
+                <p class="hero-description">Nous transformons la présence digitale des marques de pêche à la carpe avec des stratégies éprouvées qui captent l'attention, génèrent du trafic qualifié et augmentent les conversions.</p>
+                <div class="hero-cta">
+                    <a href="services.html" class="cta-button">DÉCOUVRIR NOS SERVICES</a>
+                    <a href="realisations.html" class="secondary-button">EXPLORER NOS PROJETS</a>
                 </div>
             </div>
-            <div class="hero-metrics">
-                <div class="metric">
-                    <div class="metric-value" data-target="85">+0%</div>
-                    <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value" data-target="195">+0%</div>
-                    <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value" data-target="72">+0%</div>
-                    <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value" data-target="53">+0%</div>
-                    <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Pêcheur+à+la+carpe" alt="Pêcheur à la carpe en action">
                 </div>
             </div>
         </div>
-    </section>
+        <div class="hero-metrics">
+            <div class="metric">
+                <div class="metric-value" data-target="85">+0%</div>
+                <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" data-target="195">+0%</div>
+                <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" data-target="72">+0%</div>
+                <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" data-target="53">+0%</div>
+                <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const metrics = document.querySelectorAll('.metric .metric-value');
+        metrics.forEach(metric => {
+            const target = +metric.getAttribute('data-target');
+            const updateCount = () => {
+                const current = +metric.innerText.replace('+', '').replace('%', '');
+                const increment = target / 200;
+                if (current < target) {
+                    metric.innerText = `+${Math.ceil(current + increment)}%`;
+                    setTimeout(updateCount, 20);
+                } else {
+                    metric.innerText = `+${target}%`;
+                }
+            };
+            updateCount();
+        });
+    });
+</script>
 
     <section id="services" class="section services-section">
         <div class="container">

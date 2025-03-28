@@ -34,6 +34,65 @@
             color: #2c2e27;
             font-weight: bold;
         }
+
+        /* Responsive styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 600px) {
+          .container {
+            padding: 10px;
+          }
+          .header, .content, .footer {
+            width: 100%;
+            padding: 10px;
+          }
+        }
+
+        @media (min-width: 601px) and (max-width: 1024px) {
+          .container {
+            padding: 20px;
+          }
+          .header, .content, .footer {
+            width: 100%;
+            padding: 20px;
+          }
+        }
+
+        @media (min-width: 1025px) {
+          .container {
+            padding: 30px;
+          }
+          .header, .content, .footer {
+            width: 80%;
+            margin: 0 auto;
+            padding: 30px;
+          }
+        }
+
+        /* Header opaque */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Background continu */
+        #approach, #contact {
+            background: url('path-to-background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* Suppression du quadrillage des cartes de performances */
+        .performance-card .top-right-grid {
+            display: none; /* Or remove the element directly from the HTML */
+        }
+
+        /* Simplification de la section "Pêcheur à la carpe" */
+        .target-marks, .tech-frame {
+            display: none; /* Or remove these elements from the HTML */
+        }
     </style>
 </head>
 <body>
@@ -41,7 +100,11 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">
-                    <div class="logo-symbol"></div>
+                    <div class="logo-symbol">
+                        <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Place your SVG content here -->
+                        </svg>
+                    </div>
                     <span>CARPCONNECT</span>
                 </a>
                 <nav class="main-nav">
@@ -76,7 +139,7 @@
                     <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
                     <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
                     <h1 class="hero-title">Convertissez les <span class="highlight">passionnés</span> en clients <span class="highlight">fidèles</span></h1>
-                    <p class="hero-description">Nous transformons la présence digitale des marques de pêche à la carpe avec des stratégies éprouvées qui captent l'attention, génèrent du trafic qualifié et augmentent les ventes.</p>
+                    <p class="hero-description">Nous transformons la présence digitale des marques de pêche à la carpe avec des stratégies éprouvées qui captent l'attention, génèrent du trafic qualifié, et augmentent les ventes.</p>
                     <div class="hero-cta">
                         <a href="services.html" class="cta-button">DÉCOUVRIR NOS SERVICES</a>
                         <a href="realisations.html" class="secondary-button">EXPLORER NOS PROJETS</a>
@@ -86,25 +149,23 @@
                     <div class="hero-image">
                         <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Pêcheur+à+la+carpe" alt="Pêcheur à la carpe en action">
                     </div>
-                    <div class="target-marks"></div>
-                    <div class="tech-frame"></div>
                 </div>
             </div>
             <div class="hero-metrics">
                 <div class="metric">
-                    <div class="metric-value">+85%</div>
+                    <div class="metric-value" data-target="85">+0%</div>
                     <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">+195%</div>
+                    <div class="metric-value" data-target="195">+0%</div>
                     <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">+72%</div>
+                    <div class="metric-value" data-target="72">+0%</div>
                     <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">+53%</div>
+                    <div class="metric-value" data-target="53">+0%</div>
                     <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
                 </div>
             </div>
@@ -230,8 +291,7 @@
             </div>
         </div>
     </section>
-
-    <section id="approach" class="approach-section">
+        <section id="approach" class="approach-section">
         <div class="approach-pattern"></div>
         <div class="container">
             <div class="section-header">
@@ -313,7 +373,7 @@
                             <div class="node-pulse"></div>
                         </div>
                         <div class="roadmap-content">
-                            <div class="roadmap-number">04</div>
+                                                      <div class="roadmap-number">04</div>
                             <h3 class="roadmap-title">Optimisation Continue</h3>
                             <div class="roadmap-details">
                                 <p>Nous analysons méthodiquement les données de performance pour ajuster la stratégie et maximiser constamment votre retour sur investissement.</p>
@@ -610,11 +670,7 @@
             </script>
         </div>
     </section>
-
     
-
-
-
     <section id="contact" class="cta-section">
         <div class="cta-pattern"></div>
         <div class="container">
@@ -637,7 +693,7 @@
             <div class="grid">
                 <div class="footer-brand">
                     <div class="footer-logo">CARPCONNECT</div>
-                    <p class="footer-description">Agence digitale spécialisée dans les stratégies de croissance pour les marques et fabricants de l'univers de la pêche à la carpe. Nous transformons les passionnés en clients fidèles avec des approches tactiques et mesurables.</p>
+                    <p class="footer-description">Agence digitale spécialisée dans les stratégies de croissance pour les marques et fabricants de l'univers de la pêche à la carpe. Nous transformons votre présence digitale avec des solutions innovantes et mesurables.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>

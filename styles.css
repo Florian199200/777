@@ -126,22 +126,26 @@ h1, h2, h3, h4, h5 {
 }
 
 /* Header */
- header {
+header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-     z-index: 1000;
-   padding: 5px 0;
-     background-color: rgba(8, 8, 8, 0.9);
-         backdrop-filter: none;
+    z-index: 1000;
+    padding: 5px 0; /* Ajuster le padding vertical */
+    background-color: rgba(8, 8, 8, 0.9); /* Couleur noire avec 80% d'opacité */
+    height: 5px; /* Ajuster la hauteur selon vos besoins */
+    backdrop-filter: none;
     border-bottom: none;
-    transition: background-color 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease; }
+    transition: background-color 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease;
+}
+
 header.scrolled {
-    background-color: rgba(8, 8, 8, 0.9);
+    background-color: rgba(8, 8, 8, 0.9); /* Couleur noire avec 80% d'opacité */
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border);
-    padding: 5px 0;
+    padding: 5px 0; /* Ajuster le padding vertical */
+    height: 5px; /* Ajuster la hauteur selon vos besoins */
 }
 
 .header-content {

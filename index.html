@@ -10,29 +10,96 @@
         /* Amélioration du contraste pour la section méthodologie */
         .approach-section {
             background-color: #2c2e27; /* Fond plus foncé pour meilleur contraste */
+            color: #f3f2eb; /* Texte plus clair pour meilleur contraste */
         }
-        
+
         .approach-section .section-title,
         .approach-section .section-description,
         .approach-section .step-title,
         .approach-section .step-description,
         .approach-section .coordinates,
         .approach-section .tag {
-            color: #f3f2eb; /* Texte plus clair pour meilleur contraste */
             font-weight: 500; /* Texte légèrement plus épais */
         }
-        
+
         .approach-step {
             background-color: rgba(243, 242, 235, 0.1); /* Fond légèrement plus clair pour les étapes */
             padding: 1.5rem;
             border-radius: 4px;
             margin-bottom: 1rem;
         }
-        
+
         .step-number {
             background-color: #f3f2eb;
             color: #2c2e27;
             font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 375px) {
+            .container {
+                padding: 10px;
+            }
+            .header {
+                font-size: 14px;
+            }
+            .card {
+                margin: 5px 0;
+            }
+        }
+
+        @media (min-width: 376px) and (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .header {
+                font-size: 16px;
+            }
+            .card {
+                margin: 10px 0;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .container {
+                padding: 30px;
+            }
+            .header {
+                font-size: 18px;
+            }
+            .card {
+                margin: 15px 0;
+            }
+        }
+
+        /* Suppression du quadrillage des cartes de performance */
+        .performance-card {
+            background-image: none;
+        }
+
+        /* Simplification de la section "Pêcheur à la carpe" */
+        .pecheur-section {
+            background: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Header opaque */
+        .header {
+            background-color: rgba(0, 0, 0, 0.8); /* Ajuster la couleur et l'opacité selon vos besoins */
+        }
+
+        /* Emplacement SVG pour le logo */
+        .header .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        /* Unification des backgrounds */
+        .methodologie,
+        .passez-action {
+            background: url('path/to/background-image.jpg') no-repeat center center;
+            background-size: cover;
         }
     </style>
 </head>
@@ -92,24 +159,49 @@
             </div>
             <div class="hero-metrics">
                 <div class="metric">
-                    <div class="metric-value">+85%</div>
+                    <div class="metric-value counter" data-target="85">0</div>
                     <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">+195%</div>
+                    <div class="metric-value counter" data-target="195">0</div>
                     <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">+72%</div>
+                    <div class="metric-value counter" data-target="72">0</div>
                     <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">+53%</div>
+                    <div class="metric-value counter" data-target="53">0</div>
                     <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            var counters = document.querySelectorAll('.counter');
+            var speed = 200; // Ajuster la vitesse selon vos besoins
+
+            counters.forEach(counter => {
+                var updateCount = function() {
+                    var target = +counter.getAttribute('data-target');
+                    var count = +counter.innerText;
+
+                    var increment = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+
+                updateCount();
+            });
+        });
+    </script>
 
     <section id="services" class="section services-section">
         <div class="container">
@@ -293,409 +385,404 @@
                             <div class="node-pulse"></div>
                         </div>
                         <div class="roadmap-content">
-                            <div class="roadmap-number">03</div>
-                            <h3 class="roadmap-title">Déploiement Tactique</h3>
-                            <div class="roadmap-details">
-                                <p>Nous mettons en œuvre votre stratégie digitale avec une exécution rigoureuse et une attention aux détails qui fait la différence face à vos concurrents.</p>
-                                <ul class="roadmap-checklist">
-                                    <li>Mise en place des optimisations techniques</li>
-                                    <li>Création et déploiement des contenus</li>
-                                    <li>Lancement des campagnes d'acquisition</li>
-                                </ul>
-                                <div class="roadmap-time">Durée moyenne: 4 semaines</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="roadmap-step" data-step="4">
-                        <div class="roadmap-node">
-                            <div class="node-dot"></div>
-                            <div class="node-pulse"></div>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="roadmap-number">04</div>
-                            <h3 class="roadmap-title">Optimisation Continue</h3>
-                            <div class="roadmap-details">
-                                <p>Nous analysons méthodiquement les données de performance pour ajuster la stratégie et maximiser constamment votre retour sur investissement.</p>
-                                <ul class="roadmap-checklist">
-                                    <li>Suivi hebdomadaire des KPIs</li>
-                                    <li>Optimisation basée sur les données</li>
-                                    <li>Rapports mensuels d'avancement</li>
-                                </ul>
-                                <div class="roadmap-time">Processus continu à long terme</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <style>
-                .section-header.centered {
-                    text-align: center;
-                    max-width: 800px;
-                    margin: 0 auto 60px;
-                }
-                
-                .approach-section {
-                    background-color: #464a3e; /* Vert kaki cohérent avec le site */
-                    color: #f3f2eb; /* Texte clair pour contraste */
-                    padding: 100px 0;
-                    position: relative;
-                    overflow: hidden;
-                }
-                
-                .section-header.centered .section-title,
-                .section-header.centered .section-description,
-                .section-header.centered .coordinates,
-                .section-header.centered .tag {
-                    color: #f3f2eb; /* Texte clair pour meilleur contraste */
-                }
-                
-                .roadmap-container {
-                    position: relative;
-                    max-width: 1000px;
-                    margin: 0 auto;
-                    padding: 40px 0;
-                }
-                
-                .roadmap-line {
-                    position: absolute;
-                    top: 0;
-                    left: 50%;
-                    width: 6px;
-                    height: 100%;
-                    background-color: rgba(243, 242, 235, 0.3); /* Ligne plus claire et transparente */
-                    transform: translateX(-50%);
-                    z-index: 1;
-                }
-                
-                .roadmap-progress {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 0;
-                    background-color: #f3f2eb; /* Couleur de la jauge de progression en clair pour contraste */
-                    transition: height 0.5s ease-in-out;
-                }
-                
-                .roadmap-steps {
-                    position: relative;
-                    z-index: 2;
-                }
-                
-                .roadmap-step {
-                    display: flex;
-                    margin-bottom: 80px;
-                    opacity: 0.6;
-                    transition: opacity 0.3s ease;
-                }
-                
-                .roadmap-step.active {
-                    opacity: 1;
-                }
-                
-                .roadmap-node {
-                    position: relative;
-                    width: 30px;
-                    height: 30px;
-                    margin: 0 35px;
-                    z-index: 3;
-                }
-                
-                .node-dot {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    width: 30px;
-                    height: 30px;
-                    background-color: #f3f2eb;
-                    border-radius: 50%;
-                    transform: translate(-50%, -50%);
-                    border: 3px solid #464a3e;
-                }
-                
-                .active .node-dot {
-                    background-color: #f3f2eb;
-                    border-color: #f3f2eb;
-                }
-                
-                .node-pulse {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    width: 60px;
-                    height: 60px;
-                    background-color: rgba(243, 242, 235, 0.4);
-                    border-radius: 50%;
-                    transform: translate(-50%, -50%) scale(0);
-                    animation: pulse 2s infinite;
-                    opacity: 0;
-                }
-                
-                .active .node-pulse {
-                    opacity: 1;
-                }
-                
-                @keyframes pulse {
-                    0% {
-                        transform: translate(-50%, -50%) scale(0);
-                        opacity: 1;
-                    }
-                    70% {
-                        opacity: 0.5;
-                    }
-                    100% {
-                        transform: translate(-50%, -50%) scale(1);
-                        opacity: 0;
-                    }
-                }
-                
-                .roadmap-content {
-                    flex: 1;
-                    background-color: rgba(243, 242, 235, 0.05); /* Fond légèrement transparent */
-                    border-radius: 8px;
-                    padding: 30px;
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-                    border-left: 5px solid #f3f2eb;
-                    position: relative;
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    color: #f3f2eb; /* Texte clair pour meilleur contraste */
-                }
-                
-                .roadmap-step:hover .roadmap-content {
-                    transform: translateY(-5px);
-                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-                    background-color: rgba(243, 242, 235, 0.1); /* Plus clair au survol */
-                }
-                
-                .roadmap-number {
-                    display: inline-block;
-                    width: 40px;
-                    height: 40px;
-                    background-color: #f3f2eb;
-                    color: #464a3e;
-                    border-radius: 50%;
-                    text-align: center;
-                    line-height: 40px;
-                    font-weight: bold;
-                    font-size: 18px;
-                    margin-bottom: 15px;
-                }
-                
-                .roadmap-title {
-                    font-size: 22px;
-                    margin-bottom: 15px;
-                    color: #f3f2eb;
-                    font-weight: 600;
-                }
-                
-                .roadmap-details {
-                    color: rgba(243, 242, 235, 0.9);
-                }
-                
-                .roadmap-details p {
-                    margin-bottom: 15px;
-                    line-height: 1.6;
-                }
-                
-                .roadmap-checklist {
-                    list-style: none;
-                    padding-left: 0;
-                    margin-bottom: 15px;
-                }
-                
-                .roadmap-checklist li {
-                    position: relative;
-                    padding-left: 30px;
-                    margin-bottom: 10px;
-                    line-height: 1.5;
-                }
-                
-                .roadmap-checklist li:before {
-                    content: '✓';
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    color: #f3f2eb;
-                    font-weight: bold;
-                }
-                
-                .roadmap-time {
-                    display: inline-block;
-                    background-color: rgba(243, 242, 235, 0.2);
-                    padding: 8px 15px;
-                    border-radius: 20px;
-                    font-size: 14px;
-                    color: #f3f2eb;
-                    font-weight: 600;
-                    border: 1px solid rgba(243, 242, 235, 0.3);
-                }
-                
-                /* Alternance gauche/droite pour écrans larges */
-                @media (min-width: 992px) {
-                    .roadmap-step {
-                        padding-left: 50%;
-                    }
-                    
-                    .roadmap-step:nth-child(even) {
-                        padding-left: 0;
-                        padding-right: 50%;
-                        flex-direction: row-reverse;
-                    }
-                    
-                .roadmap-step:nth-child(even) .roadmap-content {
-                        border-left: none;
-                        border-right: 5px solid #f3f2eb;
-                    }
-                }
-                
-                /* Responsive */
-                @media (max-width: 991px) {
-                    .roadmap-line {
-                        left: 30px;
-                    }
-                    
-                    .roadmap-node {
-                        margin: 0 15px 0 0;
-                    }
-                    
-                    .roadmap-step {
-                        padding-left: 60px;
-                    }
-                }
-            </style>
-            
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const steps = document.querySelectorAll('.roadmap-step');
-                    const progress = document.querySelector('.roadmap-progress');
-                    const roadmapSection = document.querySelector('.roadmap-container');
-                    
-                    // Animation de défilement
-                    function animateOnScroll() {
-                        const scrollPosition = window.scrollY + window.innerHeight * 0.6;
-                        const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
-                        const sectionHeight = roadmapSection.offsetHeight;
-                        const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
-                        
-                        // Limiter la progression entre 0 et 1
-                        const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
-                        
-                        // Appliquer la hauteur à la barre de progression
-                        progress.style.height = (limitedProgress * 100) + '%';
-                        
-                        // Activer les étapes en fonction du défilement
-                        steps.forEach((step, index) => {
-                            const stepTop = step.getBoundingClientRect().top + window.scrollY;
-                            
-                            if (scrollPosition > stepTop) {
-                                step.classList.add('active');
-                            } else {
-                                step.classList.remove('active');
-                            }
-                        });
-                    }
-                    
-                    // Initialisation
-                    window.addEventListener('scroll', animateOnScroll);
-                    window.addEventListener('resize', animateOnScroll);
-                    
-                    // Déclencher une fois au chargement
-                    setTimeout(animateOnScroll, 300);
-                    
-                    // Assurer que l'animation fonctionne même sur les longs chargements
-                    window.addEventListener('load', animateOnScroll);
-                });
-            </script>
-        </div>
-    </section>
-
-    
-
-
-
-    <section id="contact" class="cta-section">
-        <div class="cta-pattern"></div>
-        <div class="container">
-            <div class="cta-content">
-                <div class="coordinates">OBJET:DISCUSSION-STRATÉGIQUE</div>
-                <div class="tag">PASSEZ À L'ACTION</div>
-                <h2 class="cta-title">Prêt à augmenter significativement vos résultats?</h2>
-                <p class="cta-text">Prenons rendez-vous pour discuter de votre situation actuelle et identifier les opportunités de croissance pour votre marque dans l'univers de la pêche à la carpe.</p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="big-cta-button">DEMANDER UN AUDIT STRATÉGIQUE</a>
-                    <a href="realisations.html" class="big-secondary-button">DÉCOUVRIR NOS ÉTUDES DE CAS</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-pattern"></div>
-        <div class="container">
-            <div class="grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">CARPCONNECT</div>
-                    <p class="footer-description">Agence digitale spécialisée dans les stratégies de croissance pour les marques et fabricants de l'univers de la pêche à la carpe. Nous transformons les passionnés en clients fidèles avec des approches tactiques et mesurables.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-nav">
-                    <h3 class="footer-heading">RESSOURCES</h3>
-                    <ul class="footer-links">
-                        <li><a href="realisations.html" class="footer-link">Études de Cas</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-nav">
-                    <h3 class="footer-heading">ENTREPRISE</h3>
-                    <ul class="footer-links">
-                        <li><a href="a-propos.html" class="footer-link">À Propos</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h3 class="footer-heading">CONTACT</h3>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <div class="contact-text"><a href="mailto:contact@carpconnect.com">contact@carpconnect.com</a></div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-                            <div class="contact-text"><a href="tel:+33612345678">+33 6 12 34 56 78</a></div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="contact-text">Annecy, France<br>Lyon - Paris - Bordeaux</div>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="cta-button">PRENDRE RENDEZ-VOUS</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="copyright">
-                    <span class="copyright-icon">C</span>
-                    <span>2025 CarpConnect. Tous droits réservés</span>
-                </div>
-                <div class="footer-bottom-links">
-                    <a href="./confidentialite.html" class="footer-bottom-link">Politique de Confidentialité</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <div class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
+    <div class="roadmap-number">03</div>
+    <h3 class="roadmap-title">Déploiement Tactique</h3>
+    <div class="roadmap-details">
+        <p>Nous mettons en œuvre votre stratégie digitale avec une exécution rigoureuse et une attention aux détails qui fait la différence face à vos concurrents.</p>
+        <ul class="roadmap-checklist">
+            <li>Mise en place des optimisations techniques</li>
+            <li>Création et déploiement des contenus</li>
+            <li>Lancement des campagnes d'acquisition</li>
+        </ul>
+        <div class="roadmap-time">Durée moyenne: 4 semaines</div>
     </div>
+</div>
+</div>
 
-    <script src="main.js"></script>
+<div class="roadmap-step" data-step="4">
+    <div class="roadmap-node">
+        <div class="node-dot"></div>
+        <div class="node-pulse"></div>
+    </div>
+    <div class="roadmap-content">
+        <div class="roadmap-number">04</div>
+        <h3 class="roadmap-title">Optimisation Continue</h3>
+        <div class="roadmap-details">
+            <p>Nous analysons méthodiquement les données de performance pour ajuster la stratégie et maximiser constamment votre retour sur investissement.</p>
+            <ul class="roadmap-checklist">
+                <li>Suivi hebdomadaire des KPIs</li>
+                <li>Optimisation basée sur les données</li>
+                <li>Rapports mensuels d'avancement</li>
+            </ul>
+            <div class="roadmap-time">Processus continu à long terme</div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<style>
+    .section-header.centered {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 60px;
+    }
+    
+    .approach-section {
+        background-color: #464a3e; /* Vert kaki cohérent avec le site */
+        color: #f3f2eb; /* Texte clair pour contraste */
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .section-header.centered .section-title,
+    .section-header.centered .section-description,
+    .section-header.centered .coordinates,
+    .section-header.centered .tag {
+        color: #f3f2eb; /* Texte clair pour meilleur contraste */
+    }
+    
+    .roadmap-container {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+    
+    .roadmap-line {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 6px;
+        height: 100%;
+        background-color: rgba(243, 242, 235, 0.3); /* Ligne plus claire et transparente */
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+    
+    .roadmap-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: #f3f2eb; /* Couleur de la jauge de progression en clair pour contraste */
+        transition: height 0.5s ease-in-out;
+    }
+    
+    .roadmap-steps {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .roadmap-step {
+        display: flex;
+        margin-bottom: 80px;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+    }
+    
+    .roadmap-step.active {
+        opacity: 1;
+    }
+    
+    .roadmap-node {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        margin: 0 35px;
+        z-index: 3;
+    }
+    
+    .node-dot {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 30px;
+        height: 30px;
+        background-color: #f3f2eb;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        border: 3px solid #464a3e;
+    }
+    
+    .active .node-dot {
+        background-color: #f3f2eb;
+        border-color: #f3f2eb;
+    }
+    
+    .node-pulse {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(243, 242, 235, 0.4);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        animation: pulse 2s infinite;
+        opacity: 0;
+    }
+    
+    .active .node-pulse {
+        opacity: 1;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 1;
+        }
+        70% {
+            opacity: 0.5;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0;
+        }
+    }
+    
+    .roadmap-content {
+        flex: 1;
+        background-color: rgba(243, 242, 235, 0.05); /* Fond légèrement transparent */
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border-left: 5px solid #f3f2eb;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: #f3f2eb; /* Texte clair pour meilleur contraste */
+    }
+    
+    .roadmap-step:hover .roadmap-content {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        background-color: rgba(243, 242, 235, 0.1); /* Plus clair au survol */
+    }
+    
+    .roadmap-number {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: #f3f2eb;
+        color: #464a3e;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .roadmap-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: #f3f2eb;
+        font-weight: 600;
+    }
+    
+    .roadmap-details {
+        color: rgba(243, 242, 235, 0.9);
+    }
+    
+    .roadmap-details p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+    
+    .roadmap-checklist {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 15px;
+    }
+    
+    .roadmap-checklist li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+    
+    .roadmap-checklist li:before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #f3f2eb;
+        font-weight: bold;
+    }
+    
+    .roadmap-time {
+        display: inline-block;
+        background-color: rgba(243, 242, 235, 0.2);
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        color: #f3f2eb;
+        font-weight: 600;
+        border: 1px solid rgba(243, 242, 235, 0.3);
+    }
+    
+    /* Alternance gauche/droite pour écrans larges */
+    @media (min-width: 992px) {
+        .roadmap-step {
+            padding-left: 50%;
+        }
+        
+        .roadmap-step:nth-child(even) {
+            padding-left: 0;
+            padding-right: 50%;
+            flex-direction: row-reverse;
+        }
+        
+    .roadmap-step:nth-child(even) .roadmap-content {
+            border-left: none;
+            border-right: 5px solid #f3f2eb;
+        }
+    }
+    
+    /* Responsive */
+    @media (max-width: 991px) {
+        .roadmap-line {
+            left: 30px;
+        }
+        
+        .roadmap-node {
+            margin: 0 15px 0 0;
+        }
+        
+        .roadmap-step {
+            padding-left: 60px;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const steps = document.querySelectorAll('.roadmap-step');
+        const progress = document.querySelector('.roadmap-progress');
+        const roadmapSection = document.querySelector('.roadmap-container');
+        
+        // Animation de défilement
+        function animateOnScroll() {
+            const scrollPosition = window.scrollY + window.innerHeight * 0.6;
+            const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
+            const sectionHeight = roadmapSection.offsetHeight;
+            const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+            
+            // Limiter la progression entre 0 et 1
+            const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+            
+            // Appliquer la hauteur à la barre de progression
+            progress.style.height = (limitedProgress * 100) + '%';
+            
+            // Activer les étapes en fonction du défilement
+            steps.forEach((step, index) => {
+                const stepTop = step.getBoundingClientRect().top + window.scrollY;
+                
+                if (scrollPosition > stepTop) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+        
+        // Initialisation
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('resize', animateOnScroll);
+        
+        // Déclencher une fois au chargement
+        setTimeout(animateOnScroll, 300);
+        
+        // Assurer que l'animation fonctionne même sur les longs chargements
+        window.addEventListener('load', animateOnScroll);
+    });
+</script>
+
+<section id="contact" class="cta-section">
+    <div class="cta-pattern"></div>
+    <div class="container">
+        <div class="cta-content">
+            <div class="coordinates">OBJET:DISCUSSION-STRATÉGIQUE</div>
+            <div class="tag">PASSEZ À L'ACTION</div>
+            <h2 class="cta-title">Prêt à augmenter significativement vos résultats?</h2>
+            <p class="cta-text">Prenons rendez-vous pour discuter de votre situation actuelle et identifier les opportunités de croissance pour votre marque dans l'univers de la pêche à la carpe.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="big-cta-button">DEMANDER UN AUDIT STRATÉGIQUE</a>
+                <a href="realisations.html" class="big-secondary-button">DÉCOUVRIR NOS ÉTUDES DE CAS</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-pattern"></div>
+    <div class="container">
+        <div class="grid">
+            <div class="footer-brand">
+                <div class="footer-logo">CARPCONNECT</div>
+                <p class="footer-description">Agence digitale spécialisée dans les stratégies de croissance pour les marques et fabricants de l'univers de la pêche à la carpe. Nous transformons votre présence digitale en un véritable levier de croissance.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-nav">
+                <h3 class="footer-heading">RESSOURCES</h3>
+                <ul class="footer-links">
+                    <li><a href="realisations.html" class="footer-link">Études de Cas</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-nav">
+                <h3 class="footer-heading">ENTREPRISE</h3>
+                <ul class="footer-links">
+                    <li><a href="a-propos.html" class="footer-link">À Propos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3 class="footer-heading">CONTACT</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-text"><a href="mailto:contact@carpconnect.com">contact@carpconnect.com</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="contact-text"><a href="tel:+33612345678">+33 6 12 34 56 78</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-text">Annecy, France<br>Lyon - Paris - Bordeaux</div>
+                    </div>
+                </div>
+                <a href="contact.html" class="cta-button">PRENDRE RENDEZ-VOUS</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                <span class="copyright-icon">C</span>
+                <span>2025 CarpConnect. Tous droits réservés</span>
+            </div>
+            <div class="footer-bottom-links">
+                <a href="./confidentialite.html" class="footer-bottom-link">Politique de Confidentialité</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>

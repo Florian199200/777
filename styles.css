@@ -142,9 +142,11 @@ header {
 }
 
 .header-content {
- .header-content {
     display: flex;
-    justify-content: center; /* Centrer les éléments de navigation */
+    align-items: center;
+    padding: 0 24px;
+    justify-content: space-between;
+}
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -153,8 +155,7 @@ header {
 }
 
 .logo {
-    position: absolute;
-    left: 0; /* Positionner le logo à gauche */
+    margin-left: 50px; /* Ajustez cette valeur pour obtenir l'alignement souhaité */
 }
 
 .main-nav {
@@ -219,8 +220,8 @@ header {
 
 .main-nav {
     display: flex;
-    gap: 40px;
-    z-index: 1002; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */
+    justify-content: center;
+    flex: 1; /* Assurez-vous que les liens de navigation prennent tout l'espace disponible */
 }
 
 .nav-link {
@@ -400,28 +401,24 @@ header {
     }
 }
 
-/* Délais différents pour chaque type de bouton */
-.cta-button::after {
-    animation-delay: 0s;
-    width: 16px;
-    height: 16px;
-}
-.secondary-button::after {
-    animation-delay: 1.5s;
-    width: 16px;
-    height: 16px;
-}
-.big-cta-button::after {
-    animation-delay: 3s;
-    width: 20px;
-    height: 20px;
-    box-shadow: 0 0 20px 8px rgba(255,255,255,0.9), 0 0 40px 15px rgba(255,255,255,0.5);
-}
-.big-secondary-button::after {
-    animation-delay: 4.5s;
-    width: 20px;
-    height: 20px;
-    box-shadow: 0 0 20px 8px rgba(255,255,255,0.9), 0 0 40px 15px rgba(255,255,255,0.5);
+.cta-button {
+    font-family: var(--font-display);
+    display: inline-block;
+    padding: 12px 28px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    transition: all var(--transition-speed) ease;
+    position: absolute; /* Position absolue */
+    top: 20px; /* Positionnement en haut */
+    right: 20px; /* Positionnement à droite */
+    overflow: hidden;
+    z-index: 1;
+    white-space: nowrap;
+    border-radius: 4px; /* Arrondir les angles */
+    background-color: var(--color-primary);
+    color: var(--color-inverse);
 }
 
 /* Styles de base pour tous les boutons */

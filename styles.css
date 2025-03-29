@@ -183,7 +183,6 @@ header {
     border-radius: 4px; /* Arrondir les angles */
     background-color: var(--color-primary);
     color: var(--color-inverse);
-}
     max-width: 1320px; /* Ajuster la largeur maximale pour correspondre à la page de service */
     margin: 0 auto;
     padding: 0 24px; /* Ajuster le padding horizontal pour correspondre à la page de service */
@@ -271,7 +270,6 @@ header {
 
 .nav-link:hover::after {
     width: 100%;
-}
     font-family: var(--font-display);
     font-size: 14px;
     text-decoration: none;

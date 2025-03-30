@@ -151,8 +151,12 @@ header {
     position: relative;
 }
 
+
 .logo {
+    display: flex;
+    align-items: center; /* Centre verticalement le logo */
     margin-left: 0px; /* Ajustez cette valeur pour obtenir l'alignement souhaité */
+    text-decoration: none;
 }
 
 .main-nav {

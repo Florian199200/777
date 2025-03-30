@@ -146,13 +146,8 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
-
-    justify-content: space-between;
-
-    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
     position: relative;
 }
 

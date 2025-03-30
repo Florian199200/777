@@ -430,11 +430,8 @@ header {
     font-weight: 500;
     letter-spacing: -0.5px;
     transition: all var(--transition-speed) ease;
-    position: absolute; /* Position absolue */
-    top: 20px; /* Positionnement en haut */
-    right: 20px; /* Positionnement à droite */
-    overflow: hidden;
-    z-index: 1;
+    margin-left: auto;
+    align-self: center; /* Centre verticalement par rapport à la navigation */
     white-space: nowrap;
     border-radius: 4px; /* Arrondir les angles */
     background-color: var(--color-primary);

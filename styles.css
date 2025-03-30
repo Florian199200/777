@@ -943,18 +943,7 @@ header {
     overflow: hidden;
 }
 
-.approach-pattern {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 30px 30px;
-    z-index: 0;
-}
+
 
 .approach-section .section-title {
     color: var(--color-inverse);

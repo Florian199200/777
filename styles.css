@@ -143,8 +143,8 @@ header {
 
 .header-content {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
     padding: 0 24px;
     max-width: 1200px;
     margin: 0 auto;

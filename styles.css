@@ -144,7 +144,7 @@ header {
 .header-content {
     display: flex;
     align-items: center; /* Centre verticalement */
-    justify-content: space-betweenn; /* Centre horizontalement */
+    justify-content: space-between; /* Centre horizontalement */
     padding: 0 24px;
     max-width: 1200px;
     margin: 0 auto;

@@ -177,15 +177,80 @@ header {
     font-weight: 500;
     letter-spacing: -0.5px;
     transition: all var(--transition-speed) ease;
-    margin-left: auto; /* Déplace le bouton à droite */
-    margin-right: 24px; /* Ajoute une marge droite cohérente */
     white-space: nowrap;
     border-radius: 4px; /* Arrondir les angles */
     background-color: var(--color-primary);
     color: var(--color-inverse);
-    max-width: 1320px; /* Ajuster la largeur maximale pour correspondre à la page de service */
-    margin: 0 auto;
-    padding: 0 24px; /* Ajuster le padding horizontal pour correspondre à la page de service */
+    margin-left: 0; /* Supprimer toute marge gauche */
+    margin-right: 0; /* Supprimer toute marge droite */
+}
+
+/* Effet de luciole */
+.cta-button::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    filter: blur(3px);
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9), 0 0 30px 10px rgba(255, 255, 255, 0.5);
+    animation: firefly 6s linear infinite;
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+@keyframes firefly {
+    0% {
+        top: 0;
+        left: -20px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    25% {
+        top: 0;
+        left: 50%;
+        opacity: 1;
+    }
+    40% {
+        top: 0;
+        left: 100%;
+        opacity: 0.9;
+    }
+    50% {
+        top: 100%;
+        left: 100%;
+        opacity: 0.7;
+    }
+    75% {
+        top: 100%;
+        left: 0;
+        opacity: 0.9;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        top: 0;
+        left: -20px;
+        opacity: 0;
+    }
+}
+
+/* Styles pour les écrans mobiles */
+@media (max-width: 768px) {
+    .cta-button {
+        display: none; /* Masquer le bouton CTA sur les écrans mobiles */
+    }
+
+    .mobile-nav .cta-button {
+        display: inline-flex; /* Afficher le bouton CTA dans le menu mobile */
+        margin-top: 40px;
+        align-self: flex-start;
+    }
 }
 
 .logo, .main-nav {
@@ -405,46 +470,7 @@ header {
     }
 }
 
-.cta-button {
-    font-family: var(--font-display);
-    display: inline-flex; /* Utiliser inline-flex pour centrer */
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    padding: 12px 28px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: -0.5px;
-    transition: all var(--transition-speed) ease;
-    position: absolute; /* Position absolue */
-    top: 20px; /* Positionnement en haut */
-    right: 20px; /* Positionnement à droite */
-    overflow: hidden;
-    z-index: 1;
-    white-space: nowrap;
-    border-radius: 4px; /* Arrondir les angles */
-    background-color: var(--color-primary);
-    color: var(--color-inverse);
-}
 
-/* Styles de base pour tous les boutons */
-.cta-button {
-    font-family: var(--font-display);
-    display: inline-flex; /* Utiliser inline-flex pour centrer */
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    padding: 12px 28px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: -0.5px;
-    transition: all var(--transition-speed) ease;
-    margin-left: auto;
-    white-space: nowrap;
-    border-radius: 4px; /* Arrondir les angles */
-    background-color: var(--color-primary);
-    color: var(--color-inverse);
-}
 .cta-button::before {
     content: '';
     position: absolute;

@@ -36,10 +36,6 @@ body {
     color: var(--color-text);
     line-height: 1.5;
     overflow-x: hidden;
-    background-image: 
-        linear-gradient(var(--color-grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
-    background-size: 35px 35px;
     background-position: center;
 }
 
@@ -828,19 +824,6 @@ header {
     background-color: transparent;
 }
 
-.services-section::before {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    right: -150px;
-    top: -50px;
-    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
-    background-size: 15px 15px;
-    border-radius: 50%;
-    opacity: 0.7;
-    z-index: -1;
-}
 
 .service-card {
     position: relative;

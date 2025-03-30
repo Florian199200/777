@@ -387,12 +387,7 @@ header {
     height: auto;
 }
 
-/* Unification des backgrounds */
-.methodologie,
-.passez-action {
-    background: url('path/to/background-image.jpg') no-repeat center center;
-    background-size: cover;
-}
+
 /* Styles de base pour tous les boutons */
 .cta-button, .secondary-button, .big-cta-button, .big-secondary-button {
     font-family: var(--font-display);

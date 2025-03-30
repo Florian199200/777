@@ -397,6 +397,95 @@ header {
     background: url('path/to/background-image.jpg') no-repeat center center;
     background-size: cover;
 }
+/* Styles de base pour tous les boutons */
+.cta-button, .secondary-button, .big-cta-button, .big-secondary-button {
+    font-family: var(--font-display);
+    display: inline-block;
+    padding: 12px 28px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    white-space: nowrap;
+    border-radius: 4px; /* Arrondir les angles */
+}
+
+/* Effet de luciole pour tous les boutons - version améliorée */
+.cta-button::after, .secondary-button::after, .big-cta-button::after, .big-secondary-button::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    filter: blur(3px);
+    box-shadow: 0 0 15px 5px rgba(255,255,255,0.9), 0 0 30px 10px rgba(255,255,255,0.5);
+    animation: firefly 6s linear infinite;
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Animation de la luciole - ralentie et plus visible */
+@keyframes firefly {
+    0% {
+        top: 0;
+        left: -20px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    25% {
+        top: 0;
+        left: 50%;
+        opacity: 1;
+    }
+    40% {
+        top: 0;
+        left: 100%;
+        opacity: 0.9;
+    }
+    50% {
+        top: 100%;
+        left: 100%;
+        opacity: 0.7;
+    }
+    75% {
+        top: 100%;
+        left: 0;
+        opacity: 0.9;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        top: 0;
+        left: -20px;
+        opacity: 0;
+    }
+}
+
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-accent);
+    transition: left var(--transition-speed) ease;
+    z-index: -1;
+}
+
+.cta-button:hover::before {
+    left: 0;
+}
 
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {

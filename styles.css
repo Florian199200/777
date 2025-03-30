@@ -164,7 +164,9 @@ header {
 
 .cta-button {
     font-family: var(--font-display);
-    display: inline-block;
+    display: inline-flex; /* Utiliser inline-flex pour centrer */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
     padding: 12px 28px;
     text-decoration: none;
     font-size: 14px;
@@ -172,15 +174,10 @@ header {
     letter-spacing: -0.5px;
     transition: all var(--transition-speed) ease;
     margin-left: auto; /* Déplace le bouton à droite */
-    margin-right: 24px; /* Ajoute une marge droite cohérente */
-    align-self: center; /* Centre verticalement par rapport à la navigation */
     white-space: nowrap;
     border-radius: 4px; /* Arrondir les angles */
     background-color: var(--color-primary);
     color: var(--color-inverse);
-    max-width: 1320px; /* Ajuster la largeur maximale pour correspondre à la page de service */
-    margin: 0 auto;
-    padding: 0 24px; /* Ajuster le padding horizontal pour correspondre à la page de service */
 }
 
 .logo, .main-nav {

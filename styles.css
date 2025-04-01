@@ -2126,6 +2126,14 @@ footer {
 }
 
 /* Footer */
+footer {
+    background-color: var(--color-bg-alt);
+    padding: 50px 0;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
 .footer-pattern {
     position: absolute;
     bottom: 0;
@@ -2141,6 +2149,7 @@ footer {
 .footer-brand, .footer-nav, .footer-contact {
     position: relative;
     z-index: 1;
+    margin-bottom: 40px;
 }
 
 .footer-logo {
@@ -2206,6 +2215,8 @@ footer {
 
 .footer-links {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .footer-link {
@@ -2242,10 +2253,40 @@ footer {
     gap: 10px;
 }
 
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-bottom-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.footer-bottom-link {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.footer-bottom-link:hover {
+    color: var(--color-primary);
+}
+
 /* Responsiveness */
 @media (max-width: 768px) {
-    footer {
-        padding: 50px 0 20px;
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-nav, .footer-contact {
+        margin-bottom: 30px;
     }
 
     .footer-logo {
@@ -2255,18 +2296,32 @@ footer {
     .footer-description {
         font-size: 14px;
     }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-link {
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 480px) {
-    footer {
-        padding: 30px 0 10px;
-    }
-
     .footer-logo {
         font-size: 20px;
     }
 
     .footer-description {
         font-size: 12px;
+    }
+
+    .footer-heading {
+        font-size: 14px;
+    }
+
+    .footer-link {
+        font-size: 14px;
     }
 }

@@ -2272,3 +2272,24 @@ footer {
         font-size: 12px;
     }
 }
+
+/* Styles spécifiques pour les mobiles */
+@media (max-width: 768px) {
+    footer {
+        text-align: center;
+        padding: 20px 10px;
+    }
+    .footer-logo {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .footer-links a {
+        color: var(--color-inverse);
+        text-decoration: none;
+    }
+}

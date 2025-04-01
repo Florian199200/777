@@ -2270,3 +2270,81 @@ footer {
         font-size: 12px;
     }
 }
+
+/* Footer */
+footer {
+    background-color: var(--color-bg-alt);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 0;
+    color: var(--color-text);
+}
+
+.footer-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-content ul li {
+    display: inline;
+}
+
+.footer-content ul li a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-content ul li a:hover {
+    color: var(--color-accent);
+}
+
+.social-media {
+    margin-top: 10px;
+}
+
+.social-media a {
+    color: var(--color-text);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: var(--color-accent);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .footer-content ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .social-media {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content {
+        padding: 0 10px;
+    }
+    .social-media a {
+        font-size: 18px;
+        margin: 0 5px;
+    }
+}

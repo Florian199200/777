@@ -1696,114 +1696,223 @@ header {
         width: 100%;
     }
 } 
-/* Ajoutez ou remplacez ces règles dans votre CSS du footer */
+/* Footer avec style original - Correction pour mobile */
+footer {
+    position: relative;
+    padding: 80px 0 40px;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+    width: 100%;
+    box-sizing: border-box;
+}
 
-/* Assurez-vous que le conteneur du footer est bien défini pour le mobile */
 footer .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px; /* Padding horizontal pour éviter que le contenu ne touche les bords */
-    box-sizing: border-box; /* Pour que le padding ne s'ajoute pas à la largeur */
+    box-sizing: border-box;
 }
 
-/* Assurez-vous que la grille ne cause pas de débordement */
+footer .footer-pattern {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 10px 10px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+footer .footer-brand, 
+footer .footer-nav, 
+footer .footer-contact {
+    position: relative;
+    z-index: 1;
+}
+
+footer .footer-logo {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+    display: inline-block;
+    letter-spacing: -0.5px;
+}
+
+footer .footer-description {
+    font-size: 16px;
+    margin-bottom: 32px;
+    color: var(--color-text-light);
+    line-height: 1.7;
+}
+
+footer .social-links {
+    display: flex;
+    gap: 16px;
+}
+
+footer .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-primary);
+    color: var(--color-inverse);
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.2s ease;
+    border-radius: 50%;
+}
+
+footer .social-link:hover {
+    background-color: var(--color-accent);
+}
+
+footer .footer-heading {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+    position: relative;
+    padding-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+footer .footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-accent);
+}
+
+footer .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer .footer-link {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.5px;
+}
+
+footer .footer-link::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.2s ease;
+}
+
+footer .footer-link:hover {
+    color: var(--color-primary);
+}
+
+footer .footer-link:hover::before {
+    width: 12px;
+}
+
+footer .footer-contact .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Structure de la grille */
 footer .grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: 40px;
-    width: 100%; /* Assurez-vous que la grille ne dépasse pas la largeur de son conteneur */
-    box-sizing: border-box;
-}
-
-/* Ajoutez overflow-x: hidden pour éviter le défilement horizontal */
-footer {
-    position: relative;
-    padding: 80px 0 40px;
-    overflow-x: hidden; /* Empêche le défilement horizontal */
-    background-color: var(--color-background);
     width: 100%;
     box-sizing: border-box;
 }
 
-/* Améliorations pour les media queries mobiles */
-@media (max-width: 992px) {
-    footer .grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
+/* Responsiveness - Conserve le style original tout en corrigeant le débordement */
+@media (max-width: 768px) {
+    footer {
+        padding: 50px 0 20px;
+        overflow-x: hidden;
     }
     
-    footer .footer-brand {
-        grid-column: span 2;
+    footer .container {
+        padding: 0 20px;
     }
-}
-
-@media (max-width: 768px) {
+    
     footer .grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
     
-    footer .footer-brand {
-        grid-column: span 1;
+    footer .footer-logo {
+        font-size: 24px;
     }
     
-    /* Assurez-vous que les sections de navigation ne débordent pas */
+    footer .footer-description {
+        font-size: 14px;
+        word-wrap: break-word;
+    }
+    
+    /* Assurez-vous que les sections ne débordent pas */
     footer .footer-nav, 
     footer .footer-contact {
         width: 100%;
         box-sizing: border-box;
     }
-    
-    /* Réduire les marges pour le mobile */
-    footer {
-        padding: 40px 0 30px;
-    }
-    
-    /* Augmenter la lisibilité des liens sur mobile */
-    footer .footer-link {
-        padding: 8px 0;
-    }
-    
-    /* Ajuster les icônes sociales pour mobile */
-    footer .social-links {
-        flex-wrap: wrap; /* Permettre le retour à la ligne si nécessaire */
-    }
 }
 
-@media (max-width: 576px) {
-    /* Réduire davantage l'espacement pour les très petits écrans */
+@media (max-width: 480px) {
     footer {
-        padding: 30px 0 20px;
+        padding: 30px 0 10px;
     }
     
     footer .container {
-        padding: 0 15px; /* Réduire légèrement le padding horizontal */
+        padding: 0 15px;
     }
     
-    footer .grid {
-        gap: 25px; /* Réduire l'espacement entre les éléments */
-    }
-    
-    /* S'assurer que tout est bien aligné */
-    footer .footer-heading::after {
-        left: 0;
-        transform: none;
-        width: 30px; /* Réduire la largeur de la ligne de décoration */
-    }
-}
-
-/* Correction spécifique pour les points de débordement */
-@media (max-width: 375px) {
-    footer .grid > * {
-        min-width: 0; /* Empêche les éléments de dépasser leur conteneur */
+    footer .footer-logo {
+        font-size: 20px;
     }
     
     footer .footer-description {
-        word-wrap: break-word; /* Assure que les longs mots sont coupés */
+        font-size: 12px;
     }
     
+    footer .footer-link,
+    footer .contact-info,
     footer .contact-text {
-        word-break: break-word; /* Assure que les longs textes (comme les emails) sont coupés */
+        word-break: break-word;
+    }
+}
+
+/* Styles spécifiques pour les mobiles - Adaptés de votre CSS original */
+@media (max-width: 768px) {
+    footer .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    footer .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--color-border);
     }
 }

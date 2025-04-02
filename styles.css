@@ -403,7 +403,6 @@ header {
     z-index: 1;
     white-space: nowrap;
     border-radius: 4px; /* Arrondir les angles */
-    margin-bottom: 40px;}
 
 /* Effet de luciole pour tous les boutons - version améliorée */
 .cta-button::after, .secondary-button::after, .big-cta-button::after, .big-secondary-button::after {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+mport url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
     --color-bg: #F3F2EB;
@@ -1880,3 +1880,58 @@ header {
     margin-bottom: 40px; /* Ajustez cette valeur selon l'espace souhaité */
 }
 
+(pour la page de service )/* Pour les petits appareils (mobile) */
+@media (max-width: 576px) {
+    .service-card {
+        grid-column: span 12;
+        padding: 20px 15px;
+    }
+    .service-title {
+        font-size: 18px;
+    }
+    .service-description {
+        font-size: 14px;
+    }
+}
+
+/* Pour les tablettes */
+@media (min-width: 577px) and (max-width: 768px) {
+    .service-card {
+        grid-column: span 6;
+        padding: 30px 20px;
+    }
+    .service-title {
+        font-size: 20px;
+    }
+    .service-description {
+        font-size: 15px;
+    }
+}
+
+/* Pour les écrans de taille moyenne */
+@media (min-width: 769px) and (max-width: 992px) {
+    .service-card {
+        grid-column: span 4;
+        padding: 35px 25px;
+    }
+    .service-title {
+        font-size: 22px;
+    }
+    .service-description {
+        font-size: 16px;
+    }
+}
+
+/* Pour les grands écrans */
+@media (min-width: 993px) {
+    .service-card {
+        grid-column: span 3;
+        padding: 40px 30px;
+    }
+    .service-title {
+        font-size: 24px;
+    }
+    .service-description {
+        font-size: 18px;
+    }
+}

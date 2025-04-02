@@ -995,11 +995,11 @@ header {
 }
 }
 .approach-section .section-title {
-    color: var(--color-inverse);
+    color: var(243, 242, 235);
 }
 
 .approach-section .section-description {
-    color: rgba(--color-inverse);
+    color: rgba(243, 242, 235);
 }
 
 

@@ -130,7 +130,7 @@ header {
     width: 100%;
     z-index: 1000;
     padding: 20px 0; /* Ajuster le padding vertical pour correspondre à la page de service */
-    background-color: rgba(0, 0, 0, 0.8); /* Couleur noire avec 80% d'opacité */
+    background-color: rgba(0, 0, 0, 0.9); /* Couleur noire avec 80% d'opacité */
     height: auto;
     backdrop-filter: blur(10px); /* Ajouter un flou de fond */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Ajouter une bordure en bas */

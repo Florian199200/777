@@ -1757,6 +1757,13 @@ header {
  * - Ultra responsive sur tous appareils
  */
 
+/* 
+ * Footer CSS - Version finale
+ * - Alignement gauche du texte dans la colonne droite sur desktop uniquement
+ * - Ultra responsive sur tous appareils
+ * - Espacement égal au-dessus et en-dessous du footer
+ */
+
 .site-footer {
     width: 100%;
     padding: clamp(20px, 5vw, 40px) clamp(10px, 5vw, 20px) clamp(10px, 3vw, 20px);
@@ -1878,7 +1885,7 @@ header {
 }
 
 .footer-bottom {
-    margin-top: clamp(20px, 4vw, 30px);
+    margin-top: clamp(30px, 8vw, 80px); /* Espace augmenté avant le copyright - identique à l'espace au-dessus du footer */
     padding-top: clamp(15px, 3vw, 20px);
     border-top: 1px solid var(--color-border, rgba(55, 59, 48, 0.15));
     text-align: center;
@@ -1926,7 +1933,7 @@ header {
     }
     
     .footer-bottom {
-        margin-top: 20px;
+        margin-top: 30px; /* Espace réduit sur mobile mais toujours plus important qu'avant */
         padding-top: 15px;
         font-size: 0.8rem;
     }
@@ -1949,6 +1956,7 @@ header {
     }
     
     .footer-bottom {
+        margin-top: 25px; /* Espace légèrement réduit sur très petits écrans */
         font-size: 0.75rem;
     }
 }

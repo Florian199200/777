@@ -1697,57 +1697,65 @@ header {
     }
 } 
 
-/* Footer Styles adaptés à la charte graphique du site - Responsive amélioré */
+/* 
+ * Footer CSS - Optimisé pour tous les appareils
+ * Du plus petit iPhone (320px) aux grands écrans
+ */
+
 .site-footer {
     width: 100%;
-    padding: 40px 20px 20px;
+    padding: clamp(20px, 5vw, 40px) clamp(10px, 5vw, 20px) clamp(10px, 3vw, 20px);
     background-color: var(--color-primary, #464A3E);
     color: var(--color-inverse, #F3F2EB);
     font-family: var(--font-body, 'Inter', sans-serif);
 }
 
 .footer-container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 30px;
+    gap: clamp(15px, 3vw, 30px);
 }
 
 .footer-logo {
     flex: 1 1 250px;
+    min-width: min(100%, 250px);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 .logo img {
-    max-width: 150px;
+    max-width: min(150px, 100%);
     height: auto;
-    margin-bottom: 15px;
+    margin-bottom: clamp(10px, 2vw, 15px);
 }
 
 .company-description {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
     line-height: 1.5;
     color: var(--color-inverse, #F3F2EB);
 }
 
 .footer-contact {
     flex: 1 1 250px;
+    min-width: min(100%, 250px);
 }
 
 .footer-links {
     flex: 1 1 200px;
+    min-width: min(100%, 200px);
     display: flex;
     flex-direction: column;
 }
 
 .site-footer h3 {
     font-family: var(--font-display, 'Chakra Petch', sans-serif);
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    margin-bottom: clamp(10px, 3vw, 15px);
     position: relative;
     padding-bottom: 10px;
     color: var(--color-inverse, #F3F2EB);
@@ -1770,9 +1778,11 @@ header {
 }
 
 .contact-info li {
-    margin-bottom: 12px;
+    margin-bottom: clamp(8px, 2vw, 12px);
     display: flex;
     align-items: flex-start;
+    word-break: break-word;
+    font-size: clamp(0.85rem, 2vw, 1rem);
 }
 
 .icon {
@@ -1783,16 +1793,17 @@ header {
 }
 
 .icon svg {
-    width: 18px;
-    height: 18px;
+    width: clamp(16px, 4vw, 18px);
+    height: clamp(16px, 4vw, 18px);
 }
 
 .footer-links a {
     color: var(--color-inverse, #F3F2EB);
     text-decoration: none;
-    margin-bottom: 12px;
+    margin-bottom: clamp(8px, 2vw, 12px);
     transition: color 0.3s ease;
     display: inline-block;
+    font-size: clamp(0.85rem, 2vw, 1rem);
 }
 
 .footer-links a:hover {
@@ -1801,141 +1812,22 @@ header {
 }
 
 .footer-bottom {
-    margin-top: 30px;
-    padding-top: 20px;
+    margin-top: clamp(20px, 4vw, 30px);
+    padding-top: clamp(15px, 3vw, 20px);
     border-top: 1px solid var(--color-primary-light, #585E4D);
     text-align: center;
     width: 100%;
-    font-size: 0.9rem;
-    color: rgba(243, 242, 235, 0.7); /* Version plus claire de --color-inverse */
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    color: rgba(243, 242, 235, 0.7);
 }
 
-/* Responsive Styles - Enhanced for all device sizes */
-
-/* Grand écrans (1440px+) */
-@media screen and (min-width: 1440px) {
-    .footer-container {
-        max-width: 1360px;
-    }
-}
-
-/* Écrans moyens (tablettes horizontales, petits laptops) */
-@media screen and (max-width: 992px) {
-    .footer-container {
-        gap: 25px;
-    }
-    
-    .footer-logo, .footer-contact, .footer-links {
-        flex: 1 1 45%;
-    }
-}
-
-/* Tablettes et grands mobiles */
-@media screen and (max-width: 768px) {
+/* Ajustement de la direction pour petits écrans */
+@media screen and (max-width: 700px) {
     .footer-container {
         flex-direction: column;
-        gap: 25px;
     }
-
+    
     .footer-logo, .footer-contact, .footer-links {
-        flex: 1 1 100%;
-    }
-    
-    .site-footer {
-        padding: 35px 15px 20px;
-    }
-}
-
-/* Mobiles standards */
-@media screen and (max-width: 576px) {
-    .site-footer {
-        padding: 30px 15px 15px;
-    }
-
-    .site-footer h3 {
-        font-size: 1.1rem;
-    }
-
-    .footer-bottom {
-        font-size: 0.85rem;
-    }
-    
-    .company-description {
-        font-size: 0.85rem;
-    }
-}
-
-/* Petits mobiles (iPhone SE, etc.) */
-@media screen and (max-width: 375px) {
-    .site-footer {
-        padding: 25px 12px 12px;
-    }
-    
-    .footer-container {
-        gap: 20px;
-    }
-
-    .site-footer h3 {
-        font-size: 1rem;
-        margin-bottom: 12px;
-    }
-    
-    .icon svg {
-        width: 16px;
-        height: 16px;
-    }
-    
-    .contact-info li {
-        font-size: 0.85rem;
-        margin-bottom: 10px;
-    }
-    
-    .footer-links a {
-        font-size: 0.85rem;
-        margin-bottom: 10px;
-    }
-    
-    .footer-bottom {
-        margin-top: 25px;
-        font-size: 0.8rem;
-    }
-    
-    .logo img {
-        max-width: 120px;
-    }
-}
-
-/* Très petits mobiles (320px) */
-@media screen and (max-width: 320px) {
-    .site-footer {
-        padding: 20px 10px 10px;
-    }
-    
-    .footer-container {
-        gap: 15px;
-    }
-    
-    .site-footer h3 {
-        font-size: 0.95rem;
-        margin-bottom: 10px;
-    }
-    
-    .contact-info li, .footer-links a, .company-description {
-        font-size: 0.8rem;
-    }
-    
-    .logo img {
-        max-width: 100px;
-    }
-    
-    .footer-bottom {
-        font-size: 0.75rem;
-    }
-}
-
-/* Fix pour éviter les problèmes de dépassement de texte sur les très petits écrans */
-@media screen and (max-width: 400px) {
-    .contact-info li {
-        word-break: break-word;
+        width: 100%;
     }
 }

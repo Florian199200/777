@@ -2071,3 +2071,16 @@ footer .footer-contact {
 .contact-text a:hover {
     color: var(--color-accent); /* Couleur des liens au survol */
 }
+
+.contact-section {
+    text-align: left;
+}
+
+.contact-section .contact-details {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.contact-section .contact-item {
+    display: block;
+}

@@ -943,19 +943,7 @@ header {
     overflow: hidden;
 }
 
-/* Styles pour le radar sonar */
-.roadmap-container .roadmap-progress::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px; /* Augmenter la taille */
-    height: 40px; /* Augmenter la taille */
-    background: rgba(0, 0, 0, 0.5); /* Utiliser la même couleur que la jauge de progression */
-    border-radius: 50%;
-    animation: pulse-animation 1.5s infinite;
-}
+
 
 @keyframes pulse-animation {
     0% {

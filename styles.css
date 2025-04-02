@@ -993,9 +993,9 @@ header {
         opacity: 0;
     }
 }
-}
+
 .approach-section .section-title {
-    color: var(243, 242, 235);
+    color: rgb(243, 242, 235); /* ou utilisez #F3F2EB */
 }
 
 .approach-section .section-description {

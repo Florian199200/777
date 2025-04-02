@@ -1837,3 +1837,7 @@ header {
         width: 100%;
     }
 }
+
+.discussion-strategique {
+    margin-bottom: 40px; /* Ajustez cette valeur selon l'espace souhaité */
+}

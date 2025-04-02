@@ -1700,13 +1700,14 @@ header {
 /* 
  * Footer CSS - Optimisé pour tous les appareils
  * Du plus petit iPhone (320px) aux grands écrans
+ * Couleurs mises à jour selon les directives
  */
 
 .site-footer {
     width: 100%;
     padding: clamp(20px, 5vw, 40px) clamp(10px, 5vw, 20px) clamp(10px, 3vw, 20px);
-    background-color: var(--color-primary, #464A3E);
-    color: var(--color-inverse, #F3F2EB);
+    background-color: var(--color-bg, #F3F2EB);
+    color: var(--color-primary, #464A3E);
     font-family: var(--font-body, 'Inter', sans-serif);
 }
 
@@ -1737,7 +1738,7 @@ header {
 .company-description {
     font-size: clamp(0.8rem, 2vw, 0.9rem);
     line-height: 1.5;
-    color: var(--color-inverse, #F3F2EB);
+    color: var(--color-primary, #464A3E);
 }
 
 .footer-contact {
@@ -1758,7 +1759,7 @@ header {
     margin-bottom: clamp(10px, 3vw, 15px);
     position: relative;
     padding-bottom: 10px;
-    color: var(--color-inverse, #F3F2EB);
+    color: var(--color-primary, #464A3E);
 }
 
 .site-footer h3::after {
@@ -1788,7 +1789,7 @@ header {
 .icon {
     display: inline-flex;
     margin-right: 10px;
-    color: var(--color-accent-light, #BDB391);
+    color: var(--color-text, #2B2C25);
     flex-shrink: 0;
 }
 
@@ -1798,7 +1799,7 @@ header {
 }
 
 .footer-links a {
-    color: var(--color-inverse, #F3F2EB);
+    color: var(--color-primary, #464A3E);
     text-decoration: none;
     margin-bottom: clamp(8px, 2vw, 12px);
     transition: color 0.3s ease;
@@ -1807,18 +1808,18 @@ header {
 }
 
 .footer-links a:hover {
-    color: var(--color-accent-light, #BDB391);
+    color: var(--color-accent, #A49869);
     text-decoration: underline;
 }
 
 .footer-bottom {
     margin-top: clamp(20px, 4vw, 30px);
     padding-top: clamp(15px, 3vw, 20px);
-    border-top: 1px solid var(--color-primary-light, #585E4D);
+    border-top: 1px solid var(--color-border, rgba(55, 59, 48, 0.15));
     text-align: center;
     width: 100%;
     font-size: clamp(0.75rem, 2vw, 0.9rem);
-    color: rgba(243, 242, 235, 0.7);
+    color: var(--color-text-light, #565750);
 }
 
 /* Ajustement de la direction pour petits écrans */

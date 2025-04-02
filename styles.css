@@ -950,11 +950,11 @@ header {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
+    width: 50px; /* Augmenter la taille */
+    height: 50px; /* Augmenter la taille */
     background: rgba(243, 242, 235, 0.5); /* Utiliser la même couleur que la jauge de progression */
     border-radius: 50%;
-    animation: pulse-animation 2s infinite;
+    animation: pulse-animation 1.5s infinite;
 }
 
 @keyframes pulse-animation {
@@ -962,13 +962,37 @@ header {
         transform: translate(-50%, -50%) scale(0);
         opacity: 1;
     }
-    70% {
+    50% {
         opacity: 0.5;
     }
     100% {
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(3); /* Augmenter la taille de l'effet */
         opacity: 0;
     }
+}
+
+/* Styles supplémentaires pour rendre l'effet plus impressionnant */
+.roadmap-container .roadmap-progress::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: #f3f2eb; /* Couleur principale */
+    border-radius: 50%;
+    animation: blink-animation 1s infinite;
+}
+
+@keyframes blink-animation {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
 }
 .approach-section .section-title {
     color: var(--color-inverse);

@@ -2045,30 +2045,29 @@ footer .footer-contact {
     padding-left: 0;
     margin-left: 0;
 }
-
 .footer-contact {
-    display: flex; /* Ajoutez cette ligne */
-    flex-direction: column; /* Ajoutez cette ligne */
-    align-items: flex-start; /* Ajoutez cette ligne */
-    gap: 16px; /* Ajoutez cette ligne */
+    display: flex; /* Utiliser flex pour aligner les éléments */
+    flex-direction: column; /* Aligner les éléments verticalement */
+    align-items: flex-start; /* Aligner les éléments à gauche */
+    gap: 16px; /* Ajouter un espace entre les éléments */
 }
 
 .contact-item {
-    display: flex; /* Ajoutez cette ligne */
-    align-items: center; /* Ajoutez cette ligne */
-    margin-bottom: 8px; /* Ajoutez cette ligne */
+    display: flex; /* Afficher les éléments de contact en ligne */
+    align-items: center; /* Aligner les icônes verticalement */
+    margin-bottom: 8px; /* Ajouter un espace sous chaque élément */
 }
 
 .contact-icon {
-    margin-right: 8px; /* Ajoutez cette ligne */
-    color: var(--color-accent); /* Ajoutez cette ligne si non présente */
+    margin-right: 8px; /* Ajouter un espace entre les icônes et les textes */
+    color: var(--color-accent); /* Couleur des icônes */
 }
 
 .contact-text a {
-    color: var(--color-primary); /* Ajoutez cette ligne */
-    text-decoration: none; /* Ajoutez cette ligne */
+    color: var(--color-primary); /* Couleur des liens de contact */
+    text-decoration: none; /* Supprimer la décoration des liens */
 }
 
 .contact-text a:hover {
-    color: var(--color-accent); /* Ajoutez cette ligne */
+    color: var(--color-accent); /* Couleur des liens au survol */
 }

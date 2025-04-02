@@ -943,8 +943,33 @@ header {
     overflow: hidden;
 }
 
+/* Styles pour le radar sonar */
+.roadmap-container .roadmap-progress::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: rgba(243, 242, 235, 0.5); /* Utiliser la même couleur que la jauge de progression */
+    border-radius: 50%;
+    animation: pulse-animation 2s infinite;
+}
 
-
+@keyframes pulse-animation {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
 .approach-section .section-title {
     color: var(--color-inverse);
 }

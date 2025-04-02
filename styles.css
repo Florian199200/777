@@ -999,12 +999,10 @@ header {
 }
 
 .approach-section .section-description {
-    color: rgba(243, 242, 235, 0.8);
+    color: rgba(--color-inverse);
 }
 
-.processus-tactique {
-     color: var(243, 242, 235); /* Changez cette variable par la couleur de votre choix */
- }
+
 .approach-section .tag {
     background-color: rgba(164, 152, 105, 0.15);
 }

@@ -950,9 +950,9 @@ header {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px; /* Augmenter la taille */
-    height: 50px; /* Augmenter la taille */
-    background: rgba(243, 242, 235, 0.5); /* Utiliser la même couleur que la jauge de progression */
+    width: 40px; /* Augmenter la taille */
+    height: 40px; /* Augmenter la taille */
+    background: rgba(0, 0, 0, 0.5); /* Utiliser la même couleur que la jauge de progression */
     border-radius: 50%;
     animation: pulse-animation 1.5s infinite;
 }

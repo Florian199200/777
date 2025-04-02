@@ -2053,7 +2053,7 @@ footer .footer-contact {
 
 .contact-item {
     display: flex; /* Afficher les éléments de contact en ligne */
-    align-items: center; /* Aligner les icônes verticalement */
+    align-items: flex-start; /* Aligner les icônes verticalement */
     margin-bottom: 8px; /* Ajouter un espace sous chaque élément */
 }
 

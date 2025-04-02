@@ -1921,99 +1921,96 @@ header {
     box-shadow: var(--box-shadow);
 }
 
-/* Media Queries pour les petits écrans */
+/* Media queries pour la page des services */
 @media (max-width: 576px) {
-    .services-page .hero-content {
+    .hero-content {
         grid-column: 1 / 13;
     }
 
-    .services-page .hero-visual {
+    .hero-visual {
         grid-column: 1 / 13;
         margin-top: 20px;
     }
 
-    .services-page .service-card {
+    .service-card {
         grid-column: span 12;
         padding: 20px 15px;
     }
 
-    .services-page .service-title {
+    .service-title {
         font-size: 18px;
     }
 
-    .services-page .service-description {
+    .service-description {
         font-size: 14px;
     }
 }
 
-/* Media Queries pour les tablettes */
 @media (min-width: 577px) and (max-width: 768px) {
-    .services-page .hero-content {
+    .hero-content {
         grid-column: 1 / 7;
     }
 
-    .services-page .hero-visual {
+    .hero-visual {
         grid-column: 7 / 13;
     }
 
-    .services-page .service-card {
+    .service-card {
         grid-column: span 6;
         padding: 30px 20px;
     }
 
-    .services-page .service-title {
+    .service-title {
         font-size: 20px;
     }
 
-    .services-page .service-description {
+    .service-description {
         font-size: 15px;
     }
 }
 
-/* Media Queries pour les écrans de taille moyenne */
 @media (min-width: 769px) and (max-width: 992px) {
-    .services-page .hero-content {
+    .hero-content {
         grid-column: 1 / 8;
     }
 
-    .services-page .hero-visual {
+    .hero-visual {
         grid-column: 8 / 13;
     }
 
-    .services-page .service-card {
+    .service-card {
         grid-column: span 4;
         padding: 35px 25px;
     }
 
-    .services-page .service-title {
+    .service-title {
         font-size: 22px;
     }
 
-    .services-page .service-description {
+    .service-description {
         font-size: 16px;
     }
 }
 
-/* Media Queries pour les grands écrans */
 @media (min-width: 993px) {
-    .services-page .hero-content {
+    .hero-content {
         grid-column: 1 / 8;
     }
 
-    .services-page .hero-visual {
+    .hero-visual {
         grid-column: 8 / 13;
     }
 
-    .services-page .service-card {
+    .service-card {
         grid-column: span 3;
         padding: 40px 30px;
     }
 
-    .services-page .service-title {
+    .service-title {
         font-size: 24px;
     }
 
-    .services-page .service-description {
+    .service-description {
         font-size: 18px;
     }
 }

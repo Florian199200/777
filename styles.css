@@ -2045,3 +2045,30 @@ footer .footer-contact {
     padding-left: 0;
     margin-left: 0;
 }
+
+.footer-contact {
+    display: flex; /* Ajoutez cette ligne */
+    flex-direction: column; /* Ajoutez cette ligne */
+    align-items: flex-start; /* Ajoutez cette ligne */
+    gap: 16px; /* Ajoutez cette ligne */
+}
+
+.contact-item {
+    display: flex; /* Ajoutez cette ligne */
+    align-items: center; /* Ajoutez cette ligne */
+    margin-bottom: 8px; /* Ajoutez cette ligne */
+}
+
+.contact-icon {
+    margin-right: 8px; /* Ajoutez cette ligne */
+    color: var(--color-accent); /* Ajoutez cette ligne si non présente */
+}
+
+.contact-text a {
+    color: var(--color-primary); /* Ajoutez cette ligne */
+    text-decoration: none; /* Ajoutez cette ligne */
+}
+
+.contact-text a:hover {
+    color: var(--color-accent); /* Ajoutez cette ligne */
+}

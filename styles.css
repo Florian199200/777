@@ -1697,157 +1697,245 @@ header {
     }
 } 
 
-/* Footer */
-footer {
-    background-color: var(--color-bg-alt);
-    color: var(--color-text);
-    padding: 40px 0;
-    text-align: center;
-    border-top: 1px solid var(--color-border);
+/* Footer Styles adaptés à la charte graphique du site - Responsive amélioré */
+.site-footer {
+    width: 100%;
+    padding: 40px 20px 20px;
+    background-color: var(--color-primary, #464A3E);
+    color: var(--color-inverse, #F3F2EB);
+    font-family: var(--font-body, 'Inter', sans-serif);
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: var(--grid-gap);
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
 }
 
 .footer-logo {
-    grid-column: span 2;
-}
-
-.footer-logo img {
-    max-width: 100%;
-    height: auto;
-}
-
-.footer-links {
-    grid-column: span 4;
+    flex: 1 1 250px;
     display: flex;
-    justify-content: center;
-    gap: 24px;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.footer-link {
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--color-text);
-    text-decoration: none;
-    transition: color var(--transition-speed) ease;
+.logo img {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 15px;
 }
 
-.footer-link:hover {
-    color: var(--color-accent);
+.company-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-inverse, #F3F2EB);
 }
 
 .footer-contact {
-    grid-column: span 4;
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--color-text);
-    text-align: center;
+    flex: 1 1 250px;
 }
 
-.footer-contact p {
-    margin: 4px 0;
-}
-
-.footer-social {
-    grid-column: span 2;
+.footer-links {
+    flex: 1 1 200px;
     display: flex;
-    justify-content: center;
-    gap: 16px;
+    flex-direction: column;
 }
 
-.social-link {
-    color: var(--color-text);
-    font-size: 18px;
-    transition: color var(--transition-speed) ease;
+.site-footer h3 {
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+    color: var(--color-inverse, #F3F2EB);
 }
 
-.social-link:hover {
-    color: var(--color-accent);
+.site-footer h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--color-accent, #A49869);
 }
 
-.footer-copy {
-    grid-column: span 12;
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--color-text-light);
-    margin-top: 24px;
+.contact-info {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+.contact-info li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.icon {
+    display: inline-flex;
+    margin-right: 10px;
+    color: var(--color-accent-light, #BDB391);
+    flex-shrink: 0;
+}
+
+.icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.footer-links a {
+    color: var(--color-inverse, #F3F2EB);
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--color-accent-light, #BDB391);
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-primary-light, #585E4D);
+    text-align: center;
+    width: 100%;
+    font-size: 0.9rem;
+    color: rgba(243, 242, 235, 0.7); /* Version plus claire de --color-inverse */
+}
+
+/* Responsive Styles - Enhanced for all device sizes */
+
+/* Grand écrans (1440px+) */
+@media screen and (min-width: 1440px) {
     .footer-container {
-        grid-template-columns: 1fr;
-        padding: 0 16px;
+        max-width: 1360px;
     }
+}
 
-    .footer-logo, .footer-links, .footer-contact, .footer-social {
-        grid-column: span 1;
+/* Écrans moyens (tablettes horizontales, petits laptops) */
+@media screen and (max-width: 992px) {
+    .footer-container {
+        gap: 25px;
     }
-
-    .footer-logo {
-        margin-bottom: 16px;
+    
+    .footer-logo, .footer-contact, .footer-links {
+        flex: 1 1 45%;
     }
+}
 
-    .footer-links {
+/* Tablettes et grands mobiles */
+@media screen and (max-width: 768px) {
+    .footer-container {
         flex-direction: column;
+        gap: 25px;
     }
 
-    .footer-link {
-        font-size: 12px;
+    .footer-logo, .footer-contact, .footer-links {
+        flex: 1 1 100%;
     }
-
-    .footer-contact {
-        font-size: 12px;
-        margin-bottom: 16px;
-    }
-
-    .footer-social {
-        margin-bottom: 16px;
-    }
-
-    .footer-copy {
-        font-size: 12px;
+    
+    .site-footer {
+        padding: 35px 15px 20px;
     }
 }
 
-/* Extra small devices (phones, 375px and up) */
-@media (max-width: 375px) {
+/* Mobiles standards */
+@media screen and (max-width: 576px) {
+    .site-footer {
+        padding: 30px 15px 15px;
+    }
+
+    .site-footer h3 {
+        font-size: 1.1rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.85rem;
+    }
+    
+    .company-description {
+        font-size: 0.85rem;
+    }
+}
+
+/* Petits mobiles (iPhone SE, etc.) */
+@media screen and (max-width: 375px) {
+    .site-footer {
+        padding: 25px 12px 12px;
+    }
+    
     .footer-container {
-        padding: 0 8px;
+        gap: 20px;
     }
 
-    .footer-link {
-        font-size: 10px;
+    .site-footer h3 {
+        font-size: 1rem;
+        margin-bottom: 12px;
     }
-
-    .footer-contact {
-        font-size: 10px;
+    
+    .icon svg {
+        width: 16px;
+        height: 16px;
     }
-
-    .footer-copy {
-        font-size: 10px;
+    
+    .contact-info li {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+    
+    .footer-bottom {
+        margin-top: 25px;
+        font-size: 0.8rem;
+    }
+    
+    .logo img {
+        max-width: 120px;
     }
 }
 
-/* Large screens (desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .footer-contact {
-        font-size: 16px;
+/* Très petits mobiles (320px) */
+@media screen and (max-width: 320px) {
+    .site-footer {
+        padding: 20px 10px 10px;
     }
-
-    .footer-link {
-        font-size: 16px;
+    
+    .footer-container {
+        gap: 15px;
     }
+    
+    .site-footer h3 {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+    }
+    
+    .contact-info li, .footer-links a, .company-description {
+        font-size: 0.8rem;
+    }
+    
+    .logo img {
+        max-width: 100px;
+    }
+    
+    .footer-bottom {
+        font-size: 0.75rem;
+    }
+}
 
-    .footer-copy {
-        font-size: 16px;
+/* Fix pour éviter les problèmes de dépassement de texte sur les très petits écrans */
+@media screen and (max-width: 400px) {
+    .contact-info li {
+        word-break: break-word;
     }
 }

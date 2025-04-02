@@ -2006,3 +2006,42 @@ footer .footer-bottom-link:hover {
         word-break: break-word;
     }
 }
+
+
+/* Correction d'alignement pour la section CONTACT uniquement */
+footer .footer-contact .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+footer .footer-contact .contact-icon {
+    color: var(--color-primary);
+    font-size: 16px;
+    min-width: 20px;
+    text-align: center;
+    margin-left: 0;
+}
+
+footer .footer-contact .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/* Titre CONTACT uniquement */
+footer .footer-contact .footer-heading {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/* Container de contact uniquement */
+footer .footer-contact {
+    padding-left: 0;
+    margin-left: 0;
+}

@@ -1751,6 +1751,12 @@ header {
  * Ultra responsive - compatible iPhone SE et tous appareils
  */
 
+/* 
+ * Footer CSS - Version finale
+ * - Alignement gauche du texte dans la colonne droite sur desktop uniquement
+ * - Ultra responsive sur tous appareils
+ */
+
 .site-footer {
     width: 100%;
     padding: clamp(20px, 5vw, 40px) clamp(10px, 5vw, 20px) clamp(10px, 3vw, 20px);
@@ -1799,12 +1805,12 @@ header {
 }
 
 .footer-links {
-    /* Aligné à droite */
+    /* Aligné à droite mais son contenu aligné à gauche */
     grid-column: 3;
     justify-self: end;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start; /* Alignement du contenu à gauche sur desktop */
 }
 
 .site-footer h3 {
@@ -1817,22 +1823,11 @@ header {
 }
 
 .footer-logo h3::after,
-.footer-contact h3::after {
+.footer-contact h3::after,
+.footer-links h3::after { /* Tous les titres ont la ligne à gauche */
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0;
-    width: 50px;
-    height: 2px;
-    background-color: var(--color-accent, #A49869);
-}
-
-/* Version droite de la ligne sous le titre pour la colonne de droite */
-.footer-links h3::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    left: auto;
     bottom: 0;
     width: 50px;
     height: 2px;
@@ -1874,7 +1869,7 @@ header {
     display: inline-block;
     font-size: clamp(0.85rem, 2vw, 0.875rem); /* 14px */
     font-family: var(--font-display, 'Chakra Petch', sans-serif);
-    text-align: right;
+    text-align: left; /* Texte aligné à gauche sur desktop */
 }
 
 .footer-links a:hover {
@@ -1905,19 +1900,6 @@ header {
         grid-column: 1;
         justify-self: start;
         width: 100%;
-    }
-    
-    .footer-links {
-        align-items: flex-start;
-    }
-    
-    .footer-links h3::after {
-        left: 0;
-        right: auto;
-    }
-    
-    .footer-links a {
-        text-align: left;
     }
 }
 

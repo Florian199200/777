@@ -1741,7 +1741,11 @@ header {
  * Avec espacement amélioré avant le footer
  */
 
-/* Espacement supplémentaire au-dessus du footer sur grands écrans */
+/* 
+ * Footer CSS - Optimisé pour tous les appareils
+ * Colonnes centrées sur la version ordinateur
+ */
+
 .site-footer {
     width: 100%;
     padding: clamp(20px, 5vw, 40px) clamp(10px, 5vw, 20px) clamp(10px, 3vw, 20px);
@@ -1757,13 +1761,14 @@ header {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: clamp(15px, 3vw, 30px);
+    /* Centrage des colonnes au lieu de space-between */
+    justify-content: center;
+    gap: clamp(30px, 5vw, 60px);
 }
 
 .footer-logo {
-    flex: 1 1 250px;
-    min-width: min(100%, 250px);
+    /* Largeur fixe au lieu de flex-grow */
+    flex: 0 1 300px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1782,13 +1787,13 @@ header {
 }
 
 .footer-contact {
-    flex: 1 1 250px;
-    min-width: min(100%, 250px);
+    /* Largeur fixe au lieu de flex-grow */
+    flex: 0 1 300px;
 }
 
 .footer-links {
-    flex: 1 1 200px;
-    min-width: min(100%, 200px);
+    /* Largeur fixe au lieu de flex-grow */
+    flex: 0 1 300px;
     display: flex;
     flex-direction: column;
 }
@@ -1869,69 +1874,10 @@ header {
 @media screen and (max-width: 700px) {
     .footer-container {
         flex-direction: column;
+        gap: 25px;
     }
     
     .footer-logo, .footer-contact, .footer-links {
         width: 100%;
-    }
-}
-
-.discussion-strategique {
-    margin-bottom: 40px; /* Ajustez cette valeur selon l'espace souhaité */
-}
-
-(pour la page de service )/* Pour les petits appareils (mobile) */
-@media (max-width: 576px) {
-    .service-card {
-        grid-column: span 12;
-        padding: 20px 15px;
-    }
-    .service-title {
-        font-size: 18px;
-    }
-    .service-description {
-        font-size: 14px;
-    }
-}
-
-/* Pour les tablettes */
-@media (min-width: 577px) and (max-width: 768px) {
-    .service-card {
-        grid-column: span 6;
-        padding: 30px 20px;
-    }
-    .service-title {
-        font-size: 20px;
-    }
-    .service-description {
-        font-size: 15px;
-    }
-}
-
-/* Pour les écrans de taille moyenne */
-@media (min-width: 769px) and (max-width: 992px) {
-    .service-card {
-        grid-column: span 4;
-        padding: 35px 25px;
-    }
-    .service-title {
-        font-size: 22px;
-    }
-    .service-description {
-        font-size: 16px;
-    }
-}
-
-/* Pour les grands écrans */
-@media (min-width: 993px) {
-    .service-card {
-        grid-column: span 3;
-        padding: 40px 30px;
-    }
-    .service-title {
-        font-size: 24px;
-    }
-    .service-description {
-        font-size: 18px;
     }
 }

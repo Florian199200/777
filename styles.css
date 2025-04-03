@@ -812,95 +812,212 @@ header {
     line-height: 1.7;
 }
 
-/* Services Section - Version Responsive Optimisée */
-.services-section {
-    position: relative;
-    overflow: hidden;
-    background-color: transparent;
-    padding: clamp(40px, 6vw, 80px) 0;
-    width: 100%;
-}
+/* Styles Responsives pour la Page Services - Harmonisés avec la page index.html */
 
-.services-container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: clamp(20px, 3vw, 30px);
-    width: 100%;
+/* ===== STYLES COMMUNS ===== */
+.container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 clamp(15px, 3vw, 30px);
+    width: 100%;
 }
 
-.service-card {
-    position: relative;
-    grid-column: span 4; /* Par défaut 3 cartes par ligne sur grand écran */
-    background-color: var(--color-bg-alt);
-    padding: clamp(25px, 4vw, 40px) clamp(20px, 3vw, 30px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(20px, 3vw, 30px);
+}
+
+/* ===== SECTION HÉRO ===== */
+.hero {
+    padding: clamp(120px, 20vh, 200px) 0 clamp(80px, 15vh, 160px);
+    min-height: 80vh;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 4px;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--box-shadow);
-}
-
-.service-number {
-    font-family: var(--font-display);
-    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: clamp(35px, 4vw, 40px);
-    height: clamp(35px, 4vw, 40px);
-    background-color: rgba(164, 152, 105, 0.1);
-    color: var(--color-accent);
-    font-weight: 700;
-    margin-bottom: clamp(20px, 3vw, 30px);
+    background-color: var(--color-bg);
     position: relative;
-    font-size: clamp(15px, 2vw, 17px);
 }
 
-.service-number::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    width: 10px;
-    height: 10px;
-    border-top: 1px solid var(--color-accent);
-    border-left: 1px solid var(--color-accent);
+.hero-content {
+    grid-column: 1 / 8;
+    position: relative;
+    z-index: 2;
 }
 
-.service-number::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    right: -5px;
-    width: 10px;
-    height: 10px;
-    border-bottom: 1px solid var(--color-accent);
-    border-right: 1px solid var(--color-accent);
+.coordinates {
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+    font-size: clamp(12px, 1.2vw, 14px);
+    color: var(--color-text-light);
+    margin-bottom: clamp(10px, 2vw, 15px);
+    letter-spacing: 0.5px;
 }
 
-.service-title {
-    font-size: clamp(18px, 2.2vw, 22px);
-    margin-bottom: clamp(15px, 2vw, 20px);
+.tag {
+    display: inline-block;
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+    font-size: clamp(12px, 1.2vw, 14px);
+    color: var(--color-accent);
+    margin-bottom: clamp(15px, 3vw, 25px);
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.hero-title {
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.2;
+    margin-bottom: clamp(20px, 3vw, 30px);
     color: var(--color-primary);
 }
 
-.service-description {
-    font-size: clamp(14px, 1.5vw, 15px);
+.highlight {
+    color: var(--color-accent);
+}
+
+.hero-description {
+    font-size: clamp(16px, 1.8vw, 18px);
+    line-height: 1.6;
     color: var(--color-text-light);
+    margin-bottom: clamp(25px, 4vw, 40px);
+    max-width: 90%;
+}
+
+.hero-visual {
+    grid-column: 8 / 13;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    padding: clamp(10px, 1.5vw, 15px) clamp(20px, 2.5vw, 30px);
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-size: clamp(12px, 1.2vw, 14px);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+}
+
+.secondary-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-inverse);
+}
+
+/* ===== SECTIONS DE SERVICE ===== */
+section {
+    padding: clamp(60px, 8vw, 100px) 0;
+    position: relative;
+}
+
+section:not(:last-child) {
+    border-bottom: 1px solid rgba(70, 74, 62, 0.1);
+}
+
+/* En-têtes de section */
+section > .container > div:first-child {
+    max-width: 800px;
+    margin: 0 auto clamp(40px, 6vw, 70px);
+    text-align: center;
+}
+
+.service-number-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(40px, 5vw, 60px);
+    height: clamp(40px, 5vw, 60px);
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: var(--color-inverse);
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 600;
     margin-bottom: clamp(20px, 3vw, 30px);
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+}
+
+section h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    margin-bottom: clamp(20px, 3vw, 30px);
+    color: var(--color-primary);
+    line-height: 1.2;
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+}
+
+section > .container > div:first-child p {
+    font-size: clamp(16px, 1.8vw, 18px);
+    color: var(--color-text-light);
     line-height: 1.7;
 }
 
-.service-features {
-    margin-bottom: clamp(20px, 3vw, 30px);
+/* Grilles et layouts des sections */
+.service-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(25px, 4vw, 40px);
+    align-items: center;
+}
+
+.service-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3vw, 30px);
+}
+
+.service-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(20px, 4vw, 40px);
+    margin-bottom: clamp(25px, 4vw, 40px);
+}
+
+.card {
+    background-color: var(--color-bg-alt);
+    border-radius: 10px;
+    padding: clamp(20px, 3vw, 30px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.card-bg {
+    background-color: var(--color-bg);
+}
+
+.card-icon {
+    font-size: clamp(28px, 4vw, 36px);
+    color: var(--color-accent);
+    margin-bottom: clamp(15px, 2vw, 20px);
+}
+
+.card-title {
+    font-size: clamp(18px, 2vw, 22px);
+    margin-bottom: clamp(10px, 1.5vw, 15px);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+}
+
+.card-text {
+    font-size: clamp(14px, 1.5vw, 15px);
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin-bottom: clamp(15px, 2vw, 20px);
+}
+
+.card-center {
+    text-align: center;
+}
+
+.feature-list {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
 }
 
 .feature-item {
@@ -910,106 +1027,308 @@ header {
     margin-bottom: 12px;
     font-size: clamp(13px, 1.4vw, 14px);
     color: var(--color-text-light);
+    line-height: 1.5;
+}
+
+.feature-item:last-child {
+    margin-bottom: 0;
 }
 
 .feature-icon {
     color: var(--color-accent);
-    font-size: clamp(13px, 1.4vw, 14px);
-    margin-top: 3px;
     flex-shrink: 0;
 }
 
-.service-link {
-    font-family: var(--font-display);
-    font-size: clamp(13px, 1.4vw, 14px);
-    font-weight: 500;
-    color: var(--color-primary);
+/* Images responsives */
+.img-container {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, 250px);
+    gap: clamp(15px, 2.5vw, 25px);
+    margin-bottom: clamp(40px, 6vw, 60px);
+}
+
+.video-main {
+    grid-column: 1;
+    grid-row: span 2;
+}
+
+/* CTA Module */
+.cta-module {
+    background-color: var(--color-primary);
+    color: var(--color-inverse);
+    border-radius: 10px;
+    padding: clamp(25px, 4vw, 40px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cta-content {
+    display: flex;
+    align-items: center;
+    gap: clamp(15px, 3vw, 30px);
+    width: 70%;
+}
+
+.cta-icon {
+    font-size: clamp(36px, 5vw, 48px);
+    color: var(--color-inverse);
+    flex-shrink: 0;
+}
+
+.cta-text h3 {
+    font-size: clamp(20px, 2.4vw, 24px);
+    margin-bottom: clamp(10px, 1.5vw, 15px);
+    color: var(--color-inverse);
+    font-weight: 600;
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+}
+
+.cta-text p {
+    font-size: clamp(14px, 1.6vw, 16px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0;
+}
+
+.cta-button-container {
+    width: 30%;
+    text-align: right;
+}
+
+.cta-button-large {
+    display: inline-block;
+    background-color: var(--color-accent);
+    padding: clamp(12px, 1.5vw, 15px) clamp(20px, 3vw, 30px);
+    border-radius: 4px;
+    color: var(--color-inverse);
     text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(14px, 1.6vw, 16px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+}
+
+.cta-button-large:hover {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Call to action finale */
+.cta-section {
+    padding: clamp(60px, 8vw, 100px) 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-inverse);
+}
+
+.cta-section h2 {
+    font-size: clamp(26px, 3.6vw, 36px);
+    margin-bottom: clamp(15px, 2.5vw, 25px);
+    line-height: 1.2;
+    color: var(--color-inverse);
+}
+
+.cta-section p {
+    font-size: clamp(16px, 1.8vw, 18px);
+    margin-bottom: clamp(25px, 4vw, 40px);
+    color: rgba(243, 242, 235, 0.9);
+    line-height: 1.7;
+}
+
+.cta-button-main {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    transition: gap var(--transition-speed) ease, color var(--transition-speed) ease;
-    margin-top: auto;
-    letter-spacing: -0.5px;
+    gap: 15px;
+    background-color: var(--color-accent);
+    color: var(--color-inverse);
+    padding: clamp(12px, 1.5vw, 15px) clamp(20px, 3vw, 30px);
+    font-size: clamp(14px, 1.6vw, 16px);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
 }
 
-.service-link:hover {
-    gap: 12px;
-    color: var(--color-accent);
+.cta-button-main:hover {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
 }
 
-.service-link svg {
-    transition: transform var(--transition-speed) ease;
-    flex-shrink: 0;
+.cta-button-main i {
+    transition: transform 0.3s ease;
 }
 
-.service-link:hover svg {
+.cta-button-main:hover i {
     transform: translateX(5px);
 }
 
-/* Breakpoint pour tablettes */
+/* Visuel technique (viseur) */
+.target-visual {
+    position: relative;
+    width: clamp(200px, 30vw, 300px);
+    height: clamp(200px, 30vw, 300px);
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Grands écrans et laptops */
+@media screen and (min-width: 1200px) {
+    /* Ajustements potentiels pour très grands écrans */
+}
+
+/* Écrans moyens et petits laptops */
 @media screen and (max-width: 992px) {
-    .service-card {
-        grid-column: span 6; /* 2 cartes par ligne sur tablette */
+    .hero-content {
+        grid-column: 1 / 9;
+    }
+    
+    .hero-visual {
+        grid-column: 9 / 13;
+    }
+    
+    .service-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .service-grid-3 > div:last-child {
+        grid-column: span 2;
     }
 }
 
-/* Breakpoint pour mobiles */
+/* Tablettes */
 @media screen and (max-width: 768px) {
-    .service-card {
-        grid-column: span 12; /* 1 carte par ligne sur mobile */
+    .hero {
+        padding: clamp(100px, 15vh, 150px) 0 clamp(60px, 10vh, 100px);
     }
     
-    .services-section {
-        padding: clamp(30px, 5vw, 60px) 0;
+    .hero-content {
+        grid-column: 1 / 13;
+    }
+    
+    .hero-description {
+        max-width: 100%;
+    }
+    
+    .hero-visual {
+        display: none; /* Cache le visuel sur mobile */
+    }
+    
+    .service-grid-2,
+    .service-grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-grid-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-grid-3 > div:last-child {
+        grid-column: auto;
+    }
+    
+    .video-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 250px auto auto;
+    }
+    
+    .video-main {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    .cta-module {
+        flex-direction: column;
+    }
+    
+    .cta-content {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .cta-button-container {
+        width: 100%;
+        text-align: center;
     }
 }
 
-/* Optimisations pour petits mobiles (iPhone SE) */
+/* Mobiles */
+@media screen and (max-width: 576px) {
+    .hero-title {
+        font-size: clamp(24px, 6vw, 28px);
+    }
+    
+    .hero-description {
+        font-size: clamp(14px, 4vw, 16px);
+    }
+    
+    .card {
+        padding: clamp(15px, 5vw, 20px);
+    }
+    
+    .cta-content {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+/* Petits mobiles (iPhone SE) */
 @media screen and (max-width: 375px) {
-    .service-card {
-        padding: 20px 15px;
+    section h2 {
+        font-size: clamp(22px, 7vw, 26px);
     }
     
-    .service-number {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-        margin-bottom: 15px;
-    }
-    
-    .service-title {
+    .card-title {
         font-size: 17px;
-        margin-bottom: 12px;
     }
     
-    .service-description,
-    .service-features {
-        margin-bottom: 15px;
-    }
-    
-    .feature-item {
-        margin-bottom: 8px;
+    .cta-button-large,
+    .cta-button-main {
+        padding: 10px 15px;
+        font-size: 14px;
     }
 }
 
-/* Optimisations pour très petits écrans (320px) */
+/* Très petits écrans */
 @media screen and (max-width: 320px) {
-    .service-card {
-        padding: 15px 12px;
+    .hero-title {
+        font-size: 22px;
     }
     
-    .service-number {
-        width: 30px;
-        height: 30px;
-        font-size: 13px;
+    section h2 {
+        font-size: 20px;
     }
     
-    .service-title {
+    .card-title {
         font-size: 16px;
     }
-}
-/* Approach Section */
+    
+    .service-number-circle {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}/* Approach Section */
 .approach-section {
     background-color: var(--color-primary);
     color: var(--color-inverse);

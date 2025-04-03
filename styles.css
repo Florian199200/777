@@ -987,7 +987,7 @@ section h2 {
 .service-grid-4 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(20px, 4vw, 40px);
+    gap: clamp(50px, 8vw, 80px);
     margin-bottom: clamp(25px, 4vw, 40px);
 }
 

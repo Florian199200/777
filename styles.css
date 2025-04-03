@@ -813,6 +813,7 @@ header {
 }
 
 /* Styles Responsives pour la Page Services - Harmonisés avec la page index.html */
+/* Styles Responsives Complets pour la Page Services */
 
 /* ===== STYLES COMMUNS ===== */
 .container {
@@ -826,6 +827,11 @@ header {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: clamp(20px, 3vw, 30px);
+}
+
+/* Classes d'alignement de texte */
+.text-center {
+    text-align: center;
 }
 
 /* ===== SECTION HÉRO ===== */
@@ -911,9 +917,17 @@ header {
 }
 
 /* ===== SECTIONS DE SERVICE ===== */
-section {
+.service-section {
     padding: clamp(60px, 8vw, 100px) 0;
     position: relative;
+}
+
+.bg-light {
+    background-color: var(--color-bg);
+}
+
+.bg-alt {
+    background-color: var(--color-bg-alt);
 }
 
 section:not(:last-child) {
@@ -921,7 +935,7 @@ section:not(:last-child) {
 }
 
 /* En-têtes de section */
-section > .container > div:first-child {
+.section-header {
     max-width: 800px;
     margin: 0 auto clamp(40px, 6vw, 70px);
     text-align: center;
@@ -950,7 +964,7 @@ section h2 {
     font-family: var(--font-display, 'Chakra Petch', sans-serif);
 }
 
-section > .container > div:first-child p {
+.section-header p {
     font-size: clamp(16px, 1.8vw, 18px);
     color: var(--color-text-light);
     line-height: 1.7;
@@ -977,12 +991,24 @@ section > .container > div:first-child p {
     margin-bottom: clamp(25px, 4vw, 40px);
 }
 
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(15px, 2vw, 25px);
+}
+
 .card {
     background-color: var(--color-bg-alt);
     border-radius: 10px;
     padding: clamp(20px, 3vw, 30px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card-bg {
@@ -1039,11 +1065,58 @@ section > .container > div:first-child p {
     flex-shrink: 0;
 }
 
+/* Liste de caractéristiques détaillée */
+.feature-list.detailed {
+    margin-top: clamp(15px, 2vw, 25px);
+}
+
+.feature-item-extended {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.feature-item-extended:last-child {
+    margin-bottom: 0;
+}
+
+.feature-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(70, 74, 62, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-primary);
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-title {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 5px;
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+}
+
+.feature-content p {
+    font-size: 15px;
+    color: var(--color-text-light);
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
 /* Images responsives */
 .img-container {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .img-container img {
@@ -1051,6 +1124,15 @@ section > .container > div:first-child p {
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s ease;
+}
+
+.img-container:hover img {
+    transform: scale(1.05);
+}
+
+.img-container.full-width {
+    margin-top: clamp(30px, 5vw, 50px);
 }
 
 .video-grid {
@@ -1189,6 +1271,159 @@ section > .container > div:first-child p {
     height: clamp(200px, 30vw, 300px);
 }
 
+.target-circle {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.target-circle.outer {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--color-accent);
+    opacity: 0.6;
+}
+
+.target-circle.middle {
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    border: 1px solid var(--color-accent);
+    opacity: 0.8;
+}
+
+.target-circle.inner {
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+    border: 3px solid var(--color-accent);
+}
+
+.target-line {
+    position: absolute;
+    background-color: var(--color-accent);
+    opacity: 0.7;
+}
+
+.target-line.horizontal {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+}
+
+.target-line.vertical {
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+}
+
+.target-direction {
+    position: absolute;
+    color: var(--color-accent);
+    font-size: 14px;
+}
+
+.target-direction.north {
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.target-direction.south {
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.target-direction.west {
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+}
+
+.target-direction.east {
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+}
+
+.target-mark {
+    position: absolute;
+    background-color: var(--color-accent);
+}
+
+.target-mark.left {
+    top: 50%;
+    left: 25%;
+    width: 5px;
+    height: 1px;
+}
+
+.target-mark.right {
+    top: 50%;
+    left: 75%;
+    width: 5px;
+    height: 1px;
+}
+
+.target-mark.top {
+    top: 25%;
+    left: 50%;
+    width: 1px;
+    height: 5px;
+}
+
+.target-mark.bottom {
+    top: 75%;
+    left: 50%;
+    width: 1px;
+    height: 5px;
+}
+
+/* Styles pour les polices */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display, 'Chakra Petch', sans-serif);
+}
+
+p, li, a, span {
+    font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+/* Styles pour les transitions de page */
+.services-page {
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles pour améliorer l'accessibilité */
+a:focus,
+button:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Styles pour les états actifs */
+.nav-link.active {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
 /* ===== MEDIA QUERIES ===== */
 
 /* Grands écrans et laptops */
@@ -1234,7 +1469,8 @@ section > .container > div:first-child p {
     }
     
     .service-grid-2,
-    .service-grid-4 {
+    .service-grid-4,
+    .feature-grid {
         grid-template-columns: 1fr;
     }
     
@@ -1258,6 +1494,7 @@ section > .container > div:first-child p {
     
     .cta-module {
         flex-direction: column;
+        padding: clamp(20px, 5vw, 30px);
     }
     
     .cta-content {
@@ -1268,6 +1505,15 @@ section > .container > div:first-child p {
     .cta-button-container {
         width: 100%;
         text-align: center;
+    }
+    
+    .target-visual {
+        width: clamp(180px, 50vw, 250px);
+        height: clamp(180px, 50vw, 250px);
+    }
+    
+    .feature-item-extended {
+        margin-bottom: 15px;
     }
 }
 
@@ -1290,6 +1536,23 @@ section > .container > div:first-child p {
         align-items: flex-start;
         text-align: left;
     }
+    
+    .feature-icon-circle {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .feature-title {
+        font-size: 15px;
+    }
+    
+    .feature-content p {
+        font-size: 14px;
+    }
+    
+    .cta-icon {
+        font-size: 32px;
+    }
 }
 
 /* Petits mobiles (iPhone SE) */
@@ -1306,6 +1569,69 @@ section > .container > div:first-child p {
     .cta-button-main {
         padding: 10px 15px;
         font-size: 14px;
+    }
+    
+    .feature-icon-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .feature-item-extended {
+        gap: 10px;
+    }
+}
+
+/* Très petits écrans */
+@media screen and (max-width: 320px) {
+    .hero-title {
+        font-size: 22px;
+    }
+    
+    section h2 {
+        font-size: 20px;
+    }
+    
+    .card-title {
+        font-size: 16px;
+    }
+    
+    .service-number-circle {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+/* Optimisations pour l'impression */
+@media print {
+    .site-footer,
+    .mobile-menu-toggle,
+    .mobile-nav,
+    .overlay,
+    .cta-section {
+        display: none !important;
+    }
+    
+    section {
+        page-break-inside: avoid;
+    }
+    
+    header {
+        position: relative;
+    }
+    
+    .service-section {
+        padding: 20px 0;
+    }
+    
+    a {
+        text-decoration: none !important;
+        color: var(--color-primary) !important;
     }
 }
 

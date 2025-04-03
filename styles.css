@@ -812,19 +812,30 @@ header {
     line-height: 1.7;
 }
 
-/* Services Section */
+/* Services Section - Version Responsive Optimisée */
 .services-section {
     position: relative;
     overflow: hidden;
     background-color: transparent;
+    padding: clamp(40px, 6vw, 80px) 0;
+    width: 100%;
 }
 
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(20px, 3vw, 30px);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(15px, 3vw, 30px);
+}
 
 .service-card {
     position: relative;
-    grid-column: span 3;
+    grid-column: span 4; /* Par défaut 3 cartes par ligne sur grand écran */
     background-color: var(--color-bg-alt);
-    padding: 40px 30px;
+    padding: clamp(25px, 4vw, 40px) clamp(20px, 3vw, 30px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
     display: flex;
@@ -843,14 +854,14 @@ header {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: clamp(35px, 4vw, 40px);
+    height: clamp(35px, 4vw, 40px);
     background-color: rgba(164, 152, 105, 0.1);
     color: var(--color-accent);
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: clamp(20px, 3vw, 30px);
     position: relative;
-    font-size: 17px;
+    font-size: clamp(15px, 2vw, 17px);
 }
 
 .service-number::before {
@@ -876,20 +887,20 @@ header {
 }
 
 .service-title {
-    font-size: 22px;
-    margin-bottom: 20px;
+    font-size: clamp(18px, 2.2vw, 22px);
+    margin-bottom: clamp(15px, 2vw, 20px);
     color: var(--color-primary);
 }
 
 .service-description {
-    font-size: 15px;
+    font-size: clamp(14px, 1.5vw, 15px);
     color: var(--color-text-light);
-    margin-bottom: 30px;
+    margin-bottom: clamp(20px, 3vw, 30px);
     line-height: 1.7;
 }
 
 .service-features {
-    margin-bottom: 30px;
+    margin-bottom: clamp(20px, 3vw, 30px);
 }
 
 .feature-item {
@@ -897,19 +908,20 @@ header {
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 12px;
-    font-size: 14px;
+    font-size: clamp(13px, 1.4vw, 14px);
     color: var(--color-text-light);
 }
 
 .feature-icon {
     color: var(--color-accent);
-    font-size: 14px;
+    font-size: clamp(13px, 1.4vw, 14px);
     margin-top: 3px;
+    flex-shrink: 0;
 }
 
 .service-link {
     font-family: var(--font-display);
-    font-size: 14px;
+    font-size: clamp(13px, 1.4vw, 14px);
     font-weight: 500;
     color: var(--color-primary);
     text-decoration: none;
@@ -928,12 +940,75 @@ header {
 
 .service-link svg {
     transition: transform var(--transition-speed) ease;
+    flex-shrink: 0;
 }
 
 .service-link:hover svg {
     transform: translateX(5px);
 }
 
+/* Breakpoint pour tablettes */
+@media screen and (max-width: 992px) {
+    .service-card {
+        grid-column: span 6; /* 2 cartes par ligne sur tablette */
+    }
+}
+
+/* Breakpoint pour mobiles */
+@media screen and (max-width: 768px) {
+    .service-card {
+        grid-column: span 12; /* 1 carte par ligne sur mobile */
+    }
+    
+    .services-section {
+        padding: clamp(30px, 5vw, 60px) 0;
+    }
+}
+
+/* Optimisations pour petits mobiles (iPhone SE) */
+@media screen and (max-width: 375px) {
+    .service-card {
+        padding: 20px 15px;
+    }
+    
+    .service-number {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    .service-title {
+        font-size: 17px;
+        margin-bottom: 12px;
+    }
+    
+    .service-description,
+    .service-features {
+        margin-bottom: 15px;
+    }
+    
+    .feature-item {
+        margin-bottom: 8px;
+    }
+}
+
+/* Optimisations pour très petits écrans (320px) */
+@media screen and (max-width: 320px) {
+    .service-card {
+        padding: 15px 12px;
+    }
+    
+    .service-number {
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+    }
+    
+    .service-title {
+        font-size: 16px;
+    }
+}
 /* Approach Section */
 .approach-section {
     background-color: var(--color-primary);

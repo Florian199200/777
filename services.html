@@ -19,7 +19,9 @@
                     <a href="services.html" class="nav-link active">SERVICES</a>
                     <a href="methode.html" class="nav-link">À PROPOS</a>
                 </nav>
-                <a href="contact.html" class="cta-button">CONTACT</a>
+                <div class="header-cta">
+                    <a href="contact.html" class="cta-button">CONTACT</a>
+                </div>
                 <div class="mobile-menu-toggle">
                     <span></span>
                     <span></span>
@@ -42,10 +44,10 @@
     <div class="overlay"></div>
 
     <!-- HÉRO - Style similaire à la page d'accueil avec viseur à droite -->
-    <section class="hero" style="padding: 200px 0 160px; min-height: 80vh; display: flex; align-items: center;">
+    <section class="hero">
         <div class="container">
             <div class="grid">
-                <div class="hero-content" style="grid-column: 1 / 8; position: relative; z-index: 2;">
+                <div class="hero-content">
                     <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
                     <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
                     <h1 class="hero-title">Quatre stratégies pour <span class="highlight">conquérir le marché</span> de la pêche à la carpe</h1>
@@ -55,83 +57,80 @@
                     </div>
                 </div>
                 
-                <div class="hero-visual" style="grid-column: 8 / 13; position: relative; z-index: 1; display: flex; justify-content: center; align-items: center;">
+                <div class="hero-visual">
                     <!-- Viseur stratégique -->
-                    <div style="position: relative; width: 300px; height: 300px;">
+                    <div class="target-visual">
                         <!-- Cercle extérieur -->
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 2px solid var(--color-accent); border-radius: 50%; opacity: 0.6;"></div>
+                        <div class="target-circle outer"></div>
                         
                         <!-- Cercle milieu -->
-                        <div style="position: absolute; top: 15%; left: 15%; width: 70%; height: 70%; border: 1px solid var(--color-accent); border-radius: 50%; opacity: 0.8;"></div>
+                        <div class="target-circle middle"></div>
                         
                         <!-- Cercle intérieur -->
-                        <div style="position: absolute; top: 30%; left: 30%; width: 40%; height: 40%; border: 3px solid var(--color-accent); border-radius: 50%;"></div>
+                        <div class="target-circle inner"></div>
                         
                         <!-- Lignes de visée horizontales et verticales -->
-                        <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background-color: var(--color-accent); opacity: 0.7;"></div>
-                        <div style="position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background-color: var(--color-accent); opacity: 0.7;"></div>
+                        <div class="target-line horizontal"></div>
+                        <div class="target-line vertical"></div>
                         
                         <!-- Points cardinaux -->
-                        <div style="position: absolute; top: 5%; left: 50%; transform: translateX(-50%); color: var(--color-accent); font-size: 14px;">N</div>
-                        <div style="position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%); color: var(--color-accent); font-size: 14px;">S</div>
-                        <div style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); color: var(--color-accent); font-size: 14px;">W</div>
-                        <div style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); color: var(--color-accent); font-size: 14px;">E</div>
+                        <div class="target-direction north">N</div>
+                        <div class="target-direction south">S</div>
+                        <div class="target-direction west">W</div>
+                        <div class="target-direction east">E</div>
                         
                         <!-- Marques de graduation -->
-                        <div style="position: absolute; top: 50%; left: 25%; width: 5px; height: 1px; background-color: var(--color-accent);"></div>
-                        <div style="position: absolute; top: 50%; left: 75%; width: 5px; height: 1px; background-color: var(--color-accent);"></div>
-                        <div style="position: absolute; top: 25%; left: 50%; width: 1px; height: 5px; background-color: var(--color-accent);"></div>
-                        <div style="position: absolute; top: 75%; left: 50%; width: 1px; height: 5px; background-color: var(--color-accent);"></div>
+                        <div class="target-mark left"></div>
+                        <div class="target-mark right"></div>
+                        <div class="target-mark top"></div>
+                        <div class="target-mark bottom"></div>
                     </div>
-                    
-                    <div class="target-marks"></div>
-                    <div class="tech-frame"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SERVICE 1: E-COMMERCE -->
-    <section id="ecommerce" style="padding: 100px 0; background-color: var(--color-bg); border-bottom: 1px solid rgba(70, 74, 62, 0.1);">
+    <section id="ecommerce" class="service-section bg-light">
         <div class="container">
             <!-- En-tête de section -->
-            <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-primary); color: var(--color-inverse); font-size: 24px; font-weight: 600; margin-bottom: 30px;">01</div>
-                <h2 style="font-size: 42px; margin-bottom: 30px; color: var(--color-primary); line-height: 1.2;">E-commerce qui convertit les passionnés en clients</h2>
-                <p style="font-size: 18px; color: var(--color-text-light); line-height: 1.7;">Un site e-commerce ordinaire peut vendre des produits. Le nôtre transforme les carpistes passionnés en acheteurs réguliers. La différence? Notre compréhension intime de ce qui déclenche l'achat chez un pêcheur spécialisé.</p>
+            <div class="section-header">
+                <div class="service-number-circle">01</div>
+                <h2>E-commerce qui convertit les passionnés en clients</h2>
+                <p>Un site e-commerce ordinaire peut vendre des produits. Le nôtre transforme les carpistes passionnés en acheteurs réguliers. La différence? Notre compréhension intime de ce qui déclenche l'achat chez un pêcheur spécialisé.</p>
             </div>
             
             <!-- Contenu de la section -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+            <div class="service-grid-2">
                 <!-- Image à gauche -->
-                <div style="overflow: hidden; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
-                    <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Boutique+E-commerce" style="width: 100%; height: auto; display: block;">
+                <div class="img-container">
+                    <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Boutique+E-commerce" alt="Boutique E-commerce">
                 </div>
                 
                 <!-- Caractéristiques à droite -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
-                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-fish"></i></div>
-                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Pages produits persuasives</h3>
-                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Conçues pour parler au carpiste, pas juste à son portefeuille. Nous mettons en avant les caractéristiques qui comptent vraiment.</p>
+                <div class="feature-grid">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-fish"></i></div>
+                        <h3 class="card-title">Pages produits persuasives</h3>
+                        <p class="card-text">Conçues pour parler au carpiste, pas juste à son portefeuille. Nous mettons en avant les caractéristiques qui comptent vraiment.</p>
                     </div>
                     
-                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-route"></i></div>
-                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Parcours d'achat optimisé</h3>
-                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Calqué sur la psychologie du pêcheur technique pour fluidifier l'expérience et maximiser les conversions.</p>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-route"></i></div>
+                        <h3 class="card-title">Parcours d'achat optimisé</h3>
+                        <p class="card-text">Calqué sur la psychologie du pêcheur technique pour fluidifier l'expérience et maximiser les conversions.</p>
                     </div>
                     
-                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-certificate"></i></div>
-                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Arguments techniques</h3>
-                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Qui justifient l'investissement dans du matériel ou des appâts premium grâce à une présentation détaillée et experte.</p>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-certificate"></i></div>
+                        <h3 class="card-title">Arguments techniques</h3>
+                        <p class="card-text">Qui justifient l'investissement dans du matériel ou des appâts premium grâce à une présentation détaillée et experte.</p>
                     </div>
                     
-                    <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                        <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-sync-alt"></i></div>
-                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Recommandations personnalisées</h3>
-                        <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Basées sur les habitudes réelles de session de pêche pour augmenter la valeur du panier moyen.</p>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3 class="card-title">Recommandations personnalisées</h3>
+                        <p class="card-text">Basées sur les habitudes réelles de session de pêche pour augmenter la valeur du panier moyen.</p>
                     </div>
                 </div>
             </div>
@@ -139,89 +138,90 @@
     </section>
 
     <!-- SERVICE 2: PHOTOGRAPHIE & VIDÉO -->
-    <section id="visuel" style="padding: 100px 0; background-color: var(--color-bg-alt); border-bottom: 1px solid rgba(70, 74, 62, 0.1);">
+    <section id="visuel" class="service-section bg-alt">
         <div class="container">
             <!-- En-tête de section -->
-            <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-primary); color: var(--color-inverse); font-size: 24px; font-weight: 600; margin-bottom: 30px;">02</div>
-                <h2 style="font-size: 42px; margin-bottom: 30px; color: var(--color-primary); line-height: 1.2;">Production visuelle qui met en valeur chaque détail technique</h2>
-                <p style="font-size: 18px; color: var(--color-text-light); line-height: 1.7;">Le carpiste n'achète pas un simple produit – il investit dans une promesse technique. Nos visuels révèlent ce que l'œil ne peut voir : la qualité des matériaux et des appâts, l'ingéniosité des mécanismes, la robustesse des constructions.</p>
+            <div class="section-header">
+                <div class="service-number-circle">02</div>
+                <h2>Production visuelle qui met en valeur chaque détail technique</h2>
+                <p>Le carpiste n'achète pas un simple produit – il investit dans une promesse technique. Nos visuels révèlent ce que l'œil ne peut voir : la qualité des matériaux et des appâts, l'ingéniosité des mécanismes, la robustesse des constructions.</p>
             </div>
             
             <!-- Grille pour les vidéos et images -->
-            <div style="display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: repeat(2, 250px); gap: 25px; margin-bottom: 60px;">
+            <div class="video-grid">
                 <!-- Zone vidéo principale -->
-                <div style="grid-column: 1; grid-row: span 2; overflow: hidden; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
-                    <img src="https://placehold.co/900x500/464a3e/f3f2eb?text=Vidéo+Technique" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="video-main img-container">
+                    <img src="https://placehold.co/900x500/464a3e/f3f2eb?text=Vidéo+Technique" alt="Vidéo Technique">
                 </div>
                 
                 <!-- Images -->
-                <div style="overflow: hidden; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
-                    <img src="https://placehold.co/500x250/464a3e/f3f2eb?text=Photo+1" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="img-container">
+                    <img src="https://placehold.co/500x250/464a3e/f3f2eb?text=Photo+1" alt="Photo 1">
                 </div>
                 
-                <div style="overflow: hidden; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
-                    <img src="https://placehold.co/500x250/464a3e/f3f2eb?text=Photo+2" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="img-container">
+                    <img src="https://placehold.co/500x250/464a3e/f3f2eb?text=Photo+2" alt="Photo 2">
                 </div>
             </div>
             
             <!-- Services de production visuelle -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
-                <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                    <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-camera"></i></div>
-                    <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Photographie technique</h3>
-                    <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Mise en valeur professionnelle des détails invisibles qui justifient l'investissement dans vos produits.</p>
-                    <ul style="padding-left: 0; list-style: none; margin-top: 20px; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Valeur perçue du produit</span>
+            <div class="service-grid-3">
+                <div class="card card-bg">
+                    <div class="card-icon"><i class="fas fa-camera"></i></div>
+                    <h3 class="card-title">Photographie technique</h3>
+                    <p class="card-text">Mise en valeur professionnelle des détails invisibles qui justifient l'investissement dans vos produits.</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Valeur perçue du produit</span>
                         </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Photographie impactante et cinématique</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Photographie impactante et cinématique</span>
                         </li>
-                        <li style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Macro-photographie détaillée</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Macro-photographie détaillée</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                    <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-video"></i></div>
-                    <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Vidéos en action</h3>
-                    <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Démonstrations filmées en situation réelle pour montrer l'efficacité de vos équipements.</p>
-                    <ul style="padding-left: 0; list-style: none; margin-top: 20px; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Scénarios de pêche réalistes en 4k</span>
+                <div class="card card-bg">
+                    <div class="card-icon"><i class="fas fa-video"></i></div>
+                    <h3 class="card-title">Vidéos en action</h3>
+                    <p class="card-text">Démonstrations filmées en situation réelle pour montrer l'efficacité de vos équipements.</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Scénarios de pêche réalistes en 4k</span>
                         </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Démonstrations techniques</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Démonstrations techniques</span>
                         </li>
-                        <li style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Témoignages d'utilisateurs</span>
-                        </ul>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Témoignages d'utilisateurs</span>
+                        </li>
+                    </ul>
                 </div>
                 
-                <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                    <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-chart-bar"></i></div>
-                    <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Infographies techniques</h3>
-                    <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light);">Explications visuelles claires pour montrer les avantages techniques de vos produits.</p>
-                    <ul style="padding-left: 0; list-style: none; margin-top: 20px; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Vues éclatées des produits</span>
+                <div class="card card-bg">
+                    <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3 class="card-title">Infographies techniques</h3>
+                    <p class="card-text">Explications visuelles claires pour montrer les avantages techniques de vos produits.</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Vues éclatées des produits</span>
                         </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Comparaisons visuelles</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Comparaisons visuelles</span>
                         </li>
-                        <li style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Données techniques illustrées</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Données techniques illustrées</span>
                         </li>
                     </ul>
                 </div>
@@ -230,204 +230,190 @@
     </section>
 
     <!-- SERVICE 3: COMMUNITY MANAGEMENT -->
-    <section id="communaute" style="padding: 100px 0; background-color: var(--color-bg); border-bottom: 1px solid rgba(70, 74, 62, 0.1);">
+    <section id="communaute" class="service-section bg-light">
         <div class="container">
             <!-- En-tête de section -->
-            <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-primary); color: var(--color-inverse); font-size: 24px; font-weight: 600; margin-bottom: 30px;">03</div>
-                <h2 style="font-size: 42px; margin-bottom: 30px; color: var(--color-primary); line-height: 1.2;">Community Management spécialisé pêche à la carpe</h2>
-                <p style="font-size: 18px; color: var(--color-text-light); line-height: 1.7;">La pêche à la carpe n'est pas un simple loisir, c'est une passion dévorante. Nous animons pour votre marque une communauté active qui ne se contente pas d'acheter, mais défend et promeut vos produits avec conviction.</p>
+            <div class="section-header">
+                <div class="service-number-circle">03</div>
+                <h2>Community Management spécialisé pêche à la carpe</h2>
+                <p>La pêche à la carpe n'est pas un simple loisir, c'est une passion dévorante. Nous animons pour votre marque une communauté active qui ne se contente pas d'acheter, mais défend et promeut vos produits avec conviction.</p>
             </div>
             
             <!-- Contenu de la section -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
-                <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                    <div style="text-align: center; margin-bottom: 30px;">
-                        <div style="font-size: 40px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-comments"></i></div>
-                        <h3 style="color: var(--color-primary); margin-bottom: 15px; font-size: 22px;">Animation quotidienne</h3>
-                    </div>
-                    <p style="color: var(--color-text-light); line-height: 1.6; font-size: 15px; margin-bottom: 20px; text-align: center;">Nous animons vos plateformes sociales avec une expertise unique du secteur de la pêche à la carpe.</p>
-                    <ul style="padding-left: 0; list-style: none; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Gestion professionnelle des réseaux sociaux</span>
+            <div class="service-grid-3">
+                <div class="card">
+                    <div class="card-icon text-center"><i class="fas fa-comments"></i></div>
+                    <h3 class="card-title text-center">Animation quotidienne</h3>
+                    <p class="card-text text-center">Nous animons vos plateformes sociales avec une expertise unique du secteur de la pêche à la carpe.</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Gestion professionnelle des réseaux sociaux</span>
                         </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Modération et réponses aux commentaires</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Modération et réponses aux commentaires</span>
                         </li>
-                        <li style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Création d'un calendrier éditorial</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Création d'un calendrier éditorial</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                    <div style="text-align: center; margin-bottom: 30px;">
-                        <div style="font-size: 40px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-users"></i></div>
-                        <h3 style="color: var(--color-primary); margin-bottom: 15px; font-size: 22px;">Programme d'ambassadeurs</h3>
-                    </div>
-                    <p style="color: var(--color-text-light); line-height: 1.6; font-size: 15px; margin-bottom: 20px; text-align: center;">Nous créons et gérons un réseau d'ambassadeurs qui partagent authentiquement leur passion.</p>
-                    <ul style="padding-left: 0; list-style: none; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Recrutement de carpistes influents</span>
+                <div class="card">
+                    <div class="card-icon text-center"><i class="fas fa-users"></i></div>
+                    <h3 class="card-title text-center">Programme d'ambassadeurs</h3>
+                    <p class="card-text text-center">Nous créons et gérons un réseau d'ambassadeurs qui partagent authentiquement leur passion.</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Recrutement de carpistes influents</span>
                         </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Formation et accompagnement</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Formation et accompagnement</span>
                         </li>
-                        <li style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Animation du groupe d'ambassadeurs</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Animation du groupe d'ambassadeurs</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div style="background-color: var(--color-bg-alt); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                    <div style="text-align: center; margin-bottom: 30px;">
-                        <div style="font-size: 40px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-book-open"></i></div>
-                        <h3 style="color: var(--color-primary); margin-bottom: 15px; font-size: 22px;">Contenu technique</h3>
-                    </div>
-                    <p style="color: var(--color-text-light); line-height: 1.6; font-size: 15px; margin-bottom: 20px; text-align: center;">Nous développons un contenu éducatif qui positionne votre marque comme référence technique.</p>
-                    <ul style="padding-left: 0; list-style: none; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Guides techniques détaillés</span>
+                <div class="card">
+                    <div class="card-icon text-center"><i class="fas fa-book-open"></i></div>
+                    <h3 class="card-title text-center">Contenu technique</h3>
+                    <p class="card-text text-center">Nous développons un contenu éducatif qui positionne votre marque comme référence technique.</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Guides techniques détaillés</span>
                         </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Webinaires avec des experts</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Webinaires avec des experts</span>
                         </li>
-                        <li style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                            <span style="color: var(--color-text-light);">Articles spécialisés techniques</span>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Articles spécialisés techniques</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
             <!-- Image de community management -->
-            <div style="margin-top: 50px; overflow: hidden; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
-                <img src="https://placehold.co/1200x400/464a3e/f3f2eb?text=Community+Management+Spécialisé" style="width: 100%; height: auto; display: block;">
+            <div class="img-container full-width">
+                <img src="https://placehold.co/1200x400/464a3e/f3f2eb?text=Community+Management+Spécialisé" alt="Community Management Spécialisé">
             </div>
         </div>
     </section>
 
-<!-- SERVICE 4: ACQUISITION -->
-<section id="acquisition" style="padding: 100px 0; background-color: var(--color-bg-alt);">
-    <div class="container">
-        <!-- En-tête de section -->
-        <div style="max-width: 800px; margin: 0 auto 70px; text-align: center;">
-            <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background-color: var(--color-primary); color: var(--color-inverse); font-size: 24px; font-weight: 600; margin-bottom: 30px;">04</div>
-            <h2 style="font-size: 42px; margin-bottom: 30px; color: var(--color-primary); line-height: 1.2;">Stratégies d'acquisition qui ciblent les vrais acheteurs</h2>
-            <p style="font-size: 18px; color: var(--color-text-light); line-height: 1.7;">Fini le gaspillage publicitaire. Nous ne ciblons pas "les pêcheurs" en général, mais précisément les carpistes actifs prêts à investir dans du matériel premium. Le résultat? Plus de trafic qualifié, moins de budget perdu.</p>
-        </div>
-        
-        <!-- Contenu de la section - Deux modules côte à côte -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px;">
-            <!-- Module gauche -->
-            <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-bullseye"></i></div>
-                <h3 style="font-size: 20px; margin-bottom: 20px; color: var(--color-primary); font-weight: 600;">Ce que nous faisons différemment</h3>
-                <ul style="padding-left: 0; list-style: none; margin-bottom: 0;">
-                    <li style="margin-bottom: 20px;">
-                        <div style="display: flex; align-items: flex-start; gap: 15px;">
-                            <div style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(70, 74, 62, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fas fa-search" style="color: var(--color-primary);"></i>
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; color: var(--color-primary); margin-bottom: 5px;">SEO ultra-spécialisé</div>
-                                <p style="font-size: 15px; color: var(--color-text-light); margin-bottom: 0; line-height: 1.6;">Nous maîtrisons le vocabulaire technique que les carpistes utilisent réellement</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <div style="display: flex; align-items: flex-start; gap: 15px;">
-                            <div style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(70, 74, 62, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fas fa-bullseye" style="color: var(--color-primary);"></i>
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; color: var(--color-primary); margin-bottom: 5px;">Publicités hyper-ciblées</div>
-                                <p style="font-size: 15px; color: var(--color-text-light); margin-bottom: 0; line-height: 1.6;">Nous identifions les micro-comportements qui révèlent l'intention d'achat</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="margin-bottom: 20px;">
-                        <div style="display: flex; align-items: flex-start; gap: 15px;">
-                            <div style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(70, 74, 62, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fas fa-users" style="color: var(--color-primary);"></i>
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; color: var(--color-primary); margin-bottom: 5px;">Influenceurs crédibles</div>
-                                <p style="font-size: 15px; color: var(--color-text-light); margin-bottom: 0; line-height: 1.6;">Nous collaborons avec des carpistes reconnus pour leur expertise, pas juste leur visibilité</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div style="display: flex; align-items: flex-start; gap: 15px;">
-                            <div style="width: 40px; height: 40px; border-radius: 50%; background-color: rgba(70, 74, 62, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fas fa-file-alt" style="color: var(--color-primary);"></i>
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; color: var(--color-primary); margin-bottom: 5px;">Contenu technique</div>
-                                <p style="font-size: 15px; color: var(--color-text-light); margin-bottom: 0; line-height: 1.6;">Notre contenu résout de vrais problèmes techniques que rencontrent les passionnés</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+    <!-- SERVICE 4: ACQUISITION -->
+    <section id="acquisition" class="service-section bg-alt">
+        <div class="container">
+            <!-- En-tête de section -->
+            <div class="section-header">
+                <div class="service-number-circle">04</div>
+                <h2>Stratégies d'acquisition qui ciblent les vrais acheteurs</h2>
+                <p>Fini le gaspillage publicitaire. Nous ne ciblons pas "les pêcheurs" en général, mais précisément les carpistes actifs prêts à investir dans du matériel premium. Le résultat? Plus de trafic qualifié, moins de budget perdu.</p>
             </div>
             
-            <!-- Module droit -->
-            <div style="background-color: var(--color-bg); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                <div style="font-size: 36px; color: var(--color-accent); margin-bottom: 20px;"><i class="fas fa-chart-pie"></i></div>
-                <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--color-primary); font-weight: 600;">Réduction du coût d'acquisition sur le long terme</h3>
-                <p style="font-size: 15px; line-height: 1.6; color: var(--color-text-light); margin-bottom: 20px;">Notre approche stratégique permet de diminuer progressivement le coût par client acquis grâce à un ciblage affiné et une optimisation continue de tous les canaux.</p>
-                <ul style="padding-left: 0; list-style: none; margin-bottom: 0;">
-                    <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                        <span style="color: var(--color-text-light);">Analyse du comportement des visiteurs pour affiner le ciblage</span>
-                    </li>
-                    <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                        <span style="color: var(--color-text-light);">Segmentation précise par type de pêche et niveau</span>
-                    </li>
-                    <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                        <span style="color: var(--color-text-light);">Stratégies de rétention efficaces pour réduire les coûts</span>
-                    </li>
-                    <li style="display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-check" style="color: var(--color-accent);"></i>
-                        <span style="color: var(--color-text-light);">Développement d'un système d'acquisition organique</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- Module Audit en pleine largeur -->
-        <div style="background-color: var(--color-primary); color: var(--color-inverse); border-radius: 10px; padding: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 30px; width: 70%;">
-                <div style="font-size: 48px; color: var(--color-inverse); flex-shrink: 0;"><i class="fas fa-chart-line"></i></div>
-                <div>
-                    <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--color-inverse); font-weight: 600;">Audit gratuit de votre stratégie</h3>
-                    <p style="font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-bottom: 0;">Découvrez comment nous pouvons optimiser votre stratégie d'acquisition et réduire vos coûts sur le long terme.</p>
+            <!-- Contenu de la section - Deux modules côte à côte -->
+            <div class="service-grid-2">
+                <!-- Module gauche -->
+                <div class="card card-bg">
+                    <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3 class="card-title">Ce que nous faisons différemment</h3>
+                    <ul class="feature-list detailed">
+                        <li class="feature-item-extended">
+                            <div class="feature-icon-circle">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">SEO ultra-spécialisé</div>
+                                <p>Nous maîtrisons le vocabulaire technique que les carpistes utilisent réellement</p>
+                            </div>
+                        </li>
+                        <li class="feature-item-extended">
+                            <div class="feature-icon-circle">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Publicités hyper-ciblées</div>
+                                <p>Nous identifions les micro-comportements qui révèlent l'intention d'achat</p>
+                            </div>
+                        </li>
+                        <li class="feature-item-extended">
+                            <div class="feature-icon-circle">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Influenceurs crédibles</div>
+                                <p>Nous collaborons avec des carpistes reconnus pour leur expertise, pas juste leur visibilité</p>
+                            </div>
+                        </li>
+                        <li class="feature-item-extended">
+                            <div class="feature-icon-circle">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Contenu technique</div>
+                                <p>Notre contenu résout de vrais problèmes techniques que rencontrent les passionnés</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Module droit -->
+                <div class="card card-bg">
+                    <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3 class="card-title">Réduction du coût d'acquisition sur le long terme</h3>
+                    <p class="card-text">Notre approche stratégique permet de diminuer progressivement le coût par client acquis grâce à un ciblage affiné et une optimisation continue de tous les canaux.</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Analyse du comportement des visiteurs pour affiner le ciblage</span>
+                        </li>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Segmentation précise par type de pêche et niveau</span>
+                        </li>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Stratégies de rétention efficaces pour réduire les coûts</span>
+                        </li>
+                        <li class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Développement d'un système d'acquisition organique</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div style="width: 30%; text-align: right;">
-                <a href="contact.html" style="display: inline-block; background-color: var(--color-accent); padding: 15px 30px; border-radius: 4px; color: var(--color-inverse); text-decoration: none; font-weight: 600; font-size: 16px;">DEMANDER MON DIAGNOSTIC</a>
+            
+            <!-- Module Audit en pleine largeur -->
+            <div class="cta-module">
+                <div class="cta-content">
+                    <div class="cta-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="cta-text">
+                        <h3>Audit gratuit de votre stratégie</h3>
+                        <p>Découvrez comment nous pouvons optimiser votre stratégie d'acquisition et réduire vos coûts sur le long terme.</p>
+                    </div>
+                </div>
+                <div class="cta-button-container">
+                    <a href="contact.html" class="cta-button-large">DEMANDER MON DIAGNOSTIC</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
     
     <!-- CALL TO ACTION FINALE -->
-    <section style="padding: 100px 0; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); color: var(--color-inverse);">
+    <section class="cta-section">
         <div class="container">
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <h2 style="font-size: 36px; margin-bottom: 25px; line-height: 1.2;">Transformez votre marque en référence</h2>
-                <p style="font-size: 18px; margin-bottom: 40px; color: rgba(243, 242, 235, 0.9); line-height: 1.7;">Prenons rendez-vous pour analyser votre situation et définir ensemble une stratégie qui vous démarquera dans l'univers spécialisé de la pêche à la carpe.</p>
-                <a href="contact.html" style="display: inline-flex; align-items: center; gap: 15px; background-color: var(--color-accent); color: var(--color-inverse); padding: 15px 30px; font-size: 16px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+            <div class="text-center">
+                <h2>Transformez votre marque en référence</h2>
+                <p>Prenons rendez-vous pour analyser votre situation et définir ensemble une stratégie qui vous démarquera dans l'univers spécialisé de la pêche à la carpe.</p>
+                <a href="contact.html" class="cta-button-main">
                     RÉSERVER UN APPEL STRATÉGIQUE GRATUIT
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -435,60 +421,60 @@
         </div>
     </section>
 
-   <!-- CODE HTML DU FOOTER -->
-<footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-logo">
-            <div class="logo">
-                <!-- Remplacez par votre logo -->
-                <img src="votre-logo.png" alt="Logo">
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <div class="logo">
+                    <img src="votre-logo.png" alt="Logo">
+                </div>
+                <p class="company-description">Votre entreprise, une référence dans son domaine avec des solutions innovantes et personnalisées.</p>
             </div>
-            <p class="company-description">Votre entreprise, une référence dans son domaine avec des solutions innovantes et personnalisées.</p>
-        </div>
 
-        <div class="footer-contact">
-            <h3>Contact</h3>
-            <ul class="contact-info">
-                <li class="contact-phone">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0[...]
-                        </svg>
-                    </span>
-                    +33 1 23 45 67 89
-                </li>
-                <li class="contact-email">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                    </span>
-                    contact@entreprise.com
-                </li>
-                <li class="contact-location">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                    </span>
-                    Paris, France
-                </li>
-            </ul>
-        </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <ul class="contact-info">
+                    <li class="contact-phone">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </span>
+                        +33 1 23 45 67 89
+                    </li>
+                    <li class="contact-email">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </span>
+                        contact@entreprise.com
+                    </li>
+                    <li class="contact-location">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </span>
+                        Paris, France
+                    </li>
+                </ul>
+            </div>
 
-        <div class="footer-links">
-            <h3>Liens utiles</h3>
-            <a href="#">Politique de confidentialité</a>
-            <a href="#">Mentions légales</a>
+            <div class="footer-links">
+                <h3>Liens utiles</h3>
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">Mentions légales</a>
+            </div>
         </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <p>&copy; 2025 Votre Entreprise. Tous droits réservés.</p>
-    </div>
-</footer>
-    </div>
-</div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Votre Entreprise. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
+</html>

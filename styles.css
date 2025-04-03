@@ -909,6 +909,8 @@ header {
     transition: all 0.3s ease;
     border-radius: 4px;
     font-family: var(--font-display, 'Chakra Petch', sans-serif);
+    width: fit-content;
+    max-width: 250px;
 }
 
 .secondary-button:hover {
@@ -987,7 +989,7 @@ section h2 {
 .service-grid-4 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(50px, 8vw, 80px);
+    gap: clamp((àpx, 8vw, 80px);
     margin-bottom: clamp(25px, 4vw, 40px);
 }
 
@@ -2679,8 +2681,4 @@ button:focus {
         margin-top: 25px; /* Espace légèrement réduit sur très petits écrans */
         font-size: 0.75rem;
     }
-}
-
-.text-left-align {
-    text-align: left;
 }

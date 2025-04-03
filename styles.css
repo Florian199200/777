@@ -122,210 +122,65 @@ h1, h2, h3, h4, h5 {
 }
 
 /* Header */
-/* Header - Structure en trois colonnes alignées avec le contenu du site */
+/* Header */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 20px 0;
-    background-color: var(--color-bg, #F3F2EB);
+    padding: 20px 0; /* Ajuster le padding vertical pour correspondre à la page de service */
+    background-color: rgba(0, 0, 0, 0.9); /* Couleur noire avec 80% d'opacité */
     height: auto;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-border, rgba(55, 59, 48, 0.15));
+    backdrop-filter: blur(10px); /* Ajouter un flou de fond */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Ajouter une bordure en bas */
     transition: background-color 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease;
 }
 
 .header-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Trois colonnes égales */
-    align-items: center;
+    display: flex;
+    align-items: center; /* Centre verticalement */
+    justify-content: space-between; /* Centre horizontalement */
+    padding: 0 24px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 clamp(10px, 5vw, 20px);
     position: relative;
 }
 
-/* Logo - aligné à gauche */
-.header-content .logo {
-    grid-column: 1;
-    justify-self: start;
+
+.logo {
     display: flex;
-    align-items: center;
+    align-items: center; /* Centre verticalement le logo */
+    margin-left: 0px; /* Ajustez cette valeur pour obtenir l'alignement souhaité */
     text-decoration: none;
 }
 
-/* Navigation - centrée */
-.header-content .main-nav {
-    grid-column: 2;
-    justify-self: center;
+.main-nav {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 40px; /* Ajoutez un écart entre les liens de navigation */
+    flex: 1;
 }
 
-/* Bouton CTA - aligné à droite */
-.header-content .header-cta {
-    grid-column: 3;
-    justify-self: end;
-}
-
-/* Styles spécifiques pour le bouton CTA dans le header uniquement */
-.header-content .cta-button,
-.mobile-nav .cta-button {
-    font-family: var(--font-display, 'Chakra Petch', sans-serif);
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+.cta-button {
+    font-family: var(--font-display);
+    display: inline-flex; /* Utiliser inline-flex pour centrer */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
     padding: 12px 28px;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.5px;
-    transition: all var(--transition-speed, 0.3s) ease;
+    transition: all var(--transition-speed) ease;
     white-space: nowrap;
-    border-radius: 4px;
-    background-color: var(--color-primary, #464A3E);
-    color: var(--color-inverse, #F3F2EB);
+    border-radius: 4px; /* Arrondir les angles */
+    background-color: var(--color-primary);
+    color: var(--color-inverse);
+    margin-left: 0; /* Supprimer toute marge gauche */
+    margin-right: 0; /* Supprimer toute marge droite */
 }
 
-/* Mobile Menu Toggle */
-.mobile-menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.mobile-menu-toggle span {
-    display: block;
-    height: 2px;
-    background-color: var(--color-primary, #464A3E);
-    transition: all 0.3s ease;
-}
-
-.mobile-menu-toggle.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.mobile-menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-toggle.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-/* Mobile Navigation */
-.mobile-nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    max-width: 350px;
-    height: 100vh;
-    background-color: var(--color-bg, #F3F2EB);
-    z-index: 1000;
-    padding: 100px 40px 40px;
-    transition: right 0.4s ease;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-.mobile-nav.active {
-    right: 0;
-}
-
-.mobile-nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.mobile-nav-links .nav-link {
-    font-size: 18px;
-    padding: 10px 0;
-    letter-spacing: -0.5px;
-}
-
-.mobile-nav .cta-button {
-    margin-top: 40px;
-    align-self: flex-start;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Responsive breakpoints */
-@media screen and (max-width: 992px) {
-    .header-content {
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    .header-content .main-nav {
-        display: none;
-    }
-    
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    /* Cache le bouton CTA dans le header car il apparaîtra dans le menu mobile */
-    .header-content .header-cta {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    header {
-        padding: 15px 0;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .mobile-nav {
-        max-width: 100%;
-        padding: 80px 20px 40px;
-    }
-    
-    .mobile-nav-links {
-        gap: 15px;
-    }
-    
-    .mobile-nav-links .nav-link {
-        font-size: 16px;
-    }
-    
-    .mobile-nav .cta-button {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-}
 /* Effet de luciole */
 .cta-button::after {
     content: '';
@@ -623,6 +478,93 @@ header {
     left: 0;
 }
 
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 350px;
+    height: 100vh;
+    background-color: var(--color-bg);
+    z-index: 1000;
+    padding: 100px 40px 40px;
+    transition: right 0.4s ease;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    list-style: none;
+}
+
+.mobile-nav-links .nav-link {
+    font-size: 18px;
+    padding: 10px 0;
+    letter-spacing: -0.5px;
+}
+
+.mobile-nav .cta-button {
+    margin-top: 40px;
+    align-self: flex-start;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
 
 /* Hero Section */
 .hero {

@@ -2721,38 +2721,41 @@ header {
     }
 }
 
-/* Styles pour l'image carrée responsive */
-.square-image-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%; /* Maintient le ratio 1:1 */
-    overflow: hidden;
-    border-radius: 8px; /* Coins arrondis comme les cards */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-}
-
-.square-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-/* Structure de grille adaptée */
+/* Solution simplifiée et fiable pour l'image carrée */
 .hero .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Distribution égale par défaut */
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
     align-items: center;
 }
 
-/* Responsive pour tablettes */
+.hero-content {
+    grid-column: 1 / 2;
+}
+
+.hero-visual {
+    grid-column: 2 / 3;
+}
+
+.square-image-container {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    aspect-ratio: 1/1; /* Méthode moderne pour maintenir un ratio 1:1 */
+}
+
+.square-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsive */
 @media (max-width: 992px) {
     .hero .grid {
-        grid-template-columns: 1fr; /* Une seule colonne */
+        grid-template-columns: 1fr;
     }
     
     .hero-content, .hero-visual {
@@ -2761,52 +2764,29 @@ header {
     
     .hero-visual {
         margin-top: 30px;
-        max-width: 450px; /* Limite la largeur sur tablette */
+        width: 100%;
+        max-width: 450px;
         margin-left: auto;
         margin-right: auto;
     }
 }
 
-/* Smartphones moyens */
 @media (max-width: 576px) {
-    .hero-visual {
-        max-width: 100%; /* Prend toute la largeur disponible */
-    }
-    
     .hero-title {
         font-size: 32px;
     }
     
-    .square-image-container {
-        max-height: 80vh; /* Évite que l'image ne prenne trop de hauteur */
-        padding-bottom: 100%; /* Maintient le ratio carré */
+    .hero-description {
+        font-size: 16px;
     }
 }
 
-/* Très petits écrans (iPhone SE) */
 @media (max-width: 375px) {
     .hero-title {
         font-size: 28px;
     }
     
-    .hero-description {
-        font-size: 15px;
-    }
-    
-    .hero-cta .secondary-button {
-        padding: 10px 16px;
-        font-size: 13px;
-        display: block; /* Bouton en pleine largeur sur très petits écrans */
-        text-align: center;
-    }
-    
-    .square-image-container {
-        padding-bottom: 100%; /* Maintient le ratio carré */
-        margin-bottom: 20px;
-    }
-    
     .container {
-        padding-left: 15px; /* Réduit les marges latérales */
-        padding-right: 15px;
+        padding: 0 15px;
     }
 }

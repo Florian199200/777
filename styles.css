@@ -2721,22 +2721,75 @@ header {
     }
 }
 
+/* Styles pour le grand chiffre "4" */
+.hero-number-element {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    z-index: -1;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.big-number {
+    font-size: 400px;
+    font-weight: 900;
+    color: var(--color-primary, #464a3e);
+    line-height: 1;
+    font-family: var(--font-display, 'Helvetica Neue', Arial, sans-serif);
+}
+
+/* Pour assurer la visibilité sur tous les écrans */
+@media (max-width: 1200px) {
+    .big-number {
+        font-size: 320px;
+    }
+    
+    .hero-number-element {
+        top: -30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .big-number {
+        font-size: 280px;
+    }
+    
+    .hero-number-element {
+        right: -20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .big-number {
+        font-size: 200px;
+    }
+    
+    .hero-number-element {
+        top: -20px;
+        right: -10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .big-number {
+        font-size: 150px;
+    }
+    
+    .hero-number-element {
+        top: -10px;
+        right: -10px;
+    }
+}
+
+/* Styles ajustés pour le titre en présence du grand chiffre */
 .hero-content.full-width {
-    grid-column: 1 / -1;
-    max-width: 1000px;
-    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding-right: 60px; /* Espace pour éviter que le texte ne touche le chiffre */
 }
 
 .hero-content.full-width .hero-title {
-    font-size: 64px;
-    line-height: 1.1;
-    margin-bottom: 32px;
-    max-width: 100%;
-}
-
-.hero-content.full-width .hero-description {
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 40px;
-    max-width: 900px;
+    position: relative;
+    z-index: 2; /* Assure que le titre est au-dessus du grand chiffre */
 }

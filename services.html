@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Services | CarpConnect | Stratégie Digitale Spécialisée Pêche à la Carpe</title>
+    <title>Nos Services | LINKA LAB | Stratégie Digitale Spécialisée Pêche à la Carpe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="services-page">
+    <!-- HEADER - Identique à index.html -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -19,9 +20,7 @@
                     <a href="services.html" class="nav-link active">SERVICES</a>
                     <a href="methode.html" class="nav-link">À PROPOS</a>
                 </nav>
-                <div class="header-cta">
-                    <a href="contact.html" class="cta-button">CONTACT</a>
-                </div>
+                <a href="contact.html" class="cta-button">CONTACT</a>
                 <div class="mobile-menu-toggle">
                     <span></span>
                     <span></span>
@@ -31,399 +30,453 @@
         </div>
     </header>
 
+    <!-- MENU MOBILE - Identique à index.html -->
     <div class="mobile-nav">
         <ul class="mobile-nav-links">
             <li><a href="services.html" class="nav-link active">SERVICES</a></li>
-            <li><a href="methode.html" class="nav-link">MÉTHODE</a></li>
             <li><a href="realisations.html" class="nav-link">RÉALISATIONS</a></li>
-            <li><a href="temoignages.html" class="nav-link">TÉMOIGNAGES</a></li>
+            <li><a href="a-propos.html" class="nav-link">À PROPOS</a></li>
         </ul>
         <a href="contact.html" class="cta-button">CONTACT</a>
     </div>
 
     <div class="overlay"></div>
 
-    <!-- HÉRO - Style similaire à la page d'accueil avec viseur à droite -->
-   <section class="hero">
-    <div class="container">
-        <div class="grid">
-            <div class="hero-content">
-                <div class="coordinates text-left-align">LAT:45°52'N LONG:6°10'E</div>
-                <div class="tag text-left-align">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
-                <h1 class="hero-title text-left-align">Quatre stratégies pour <span class="highlight">conquérir le marché</span> de la pêche à la carpe</h1>
-                <p class="hero-description text-left-align">Nous ne proposons pas de services génériques. Chacune de nos solutions est forgée dans la connaissance intime du carpiste et de ses comportements d'achat. Découvrez comment nous transformons cette expertise en résultats mesurables.</p>
-                <div class="hero-cta">
-                    <a href="contact.html" class="secondary-button">DEMANDER UN AUDIT</a>
+    <!-- HERO SECTION -->
+    <section class="hero services-hero">
+        <div class="container">
+            <div class="grid">
+                <div class="hero-content">
+                    <div class="coordinates">LAT:45°52'N LONG:6°10'E</div>
+                    <div class="tag">STRATÉGIE DIGITALE SPÉCIALISÉE</div>
+                    <h1 class="hero-title">Quatre stratégies pour <span class="highlight">conquérir le marché</span> de la pêche à la carpe</h1>
+                    <p class="hero-description">Nous ne proposons pas de services génériques. Chacune de nos solutions est forgée dans la connaissance intime du carpiste et de ses comportements d'achat. Découvrez comment nous transformons cette expertise en résultats mesurables.</p>
+                    <div class="hero-cta">
+                        <a href="contact.html" class="secondary-button">DEMANDER UN AUDIT</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Viseur stratégique -->
+                    <div class="strategic-target">
+                        <div class="target-circle outer"></div>
+                        <div class="target-circle middle"></div>
+                        <div class="target-circle inner"></div>
+                        <div class="target-line horizontal"></div>
+                        <div class="target-line vertical"></div>
+                        <div class="target-direction north">N</div>
+                        <div class="target-direction east">E</div>
+                        <div class="target-direction south">S</div>
+                        <div class="target-direction west">W</div>
+                        <div class="target-mark top"></div>
+                        <div class="target-mark right"></div>
+                        <div class="target-mark bottom"></div>
+                        <div class="target-mark left"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-                
-                <div class="hero-visual">
-                    <!-- Viseur stratégique -->
-                    <div class="target-visual">
-                        <!-- Cercle extérieur -->
-                        <div class="target-circle outer"></div>
-                        
-                        <!-- Cercle milieu -->
-                        <div class="target-circle middle"></div>
-                        
-                        <!-- Cercle intérieur -->
-                        <div class="target-circle inner"></div>
-                        
-                        <!-- Lignes de visée horizontales et verticales -->
-                        <div class="target-line horizontal"></div>
-                        <div class="target-line vertical"></div>
-                        
-                        <!-- Points cardinaux -->
-                        <div class="target-direction north">N</div>
-                        <div class="target-direction south">S</div>
-                        <div class="target-direction west">W</div>
-                        <div class="target-direction east">E</div>
-                        
-                        <!-- Marques de graduation -->
-                        <div class="target-mark left"></div>
-                        <div class="target-mark right"></div>
-                        <div class="target-mark top"></div>
-                        <div class="target-mark bottom"></div>
-                    </div>
-                </div>
+    </section>
+
+    <!-- NAVIGATION SERVICES -->
+    <section class="services-nav">
+        <div class="container">
+            <div class="services-nav-grid">
+                <a href="#ecommerce" class="service-nav-item">
+                    <div class="service-nav-number">01</div>
+                    <div class="service-nav-title">E-commerce</div>
+                </a>
+                <a href="#visuel" class="service-nav-item">
+                    <div class="service-nav-number">02</div>
+                    <div class="service-nav-title">Production Visuelle</div>
+                </a>
+                <a href="#communaute" class="service-nav-item">
+                    <div class="service-nav-number">03</div>
+                    <div class="service-nav-title">Community Management</div>
+                </a>
+                <a href="#acquisition" class="service-nav-item">
+                    <div class="service-nav-number">04</div>
+                    <div class="service-nav-title">Acquisition Clients</div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- SERVICE 1: E-COMMERCE -->
-    <section id="ecommerce" class="service-section bg-light">
+    <section id="ecommerce" class="service-section">
         <div class="container">
-            <!-- En-tête de section -->
-            <div class="section-header">
-                <div class="service-number-circle">01</div>
-                <h2>E-commerce qui convertit les passionnés en clients</h2>
-                <p>Un site e-commerce ordinaire peut vendre des produits. Le nôtre transforme les carpistes passionnés en acheteurs réguliers. La différence? Notre compréhension intime de ce qui déclenche l'achat chez un pêcheur spécialisé.</p>
+            <div class="grid">
+                <div class="section-header">
+                    <div class="coordinates">ID:CARP-ECOM-01</div>
+                    <div class="tag">SERVICE STRATÉGIQUE</div>
+                    <div class="service-number">01</div>
+                    <h2 class="section-title">E-commerce qui convertit les passionnés en clients</h2>
+                    <p class="section-description">Un site e-commerce ordinaire peut vendre des produits. Le nôtre transforme les carpistes passionnés en acheteurs réguliers. La différence? Notre compréhension intime de ce qui déclenche l'achat chez un pêcheur spécialisé.</p>
+                </div>
             </div>
             
-            <!-- Contenu de la section -->
-            <div class="service-grid-2">
-                <!-- Image à gauche -->
-                <div class="img-container">
+            <div class="service-content-grid">
+                <div class="service-image">
                     <img src="https://placehold.co/800x600/464a3e/f3f2eb?text=Boutique+E-commerce" alt="Boutique E-commerce">
                 </div>
                 
-                <!-- Caractéristiques à droite -->
-                <div class="feature-grid">
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-fish"></i></div>
-                        <h3 class="card-title">Pages produits persuasives</h3>
-                        <p class="card-text">Conçues pour parler au carpiste, pas juste à son portefeuille. Nous mettons en avant les caractéristiques qui comptent vraiment.</p>
+                <div class="service-features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-fish"></i></div>
+                        <h3 class="feature-title">Pages produits persuasives</h3>
+                        <p class="feature-description">Conçues pour parler au carpiste, pas juste à son portefeuille. Nous mettons en avant les caractéristiques qui comptent vraiment.</p>
                     </div>
                     
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-route"></i></div>
-                        <h3 class="card-title">Parcours d'achat optimisé</h3>
-                        <p class="card-text">Calqué sur la psychologie du pêcheur technique pour fluidifier l'expérience et maximiser les conversions.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-route"></i></div>
+                        <h3 class="feature-title">Parcours d'achat optimisé</h3>
+                        <p class="feature-description">Calqué sur la psychologie du pêcheur technique pour fluidifier l'expérience et maximiser les conversions.</p>
                     </div>
                     
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-certificate"></i></div>
-                        <h3 class="card-title">Arguments techniques</h3>
-                        <p class="card-text">Qui justifient l'investissement dans du matériel ou des appâts premium grâce à une présentation détaillée et experte.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                        <h3 class="feature-title">Arguments techniques</h3>
+                        <p class="feature-description">Qui justifient l'investissement dans du matériel ou des appâts premium grâce à une présentation détaillée et experte.</p>
                     </div>
                     
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-sync-alt"></i></div>
-                        <h3 class="card-title">Recommandations personnalisées</h3>
-                        <p class="card-text">Basées sur les habitudes réelles de session de pêche pour augmenter la valeur du panier moyen.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3 class="feature-title">Recommandations personnalisées</h3>
+                        <p class="feature-description">Basées sur les habitudes réelles de session de pêche pour augmenter la valeur du panier moyen.</p>
                     </div>
                 </div>
+            </div>
+            
+            <div class="service-cta">
+                <a href="ecommerce-details.html" class="service-link">
+                    DÉCOUVRIR NOS SOLUTIONS E-COMMERCE
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- SERVICE 2: PHOTOGRAPHIE & VIDÉO -->
-    <section id="visuel" class="service-section bg-alt">
+    <!-- SERVICE 2: PRODUCTION VISUELLE -->
+    <section id="visuel" class="service-section service-alt">
+        <div class="service-pattern"></div>
         <div class="container">
-            <!-- En-tête de section -->
-            <div class="section-header">
-                <div class="service-number-circle">02</div>
-                <h2>Production visuelle qui met en valeur chaque détail technique</h2>
-                <p>Le carpiste n'achète pas un simple produit – il investit dans une promesse technique. Nos visuels révèlent ce que l'œil ne peut voir : la qualité des matériaux et des appâts, l'ingéniosité des mécanismes, la robustesse des constructions.</p>
+            <div class="grid">
+                <div class="section-header">
+                    <div class="coordinates">ID:CARP-VIS-02</div>
+                    <div class="tag">SERVICE STRATÉGIQUE</div>
+                    <div class="service-number">02</div>
+                    <h2 class="section-title">Production visuelle qui met en valeur chaque détail technique</h2>
+                    <p class="section-description">Le carpiste n'achète pas un simple produit – il investit dans une promesse technique. Nos visuels révèlent ce que l'œil ne peut voir : la qualité des matériaux et des appâts, l'ingéniosité des mécanismes, la robustesse des constructions.</p>
+                </div>
             </div>
             
-            <!-- Grille pour les vidéos et images -->
-            <div class="video-grid">
-                <!-- Zone vidéo principale -->
-                <div class="video-main img-container">
+            <div class="visual-portfolio">
+                <div class="main-visual">
                     <img src="https://placehold.co/900x500/464a3e/f3f2eb?text=Vidéo+Technique" alt="Vidéo Technique">
                 </div>
-                
-                <!-- Images -->
-                <div class="img-container">
-                    <img src="https://placehold.co/500x250/464a3e/f3f2eb?text=Photo+1" alt="Photo 1">
-                </div>
-                
-                <div class="img-container">
-                    <img src="https://placehold.co/500x250/464a3e/f3f2eb?text=Photo+2" alt="Photo 2">
+                <div class="secondary-visuals">
+                    <div class="visual-item">
+                        <img src="https://placehold.co/500x250/464a3e/f3f2eb?text=Photo+1" alt="Photo 1">
+                    </div>
+                    <div class="visual-item">
+                        <img src="https://placehold.co/500x250/464a3e/f3f2eb?text=Photo+2" alt="Photo 2">
+                    </div>
                 </div>
             </div>
             
-            <!-- Services de production visuelle -->
-            <div class="service-grid-3">
-                <div class="card card-bg">
-                    <div class="card-icon"><i class="fas fa-camera"></i></div>
-                    <h3 class="card-title">Photographie technique</h3>
-                    <p class="card-text">Mise en valeur professionnelle des détails invisibles qui justifient l'investissement dans vos produits.</p>
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+            <div class="service-solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-camera"></i></div>
+                    <h3 class="solution-title">Photographie technique</h3>
+                    <p class="solution-description">Mise en valeur professionnelle des détails invisibles qui justifient l'investissement dans vos produits.</p>
+                    <ul class="solution-features">
+                        <li class="solution-feature">
+                            <i class="fas fa-check solution-feature-icon"></i>
                             <span>Valeur perçue du produit</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="solution-feature">
+                            <i class="fas fa-check solution-feature-icon"></i>
                             <span>Photographie impactante et cinématique</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="solution-feature">
+                            <i class="fas fa-check solution-feature-icon"></i>
                             <span>Macro-photographie détaillée</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="card card-bg">
-                    <div class="card-icon"><i class="fas fa-video"></i></div>
-                    <h3 class="card-title">Vidéos en action</h3>
-                    <p class="card-text">Démonstrations filmées en situation réelle pour montrer l'efficacité de vos équipements.</p>
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-video"></i></div>
+                    <h3 class="solution-title">Vidéos en action</h3>
+                    <p class="solution-description">Démonstrations filmées en situation réelle pour montrer l'efficacité de vos équipements.</p>
+                    <ul class="solution-features">
+                        <li class="solution-feature">
+                            <i class="fas fa-check solution-feature-icon"></i>
                             <span>Scénarios de pêche réalistes en 4k</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="solution-feature">
+                            <i class="fas fa-check solution-feature-icon"></i>
                             <span>Démonstrations techniques</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="solution-feature">
+                            <i class="fas fa-check solution-feature-icon"></i>
                             <span>Témoignages d'utilisateurs</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="card card-bg">
-                    <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
-                    <h3 class="card-title">Infographies techniques</h3>
-                    <p class="card-text">Explications visuelles claires pour montrer les avantages techniques de vos produits.</p>
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                <div class="solution-card">
+                    <div class="solution-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3 class="solution-title">Infographies techniques</h3>
+                    <p class="solution-description">Explications visuelles claires pour montrer les avantages techniques de vos produits.</p>
+                    <ul class="solution-features">
+                        <li class="solution-feature">
+                            <i class="fas fa-check solution-feature-icon"></i>
                             <span>Vues éclatées des produits</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="solution-feature">
+                            <i class="fas fa-check solution-feature-icon"></i>
                             <span>Comparaisons visuelles</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="solution-feature">
+                            <i class="fas fa-check solution-feature-icon"></i>
                             <span>Données techniques illustrées</span>
                         </li>
                     </ul>
                 </div>
             </div>
+            
+            <div class="service-cta">
+                <a href="production-visuelle.html" class="service-link">
+                    EXPLORER NOTRE APPROCHE VISUELLE
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- SERVICE 3: COMMUNITY MANAGEMENT -->
-    <section id="communaute" class="service-section bg-light">
+    <section id="communaute" class="service-section">
         <div class="container">
-            <!-- En-tête de section -->
-            <div class="section-header">
-                <div class="service-number-circle">03</div>
-                <h2>Community Management spécialisé pêche à la carpe</h2>
-                <p>La pêche à la carpe n'est pas un simple loisir, c'est une passion dévorante. Nous animons pour votre marque une communauté active qui ne se contente pas d'acheter, mais défend et promeut vos produits avec conviction.</p>
+            <div class="grid">
+                <div class="section-header">
+                    <div class="coordinates">ID:CARP-COM-03</div>
+                    <div class="tag">SERVICE STRATÉGIQUE</div>
+                    <div class="service-number">03</div>
+                    <h2 class="section-title">Community Management spécialisé pêche à la carpe</h2>
+                    <p class="section-description">La pêche à la carpe n'est pas un simple loisir, c'est une passion dévorante. Nous animons pour votre marque une communauté active qui ne se contente pas d'acheter, mais défend et promeut vos produits avec conviction.</p>
+                </div>
             </div>
             
-            <!-- Contenu de la section -->
-            <div class="service-grid-3">
-                <div class="card">
-                    <div class="card-icon text-center"><i class="fas fa-comments"></i></div>
-                    <h3 class="card-title text-center">Animation quotidienne</h3>
-                    <p class="card-text text-center">Nous animons vos plateformes sociales avec une expertise unique du secteur de la pêche à la carpe.</p>
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+            <div class="community-strategies-grid">
+                <div class="strategy-card">
+                    <div class="strategy-icon"><i class="fas fa-comments"></i></div>
+                    <h3 class="strategy-title">Animation quotidienne</h3>
+                    <p class="strategy-description">Nous animons vos plateformes sociales avec une expertise unique du secteur de la pêche à la carpe.</p>
+                    <ul class="strategy-features">
+                        <li class="strategy-feature">
+                            <i class="fas fa-check strategy-feature-icon"></i>
                             <span>Gestion professionnelle des réseaux sociaux</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="strategy-feature">
+                            <i class="fas fa-check strategy-feature-icon"></i>
                             <span>Modération et réponses aux commentaires</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="strategy-feature">
+                            <i class="fas fa-check strategy-feature-icon"></i>
                             <span>Création d'un calendrier éditorial</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="card">
-                    <div class="card-icon text-center"><i class="fas fa-users"></i></div>
-                    <h3 class="card-title text-center">Programme d'ambassadeurs</h3>
-                    <p class="card-text text-center">Nous créons et gérons un réseau d'ambassadeurs qui partagent authentiquement leur passion.</p>
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                <div class="strategy-card">
+                    <div class="strategy-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="strategy-title">Programme d'ambassadeurs</h3>
+                    <p class="strategy-description">Nous créons et gérons un réseau d'ambassadeurs qui partagent authentiquement leur passion.</p>
+                    <ul class="strategy-features">
+                        <li class="strategy-feature">
+                            <i class="fas fa-check strategy-feature-icon"></i>
                             <span>Recrutement de carpistes influents</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="strategy-feature">
+                            <i class="fas fa-check strategy-feature-icon"></i>
                             <span>Formation et accompagnement</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="strategy-feature">
+                            <i class="fas fa-check strategy-feature-icon"></i>
                             <span>Animation du groupe d'ambassadeurs</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="card">
-                    <div class="card-icon text-center"><i class="fas fa-book-open"></i></div>
-                    <h3 class="card-title text-center">Contenu technique</h3>
-                    <p class="card-text text-center">Nous développons un contenu éducatif qui positionne votre marque comme référence technique.</p>
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                <div class="strategy-card">
+                    <div class="strategy-icon"><i class="fas fa-book-open"></i></div>
+                    <h3 class="strategy-title">Contenu technique</h3>
+                    <p class="strategy-description">Nous développons un contenu éducatif qui positionne votre marque comme référence technique.</p>
+                    <ul class="strategy-features">
+                        <li class="strategy-feature">
+                            <i class="fas fa-check strategy-feature-icon"></i>
                             <span>Guides techniques détaillés</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="strategy-feature">
+                            <i class="fas fa-check strategy-feature-icon"></i>
                             <span>Webinaires avec des experts</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="strategy-feature">
+                            <i class="fas fa-check strategy-feature-icon"></i>
                             <span>Articles spécialisés techniques</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
-            <!-- Image de community management -->
-            <div class="img-container full-width">
+            <div class="community-image">
                 <img src="https://placehold.co/1200x400/464a3e/f3f2eb?text=Community+Management+Spécialisé" alt="Community Management Spécialisé">
+            </div>
+            
+            <div class="service-cta">
+                <a href="community-management.html" class="service-link">
+                    DÉCOUVRIR NOTRE APPROCHE COMMUNAUTAIRE
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- SERVICE 4: ACQUISITION -->
-    <section id="acquisition" class="service-section bg-alt">
+    <section id="acquisition" class="service-section service-alt">
+        <div class="service-pattern"></div>
         <div class="container">
-            <!-- En-tête de section -->
-            <div class="section-header">
-                <div class="service-number-circle">04</div>
-                <h2>Stratégies d'acquisition qui ciblent les vrais acheteurs</h2>
-                <p>Fini le gaspillage publicitaire. Nous ne ciblons pas "les pêcheurs" en général, mais précisément les carpistes actifs prêts à investir dans du matériel premium. Le résultat? Plus de trafic qualifié, moins de budget perdu.</p>
+            <div class="grid">
+                <div class="section-header">
+                    <div class="coordinates">ID:CARP-ACQ-04</div>
+                    <div class="tag">SERVICE STRATÉGIQUE</div>
+                    <div class="service-number">04</div>
+                    <h2 class="section-title">Stratégies d'acquisition qui ciblent les vrais acheteurs</h2>
+                    <p class="section-description">Fini le gaspillage publicitaire. Nous ne ciblons pas "les pêcheurs" en général, mais précisément les carpistes actifs prêts à investir dans du matériel premium. Le résultat? Plus de trafic qualifié, moins de budget perdu.</p>
+                </div>
             </div>
             
-            <!-- Contenu de la section - Deux modules côte à côte -->
-            <div class="service-grid-2">
-                <!-- Module gauche -->
-                <div class="card card-bg">
-                    <div class="card-icon"><i class="fas fa-bullseye"></i></div>
-                    <h3 class="card-title">Ce que nous faisons différemment</h3>
-                    <ul class="feature-list detailed">
-                        <li class="feature-item-extended">
+            <div class="acquisition-strategies-grid">
+                <div class="acquisition-card">
+                    <div class="acquisition-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3 class="acquisition-title">Ce que nous faisons différemment</h3>
+                    <ul class="acquisition-features detailed">
+                        <li class="acquisition-feature-detailed">
                             <div class="feature-icon-circle">
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="feature-content">
-                                <div class="feature-title">SEO ultra-spécialisé</div>
+                                <div class="feature-heading">SEO ultra-spécialisé</div>
                                 <p>Nous maîtrisons le vocabulaire technique que les carpistes utilisent réellement</p>
                             </div>
                         </li>
-                        <li class="feature-item-extended">
+                        <li class="acquisition-feature-detailed">
                             <div class="feature-icon-circle">
                                 <i class="fas fa-bullseye"></i>
                             </div>
                             <div class="feature-content">
-                                <div class="feature-title">Publicités hyper-ciblées</div>
+                                <div class="feature-heading">Publicités hyper-ciblées</div>
                                 <p>Nous identifions les micro-comportements qui révèlent l'intention d'achat</p>
                             </div>
                         </li>
-                        <li class="feature-item-extended">
+                        <li class="acquisition-feature-detailed">
                             <div class="feature-icon-circle">
                                 <i class="fas fa-users"></i>
                             </div>
                             <div class="feature-content">
-                                <div class="feature-title">Influenceurs crédibles</div>
+                                <div class="feature-heading">Influenceurs crédibles</div>
                                 <p>Nous collaborons avec des carpistes reconnus pour leur expertise, pas juste leur visibilité</p>
                             </div>
                         </li>
-                        <li class="feature-item-extended">
+                        <li class="acquisition-feature-detailed">
                             <div class="feature-icon-circle">
                                 <i class="fas fa-file-alt"></i>
                             </div>
                             <div class="feature-content">
-                                <div class="feature-title">Contenu technique</div>
+                                <div class="feature-heading">Contenu technique</div>
                                 <p>Notre contenu résout de vrais problèmes techniques que rencontrent les passionnés</p>
                             </div>
                         </li>
                     </ul>
                 </div>
                 
-                <!-- Module droit -->
-                <div class="card card-bg">
-                    <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
-                    <h3 class="card-title">Réduction du coût d'acquisition sur le long terme</h3>
-                    <p class="card-text">Notre approche stratégique permet de diminuer progressivement le coût par client acquis grâce à un ciblage affiné et une optimisation continue de tous les canaux.</p>
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                <div class="acquisition-card">
+                    <div class="acquisition-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3 class="acquisition-title">Réduction du coût d'acquisition sur le long terme</h3>
+                    <p class="acquisition-description">Notre approche stratégique permet de diminuer progressivement le coût par client acquis grâce à un ciblage affiné et une optimisation continue de tous les canaux.</p>
+                    <ul class="acquisition-features">
+                        <li class="acquisition-feature">
+                            <i class="fas fa-check acquisition-feature-icon"></i>
                             <span>Analyse du comportement des visiteurs pour affiner le ciblage</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="acquisition-feature">
+                            <i class="fas fa-check acquisition-feature-icon"></i>
                             <span>Segmentation précise par type de pêche et niveau</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="acquisition-feature">
+                            <i class="fas fa-check acquisition-feature-icon"></i>
                             <span>Stratégies de rétention efficaces pour réduire les coûts</span>
                         </li>
-                        <li class="feature-item">
-                            <i class="fas fa-check feature-icon"></i>
+                        <li class="acquisition-feature">
+                            <i class="fas fa-check acquisition-feature-icon"></i>
                             <span>Développement d'un système d'acquisition organique</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
-            <!-- Module Audit en pleine largeur -->
-            <div class="cta-module">
-                <div class="cta-content">
-                    <div class="cta-icon"><i class="fas fa-chart-line"></i></div>
-                    <div class="cta-text">
+            <div class="audit-cta">
+                <div class="audit-content">
+                    <div class="audit-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="audit-text">
                         <h3>Audit gratuit de votre stratégie</h3>
                         <p>Découvrez comment nous pouvons optimiser votre stratégie d'acquisition et réduire vos coûts sur le long terme.</p>
                     </div>
                 </div>
-                <div class="cta-button-container">
+                <div class="audit-button-container">
                     <a href="contact.html" class="cta-button-large">DEMANDER MON DIAGNOSTIC</a>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- CALL TO ACTION FINALE -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="text-center">
-                <h2>Transformez votre marque en référence</h2>
-                <p>Prenons rendez-vous pour analyser votre situation et définir ensemble une stratégie qui vous démarquera dans l'univers spécialisé de la pêche à la carpe.</p>
-                <a href="contact.html" class="cta-button-main">
-                    RÉSERVER UN APPEL STRATÉGIQUE GRATUIT
-                    <i class="fas fa-arrow-right"></i>
+            
+            <div class="service-cta">
+                <a href="acquisition.html" class="service-link">
+                    ANALYSER NOS STRATÉGIES D'ACQUISITION
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- CALL TO ACTION FINALE -->
+    <section id="contact" class="cta-section common-background">
+        <div class="cta-pattern"></div>
+        <div class="container">
+            <div class="cta-content">
+                <div class="coordinates">OBJET:DISCUSSION-STRATÉGIQUE</div>
+                <div class="tag">PASSEZ À L'ACTION</div>
+                <h2 class="cta-title">Transformez votre marque en référence du secteur</h2>
+                <p class="cta-text">Prenons rendez-vous pour analyser votre situation et définir ensemble une stratégie qui vous démarquera dans l'univers spécialisé de la pêche à la carpe.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="big-cta-button">RÉSERVER UN APPEL STRATÉGIQUE</a>
+                    <a href="realisations.html" class="big-secondary-button">DÉCOUVRIR NOS ÉTUDES DE CAS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER - Identique à index.html -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-logo">

@@ -812,19 +812,25 @@ header {
     line-height: 1.7;
 }
 
+/* Suppression de la duplication de l'importation des polices Google */
+
 /* STYLES GÉNÉRAUX POUR LA PAGE SERVICES */
 /* Définition des variables si elles ne sont pas déjà définies dans le CSS principal */
 :root {
     --color-primary: #464a3e;
+    --color-primary-dark: #333631;  /* Version plus foncée pour contraste */
+    --color-accent: #c5a572;        /* Couleur d'accent dorée pour contraste */
     --color-inverse: #f3f2eb;
+    --color-inverse-bright: #ffffff; /* Blanc pur pour contraste */
     --color-text: #333333;
     --color-text-light: #666666;
     --color-bg: #ffffff;
     --color-bg-alt: #f5f5f5;
+    --color-bg-dark: #3a3e32;      /* Fond plus foncé pour contraste */
     --transition-speed: 0.3s;
     --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    --font-display: 'Helvetica Neue', Arial, sans-serif;
-    --font-body: 'Helvetica Neue', Arial, sans-serif;
+    --font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;  /* Polices plus modernes */
+    --font-body: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;      /* Polices plus modernes */
 }
 
 .services-page {
@@ -963,9 +969,10 @@ header {
     background-color: var(--color-bg-alt);
     padding: 20px 0;
     position: sticky;
-    top: 80px;
+    top: 90px; /* Augmenté pour laisser de l'espace sous le header */
     z-index: 900;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: -1px; /* Pour éviter un petit gap */
 }
 
 .services-nav-grid {
@@ -1010,15 +1017,19 @@ header {
 }
 
 /* SECTIONS DE SERVICES */
+/* Ajout d'un espace de sécurité pour empêcher le chevauchement des titres avec le header */
 .service-section {
     padding: 100px 0;
     position: relative;
     overflow: hidden;
+    scroll-margin-top: 120px; /* Ajout pour éviter que les titres se retrouvent sous le header lors de la navigation */
 }
 
 .service-alt {
-    background-color: #464a3e;
-    color: #f3f2eb;
+    background-color: var(--color-bg-dark); /* Fond plus foncé pour meilleur contraste */
+    color: var(--color-inverse);
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%); /* Ajout d'un gradient pour plus de contraste */
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.1); /* Ombre intérieure pour profondeur */
 }
 
 .service-pattern {
@@ -1051,7 +1062,16 @@ header {
 .service-alt .section-description,
 .service-alt .coordinates,
 .service-alt .tag {
-    color: #f3f2eb;
+    color: var(--color-inverse-bright);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre pour meilleur contraste */
+}
+
+.service-alt .section-title {
+    background: linear-gradient(135deg, var(--color-inverse) 0%, var(--color-inverse-bright) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
 }
 
 .service-content-grid {
@@ -1079,11 +1099,14 @@ header {
     padding: 25px;
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 3px solid var(--color-accent); /* Ajout d'une bordure pour contraste */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Ombre par défaut pour profondeur */
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); /* Plus clair au survol */
 }
 
 .feature-icon {
@@ -1174,11 +1197,14 @@ header {
     padding: 30px;
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 3px solid var(--color-accent); /* Bordure de contraste */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Ombre par défaut pour profondeur */
 }
 
 .solution-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    background-color: rgba(243, 242, 235, 0.15); /* Plus clair au survol */
 }
 
 .solution-icon {
@@ -1223,7 +1249,7 @@ header {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin-top: 60px;
+    margin-top: 30px; /* Réduit l'écart entre le titre et les cartes */
 }
 
 .strategy-card {
@@ -1231,11 +1257,29 @@ header {
     padding: 30px;
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 3px solid var(--color-primary); /* Bordure de contraste */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Ombre par défaut */
+    position: relative;
+    overflow: hidden;
+}
+
+.strategy-card:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-accent);
+    opacity: 0.1;
+    border-radius: 50% 0 0 0;
+    z-index: 0;
 }
 
 .strategy-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    background-color: var(--color-inverse-bright); /* Plus blanc au survol */
 }
 
 .strategy-icon {
@@ -1552,7 +1596,7 @@ header {
     }
     
     .service-section {
-        padding: 60px 0;
+        padding: 60px 0 40px; /* Réduit le padding bottom */
     }
     
     .audit-text h3 {
@@ -1573,6 +1617,19 @@ header {
     
     .coordinates, .tag {
         font-size: 12px;
+    }
+    
+    /* Réduction des espaces sur mobile */
+    .community-strategies-grid,
+    .service-solutions-grid,
+    .service-content-grid,
+    .acquisition-strategies-grid {
+        gap: 15px;
+        margin-top: 25px;
+    }
+    
+    .section-header {
+        margin-bottom: 20px;
     }
 }
 

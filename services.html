@@ -129,19 +129,20 @@
                 </div>
             </div>
             
-      <div class="video-container">
+     <div class="video-container">
     <div class="responsive-video">
-        <iframe src="https://www.youtube.com/embed/NkpqINWMecU?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=NkpqINWMecU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/NkpqINWMecU?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=NkpqINWMecU&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
 
 <style>
     .video-container {
         width: 100%;
-        max-width: var(--content-width, 1140px); /* Utilise la variable CSS de votre thème si disponible */
+        max-width: var(--content-width, 1140px);
         margin: 0 auto;
         box-sizing: border-box;
-        padding: 0; /* Supprime le padding pour s'aligner parfaitement */
+        padding: 0;
+        overflow: hidden;
     }
     
     .responsive-video {
@@ -149,40 +150,76 @@
         padding-bottom: 56.25%; /* Ratio 16:9 */
         height: 0;
         overflow: hidden;
+        background-color: #000; /* Fond noir pour éviter les bords blancs */
     }
     
     .responsive-video iframe {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 50%;
+        left: 50%;
+        width: 101%; /* Légèrement plus large pour masquer les bords */
+        height: 101%; /* Légèrement plus haut pour masquer les bords */
+        transform: translate(-50%, -50%); /* Centrage parfait */
         border: 0;
+        pointer-events: none; /* Empêche les clics sur la vidéo */
+    }
+    
+    /* Overlay pour masquer complètement le logo et les contrôles */
+    .responsive-video::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: linear-gradient(to top, #000 0%, transparent 100%);
+        z-index: 1;
+        pointer-events: none;
     }
 </style>
 
 <script>
-    // Fonction pour détecter quand la vidéo devient visible dans la fenêtre
     document.addEventListener('DOMContentLoaded', function() {
         const videoContainer = document.querySelector('.video-container');
         
-        // Trouve la largeur du conteneur parent pour l'alignement parfait
+        // Fonction pour aligner la vidéo avec le reste des composants
         function alignVideoContainer() {
             const parentWidth = videoContainer.parentElement.offsetWidth;
             videoContainer.style.maxWidth = parentWidth + 'px';
         }
         
-        // Aligne au chargement
+        // Aligner au chargement et au redimensionnement
         alignVideoContainer();
-        
-        // Aligne au redimensionnement
         window.addEventListener('resize', alignVideoContainer);
         
-        // Observer pour l'autoplay
+        // Fonction pour charger l'API YouTube
+        function loadYouTubeAPI() {
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+        
+        loadYouTubeAPI();
+        
+        // Quand l'API est prête, on peut contrôler la vidéo avec plus de précision
+        window.onYouTubeIframeAPIReady = function() {
+            const iframe = document.querySelector('.responsive-video iframe');
+            const player = new YT.Player(iframe, {
+                events: {
+                    'onReady': function(event) {
+                        // Force la qualité maximale
+                        event.target.setPlaybackQuality('hd1080');
+                    }
+                }
+            });
+        };
+        
+        // Observer pour déclencher la lecture quand visible
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // La vidéo est déjà configurée pour l'autoplay
+                    // La vidéo se lancera automatiquement
                 }
             });
         }, { threshold: 0.5 });

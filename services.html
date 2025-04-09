@@ -129,7 +129,7 @@
                 </div>
             </div>
             
-    <div class="video-container">
+   <div class="video-container">
     <!-- Div pour l'iframe YouTube -->
     <div id="youtube-player" class="responsive-video"></div>
 </div>
@@ -152,7 +152,18 @@
         background-color: #000; /* Fond noir pour éviter les bords blancs */
     }
     
-    /* Overlay supprimé */
+    /* Overlay pour masquer complètement le logo et les contrôles */
+    .responsive-video::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: linear-gradient(to top, #000 0%, transparent 100%);
+        z-index: 2;
+        pointer-events: none;
+    }
 </style>
 
 <script src="https://www.youtube.com/iframe_api"></script>
@@ -246,7 +257,6 @@
         observer.observe(videoContainer);
     });
 </script>
-            
             <div class="service-solutions-grid">
                 <div class="solution-card">
                     <div class="solution-icon"><i class="fas fa-camera"></i></div>

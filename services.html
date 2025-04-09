@@ -129,9 +129,10 @@
                 </div>
             </div>
             
-   <div class="video-container">
-    <!-- Div pour l'iframe YouTube -->
-    <div id="youtube-player" class="responsive-video"></div>
+  <div class="video-container">
+    <div class="responsive-video">
+        <iframe src="https://www.youtube.com/embed/NkpqINWMecU?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=NkpqINWMecU&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 </div>
 
 <style>
@@ -152,6 +153,17 @@
         background-color: #000; /* Fond noir pour éviter les bords blancs */
     }
     
+    .responsive-video iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 101%; /* Légèrement plus large pour masquer les bords */
+        height: 101%; /* Légèrement plus haut pour masquer les bords */
+        transform: translate(-50%, -50%); /* Centrage parfait */
+        border: 0;
+        pointer-events: none; /* Empêche les clics sur la vidéo */
+    }
+    
     /* Overlay pour masquer complètement le logo et les contrôles */
     .responsive-video::after {
         content: '';
@@ -161,79 +173,16 @@
         right: 0;
         height: 40px;
         background: linear-gradient(to top, #000 0%, transparent 100%);
-        z-index: 2;
+        z-index: 1;
         pointer-events: none;
     }
 </style>
 
-<script src="https://www.youtube.com/iframe_api"></script>
 <script>
-    let player;
-    
-    // Fonction appelée par l'API YouTube quand elle est prête
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('youtube-player', {
-            videoId: 'NkpqINWMecU',
-            playerVars: {
-                'autoplay': 1,
-                'mute': 1,
-                'controls': 0,
-                'showinfo': 0,
-                'rel': 0,
-                'loop': 1,
-                'playlist': 'NkpqINWMecU',
-                'modestbranding': 1,
-                'iv_load_policy': 3,
-                'fs': 0,
-                'disablekb': 1,
-                'playsinline': 1,
-                'origin': window.location.origin
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange,
-                'onPlaybackQualityChange': onPlaybackQualityChange
-            }
-        });
-    }
-    
-    // Fonction appelée quand le lecteur est prêt
-    function onPlayerReady(event) {
-        // Force la qualité maximale disponible
-        const qualities = ['hd2160', 'hd1440', 'hd1080', 'hd720', 'large', 'medium', 'small', 'tiny', 'default'];
-        
-        // Tente de définir la qualité la plus haute possible
-        for (let i = 0; i < qualities.length; i++) {
-            player.setPlaybackQuality(qualities[i]);
-            // Vérifie si la qualité a été définie correctement
-            if (player.getPlaybackQuality() === qualities[i]) {
-                console.log('Qualité vidéo définie sur:', qualities[i]);
-                break;
-            }
-        }
-        
-        // Démarre la lecture
-        player.playVideo();
-    }
-    
-    // Surveille les changements d'état
-    function onPlayerStateChange(event) {
-        // Si la vidéo est en cours de lecture (YT.PlayerState.PLAYING = 1)
-        if (event.data === 1) {
-            // Réessaye de forcer la qualité maximale
-            player.setPlaybackQuality('hd1080');
-        }
-    }
-    
-    // Surveille les changements de qualité
-    function onPlaybackQualityChange(event) {
-        console.log('Qualité vidéo changée à:', event.data);
-    }
-    
-    // Fonction pour aligner la vidéo avec le reste des composants
     document.addEventListener('DOMContentLoaded', function() {
         const videoContainer = document.querySelector('.video-container');
         
+        // Fonction pour aligner la vidéo avec le reste des composants
         function alignVideoContainer() {
             const parentWidth = videoContainer.parentElement.offsetWidth;
             videoContainer.style.maxWidth = parentWidth + 'px';
@@ -243,13 +192,34 @@
         alignVideoContainer();
         window.addEventListener('resize', alignVideoContainer);
         
-        // Observer pour vérifier si la vidéo est visible
+        // Fonction pour charger l'API YouTube
+        function loadYouTubeAPI() {
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+        
+        loadYouTubeAPI();
+        
+        // Quand l'API est prête, on peut contrôler la vidéo avec plus de précision
+        window.onYouTubeIframeAPIReady = function() {
+            const iframe = document.querySelector('.responsive-video iframe');
+            const player = new YT.Player(iframe, {
+                events: {
+                    'onReady': function(event) {
+                        // Force la qualité maximale
+                        event.target.setPlaybackQuality('hd1080');
+                    }
+                }
+            });
+        };
+        
+        // Observer pour déclencher la lecture quand visible
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && player && player.playVideo) {
-                    // Force à nouveau la qualité maximale quand la vidéo devient visible
-                    player.setPlaybackQuality('hd1080');
-                    player.playVideo();
+                if (entry.isIntersecting) {
+                    // La vidéo se lancera automatiquement
                 }
             });
         }, { threshold: 0.5 });

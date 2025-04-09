@@ -129,19 +129,19 @@
                 </div>
             </div>
             
-       <div class="video-container">
+      <div class="video-container">
     <div class="responsive-video">
-        <iframe src="https://www.youtube.com/embed/NkpqINWMecU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/NkpqINWMecU?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=NkpqINWMecU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
 
 <style>
     .video-container {
         width: 100%;
-        max-width: 1200px;
+        max-width: var(--content-width, 1140px); /* Utilise la variable CSS de votre thème si disponible */
         margin: 0 auto;
-        padding: 0 15px;
         box-sizing: border-box;
+        padding: 0; /* Supprime le padding pour s'aligner parfaitement */
     }
     
     .responsive-video {
@@ -161,48 +161,35 @@
     }
 </style>
 
-<style>
-    .visual-portfolio {
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-    }
-    
-    .main-visual {
-        margin-bottom: 20px;
-    }
-    
-    .main-visual iframe {
-        width: 100%;
-        height: 500px;
-        display: block;
-    }
-    
-    .secondary-visuals {
-        display: flex;
-        gap: 20px;
-    }
-    
-    .visual-item {
-        flex: 1;
-    }
-    
-    .visual-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-    
-    @media (max-width: 768px) {
-        .secondary-visuals {
-            flex-direction: column;
+<script>
+    // Fonction pour détecter quand la vidéo devient visible dans la fenêtre
+    document.addEventListener('DOMContentLoaded', function() {
+        const videoContainer = document.querySelector('.video-container');
+        
+        // Trouve la largeur du conteneur parent pour l'alignement parfait
+        function alignVideoContainer() {
+            const parentWidth = videoContainer.parentElement.offsetWidth;
+            videoContainer.style.maxWidth = parentWidth + 'px';
         }
         
-        .main-visual iframe {
-            height: 56.25vw; /* Maintient le ratio 16:9 */
-        }
-    }
-</style>
+        // Aligne au chargement
+        alignVideoContainer();
+        
+        // Aligne au redimensionnement
+        window.addEventListener('resize', alignVideoContainer);
+        
+        // Observer pour l'autoplay
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // La vidéo est déjà configurée pour l'autoplay
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(videoContainer);
+    });
+</script>
             
             <div class="service-solutions-grid">
                 <div class="solution-card">

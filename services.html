@@ -129,9 +129,10 @@
                 </div>
             </div>
             
-  <div class="video-container">
+ <div class="video-container">
     <div class="responsive-video">
-        <iframe src="https://www.youtube.com/embed/NkpqINWMecU?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=NkpqINWMecU&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- L'URL est modifiée pour inclure vq=hd1080 et supprimer mute=1 -->
+        <iframe id="youtube-video" src="https://www.youtube.com/embed/NkpqINWMecU?autoplay=1&controls=0&showinfo=0&rel=0&loop=1&playlist=NkpqINWMecU&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
 
@@ -181,6 +182,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const videoContainer = document.querySelector('.video-container');
+        const iframe = document.getElementById('youtube-video');
         
         // Fonction pour aligner la vidéo avec le reste des composants
         function alignVideoContainer() {
@@ -202,24 +204,65 @@
         
         loadYouTubeAPI();
         
+        // Variable pour stocker l'instance du player
+        let player;
+        
         // Quand l'API est prête, on peut contrôler la vidéo avec plus de précision
         window.onYouTubeIframeAPIReady = function() {
-            const iframe = document.querySelector('.responsive-video iframe');
-            const player = new YT.Player(iframe, {
+            // Utilisation de l'ID direct de l'iframe
+            player = new YT.Player('youtube-video', {
                 events: {
-                    'onReady': function(event) {
-                        // Force la qualité maximale
-                        event.target.setPlaybackQuality('hd1080');
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange,
+                    'onPlaybackQualityChange': function(event) {
+                        console.log('Qualité actuelle:', event.data);
                     }
                 }
             });
         };
         
+        // Quand le player est prêt
+        function onPlayerReady(event) {
+            // Force la qualité à 1080p
+            event.target.setPlaybackQuality('hd1080');
+            
+            // Active le son (unmute)
+            event.target.unMute();
+            
+            // Définit le volume à 100%
+            event.target.setVolume(100);
+            
+            // Démarre la lecture
+            event.target.playVideo();
+        }
+        
+        // Surveille les changements d'état de lecture
+        function onPlayerStateChange(event) {
+            // Si la vidéo est en cours de lecture (code 1)
+            if (event.data === 1) {
+                // Force à nouveau la qualité 1080p
+                event.target.setPlaybackQuality('hd1080');
+                
+                // Assure que le son est activé
+                event.target.unMute();
+            }
+        }
+        
         // Observer pour déclencher la lecture quand visible
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // La vidéo se lancera automatiquement
+                if (entry.isIntersecting && player && typeof player.playVideo === 'function') {
+                    // Force la qualité à 1080p
+                    player.setPlaybackQuality('hd1080');
+                    
+                    // Active le son
+                    player.unMute();
+                    
+                    // Définit le volume
+                    player.setVolume(100);
+                    
+                    // Démarre la lecture
+                    player.playVideo();
                 }
             });
         }, { threshold: 0.5 });

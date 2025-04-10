@@ -656,6 +656,7 @@ header {
     overflow: hidden;
     position: relative;
     box-shadow: none;
+    border-radius: 8px;
 }
 
 .hero-image img {

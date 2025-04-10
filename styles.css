@@ -1,32 +1,4 @@
-/* @font-face pour les polices N27 */
-@font-face {
-    font-family: 'N27';
-    src: url('/fonts/webfont files/N27-Regular.woff2') format('woff2'),
-         url('/fonts/webfont files/N27-Regular.woff') format('woff'),
-         url('/fonts/webfont files/N27-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'N27';
-    src: url('/fonts/webfont files/N27-Bold.woff2') format('woff2'),
-         url('/fonts/webfont files/N27-Bold.woff') format('woff'),
-         url('/fonts/webfont files/N27-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'N27';
-    src: url('/fonts/webfont files/N27-Italic.woff2') format('woff2'),
-         url('/fonts/webfont files/N27-Italic.woff') format('woff'),
-         url('/fonts/webfont files/N27-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
-
-src: url('/fonts/webfont\ files/N27-Regular.woff2') format('woff2')
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
     --color-bg: #F3F2EB;
@@ -42,8 +14,8 @@ src: url('/fonts/webfont\ files/N27-Regular.woff2') format('woff2')
     --color-border: rgba(55, 59, 48, 0.15);
     --color-inverse: #F3F2EB;
     --color-grid: rgba(70, 74, 62, 0.04);
-    --font-display: 'N27', sans-serif;
-    --font-body: 'N27', sans-serif;
+    --font-display: 'Chakra Petch', sans-serif;
+    --font-body: 'Inter', sans-serif;
     --grid-gap: 24px;
     --section-spacing: 140px;
     --radius-sm: 2px;
@@ -59,8 +31,8 @@ src: url('/fonts/webfont\ files/N27-Regular.woff2') format('woff2')
 }
 
 body {
-    font-family: 'N27', sans-serif;
-    background-color: var(--color-bg); /* Au lieu de 'N27', sans-serif */
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.5;
     overflow-x: hidden;
@@ -68,7 +40,7 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: 'N27', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.01em;
@@ -88,7 +60,7 @@ h1, h2, h3, h4, h5 {
 
 /* Utility Classes */
 .coordinates {
-    font-family: 'N27', sans-serif;
+    font-family: var(--font-display);
     font-size: 11px;
     color: var(--color-accent);
     letter-spacing: 1px;
@@ -136,7 +108,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .tag {
-    font-family: 'N27', sans-serif;
+    font-family: var(--font-display);
     font-size: 13px;
     text-transform: uppercase;
     font-weight: 500;
@@ -191,7 +163,7 @@ header {
 }
 
 .cta-button {
-    font-family: 'N27', sans-serif;
+    font-family: var(--font-display);
     display: inline-flex; /* Utiliser inline-flex pour centrer */
     justify-content: center; /* Centre horizontalement */
     align-items: center; /* Centre verticalement */
@@ -283,7 +255,7 @@ header {
 
 /* Logo */
 .logo {
-    font-family: 'N27', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 22px;
     text-decoration: none;
@@ -329,7 +301,7 @@ header {
 }
 
 .nav-link {
-    font-family: 'N27', sans-serif;
+    font-family: var(--font-display);
     font-size: 14px;
     text-decoration: none;
     color: var(--color-primary);
@@ -418,7 +390,7 @@ header {
 
 /* Styles de base pour tous les boutons */
 .cta-button, .secondary-button, .big-cta-button, .big-secondary-button {
-    font-family: 'N27', sans-serif;
+    font-family: var(--font-display);
     display: inline-block;
     padding: 12px 28px;
     text-decoration: none;
@@ -799,7 +771,7 @@ header {
 }
 
 .metric-value {
-    font-family: 'N27', sans-serif;
+    font-family: var(--font-display);
     font-size: 44px;
     font-weight: 700;
     color: var(--color-primary);
@@ -808,7 +780,7 @@ header {
 }
 
 .metric-label {
-    font-family: 'N27', sans-serif;
+    font-family: var(--font-display);
     font-size: 14px;
     color: var(--color-text-light);
     font-weight: 500;

@@ -2895,3 +2895,124 @@ header {
     max-height: 250px;
   }
 }
+
+/* ===== OPTIMISATIONS POUR TRÈS PETITS ÉCRANS ===== */
+/* Ces règles complètent le responsive existant sans créer de conflits */
+
+/* Correction des débordements d'image */
+@media screen and (max-width: 414px) {
+  /* Empêcher le débordement de contenu */
+  body, html {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  
+  /* Assurer que toutes les images restent dans leur conteneur */
+  img {
+    max-width: 100%;
+  }
+  
+  /* Ajuster spécifiquement les conteneurs d'images problématiques */
+  .hero-image, .service-image, .approach-frame, .portfolio-item {
+    overflow: hidden;
+  }
+  
+  /* Permettre aux images de s'adapter en hauteur sur les petits écrans */
+  .hero-image img, .service-image img, .approach-frame img, .square-image {
+    max-height: 300px;
+    object-fit: contain;
+  }
+  
+  /* Supprimer les encadrements et ombres des images */
+  .hero-image, 
+  .service-image, 
+  .approach-frame, 
+  .portfolio-item,
+  .square-image-container {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+  
+  /* Supprimer les décorations autour des images */
+  .target-marks, 
+  .tech-frame, 
+  .frame-decoration {
+    display: none !important;
+  }
+  
+  /* Améliorer les espacements sans contredire les règles existantes */
+  .service-section:not([class*="padding"]) {
+    padding-top: 50px;
+    padding-bottom: 40px;
+  }
+  
+  /* Ajustement fin des tailles de texte uniquement sur les plus petits écrans */
+  .hero-title:not([class*="font-size"]) {
+    font-size: min(8vw, 32px);
+    line-height: 1.2;
+  }
+  
+  /* Amélioration de l'affichage des cartes sur petits écrans */
+  .feature-card, .solution-card, .strategy-card, .acquisition-card, .metric {
+    min-width: 0; /* Empêche le débordement des flexbox */
+  }
+}
+
+/* Optimisations supplémentaires pour iPhone SE et autres très petits écrans */
+@media screen and (max-width: 375px) {
+  /* Conteneur principal plus compact */
+  .container {
+    padding-left: max(10px, 3%);
+    padding-right: max(10px, 3%);
+  }
+  
+  /* Correction des grilles pour éviter les débordements */
+  .grid, 
+  .service-content-grid,
+  .service-features-grid,
+  .service-solutions-grid,
+  .community-strategies-grid,
+  .acquisition-strategies-grid {
+    row-gap: 15px;
+  }
+  
+  /* Amélioration de la navigation sur petit écran */
+  .mobile-nav-links .nav-link {
+    padding: 8px 0;
+  }
+  
+  /* Réduction de la hauteur des sections sur très petit écran */
+  .hero, .services-hero {
+    min-height: auto;
+  }
+  
+  /* Correction des boutons trop larges */
+  .cta-button, .secondary-button, .big-cta-button, .big-secondary-button {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* Optimisations pour l'iPhone SE (première génération) */
+@media screen and (max-width: 320px) {
+  /* Réduction supplémentaire de l'espacement */
+  .feature-card, .solution-card, .strategy-card, .acquisition-card, .metric {
+    padding: 12px;
+  }
+  
+  /* Adaptation des tailles de texte pour très petits écrans */
+  .section-title:not([class*="font-size"]) {
+    font-size: 24px;
+  }
+  
+  /* Adaptation des métriques pour éviter les débordements */
+  .metric-value {
+    font-size: 36px;
+  }
+  
+  /* Amélioration spécifique pour les images problématiques */
+  .hero-image img, .service-image img, .approach-frame img, .square-image {
+    max-height: 250px;
+  }
+}

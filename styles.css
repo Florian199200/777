@@ -1,4 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* @font-face pour les polices N27 */
+@font-face {
+    font-family: 'N27';
+    src: url('fonts/N27-Regular.woff2') format('woff2'),
+         url('fonts/N27-Regular.woff') format('woff'),
+         url('fonts/N27-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'N27';
+    src: url('fonts/N27-Bold.woff2') format('woff2'),
+         url('fonts/N27-Bold.woff') format('woff'),
+         url('fonts/N27-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'N27';
+    src: url('fonts/N27-Italic.woff2') format('woff2'),
+         url('fonts/N27-Italic.woff') format('woff'),
+         url('fonts/N27-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
 
 :root {
     --color-bg: #F3F2EB;
@@ -14,8 +40,8 @@
     --color-border: rgba(55, 59, 48, 0.15);
     --color-inverse: #F3F2EB;
     --color-grid: rgba(70, 74, 62, 0.04);
-    --font-display: 'Chakra Petch', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'N27', sans-serif;
+    --font-body: 'N27', sans-serif;
     --grid-gap: 24px;
     --section-spacing: 140px;
     --radius-sm: 2px;

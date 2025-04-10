@@ -57,8 +57,8 @@
 }
 
 body {
-    font-family: var(--font-body);
-    background-color: var(--color-bg);
+    font-family:  'N27', sans-serif;
+    background-color: 'N27', sans-serif;
     color: var(--color-text);
     line-height: 1.5;
     overflow-x: hidden;

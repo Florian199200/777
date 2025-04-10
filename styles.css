@@ -59,8 +59,8 @@ src: url('assets/fonts/N27-Regular.woff2') format('woff2');
 }
 
 body {
-    font-family:  'N27', sans-serif;
-    background-color: 'N27', sans-serif;
+    font-family: 'N27', sans-serif;
+    background-color: var(--color-bg); /* Au lieu de 'N27', sans-serif */
     color: var(--color-text);
     line-height: 1.5;
     overflow-x: hidden;

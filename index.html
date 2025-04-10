@@ -5,146 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Index</title>
-    <!-- Styles optimisés pour les petits écrans -->
-    <style>
-        /* ===== OPTIMISATIONS POUR TRÈS PETITS ÉCRANS ===== */
-        /* Ces règles ne s'appliquent qu'aux appareils mobiles */
-
-        @media screen and (max-width: 414px) {
-            /* Fix général pour éviter les débordements */
-            body, html {
-                overflow-x: hidden;
-                width: 100%;
-                max-width: 100vw;
-            }
-            
-            /* Ajustement des conteneurs */
-            .container {
-                padding-left: 12px;
-                padding-right: 12px;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            
-            /* Correction pour l'image héro */
-            .hero-image {
-                height: auto !important;
-                max-height: 300px !important;
-                box-shadow: none !important;
-                overflow: hidden;
-            }
-            
-            .hero-image img {
-                width: 100%;
-                height: auto !important;
-                object-fit: contain;
-                max-height: 300px;
-            }
-            
-            /* Suppression des décorations qui causent des problèmes */
-            .target-marks, .tech-frame {
-                display: none !important;
-            }
-            
-            /* Correction des métriques */
-            .hero-metrics {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-                margin-top: 40px;
-            }
-            
-            /* Amélioration du roadmap */
-            .roadmap-container {
-                padding: 20px 0;
-            }
-            
-            .roadmap-content {
-                padding: 15px;
-            }
-            
-            .roadmap-checklist li {
-                padding-left: 20px;
-                font-size: 14px;
-            }
-        }
-
-        /* Optimisations supplémentaires pour les très petits écrans */
-        @media screen and (max-width: 375px) {
-            /* Réduction de la taille des titres */
-            .hero-title {
-                font-size: 26px !important;
-                line-height: 1.3;
-            }
-            
-            .section-title, .cta-title {
-                font-size: 24px !important;
-                line-height: 1.3;
-            }
-            
-            /* Ajustement des métriques */
-            .metric-value {
-                font-size: 36px;
-            }
-            
-            .metric-label {
-                font-size: 12px;
-            }
-            
-            /* Boutons plus compacts */
-            .cta-button, .secondary-button, .big-cta-button {
-                width: 100%;
-                padding: 12px 15px;
-                text-align: center;
-            }
-        }
-
-        /* Optimisations pour les plus petits appareils (iPhone SE) */
-        @media screen and (max-width: 320px) {
-            .hero-title {
-                font-size: 22px !important;
-            }
-            
-            .hero-description, .section-description {
-                font-size: 14px;
-            }
-            
-            .roadmap-title {
-                font-size: 18px;
-            }
-            
-            .roadmap-details p {
-                font-size: 14px;
-            }
-            
-            .tag {
-                font-size: 11px;
-                padding: 3px 8px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <div class="logo-symbol"></div>
-                    <span>LINKA LAB</span>
-                </a>
-                <nav class="main-nav">
-                    <a href="services.html" class="nav-link active">SERVICES</a>
-                    <a href="methode.html" class="nav-link">À PROPOS</a>
-                </nav>
-                <a href="contact.html" class="cta-button">CONTACT</a>
-                <div class="mobile-menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-symbol"></div>
+                <span>LINKA LAB</span>
+            </a>
+            <nav class="main-nav">
+                <a href="services.html" class="nav-link active">SERVICES</a>
+                <a href="methode.html" class="nav-link">À PROPOS</a>
+            </nav>
+            <a href="contact.html" class="cta-button">CONTACT</a>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-    </header>
+    </div>
+</header>
+</body>
+</html>
 
     <div class="mobile-nav">
         <ul class="mobile-nav-links">
@@ -176,263 +60,505 @@
                 </div>
             </div>
           <div class="hero-metrics">
-                <div class="metric">
-                    <div class="metric-value counter" data-target="50">+0%</div>
-                    <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value counter" data-target="50">+0%</div>
-                    <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value counter" data-target="70">+0%</div>
-                    <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value counter" data-target="80">+0%</div>
-                    <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
-                </div>
-            </div>
+    <div class="metric">
+        <div class="metric-value counter" data-target="50">+0%</div>
+        <div class="metric-label">AUGMENTATION MOYENNE DU CHIFFRE D'AFFAIRES DE NOS CLIENTS</div>
+    </div>
+    <div class="metric">
+        <div class="metric-value counter" data-target="50">+0%</div>
+        <div class="metric-label">CROISSANCE DU TRAFIC QUALIFIÉ SUR LES SITES E-COMMERCE</div>
+    </div>
+    <div class="metric">
+        <div class="metric-value counter" data-target="70">+0%</div>
+        <div class="metric-label">ENGAGEMENT SOCIAL MEDIA DANS LES 6 PREMIERS MOIS</div>
+    </div>
+    <div class="metric">
+        <div class="metric-value counter" data-target="80">+0%</div>
+        <div class="metric-label">AMÉLIORATION DU TAUX DE CONVERSION MOYEN</div>
+    </div>
+</div>
         </div>
     </section>
-
-    <section id="approach" class="approach-section common-background">
-        <!-- Contenu de la section "Notre méthodologie" -->
-        <div class="approach-pattern"></div>
-        <div class="container">
-            <div class="section-header">
-                <div class="coordinates">ID:CARP-PROC-01</div>
-                <div class="tag">NOTRE MÉTHODOLOGIE</div>
-                <h2 class="section-title">Processus tactique pour des résultats prévisibles</h2>
-                <p class="section-description">Notre démarche structurée garantit des résultats mesurables et progressifs pour chaque marque que nous accompagnons.</p>
-            </div>
-            
-            <div class="roadmap-container">
-                <div class="roadmap-line">
-                    <div class="roadmap-progress"></div>
-                </div>
-                
-                <div class="roadmap-steps">
-                    <div class="roadmap-step active" data-step="1">
-                        <div class="roadmap-node">
-                            <div class="node-dot"></div>
-                            <div class="node-pulse"></div>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="roadmap-number">01</div>
-                            <h3 class="roadmap-title">Analyse & Reconnaissance</h3>
-                            <div class="roadmap-details">
-                                <p>Nous cartographions votre écosystème actuel, analysons vos concurrents et identifions les opportunités de croissance inexploitées dans votre secteur spécifique.</p>
-                                <ul class="roadmap-checklist">
-                                    <li>Audit complet de votre présence digitale</li>
-                                    <li>Analyse concurrentielle approfondie</li>
-                                    <li>Identification des opportunités de marché</li>
-                                </ul>
-                                <div class="roadmap-time">Durée moyenne: 2 semaines</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="roadmap-step" data-step="2">
-                        <div class="roadmap-node">
-                            <div class="node-dot"></div>
-                            <div class="node-pulse"></div>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="roadmap-number">02</div>
-                            <h3 class="roadmap-title">Planification Stratégique</h3>
-                            <div class="roadmap-details">
-                                <p>Nous élaborons une feuille de route tactique alignée avec vos objectifs commerciaux, en établissant des KPIs précis pour mesurer chaque avancée.</p>
-                                <ul class="roadmap-checklist">
-                                    <li>Définition des objectifs SMART</li>
-                                    <li>Élaboration des stratégies d'acquisition</li>
-                                    <li>Création d'un calendrier d'exécution</li>
-                                </ul>
-                                <div class="roadmap-time">Durée moyenne: 10 jours</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="roadmap-step" data-step="3">
-                        <div class="roadmap-node">
-                            <div class="node-dot"></div>
-                            <div class="node-pulse"></div>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="roadmap-number">03</div>
-                            <h3 class="roadmap-title">Déploiement Tactique</h3>
-                            <div class="roadmap-details">
-                                <p>Nous mettons en œuvre votre stratégie digitale avec une exécution rigoureuse et une attention aux détails qui fait la différence face à vos concurrents.</p>
-                                <ul class="roadmap-checklist">
-                                    <li>Mise en place des optimisations techniques</li>
-                                    <li>Création et déploiement des contenus</li>
-                                    <li>Lancement des campagnes d'acquisition</li>
-                                </ul>
-                                <div class="roadmap-time">Durée moyenne: 4 semaines</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="roadmap-step" data-step="4">
-                        <div class="roadmap-node">
-                            <div class="node-dot"></div>
-                            <div class="node-pulse"></div>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="roadmap-number">04</div>
-                            <h3 class="roadmap-title">Optimisation Continue</h3>
-                            <div class="roadmap-details">
-                                <p>Nous analysons méthodiquement les données de performance pour ajuster la stratégie et maximiser constamment votre retour sur investissement.</p>
-                                <ul class="roadmap-checklist">
-                                    <li>Suivi hebdomadaire des KPIs</li>
-                                    <li>Optimisation basée sur les données</li>
-                                    <li>Rapports mensuels d'avancement</li>
-                                    <li>Amélioration continue des campagnes</li>
-                                </ul>
-                                <div class="roadmap-time">Processus continu à long terme</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="cta-section common-background">
-        <div class="cta-pattern"></div>
-        <div class="container">
-            <div class="cta-content">
-                <div class="coordinates">OBJET:DISCUSSION-STRATÉGIQUE</div>
-                <div class="tag">PASSEZ À L'ACTION</div>
-                <h2 class="cta-title">Prêt à augmenter significativement vos résultats?</h2>
-                <p class="cta-text">Prenons rendez-vous pour discuter de votre situation actuelle et identifier les opportunités de croissance pour votre marque dans l'univers de la pêche à la carpe.</p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="big-cta-button">DEMANDER UN AUDIT STRATÉGIQUE</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CODE HTML DU FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-logo">
-                <div class="logo">
-                    <!-- Remplacez par votre logo -->
-                    <img src="votre-logo.png" alt="Logo">
-                </div>
-                <p class="company-description">Votre entreprise, une référence dans son domaine avec des solutions innovantes et personnalisées.</p>
-            </div>
-
-            <div class="footer-contact">
-                <h3>Contact</h3>
-                <ul class="contact-info">
-                    <li class="contact-phone">
-                        <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                        </span>
-                        +33 1 23 45 67 89
-                    </li>
-                    <li class="contact-email">
-                        <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                        </span>
-                        contact@entreprise.com
-                    </li>
-                    <li class="contact-location">
-                        <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                        </span>
-                        Paris, France
-                    </li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h3>Liens utiles</h3>
-                <a href="#">Politique de confidentialité</a>
-                <a href="#">Mentions légales</a>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Votre Entreprise. Tous droits réservés.</p>
-        </div>
-    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var counters = document.querySelectorAll('.counter');
-            var speed = 200; // Ajuster la vitesse selon vos besoins
+       document.addEventListener('DOMContentLoaded', function() {
+    var counters = document.querySelectorAll('.counter');
+    var speed = 200; // Ajuster la vitesse selon vos besoins
+    
+    counters.forEach(counter => {
+        var updateCount = function() {
+            var target = +counter.getAttribute('data-target');
+            var count = +counter.innerText.replace('+', '').replace('%', '');
+            var increment = target / speed;
             
-            counters.forEach(counter => {
-                var updateCount = function() {
-                    var target = +counter.getAttribute('data-target');
-                    var count = +counter.innerText.replace('+', '').replace('%', '');
-                    var increment = target / speed;
-                    
-                    if (count < target) {
-                        counter.innerText = '+' + Math.ceil(count + increment) + '%';
-                        setTimeout(updateCount, 20);
-                    } else {
-                        counter.innerText = '+' + target + '%';
-                    }
-                };
-                
-                // Initialiser avec "+0%" au lieu de "0"
-                counter.innerText = "+0%";
-                updateCount();
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const steps = document.querySelectorAll('.roadmap-step');
-            const progress = document.querySelector('.roadmap-progress');
-            const roadmapSection = document.querySelector('.roadmap-container');
-            
-            // Animation de défilement
-            function animateOnScroll() {
-                const scrollPosition = window.scrollY + window.innerHeight * 0.6;
-                const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
-                const sectionHeight = roadmapSection.offsetHeight;
-                const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
-                
-                // Limiter la progression entre 0 et 1
-                const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
-                
-                // Appliquer la hauteur à la barre de progression
-                progress.style.height = (limitedProgress * 100) + '%';
-                
-                // Activer les étapes en fonction du défilement
-                steps.forEach((step, index) => {
-                    const stepTop = step.getBoundingClientRect().top + window.scrollY;
-                    
-                    if (scrollPosition > stepTop) {
-                        step.classList.add('active');
-                    } else {
-                        step.classList.remove('active');
-                    }
-                });
+            if (count < target) {
+                counter.innerText = '+' + Math.ceil(count + increment) + '%';
+                setTimeout(updateCount, 20);
+            } else {
+                counter.innerText = '+' + target + '%';
             }
-            
-            // Initialisation
-            window.addEventListener('scroll', animateOnScroll);
-            window.addEventListener('resize', animateOnScroll);
-            
-            // Déclencher une fois au chargement
-            setTimeout(animateOnScroll, 300);
-            
-            // Assurer que l'animation fonctionne même sur les longs chargements
-            window.addEventListener('load', animateOnScroll);
-        });
+        };
+        
+        // Initialiser avec "+0%" au lieu de "0"
+        counter.innerText = "+0%";
+        updateCount();
+    });
+});
     </script>
+
+    
+
+<section id="approach" class="approach-section common-background">
+    <!-- Contenu de la section "Notre méthodologie" -->
+    <div class="approach-pattern"></div>
+    <div class="container">
+        <div class="section-header">
+            <div class="coordinates">ID:CARP-PROC-01</div>
+            <div class="tag">NOTRE MÉTHODOLOGIE</div>
+            <h2 class="section-title">Processus tactique pour des résultats prévisibles</h2>
+            <p class="section-description">Notre démarche structurée garantit des résultats mesurables et progressifs pour chaque marque que nous accompagnons.</p>
+        </div>
+        
+        <div class="roadmap-container">
+            <div class="roadmap-line">
+                <div class="roadmap-progress"></div>
+            </div>
+            
+            <div class="roadmap-steps">
+                <div class="roadmap-step active" data-step="1">
+                    <div class="roadmap-node">
+                        <div class="node-dot"></div>
+                        <div class="node-pulse"></div>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-number">01</div>
+                        <h3 class="roadmap-title">Analyse & Reconnaissance</h3>
+                        <div class="roadmap-details">
+                            <p>Nous cartographions votre écosystème actuel, analysons vos concurrents et identifions les opportunités de croissance inexploitées dans votre secteur spécifique.</p>
+                            <ul class="roadmap-checklist">
+                                <li>Audit complet de votre présence digitale</li>
+                                <li>Analyse concurrentielle approfondie</li>
+                                <li>Identification des opportunités de marché</li>
+                            </ul>
+                            <div class="roadmap-time">Durée moyenne: 2 semaines</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="roadmap-step" data-step="2">
+                    <div class="roadmap-node">
+                        <div class="node-dot"></div>
+                        <div class="node-pulse"></div>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-number">02</div>
+                        <h3 class="roadmap-title">Planification Stratégique</h3>
+                        <div class="roadmap-details">
+                            <p>Nous élaborons une feuille de route tactique alignée avec vos objectifs commerciaux, en établissant des KPIs précis pour mesurer chaque avancée.</p>
+                            <ul class="roadmap-checklist">
+                                <li>Définition des objectifs SMART</li>
+                                <li>Élaboration des stratégies d'acquisition</li>
+                                <li>Création d'un calendrier d'exécution</li>
+                            </ul>
+                            <div class="roadmap-time">Durée moyenne: 10 jours</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="roadmap-step" data-step="3">
+                    <div class="roadmap-node">
+                        <div class="node-dot"></div>
+                        <div class="node-pulse"></div>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-number">03</div>
+                        <h3 class="roadmap-title">Déploiement Tactique</h3>
+                        <div class="roadmap-details">
+                            <p>Nous mettons en œuvre votre stratégie digitale avec une exécution rigoureuse et une attention aux détails qui fait la différence face à vos concurrents.</p>
+                            <ul class="roadmap-checklist">
+                                <li>Mise en place des optimisations techniques</li>
+                                <li>Création et déploiement des contenus</li>
+                                <li>Lancement des campagnes d'acquisition</li>
+                            </ul>
+                            <div class="roadmap-time">Durée moyenne: 4 semaines</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="roadmap-step" data-step="4">
+                    <div class="roadmap-node">
+                        <div class="node-dot"></div>
+                        <div class="node-pulse"></div>
+                    </div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-number">04</div>
+                        <h3 class="roadmap-title">Optimisation Continue</h3>
+                        <div class="roadmap-details">
+                            <p>Nous analysons méthodiquement les données de performance pour ajuster la stratégie et maximiser constamment votre retour sur investissement.</p>
+                            <ul class="roadmap-checklist">
+                                <li>Suivi hebdomadaire des KPIs</li>
+                                <li>Optimisation basée sur les données</li>
+                                <li>Rapports mensuels d'avancement</li>
+                                <li>Amélioration continue des campagnes</li>
+                            </ul>
+                            <div class="roadmap-time">Processus continu à long terme</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="cta-section common-background">
+    <div class="cta-pattern"></div>
+    <div class="container">
+        <div class="cta-content">
+            <div class="coordinates">OBJET:DISCUSSION-STRATÉGIQUE</div>
+            <div class="tag">PASSEZ À L'ACTION</div>
+            <h2 class="cta-title">Prêt à augmenter significativement vos résultats?</h2>
+            <p class="cta-text">Prenons rendez-vous pour discuter de votre situation actuelle et identifier les opportunités de croissance pour votre marque dans l'univers de la pêche à la carpe.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="big-cta-button">DEMANDER UN AUDIT STRATÉGIQUE</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .section-header.centered {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 60px;
+    }
+    
+    .approach-section {
+        background-color: #464a3e; /* Vert kaki cohérent avec le site */
+        color: #f3f2eb; /* Texte clair pour contraste */
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .section-header.centered .section-title,
+    .section-header.centered .section-description,
+    .section-header.centered .coordinates,
+    .section-header.centered .tag {
+        color: #f3f2eb; /* Texte clair pour meilleur contraste */
+    }
+    
+    .roadmap-container {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+    
+    .roadmap-line {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 6px;
+        height: 100%;
+        background-color: rgba(243, 242, 235, 0.3); /* Ligne plus claire et transparente */
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+    
+    .roadmap-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: #f3f2eb; /* Couleur de la jauge de progression en clair pour contraste */
+        transition: height 0.5s ease-in-out;
+    }
+    
+    .roadmap-steps {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .roadmap-step {
+        display: flex;
+        margin-bottom: 80px;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+    }
+    
+    .roadmap-step.active {
+        opacity: 1;
+    }
+    
+    .roadmap-node {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        margin: 0 35px;
+        z-index: 3;
+    }
+    
+    .node-dot {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 30px;
+        height: 30px;
+        background-color: #f3f2eb;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        border: 3px solid #464a3e;
+    }
+    
+    .active .node-dot {
+        background-color: #f3f2eb;
+        border-color: #f3f2eb;
+    }
+    
+    .node-pulse {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(243, 242, 235, 0.4);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        animation: pulse 2s infinite;
+        opacity: 0;
+    }
+    
+    .active .node-pulse {
+        opacity: 1;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 1;
+        }
+        70% {
+            opacity: 0.5;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0;
+        }
+    }
+    
+    .roadmap-content {
+        flex: 1;
+        background-color: rgba(243, 242, 235, 0.05); /* Fond légèrement transparent */
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border-left: 5px solid #f3f2eb;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: #f3f2eb; /* Texte clair pour meilleur contraste */
+    }
+    
+    .roadmap-step:hover .roadmap-content {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        background-color: rgba(243, 242, 235, 0.1); /* Plus clair au survol */
+    }
+    
+    .roadmap-number {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: #f3f2eb;
+        color: #464a3e;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .roadmap-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: #f3f2eb;
+        font-weight: 600;
+    }
+    
+    .roadmap-details {
+        color: rgba(243, 242, 235, 0.9);
+    }
+    
+    .roadmap-details p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+    
+    .roadmap-checklist {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 15px;
+    }
+    
+    .roadmap-checklist li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+    
+    .roadmap-checklist li:before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #f3f2eb;
+        font-weight: bold;
+    }
+    
+    .roadmap-time {
+        display: inline-block;
+        background-color: rgba(243, 242, 235, 0.2);
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        color: #f3f2eb;
+        font-weight: 600;
+        border: 1px solid rgba(243, 242, 235, 0.3);
+    }
+    
+    /* Alternance gauche/droite pour écrans larges */
+    @media (min-width: 992px) {
+        .roadmap-step {
+            padding-left: 50%;
+        }
+        
+        .roadmap-step:nth-child(even) {
+            padding-left: 0;
+            padding-right: 50%;
+            flex-direction: row-reverse;
+        }
+        
+        .roadmap-step:nth-child(even) .roadmap-content {
+            border-left: none;
+            border-right: 5px solid #f3f2eb;
+        }
+    }
+    
+    /* Responsive */
+    @media (max-width: 991px) {
+        .roadmap-line {
+            left: 30px;
+        }
+        
+        .roadmap-node {
+            margin: 0 15px 0 0;
+        }
+        
+        .roadmap-step {
+            padding-left: 60px;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const steps = document.querySelectorAll('.roadmap-step');
+        const progress = document.querySelector('.roadmap-progress');
+        const roadmapSection = document.querySelector('.roadmap-container');
+        
+        // Animation de défilement
+        function animateOnScroll() {
+            const scrollPosition = window.scrollY + window.innerHeight * 0.6;
+            const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
+            const sectionHeight = roadmapSection.offsetHeight;
+            const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+            
+            // Limiter la progression entre 0 et 1
+            const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+            
+            // Appliquer la hauteur à la barre de progression
+            progress.style.height = (limitedProgress * 100) + '%';
+            
+            // Activer les étapes en fonction du défilement
+            steps.forEach((step, index) => {
+                const stepTop = step.getBoundingClientRect().top + window.scrollY;
+                
+                if (scrollPosition > stepTop) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+        
+        // Initialisation
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('resize', animateOnScroll);
+        
+        // Déclencher une fois au chargement
+        setTimeout(animateOnScroll, 300);
+        
+        // Assurer que l'animation fonctionne même sur les longs chargements
+        window.addEventListener('load', animateOnScroll);
+    });
+</script>
+
+<!-- CODE HTML DU FOOTER -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <div class="logo">
+                <!-- Remplacez par votre logo -->
+                <img src="votre-logo.png" alt="Logo">
+            </div>
+            <p class="company-description">Votre entreprise, une référence dans son domaine avec des solutions innovantes et personnalisées.</p>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contact</h3>
+            <ul class="contact-info">
+                <li class="contact-phone">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </span>
+                    +33 1 23 45 67 89
+                </li>
+                <li class="contact-email">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </span>
+                    contact@entreprise.com
+                </li>
+                <li class="contact-location">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </span>
+                    Paris, France
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h3>Liens utiles</h3>
+            <a href="#">Politique de confidentialité</a>
+            <a href="#">Mentions légales</a>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 Votre Entreprise. Tous droits réservés.</p>
+    </div>
+</footer>
+
 </body>
 </html>

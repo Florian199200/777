@@ -26,7 +26,7 @@
     font-style: italic;
 }
 
-src: url('assets/fonts/N27-Regular.woff2') format('woff2');
+src: url('fonts/webfont\ files/N27-Regular.woff2') format('woff2')
 
 :root {
     --color-bg: #F3F2EB;

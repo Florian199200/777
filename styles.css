@@ -655,7 +655,7 @@ header {
     height: 600px;
     overflow: hidden;
     position: relative;
-    box-shadow: var(--box-shadow);
+    box-shadow: none;
 }
 
 .hero-image img {

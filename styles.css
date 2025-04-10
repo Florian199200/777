@@ -1,27 +1,27 @@
 /* @font-face pour les polices N27 */
 @font-face {
     font-family: 'N27';
-    src: url('fonts/webfont files/N27-Regular.woff2') format('woff2'),
-         url('fonts/webfont files/N27-Regular.woff') format('woff'),
-         url('fonts/webfont files/N27-Regular.ttf') format('truetype');
+    src: url('/fonts/webfont files/N27-Regular.woff2') format('woff2'),
+         url('/fonts/webfont files/N27-Regular.woff') format('woff'),
+         url('/fonts/webfont files/N27-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'N27';
-    src: url('fonts/webfont files/N27-Bold.woff2') format('woff2'),
-         url('fonts/webfont files/N27-Bold.woff') format('woff'),
-         url('fonts/webfont files/N27-Bold.ttf') format('truetype');
+    src: url('/fonts/webfont files/N27-Bold.woff2') format('woff2'),
+         url('/fonts/webfont files/N27-Bold.woff') format('woff'),
+         url('/fonts/webfont files/N27-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'N27';
-    src: url('fonts/webfont files/N27-Italic.woff2') format('woff2'),
-         url('fonts/webfont files/N27-Italic.woff') format('woff'),
-         url('fonts/webfont files/N27-Italic.ttf') format('truetype');
+    src: url('/fonts/webfont files/N27-Italic.woff2') format('woff2'),
+         url('/fonts/webfont files/N27-Italic.woff') format('woff'),
+         url('/fonts/webfont files/N27-Italic.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
 }

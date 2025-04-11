@@ -96,6 +96,8 @@
                 setTimeout(updateCount, 20);
             } else {
                 counter.innerText = '+' + target + '%';
+                // Ajouter la classe au parent .metric pour activer la diode
+                counter.closest('.metric').classList.add('counter-complete');
             }
         };
         

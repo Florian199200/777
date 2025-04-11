@@ -3035,3 +3035,39 @@ header {
 .active .node-light {
     opacity: 1;
 }
+
+.node-light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: rgb(77, 255, 160);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px 2px rgba(77, 255, 160, 0.7);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.active .node-light {
+    opacity: 1;
+}
+
+/* Modification de la couleur de fond des boules */
+.node-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(25, 25, 25) !important; /* Fond noir */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #464a3e;
+}
+
+.active .node-dot {
+    background-color: rgb(25, 25, 25) !important; /* Même quand actif */
+    border-color: #f3f2eb;
+}

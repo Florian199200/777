@@ -570,39 +570,5 @@
     </div>
 </footer>
 
-<script>
-  // Votre code JavaScript existant
-</script>
-
-<script>
-    
-document.addEventListener('DOMContentLoaded', function() {
-    var counters = document.querySelectorAll('.counter');
-    var speed = 200; // Ajuster la vitesse selon vos besoins
-    
-    counters.forEach(counter => {
-        var updateCount = function() {
-            var target = +counter.getAttribute('data-target');
-            var count = +counter.innerText.replace('+', '').replace('%', '');
-            var increment = target / speed;
-            
-            if (count < target) {
-                counter.innerText = '+' + Math.ceil(count + increment) + '%';
-                setTimeout(updateCount, 20);
-            } else {
-                counter.innerText = '+' + target + '%';
-                // Ajouter la classe au parent .metric pour activer la diode
-                counter.closest('.metric').classList.add('counter-complete');
-            }
-        };
-        
-        // Initialiser avec "+0%" au lieu de "0"
-        counter.innerText = "+0%";
-        updateCount();
-    });
-});
-    
-</script>
-
 </body>
 </html>

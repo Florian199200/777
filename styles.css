@@ -750,13 +750,12 @@ header {
     letter-spacing: 2px;
 }
 
-.metric-value {
-    font-family: var(--font-display);
-    font-size: 44px;
-    font-weight: 700;
-    color: var(--color-primary); /* Texte en kaki (--color-primary est votre couleur kaki) */
-    line-height: 1;
-    margin-bottom: 12px;
+.metric {
+    position: relative;
+    padding: 30px;
+    background-color: rgb(25, 25, 25); /* Changé en noir */
+    border-left: 2px solid var(--color-accent);
+    border-radius: 8px; /* Ajout d'arrondis aux coins */
 }
 
 /* Modification du petit motif quadrillé pour le rendre visible sur fond noir */
@@ -786,11 +785,10 @@ header {
 .metric-label {
     font-family: var(--font-display);
     font-size: 14px;
-    color: var(--color-accent); /* Texte en accent kaki-doré */
+    color: var(--color-inverse); /* Texte clair */
     font-weight: 500;
     line-height: 1.4;
 }
-
 
 /* Section Générale */
 .section {

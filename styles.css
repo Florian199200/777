@@ -256,21 +256,29 @@ header {
     border-radius: 8px !important;
     overflow: hidden !important;
     box-shadow: none !important; /* Supprime les ombres */
+    height: auto !important; /* Contrôle la hauteur */
+    aspect-ratio: 1/1 !important; /* Force un ratio carré */
+    width: 100% !important; /* Assure la pleine largeur */
   }
   
   .hero-image img,
   .service-image img {
     width: 100% !important;
     border-radius: 8px !important;
-    height: auto !important;
+    height: 100% !important; /* Assure que l'image remplit le conteneur */
+    object-fit: cover !important; /* Maintient les proportions sans déformation */
     box-shadow: none !important; /* Supprime les ombres */
+
+  /* Assure que le conteneur de l'image prend toute la largeur */
+  .hero-visual {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+}
+    
   }
 }
 
-.hero-image {
-  height: auto !important; /* Remplacer la hauteur fixe */
-  aspect-ratio: 16/9; /* Maintient un ratio d'aspect, ajustez selon vos besoins */
-}
 
 .logo, .main-nav {
     z-index: 1002; /* Assurez-vous que z-index est plus élevé que celui de l'en-tête */

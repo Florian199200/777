@@ -575,21 +575,33 @@
 </script>
 
 <script>
-// Pour les animations des métriques uniquement
-if ("IntersectionObserver" in window) {
-  const metrics = document.querySelectorAll('.metric');
-  
-  const observerMetrics = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.classList.contains('observed')) {
-        entry.target.classList.add('observed', 'active');
-        // Ne pas toucher aux autres animations
-      }
+    
+document.addEventListener('DOMContentLoaded', function() {
+    var counters = document.querySelectorAll('.counter');
+    var speed = 200; // Ajuster la vitesse selon vos besoins
+    
+    counters.forEach(counter => {
+        var updateCount = function() {
+            var target = +counter.getAttribute('data-target');
+            var count = +counter.innerText.replace('+', '').replace('%', '');
+            var increment = target / speed;
+            
+            if (count < target) {
+                counter.innerText = '+' + Math.ceil(count + increment) + '%';
+                setTimeout(updateCount, 20);
+            } else {
+                counter.innerText = '+' + target + '%';
+                // Ajouter la classe au parent .metric pour activer la diode
+                counter.closest('.metric').classList.add('counter-complete');
+            }
+        };
+        
+        // Initialiser avec "+0%" au lieu de "0"
+        counter.innerText = "+0%";
+        updateCount();
     });
-  }, { threshold: 0.2 });
-  
-  metrics.forEach(metric => observerMetrics.observe(metric));
-}
+});
+    
 </script>
 
 </body>

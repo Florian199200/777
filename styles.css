@@ -258,7 +258,6 @@ header {
     box-shadow: none !important; /* Supprime les ombres */
     aspect-ratio: 1/1 !important; /* Force un ratio carré */
     width: 100% !important; /* Assure la pleine largeur */
-    height: 100% !important; /* Assure la pleine hauteur */
 
   }
   

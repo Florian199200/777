@@ -753,7 +753,7 @@ header {
 .metric {
     position: relative;
     padding: 30px;
-    background-color: var(--color-bg-alt);
+    background-color: var(--color-primary); /* Changé de var(--color-bg-alt) */
     border-left: 2px solid var(--color-accent);
 }
 
@@ -775,7 +775,7 @@ header {
     font-family: var(--font-display);
     font-size: 44px;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-inverse); /* Changé de var(--color-primary) */
     line-height: 1;
     margin-bottom: 12px;
 }
@@ -783,7 +783,7 @@ header {
 .metric-label {
     font-family: var(--font-display);
     font-size: 14px;
-    color: var(--color-text-light);
+    color: var(--color-inverse); /* Changé de var(--color-text-light) */
     font-weight: 500;
     line-height: 1.4;
 }

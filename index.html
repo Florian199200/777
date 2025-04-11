@@ -570,5 +570,34 @@
     </div>
 </footer>
 
+<script>
+  // Votre code JavaScript existant
+</script>
+
+<script>
+  // Pour les animations au défilement avec Intersection Observer
+  if ("IntersectionObserver" in window) {
+    const elementsToAnimate = document.querySelectorAll('.metric, .roadmap-step');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          if (entry.target.classList.contains('metric')) {
+            // Déclencher l'animation du compteur si ce n'est pas déjà fait
+            const counter = entry.target.querySelector('.counter');
+            if (counter && !entry.target.classList.contains('counter-started')) {
+              entry.target.classList.add('counter-started');
+              // Redéclencher l'animation du compteur au besoin
+            }
+          }
+        }
+      });
+    }, { threshold: 0.2 }); // Visible à 20%
+    
+    elementsToAnimate.forEach(element => observer.observe(element));
+  }
+</script>
+
 </body>
 </html>

@@ -777,7 +777,7 @@ header {
     font-family: var(--font-display);
     font-size: 44px;
     font-weight: 700;
-    color: rgb(70, 74, 62);
+    color: rgb(85, 88, 79);
     line-height: 1;
     margin-bottom: 12px;
 }
@@ -785,7 +785,7 @@ header {
 .metric-label {
     font-family: var(--font-display);
     font-size: 14px;
-    color: rgb(70, 74, 62);
+    color: rgb(85, 88, 79);
     font-weight: 500;
     line-height: 1.4;
 }

@@ -256,9 +256,10 @@ header {
     border-radius: 8px !important;
     overflow: hidden !important;
     box-shadow: none !important; /* Supprime les ombres */
-    height: auto !important; /* Contrôle la hauteur */
     aspect-ratio: 1/1 !important; /* Force un ratio carré */
     width: 100% !important; /* Assure la pleine largeur */
+    height: 100% !important; /* Assure la pleine hauteur */
+
   }
   
   .hero-image img,

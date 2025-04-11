@@ -369,46 +369,6 @@ header {
     }
 }
 
-/* Correction pour les images sur mobile */
-@media (max-width: 767px) {
-  /* Forcer l'affichage en pleine largeur */
-  .hero .grid,
-  .service .grid {
-    display: block !important;
-  }
-  
-  .hero-image, 
-  .service-image {
-    width: 100% !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
-    margin: 0 auto !important;
-  }
-  
-  .hero-image img,
-  .service-image img {
-    width: 100% !important;
-    border-radius: 8px !important;
-    height: auto !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
-  }
-  
-  /* Forcer la largeur complète pour les conteneurs */
-  .hero-visual,
-  .service-visual {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 15px !important;
-  }
-  
-  /* S'assurer que le container ne limite pas la largeur */
-  .container {
-    max-width: 100% !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-  }
-}
 /* Suppression du quadrillage des cartes de performance */
 .performance-card {
     background-image: none;

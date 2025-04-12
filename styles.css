@@ -3078,3 +3078,97 @@ header {
     background-color: rgb(25, 25, 25) !important; /* Même quand actif */
     border-color: #f3f2eb;
 }
+
+/* Correction des images en ratio 1:1 avec bords arrondis */
+
+/* 1. Solution pour la page d'index - Hero image */
+.hero-image {
+    width: 100%;
+    position: relative;
+    border-radius: 8px; /* Bords arrondis */
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    /* Méthode 1: aspect-ratio moderne */
+    aspect-ratio: 1/1;
+}
+
+/* Méthode 2: fallback pour les navigateurs plus anciens */
+.hero-image::before {
+    content: "";
+    display: block;
+    padding-top: 100%; /* Crée un ratio 1:1 */
+}
+
+.hero-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; /* Bords arrondis */
+    /* Pour iOS Safari, qui peut avoir des problèmes avec border-radius dans certains cas */
+    -webkit-mask-image: -webkit-radial-gradient(white, black); 
+}
+
+/* 2. Solution pour la page services - Conteneur d'image carré */
+.square-image-container {
+    width: 100%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    /* Méthode 1: aspect-ratio moderne */
+    aspect-ratio: 1/1;
+}
+
+/* Méthode 2: fallback pour les navigateurs plus anciens */
+.square-image-container::before {
+    content: "";
+    display: block;
+    padding-top: 100%; /* Crée un ratio 1:1 */
+}
+
+.square-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    /* Pour iOS Safari */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+/* 3. Correction pour les écrans mobiles - Annulation des règles problématiques */
+@media screen and (max-width: 414px) {
+    /* Maintenir les bords arrondis et supprimer les limitations */
+    .hero-image, 
+    .service-image, 
+    .square-image-container {
+        border-radius: 8px !important;
+        box-shadow: var(--box-shadow) !important;
+        max-height: none !important; /* Supprimer les limitations de hauteur */
+    }
+    
+    .hero-image img,
+    .service-image img,
+    .square-image {
+        max-height: none !important; /* Supprimer les limitations de hauteur */
+        object-fit: cover !important; /* Forcer le mode cover */
+        border-radius: 8px !important;
+    }
+    
+    /* Supprimer les décorations qui pourraient interférer */
+    .target-marks, 
+    .tech-frame {
+        display: none !important;
+    }
+}
+
+/* 4. Prévention des débordements */
+body, html {
+    overflow-x: hidden;
+    max-width: 100vw;
+}

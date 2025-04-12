@@ -3163,3 +3163,23 @@ body, html {
         overflow-x: hidden;
     }
 }
+
+@media screen and (max-width: 576px) {
+    /* Override pour forcer le ratio 1:1 sur mobile uniquement */
+    .hero-image {
+        height: auto !important;  /* Annuler la hauteur fixe */
+        aspect-ratio: 1/1 !important;
+    }
+    
+    /* S'assurer que l'image remplit correctement le conteneur */
+    .hero-image img {
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+    
+    /* Empêcher les débordements */
+    .hero, .container, .grid {
+        overflow-x: hidden !important;
+        max-width: 100% !important;
+    }
+}

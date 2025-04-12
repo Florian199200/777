@@ -3079,43 +3079,47 @@ header {
     border-color: #f3f2eb;
 }
 
-/* Solution qui préserve les marges tout en corrigeant les problèmes */
+/* Solution qui fonctionne sur tous les modèles d'iPhone */
 
-/* Empêcher seulement le débordement horizontal sans modifier les marges */
+/* Base pour empêcher le débordement */
 body, html {
     overflow-x: hidden;
 }
 
-/* Correction uniquement pour les images */
-.hero-image {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    height: 0;
-    padding-bottom: 100%; /* Ratio 1:1 */
-}
-
-.hero-image img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-/* Images carrées pour la page services */
+/* Approche universelle pour les images carrées */
+.hero-image,
 .square-image-container {
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
-    height: 0;
-    padding-bottom: 100%; /* Ratio 1:1 */
 }
 
+/* Forcer le ratio 1:1 avec trois méthodes différentes pour maximiser la compatibilité */
+.hero-image::before,
+.square-image-container::before {
+    content: "";
+    display: block;
+    padding-top: 100%; /* Première méthode: padding-top 100% */
+}
+
+.hero-image,
+.square-image-container {
+    aspect-ratio: 1/1; /* Deuxième méthode: aspect-ratio moderne */
+}
+
+/* Media query ciblant spécifiquement les iPhone plus petits */
+@media screen and (max-width: 428px) {
+    .hero-image,
+    .square-image-container {
+        height: 0 !important; /* Troisième méthode: height 0 + padding-bottom */
+        padding-bottom: 100% !important;
+        width: 100% !important;
+    }
+}
+
+/* Positionnement des images à l'intérieur de leur conteneur */
+.hero-image img,
 .square-image {
     position: absolute;
     top: 0;
@@ -3126,7 +3130,7 @@ body, html {
     border-radius: 8px;
 }
 
-/* Seulement sur les petits écrans, masquer les éléments décoratifs */
+/* Masquer les éléments décoratifs sur mobile */
 @media screen and (max-width: 576px) {
     .target-marks, .tech-frame {
         display: none;

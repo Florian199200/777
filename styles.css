@@ -3079,113 +3079,39 @@ header {
     border-color: #f3f2eb;
 }
 
-/* Solution ciblée pour résoudre les débordements visibles sur les captures d'écran */
+/* Solution minimaliste qui ne touche qu'aux images */
 
-/* 1. Correction pour le header/navigation qui déborde */
-@media screen and (max-width: 576px) {
-    /* Empêcher tout débordement horizontal sur mobile */
-    body, html {
-        overflow-x: hidden !important;
-        width: 100% !important;
-        position: relative !important;
-    }
-    
-    /* Ajuster la navigation pour qu'elle reste dans le viewport */
-    header, .header-content, .container {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-        box-sizing: border-box !important;
-    }
-
-    /* Réinitialiser les marges qui pourraient causer des débordements */
-    * {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
+/* Correction simple pour les images de l'index */
+.hero-image {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
 }
 
-/* 2. Correction pour les images et leurs conteneurs */
-@media screen and (max-width: 576px) {
-    /* Régler le conteneur d'image pour qu'il reste dans les limites */
-    .hero-image, .square-image-container {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 auto !important;
-        border-radius: 8px !important;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
-        position: relative !important;
-        /* Maintenir le ratio 1:1 */
-        aspect-ratio: 1/1 !important;
-    }
-    
-    /* S'assurer que l'image remplit correctement son conteneur */
-    .hero-image img, .square-image {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        border-radius: 8px !important;
-    }
-    
-    /* Supprimer les éléments décoratifs qui peuvent causer des débordements */
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Correction simple pour les images de services */
+.square-image-container {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+}
+
+.square-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Minimiser les bordures sur très petits écrans */
+@media screen and (max-width: 414px) {
     .target-marks, .tech-frame {
-        display: none !important;
-    }
-    
-    /* Forcer les conteneurs principaux à rester dans les limites */
-    .hero-visual, .hero-content {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 !important;
-    }
-    
-    /* Convertir la grille en affichage en colonne sur mobile */
-    .hero .grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important;
-        width: 100% !important;
-    }
-}
-
-/* 3. Correction pour supprimer/masquer les contours et bordures indésirables */
-@media screen and (max-width: 576px) {
-    /* Masquer les éventuels contours de débogage ou bordures problématiques */
-    * {
-        outline: none !important;
-    }
-    
-    /* Réinitialiser les propriétés de positionnement absolu qui pourraient causer des problèmes */
-    .hero-image::before, .square-image-container::before {
-        display: none !important;
-    }
-    
-    /* Assurer que les conteneurs d'image n'ont pas de marges ou paddings excessifs */
-    .hero-image, .square-image-container {
-        padding: 0 !important;
-        overflow: hidden !important;
-    }
-}
-
-/* 4. Correction spécifique pour empêcher les débordements horizontaux */
-@media screen and (max-width: 576px) {
-    /* Conteneur principal */
-    .container {
-        width: 100% !important;
-        overflow-x: hidden !important;
-    }
-    
-    /* Empêcher les transformations ou autres propriétés qui causent des débordements */
-    * {
-        transform: none !important;
-        position: static !important;
-    }
-    
-    /* Exception pour le positionnement des images */
-    .hero-image img, .square-image {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
+        display: none;
     }
 }

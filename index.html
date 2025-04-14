@@ -479,57 +479,72 @@ document.addEventListener('DOMContentLoaded', function() {
     const roadmapSection = document.querySelector('.roadmap-container');
     const isMobile = window.innerWidth < 768;
     
-    // Fonction pour activer une étape spécifique et mettre à jour la jauge de progression
-    function activateStepAndProgress(stepIndex) {
-        // Activer toutes les étapes jusqu'à l'index spécifié
-        steps.forEach((step, index) => {
-            if (index <= stepIndex) {
-                step.classList.add('active');
-            } else {
-                if (!isMobile) step.classList.remove('active');
+    // Sur mobile, nous utilisons une approche basée sur le défilement mais plus contrôlée
+    if (isMobile) {
+        let lastScrollTop = 0;
+        let currentProgress = 15; // Commencer à 15%
+        
+        // Fonction pour mettre à jour la jauge de manière progressive
+        function updateProgressBar() {
+            progress.style.height = currentProgress + '%';
+        }
+        
+        // Fonction pour activer les étapes en fonction de la progression
+        function updateActiveSteps() {
+            const activeIndex = Math.floor((currentProgress / 100) * steps.length);
+            
+            steps.forEach((step, index) => {
+                if (index <= activeIndex) {
+                    step.classList.add('active');
+                }
+            });
+        }
+        
+        // Initialiser avec la première étape active et 15% de progression
+        updateProgressBar();
+        steps[0].classList.add('active');
+        
+        // Gérer le défilement avec un contrôle de vitesse
+        window.addEventListener('scroll', function() {
+            // Ne rien faire si la section n'est pas visible
+            if (!isElementInViewport(roadmapSection)) return;
+            
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+            lastScrollTop = scrollTop;
+            
+            // Si on défile vers le bas, augmenter progressivement la jauge
+            if (scrollDirection === 'down') {
+                // Calculer combien augmenter en fonction de la position de défilement dans la section
+                const sectionTop = roadmapSection.getBoundingClientRect().top;
+                const sectionBottom = roadmapSection.getBoundingClientRect().bottom;
+                const viewportHeight = window.innerHeight;
+                
+                // Si la section est visible et qu'on défile vers le bas
+                if (sectionTop < viewportHeight && sectionBottom > 0) {
+                    // Augmenter la progression de façon très lente (max 0.8% par événement de défilement)
+                    const scrollFactor = Math.min(1, Math.abs(sectionTop) / (roadmapSection.offsetHeight / 2));
+                    
+                    // VITESSE RÉDUITE ICI - augmentation très graduelle
+                    const increment = Math.min(0.8, 0.2 + scrollFactor);
+                    
+                    // Limiter la progression à 100%
+                    currentProgress = Math.min(100, currentProgress + increment);
+                    updateProgressBar();
+                    updateActiveSteps();
+                }
             }
         });
         
-        // Calculer et appliquer la progression de la jauge
-        // Pour mobile, assurons-nous que la jauge progresse visiblement
-        const totalSteps = steps.length;
-        const progressPercentage = isMobile 
-            ? Math.max(15, ((stepIndex + 1) / totalSteps) * 100) // Minimum 15% sur mobile
-            : ((stepIndex + 1) / totalSteps) * 100;
+        // Vérifier si un élément est visible dans le viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= window.innerHeight &&
+                rect.bottom >= 0
+            );
+        }
         
-        progress.style.height = progressPercentage + '%';
-    }
-    
-    // Sur mobile, nous allons lier la progression à l'intersection observer
-    if (isMobile) {
-        // Définir les options de l'observateur
-        const options = {
-            root: null, // viewport
-            rootMargin: '-20% 0px -40% 0px', // déclencher quand l'élément est à environ 1/3 de la fenêtre
-            threshold: 0.1 // déclencher quand 10% de l'élément est visible
-        };
-        
-        // Créer l'observateur
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Trouver l'index de l'étape
-                    const stepElement = entry.target;
-                    const stepIndex = Array.from(steps).indexOf(stepElement);
-                    
-                    // Activer jusqu'à cette étape
-                    activateStepAndProgress(stepIndex);
-                }
-            });
-        }, options);
-        
-        // Observer chaque étape
-        steps.forEach(step => {
-            observer.observe(step);
-        });
-        
-        // Initialiser avec la première étape active
-        activateStepAndProgress(0);
     } else {
         // Pour desktop, garder le comportement original basé sur le défilement
         function animateOnScroll() {
@@ -556,7 +571,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Initialisation
+        // Initialisation pour desktop
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('resize', animateOnScroll);
         
@@ -567,6 +582,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('load', animateOnScroll);
     }
 });
+
 </script>
 
 <!-- CODE HTML DU FOOTER -->

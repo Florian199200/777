@@ -3182,4 +3182,43 @@ body, html {
         overflow-x: hidden !important;
         max-width: 100% !important;
     }
+
+    <style>
+    
+/* Styles mobiles améliorés pour le roadmap - conservent le design original */
+@media (max-width: 767px) {
+    /* Ces styles ne s'appliquent que sur mobile, préservant le desktop */
+    
+    /* Amélioration de la visibilité des étapes actives */
+    .roadmap-step.active .node-dot {
+        background-color: #f3f2eb;
+        border-color: #f3f2eb;
+        box-shadow: 0 0 10px rgba(243, 242, 235, 0.6);
+    }
+    
+    /* Animation de pulsation plus visible sur mobile */
+    .active .node-pulse {
+        opacity: 1;
+        animation: mobilePulse 2s infinite;
+    }
+    
+    @keyframes mobilePulse {
+        0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 1;
+        }
+        70% {
+            opacity: 0.7;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0;
+        }
+    }
+    
+    /* Ajustements pour que les transitions soient plus fluides sur mobile */
+    .roadmap-step {
+        transition: opacity 0.5s ease;
+    }
 }
+</style>}

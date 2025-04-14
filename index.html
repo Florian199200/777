@@ -474,106 +474,52 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Éléments nécessaires
     const steps = document.querySelectorAll('.roadmap-step');
     const progress = document.querySelector('.roadmap-progress');
     const roadmapSection = document.querySelector('.roadmap-container');
     
-    // Détection précise du mobile
-    const isMobile = window.innerWidth < 768;
-    
-    // Approche mobile: utiliser ScrollTrigger simplifié
-    if (isMobile) {
-        // Initialiser à 0%
-        progress.style.height = '0%';
+    // Animation au défilement - identique pour mobile et desktop
+    function handleScroll() {
+        // Position de la section par rapport à la fenêtre
+        const rect = roadmapSection.getBoundingClientRect();
         
-        // Activation de la première étape dès le début
-        if (steps.length > 0) {
-            steps[0].classList.add('active');
-        }
-        
-        // Fonction pour vérifier si un élément est visible à l'écran
-        function isInViewport(element, offset = 0) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top <= window.innerHeight - offset &&
-                rect.bottom >= offset
-            );
-        }
-        
-        // Fonction qui met à jour la barre et les étapes actives
-        function updateProgressAndSteps() {
-            // Uniquement si la section est visible
-            if (!isInViewport(roadmapSection)) return;
+        // Si la section est visible
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            // Calculer la progression en fonction de la visibilité de la section
+            const viewportHeight = window.innerHeight;
+            const sectionVisibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+            const visibleRatio = sectionVisibleHeight / Math.min(roadmapSection.offsetHeight, viewportHeight);
             
-            // Compteur d'étapes visibles
-            let visibleStepCount = 0;
+            // Progression basée sur la visibilité (0-100%)
+            const progressValue = visibleRatio * 100;
             
-            // Vérifier chaque étape
+            // Appliquer la progression
+            progress.style.height = progressValue + '%';
+            
+            // Activer les étapes en fonction de la progression
             steps.forEach((step, index) => {
-                // Si l'étape est visible
-                if (isInViewport(step, window.innerHeight / 3)) {
-                    step.classList.add('active');
-                    visibleStepCount = index + 1; // +1 car l'index commence à 0
-                }
-            });
-            
-            // Calculer la progression 
-            const progressValue = (visibleStepCount / steps.length) * 100;
-            
-            // Mise à jour progressive et fluide de la barre
-            const currentHeight = parseFloat(progress.style.height) || 0;
-            const newHeight = Math.max(currentHeight, progressValue);
-            
-            // Limiter la vitesse de progression
-            const diff = newHeight - currentHeight;
-            const smoothedHeight = currentHeight + Math.min(diff, 2);
-            
-            progress.style.height = smoothedHeight + '%';
-        }
-        
-        // Lier au défilement
-        window.addEventListener('scroll', updateProgressAndSteps);
-        
-        // Initialiser
-        setTimeout(updateProgressAndSteps, 100);
-        setTimeout(updateProgressAndSteps, 500);
-    } else {
-        // Sur desktop, conserver le comportement original
-        function animateOnScroll() {
-            const scrollPosition = window.scrollY + window.innerHeight * 0.6;
-            const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
-            const sectionHeight = roadmapSection.offsetHeight;
-            const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
-            
-            // Limiter la progression entre 0 et 1
-            const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
-            
-            // Appliquer la hauteur à la barre de progression
-            progress.style.height = (limitedProgress * 100) + '%';
-            
-            // Activer les étapes en fonction du défilement
-            steps.forEach((step, index) => {
-                const stepTop = step.getBoundingClientRect().top + window.scrollY;
+                // Calculer à partir de quand l'étape doit être active (25% pour la première, 50% pour la deuxième, etc.)
+                const activationThreshold = ((index + 1) / steps.length) * 100;
                 
-                if (scrollPosition > stepTop) {
+                if (progressValue >= activationThreshold) {
                     step.classList.add('active');
                 } else {
                     step.classList.remove('active');
                 }
             });
         }
-        
-        // Initialisation
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('resize', animateOnScroll);
-        
-        // Déclencher une fois au chargement
-        setTimeout(animateOnScroll, 300);
-        
-        // Assurer que l'animation fonctionne même sur les longs chargements
-        window.addEventListener('load', animateOnScroll);
     }
-});
+    
+    // Listeners
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    
+    // Initialisation
+    handleScroll();
+    
+    // Garantir que ça marche après le chargement complet
+    window.addEventListener('load', handleScroll);
 });
 
 </script>

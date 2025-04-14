@@ -3191,7 +3191,7 @@ body, html {
     .roadmap-line {
         left: 30px;
         width: 6px; /* S'assurer que la largeur est suffisante pour être visible */
-        background-color: rgba(243, 242, 235, 0.3); /* Garder la couleur originale mais s'assurer qu'elle est visible */
+        background-color: rgba(243, 242, 235, 0.3); /* Garder la couleur originale */
     }
     
     /* Assurer que la barre de progression est bien visible */
@@ -3199,7 +3199,6 @@ body, html {
         width: 100%;
         background-color: #f3f2eb; /* Couleur vive pour la progression */
         transition: height 0.5s ease-out; /* Transition plus fluide */
-        min-height: 5%; /* Toujours visible un peu */
     }
     
     /* Améliorer la visibilité des étapes actives */
@@ -3238,24 +3237,4 @@ body, html {
             opacity: 0;
         }
     }
-    
-    /* Ajustements pour le positionnement des étapes */
-    .roadmap-step {
-        padding-left: 60px !important;
-        margin-bottom: 60px !important;
-        position: relative;
-    }
-    
-    /* S'assurer que les nœuds sont correctement positionnés */
-    .roadmap-node {
-        position: absolute;
-        left: 30px;
-        transform: translateX(-50%);
-        top: 0;
-    }
-}
-
-/* Assurer que sur tous les appareils, la barre est visible immédiatement */
-.roadmap-progress {
-    transition: height 0.5s ease-out;
 }

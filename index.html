@@ -473,47 +473,115 @@
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const steps = document.querySelectorAll('.roadmap-step');
-        const progress = document.querySelector('.roadmap-progress');
-        const roadmapSection = document.querySelector('.roadmap-container');
+document.addEventListener('DOMContentLoaded', function() {
+    const steps = document.querySelectorAll('.roadmap-step');
+    const progress = document.querySelector('.roadmap-progress');
+    const roadmapSection = document.querySelector('.roadmap-container');
+    
+    // Animation de défilement avec support mobile amélioré
+    function animateOnScroll() {
+        // Hauteur de la fenêtre - aide à la réactivité mobile
+        const viewportHeight = window.innerHeight;
+        const isMobile = window.innerWidth < 768;
         
-        // Animation de défilement
-        function animateOnScroll() {
-            const scrollPosition = window.scrollY + window.innerHeight * 0.6;
-            const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
-            const sectionHeight = roadmapSection.offsetHeight;
-            const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+        // Point de déclenchement différent selon le type d'appareil
+        const triggerPoint = isMobile ? 0.85 : 0.6;
+        const scrollPosition = window.scrollY + (viewportHeight * triggerPoint);
+        
+        // Calculs pour la barre de progression
+        const sectionRect = roadmapSection.getBoundingClientRect();
+        const sectionTop = sectionRect.top + window.scrollY;
+        const sectionHeight = roadmapSection.offsetHeight;
+        const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+        
+        // Limiter la progression entre 0 et 1
+        const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+        
+        // Appliquer la hauteur à la barre de progression
+        progress.style.height = (limitedProgress * 100) + '%';
+        
+        // Activer les étapes en fonction du défilement
+        steps.forEach((step, index) => {
+            const stepRect = step.getBoundingClientRect();
             
-            // Limiter la progression entre 0 et 1
-            const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
-            
-            // Appliquer la hauteur à la barre de progression
-            progress.style.height = (limitedProgress * 100) + '%';
-            
-            // Activer les étapes en fonction du défilement
-            steps.forEach((step, index) => {
-                const stepTop = step.getBoundingClientRect().top + window.scrollY;
-                
-                if (scrollPosition > stepTop) {
+            // Activation adaptée selon l'appareil
+            if (isMobile) {
+                // Sur mobile, on utilise la position par rapport au haut de l'écran
+                if (stepRect.top < viewportHeight * 0.8) {
+                    step.classList.add('active');
+                }
+                // Sur mobile, on évite de désactiver les étapes une fois activées
+            } else {
+                // Sur desktop, activation/désactivation standard
+                if (scrollPosition > step.offsetTop + sectionTop) {
                     step.classList.add('active');
                 } else {
                     step.classList.remove('active');
                 }
-            });
+            }
+        });
+    }
+    
+    // Initialisation
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('resize', animateOnScroll);
+    
+    // Sur mobile, activer la première étape par défaut
+    if (window.innerWidth < 768) {
+        if (steps.length > 0) {
+            steps[0].classList.add('active');
         }
-        
-        // Initialisation
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('resize', animateOnScroll);
-        
-        // Déclencher une fois au chargement
-        setTimeout(animateOnScroll, 300);
-        
-        // Assurer que l'animation fonctionne même sur les longs chargements
-        window.addEventListener('load', animateOnScroll);
-    });
+    }
+    
+    // Déclencher une fois au chargement et après un délai
+    animateOnScroll();
+    setTimeout(animateOnScroll, 300);
+    
+    // Assurer que l'animation fonctionne même sur les longs chargements
+    window.addEventListener('load', animateOnScroll);
+});
 </script>
+
+Pour le CSS, ajoutez-le dans une balise <style> à l'endroit où se trouvent les autres styles pour cette section, ou ajoutez-le à votre fichier CSS externe :
+
+html<style>
+/* Styles mobiles améliorés pour le roadmap - conservent le design original */
+@media (max-width: 767px) {
+    /* Ces styles ne s'appliquent que sur mobile, préservant le desktop */
+    
+    /* Amélioration de la visibilité des étapes actives */
+    .roadmap-step.active .node-dot {
+        background-color: #f3f2eb;
+        border-color: #f3f2eb;
+        box-shadow: 0 0 10px rgba(243, 242, 235, 0.6);
+    }
+    
+    /* Animation de pulsation plus visible sur mobile */
+    .active .node-pulse {
+        opacity: 1;
+        animation: mobilePulse 2s infinite;
+    }
+    
+    @keyframes mobilePulse {
+        0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 1;
+        }
+        70% {
+            opacity: 0.7;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0;
+        }
+    }
+    
+    /* Ajustements pour que les transitions soient plus fluides sur mobile */
+    .roadmap-step {
+        transition: opacity 0.5s ease;
+    }
+}
+</style>
 
 <!-- CODE HTML DU FOOTER -->
 <footer class="site-footer">

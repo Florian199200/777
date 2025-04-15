@@ -512,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Appliquer un boost d'accélération pour compenser le ralentissement perçu
                 // Une puissance de 0.8 donne une courbe légèrement accélérée
-                const boostedPercent = Math.pow(scrollPercent, 0.8);
+                const boostedPercent = Math.pow(scrollPercent, 0.5);
                 
                 // Calculer la progression (entre 10% et 100%)
                 const progressPercent = 10 + (boostedPercent * 90);

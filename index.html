@@ -477,65 +477,78 @@ document.addEventListener('DOMContentLoaded', function() {
     const steps = document.querySelectorAll('.roadmap-step');
     const progress = document.querySelector('.roadmap-progress');
     const roadmapSection = document.querySelector('.roadmap-container');
-    const isMobile = window.innerWidth < 768;
     
     // Amélioration: technique de throttling pour de meilleures performances
     let isThrottled = false;
     
     function animateOnScroll() {
-        // Amélioration: utiliser document.documentElement.scrollTop pour compatibilité mobile
-        const scrollPosition = document.documentElement.scrollTop + window.innerHeight * 0.6;
+        // Point 1: Utiliser window.pageYOffset pour meilleure compatibilité mobile
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        const viewportOffset = window.innerHeight * 0.6;
+        const adjustedScrollPosition = scrollPosition + viewportOffset;
+        
         const sectionRect = roadmapSection.getBoundingClientRect();
-        const sectionTop = sectionRect.top + document.documentElement.scrollTop;
+        const sectionTop = sectionRect.top + (window.pageYOffset || document.documentElement.scrollTop);
         const sectionHeight = roadmapSection.offsetHeight;
         
-        // Amélioration: ne pas continuer si la section est hors de vue
-        if (scrollPosition < sectionTop - window.innerHeight || 
-            scrollPosition > sectionTop + sectionHeight + window.innerHeight) {
+        // Ne pas continuer si la section est hors de vue
+        if (adjustedScrollPosition < sectionTop - window.innerHeight || 
+            adjustedScrollPosition > sectionTop + sectionHeight + window.innerHeight) {
             return;
         }
         
         // Calcul de progression standard
-        const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+        const sectionProgress = (adjustedScrollPosition - sectionTop) / sectionHeight;
         const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
         
         // Appliquer la hauteur à la barre de progression
         progress.style.height = (limitedProgress * 100) + '%';
         
+        // Débogage - Point 6
+        console.log("Scroll position:", adjustedScrollPosition);
+        console.log("Section Top:", sectionTop);
+        console.log("Progress Height:", progress.style.height);
+        
         // Activer les étapes en fonction du défilement
         steps.forEach((step, index) => {
-            const stepTop = step.getBoundingClientRect().top + document.documentElement.scrollTop;
+            const stepTop = step.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
             
-            if (scrollPosition > stepTop) {
-                step.classList.add('active');
+            // Point 3: Logique pour garder les étapes activées sur mobile
+            if (window.innerWidth < 768) {
+                if (adjustedScrollPosition > stepTop) {
+                    step.classList.add('active');
+                }
+                // Sur mobile, ne pas désactiver les étapes une fois activées
             } else {
-                // Sur mobile, on garde les étapes actives une fois qu'elles sont activées
-                if (!isMobile) {
+                if (adjustedScrollPosition > stepTop) {
+                    step.classList.add('active');
+                } else {
                     step.classList.remove('active');
                 }
             }
+            
+            // Débogage - Point 6
+            console.log("Step " + index + " Active:", step.classList.contains('active'));
         });
     }
     
-    // Fonction throttle pour améliorer les performances sur mobile
+    // Point 2: Remplacer le throttling par requestAnimationFrame
     function throttledAnimateOnScroll() {
         if (isThrottled) return;
         isThrottled = true;
-        
+
         requestAnimationFrame(() => {
             animateOnScroll();
-            setTimeout(() => {
-                isThrottled = false;
-            }, 50); // Ajustez ce délai selon les besoins de performance
+            isThrottled = false;
         });
     }
     
-    // Écouter les événements avec throttling
+    // Écouter les événements avec throttling amélioré
     window.addEventListener('scroll', throttledAnimateOnScroll);
     window.addEventListener('resize', throttledAnimateOnScroll);
     
     // Sur mobile, s'assurer que la première étape est active au début
-    if (isMobile && steps.length > 0) {
+    if (window.innerWidth < 768 && steps.length > 0) {
         steps[0].classList.add('active');
     }
     

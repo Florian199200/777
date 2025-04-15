@@ -3185,56 +3185,28 @@ body, html {
 
     <style>
     
-/* Styles améliorés pour la barre de progression sur mobile */
 @media (max-width: 767px) {
-    /* Assurer que la ligne de progression est bien visible */
+    /* Fix pour la position de la ligne sur mobile */
     .roadmap-line {
-        left: 30px;
-        width: 6px; /* S'assurer que la largeur est suffisante pour être visible */
-        background-color: rgba(243, 242, 235, 0.3); /* Garder la couleur originale */
+        left: 30px !important;
+        position: absolute !important;
     }
     
-    /* Assurer que la barre de progression est bien visible */
+    /* Correction pour la progression */
     .roadmap-progress {
-        width: 100%;
-        background-color: #f3f2eb; /* Couleur vive pour la progression */
-        transition: height 0.5s ease-out; /* Transition plus fluide */
+        position: absolute !important;
+        width: 100% !important;
+        transition: height 0.3s ease !important;
     }
     
-    /* Améliorer la visibilité des étapes actives */
-    .roadmap-step {
-        opacity: 0.6;
-        transition: opacity 0.6s ease;
-    }
-    
-    .roadmap-step.active {
-        opacity: 1;
-    }
-    
-    /* Rendre les nœuds actifs plus visibles */
+    /* Amélioration de la visibilité des étapes actives */
     .roadmap-step.active .node-dot {
-        background-color: #f3f2eb;
-        border-color: #f3f2eb;
-        box-shadow: 0 0 15px rgba(243, 242, 235, 0.8);
+        background-color: #f3f2eb !important;
     }
     
-    /* Améliorer l'animation de pulsation */
-    .active .node-pulse {
-        opacity: 1;
-        animation: mobilePulse 2s infinite;
-    }
-    
-    @keyframes mobilePulse {
-        0% {
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 1;
-        }
-        70% {
-            opacity: 0.7;
-        }
-        100% {
-            transform: translate(-50%, -50%) scale(1.2);
-            opacity: 0;
-        }
+    /* Correction du positionnement des étapes */
+    .roadmap-step {
+        padding-left: 60px !important;
+        position: relative !important;
     }
 }

@@ -482,65 +482,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
     
     if (isMobile) {
+        // Sur mobile RÉEL, utiliser une approche complètement différente
+        
         // 1. Activer toutes les étapes immédiatement
         steps.forEach(step => {
             step.classList.add('active');
         });
         
-        // Variables pour le suivi du défilement
-        let lastScrollY = window.pageYOffset;
-        let maxProgress = 0;
-        let sectionHeight = 0;
-        let initialSectionTop = 0;
-        let initialWindowHeight = window.innerHeight;
+        // 2. Initialiser la barre à une valeur visible
+        progress.style.height = '10%';
         
-        // Mesurer la hauteur initiale de la section
-        function measureSection() {
-            sectionHeight = roadmapSection.offsetHeight;
-            initialSectionTop = roadmapSection.getBoundingClientRect().top + window.pageYOffset;
-        }
+        // Suivre la progression maximale pour éviter les régressions
+        let maxProgress = 10;
         
-        // Mesurer au chargement
-        measureSection();
-        window.addEventListener('load', measureSection);
-        window.addEventListener('resize', measureSection);
-        
-        function updateProgressOnScroll() {
-            // Obtenir la position actuelle de défilement
-            const currentScrollY = window.pageYOffset;
+        // 3. Utiliser un système basé sur la position de la section
+        let progressInterval = setInterval(function() {
+            const rect = roadmapSection.getBoundingClientRect();
             
-            // Calculer la position relative dans la section
-            const relativePosition = currentScrollY - (initialSectionTop - initialWindowHeight);
-            const totalTravel = sectionHeight + initialWindowHeight;
-            
-            // Calculer le pourcentage (0-100) 
-            // Diviser en 4 portions égales (une pour chaque étape)
-            let currentProgress = (relativePosition / totalTravel) * 100;
-            
-            // Limiter entre 0 et 100
-            currentProgress = Math.max(0, Math.min(100, currentProgress));
-            
-            // Jamais régresser - seulement avancer
-            maxProgress = Math.max(maxProgress, currentProgress);
-            
-            // Appliquer directement à la barre
-            progress.style.cssText = `height: ${maxProgress}% !important;`;
-            
-            // Mettre à jour la position de défilement
-            lastScrollY = currentScrollY;
-        }
+            // Si la section est visible à l'écran
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                // Calculer quelle partie de la section est visible
+                const sectionHeight = roadmapSection.offsetHeight;
+                const windowHeight = window.innerHeight;
+                
+                // Modification minimale: utiliser une formule qui donne une progression 
+                // plus constante sur toute la section
+                const distanceScrolled = windowHeight - rect.top;
+                const totalDistance = sectionHeight + windowHeight;
+                const scrollPercent = distanceScrolled / totalDistance;
+                
+                // Calculer la progression (entre 10% et 100%)
+                const progressPercent = 10 + (scrollPercent * 90);
+                
+                // Ne jamais régresser, seulement avancer
+                maxProgress = Math.max(maxProgress, progressPercent);
+                
+                // Appliquer à la barre
+                progress.style.height = maxProgress + '%';
+            }
+        }, 100); // Vérifier toutes les 100ms
         
-        // Écouter les événements de défilement
-        window.addEventListener('scroll', updateProgressOnScroll, { passive: true });
-        window.addEventListener('touchmove', updateProgressOnScroll, { passive: true });
-        
-        // Mettre à jour également à intervalles réguliers
-        let progressInterval = setInterval(updateProgressOnScroll, 16); // ~60fps
-        
-        // Initialiser
-        updateProgressOnScroll();
-        
-        // Nettoyer
+        // Nettoyer l'intervalle quand l'utilisateur quitte la page
         window.addEventListener('unload', function() {
             clearInterval(progressInterval);
         });

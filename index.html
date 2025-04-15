@@ -490,50 +490,55 @@ document.addEventListener('DOMContentLoaded', function() {
         // Variables pour le suivi du défilement
         let lastScrollY = window.pageYOffset;
         let maxProgress = 0;
+        let sectionHeight = 0;
+        let initialSectionTop = 0;
+        let initialWindowHeight = window.innerHeight;
+        
+        // Mesurer la hauteur initiale de la section
+        function measureSection() {
+            sectionHeight = roadmapSection.offsetHeight;
+            initialSectionTop = roadmapSection.getBoundingClientRect().top + window.pageYOffset;
+        }
+        
+        // Mesurer au chargement
+        measureSection();
+        window.addEventListener('load', measureSection);
+        window.addEventListener('resize', measureSection);
         
         function updateProgressOnScroll() {
-            // Obtenir la position actuelle de la section par rapport à la fenêtre
-            const rect = roadmapSection.getBoundingClientRect();
+            // Obtenir la position actuelle de défilement
+            const currentScrollY = window.pageYOffset;
             
-            // Si la section est visible
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                // Calculer la progression basée uniquement sur la position relative 
-                // de la section dans la fenêtre
-                
-                // Distance totale que la section doit parcourir
-                const totalDistance = rect.height + window.innerHeight;
-                
-                // Distance déjà parcourue (depuis que le haut de la section est entré dans la vue)
-                const distanceTraveled = window.innerHeight - rect.top;
-                
-                // Pourcentage de progression (0-100)
-                let currentProgress = (distanceTraveled / totalDistance) * 100;
-                
-                // Limiter entre 0 et 100
-                currentProgress = Math.max(0, Math.min(100, currentProgress));
-                
-                // Jamais régresser - seulement avancer
-                maxProgress = Math.max(maxProgress, currentProgress);
-                
-                // Appliquer directement à la barre - pas de lissage, juste le suivi du défilement
-                progress.style.cssText = `height: ${maxProgress}% !important;`;
-            }
+            // Calculer la position relative dans la section
+            const relativePosition = currentScrollY - (initialSectionTop - initialWindowHeight);
+            const totalTravel = sectionHeight + initialWindowHeight;
+            
+            // Calculer le pourcentage (0-100) 
+            // Diviser en 4 portions égales (une pour chaque étape)
+            let currentProgress = (relativePosition / totalTravel) * 100;
+            
+            // Limiter entre 0 et 100
+            currentProgress = Math.max(0, Math.min(100, currentProgress));
+            
+            // Jamais régresser - seulement avancer
+            maxProgress = Math.max(maxProgress, currentProgress);
+            
+            // Appliquer directement à la barre
+            progress.style.cssText = `height: ${maxProgress}% !important;`;
             
             // Mettre à jour la position de défilement
-            lastScrollY = window.pageYOffset;
+            lastScrollY = currentScrollY;
         }
         
         // Écouter les événements de défilement
         window.addEventListener('scroll', updateProgressOnScroll, { passive: true });
         window.addEventListener('touchmove', updateProgressOnScroll, { passive: true });
         
-        // Mettre à jour également à intervalles réguliers pour s'assurer que ça fonctionne
-        // même si les événements de défilement sont manqués
+        // Mettre à jour également à intervalles réguliers
         let progressInterval = setInterval(updateProgressOnScroll, 16); // ~60fps
         
         // Initialiser
         updateProgressOnScroll();
-        window.addEventListener('load', updateProgressOnScroll);
         
         // Nettoyer
         window.addEventListener('unload', function() {

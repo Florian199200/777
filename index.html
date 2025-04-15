@@ -477,12 +477,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const steps = document.querySelectorAll('.roadmap-step');
     const progress = document.querySelector('.roadmap-progress');
     const roadmapSection = document.querySelector('.roadmap-container');
+    const isMobile = window.innerWidth < 768;
     
-    // Amélioration: technique de throttling pour de meilleures performances
+    // Sur mobile, activer toutes les étapes immédiatement
+    if (isMobile) {
+        steps.forEach(step => {
+            step.classList.add('active');
+        });
+    }
+    
+    // Technique de throttling améliorée
     let isThrottled = false;
     
     function animateOnScroll() {
-        // Point 1: Utiliser window.pageYOffset pour meilleure compatibilité mobile
+        // Utiliser la méthode la plus fiable pour la position de défilement
         const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
         const viewportOffset = window.innerHeight * 0.6;
         const adjustedScrollPosition = scrollPosition + viewportOffset;
@@ -504,35 +512,28 @@ document.addEventListener('DOMContentLoaded', function() {
         // Appliquer la hauteur à la barre de progression
         progress.style.height = (limitedProgress * 100) + '%';
         
-        // Débogage - Point 6
+        // Logs pour le débogage
         console.log("Scroll position:", adjustedScrollPosition);
         console.log("Section Top:", sectionTop);
         console.log("Progress Height:", progress.style.height);
         
-        // Activer les étapes en fonction du défilement
-        steps.forEach((step, index) => {
-            const stepTop = step.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
-            
-            // Point 3: Logique pour garder les étapes activées sur mobile
-            if (window.innerWidth < 768) {
-                if (adjustedScrollPosition > stepTop) {
-                    step.classList.add('active');
-                }
-                // Sur mobile, ne pas désactiver les étapes une fois activées
-            } else {
+        // Sur desktop seulement, activer/désactiver les étapes en fonction du défilement
+        if (!isMobile) {
+            steps.forEach((step, index) => {
+                const stepTop = step.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
+                
                 if (adjustedScrollPosition > stepTop) {
                     step.classList.add('active');
                 } else {
                     step.classList.remove('active');
                 }
-            }
-            
-            // Débogage - Point 6
-            console.log("Step " + index + " Active:", step.classList.contains('active'));
-        });
+                
+                console.log("Step " + index + " Active:", step.classList.contains('active'));
+            });
+        }
     }
     
-    // Point 2: Remplacer le throttling par requestAnimationFrame
+    // Utiliser requestAnimationFrame pour des performances optimales
     function throttledAnimateOnScroll() {
         if (isThrottled) return;
         isThrottled = true;
@@ -543,24 +544,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Écouter les événements avec throttling amélioré
+    // Écouter les événements avec throttling
     window.addEventListener('scroll', throttledAnimateOnScroll);
     window.addEventListener('resize', throttledAnimateOnScroll);
     
-    // Sur mobile, s'assurer que la première étape est active au début
-    if (window.innerWidth < 768 && steps.length > 0) {
-        steps[0].classList.add('active');
-    }
-    
-    // Déclencher plusieurs fois au chargement pour s'assurer que ça fonctionne
-    setTimeout(animateOnScroll, 100);
-    setTimeout(animateOnScroll, 500);
+    // Déclencher l'animation initiale
+    animateOnScroll();
     
     // Assurer que l'animation fonctionne après le chargement complet
     window.addEventListener('load', function() {
-        setTimeout(animateOnScroll, 300);
+        animateOnScroll();
     });
-});
     
 </script>
 

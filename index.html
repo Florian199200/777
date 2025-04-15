@@ -512,10 +512,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Appliquer un boost d'accélération pour compenser le ralentissement perçu
                 // Une puissance de 0.8 donne une courbe légèrement accélérée
-                const boostedPercent = Math.pow(scrollPercent, 0.5);
+                const boostedPercent = Math.pow(scrollPercent, 11);
                 
                 // Calculer la progression (entre 10% et 100%)
-                const progressPercent = 10 + (boostedPercent * 90);
+                const progressPercent = 0 + (boostedPercent * 100);
                 
                 // Ne jamais régresser, seulement avancer
                 maxProgress = Math.max(maxProgress, progressPercent);
@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Appliquer à la barre
                 progress.style.height = maxProgress + '%';
             }
-        }, 100); // Vérifier toutes les 100ms
+        }, 500); // Vérifier toutes les 100ms
         
         // Nettoyer l'intervalle quand l'utilisateur quitte la page
         window.addEventListener('unload', function() {

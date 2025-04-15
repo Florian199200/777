@@ -3185,55 +3185,56 @@ body, html {
 
     <style>
     
-/* Styles améliorés pour la barre de progression sur mobile */
+/* Styles améliorés pour la section roadmap sur mobile selon recommandations */
 @media (max-width: 767px) {
-    /* Assurez-vous que la ligne de progression est bien visible et correctement positionnée */
+    /* Point 4: S'assurer que le conteneur de la jauge n'est pas limité */
     .roadmap-line {
-        left: 30px !important;
-        width: 6px !important; 
-        position: absolute !important;
-        background-color: rgba(243, 242, 235, 0.3) !important;
-        height: 100% !important;
+        left: 30px;
+        width: 6px;
+        overflow: visible; /* Permet à la jauge de s'afficher correctement */
+        background-color: rgba(243, 242, 235, 0.3);
+        position: absolute;
+        height: 100%;
     }
     
-    /* Correction pour la barre de progression */
+    /* Point 4: Assurer la visibilité de la jauge de progression */
     .roadmap-progress {
-        position: absolute !important;
-        width: 100% !important;
-        height: 0 !important; /* Commencer à 0 */
-        background-color: #f3f2eb !important;
-        transition: height 0.5s ease-out !important;
+        height: 0;
+        width: 100%;
+        transition: height 0.5s ease-in-out;
+        background-color: #f3f2eb; /* Couleur claire pour mobile */
+        position: absolute;
     }
     
-    /* Amélioration de la visibilité des étapes actives */
+    /* Point 5: Améliorer la visibilité des étapes */
     .roadmap-step {
-        opacity: 0.6;
-        transition: opacity 0.6s ease;
-        padding-left: 60px !important;
-        position: relative !important;
-        margin-bottom: 50px !important;
+        opacity: 0.8; /* Meilleure visibilité sur mobile */
+        transition: opacity 0.5s ease;
+        padding-left: 60px;
+        position: relative;
+        margin-bottom: 50px;
     }
     
     .roadmap-step.active {
         opacity: 1;
     }
     
-    /* Rendre les nœuds actifs plus visibles */
+    /* Visibilité améliorée des points actifs */
     .roadmap-step.active .node-dot {
-        background-color: #f3f2eb !important;
-        border-color: #f3f2eb !important;
-        box-shadow: 0 0 15px rgba(243, 242, 235, 0.8) !important;
+        background-color: #f3f2eb;
+        border-color: #f3f2eb;
+        box-shadow: 0 0 10px rgba(243, 242, 235, 0.6);
     }
     
-    /* Position et visibilité du nœud */
+    /* Position du nœud */
     .roadmap-node {
-        position: absolute !important;
-        left: 30px !important;
-        transform: translateX(-50%) !important;
-        z-index: 10 !important;
+        position: absolute;
+        left: 30px;
+        transform: translateX(-50%);
+        z-index: 10;
     }
     
-    /* Améliorer l'animation de pulsation */
+    /* Animation de pulsation */
     .active .node-pulse {
         opacity: 1;
         animation: mobilePulse 2s infinite;

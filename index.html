@@ -515,7 +515,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const boostedPercent = Math.pow(scrollPercent, 11);
                 
                 // Calculer la progression (entre 10% et 100%)
-                const progressPercent = 0 + (boostedPercent * 100);
+                const progressPercent = 10 + (boostedPercent * 100);
                 
                 // Ne jamais régresser, seulement avancer
                 maxProgress = Math.max(maxProgress, progressPercent);
@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Appliquer à la barre
                 progress.style.height = maxProgress + '%';
             }
-        }, 500); // Vérifier toutes les 100ms
+        }, 50); // Vérifier toutes les 100ms
         
         // Nettoyer l'intervalle quand l'utilisateur quitte la page
         window.addEventListener('unload', function() {

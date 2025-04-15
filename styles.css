@@ -3185,31 +3185,31 @@ body, html {
 
     <style>
     
-/* Styles améliorés pour la section roadmap sur mobile selon recommandations */
+/* Styles améliorés pour la section roadmap sur mobile */
 @media (max-width: 767px) {
-    /* Point 4: S'assurer que le conteneur de la jauge n'est pas limité */
+    /* Assurer que la ligne de progression est bien visible */
     .roadmap-line {
         left: 30px;
         width: 6px;
         overflow: visible; /* Permet à la jauge de s'afficher correctement */
+        height: 100%;
         background-color: rgba(243, 242, 235, 0.3);
         position: absolute;
-        height: 100%;
     }
     
-    /* Point 4: Assurer la visibilité de la jauge de progression */
+    /* Styles de la jauge de progression */
     .roadmap-progress {
-        height: 0;
+        height: 0; /* Commencer à 0 */
         width: 100%;
         transition: height 0.5s ease-in-out;
-        background-color: #f3f2eb; /* Couleur claire pour mobile */
+        background-color: #f3f2eb;
         position: absolute;
     }
     
-    /* Point 5: Améliorer la visibilité des étapes */
+    /* Améliorer la visibilité des étapes */
     .roadmap-step {
-        opacity: 0.8; /* Meilleure visibilité sur mobile */
-        transition: opacity 0.5s ease;
+        opacity: 0.8; /* Meilleure visibilité sur mobile selon Copilot */
+        transition: opacity 0.3s ease;
         padding-left: 60px;
         position: relative;
         margin-bottom: 50px;
@@ -3219,19 +3219,19 @@ body, html {
         opacity: 1;
     }
     
-    /* Visibilité améliorée des points actifs */
-    .roadmap-step.active .node-dot {
-        background-color: #f3f2eb;
-        border-color: #f3f2eb;
-        box-shadow: 0 0 10px rgba(243, 242, 235, 0.6);
-    }
-    
-    /* Position du nœud */
+    /* Nœuds bien visibles */
     .roadmap-node {
         position: absolute;
         left: 30px;
         transform: translateX(-50%);
         z-index: 10;
+    }
+    
+    /* Style des nœuds actifs */
+    .roadmap-step.active .node-dot {
+        background-color: #f3f2eb;
+        border-color: #f3f2eb;
+        box-shadow: 0 0 10px rgba(243, 242, 235, 0.6);
     }
     
     /* Animation de pulsation */
@@ -3253,4 +3253,9 @@ body, html {
             opacity: 0;
         }
     }
+}
+
+/* Style de transition global pour la barre de progression */
+.roadmap-progress {
+    transition: height 0.5s ease-in-out;
 }

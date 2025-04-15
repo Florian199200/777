@@ -505,17 +505,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 const sectionHeight = roadmapSection.offsetHeight;
                 const windowHeight = window.innerHeight;
                 
-                // Calculer le pourcentage de défilement
-                const distanceScrolled = windowHeight - rect.top;
-                const totalDistance = sectionHeight + windowHeight;
-                const scrollPercent = distanceScrolled / totalDistance;
+                // Calculer le pourcentage de défilement de façon plus linéaire
+                // Plus on s'approche du haut de la section, plus la jauge monte
+                const relativeTop = Math.min(windowHeight, Math.max(0, windowHeight - rect.top));
                 
-                // Appliquer un boost d'accélération pour compenser le ralentissement perçu
-                // Une puissance de 0.8 donne une courbe légèrement accélérée
-                const boostedPercent = Math.pow(scrollPercent, 11);
+                // Progression linéaire basée sur la position de la section
+                const scrollPercent = relativeTop / (sectionHeight * 0.8); // Facteur 0.8 pour ajuster la vitesse
+                const cappedPercent = Math.min(1, scrollPercent); // Limiter à 100%
                 
                 // Calculer la progression (entre 10% et 100%)
-                const progressPercent = 10 + (boostedPercent * 100);
+                const progressPercent = 10 + (cappedPercent * 90);
                 
                 // Ne jamais régresser, seulement avancer
                 maxProgress = Math.max(maxProgress, progressPercent);
@@ -523,7 +522,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Appliquer à la barre
                 progress.style.height = maxProgress + '%';
             }
-        }, 50); // Vérifier toutes les 100ms
+        }, 100); // Vérifier toutes les 100ms
         
         // Nettoyer l'intervalle quand l'utilisateur quitte la page
         window.addEventListener('unload', function() {

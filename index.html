@@ -505,14 +505,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 const sectionHeight = roadmapSection.offsetHeight;
                 const windowHeight = window.innerHeight;
                 
-                // Modification minimale: utiliser une formule qui donne une progression 
-                // plus constante sur toute la section
+                // Calculer le pourcentage de défilement
                 const distanceScrolled = windowHeight - rect.top;
                 const totalDistance = sectionHeight + windowHeight;
                 const scrollPercent = distanceScrolled / totalDistance;
                 
+                // Appliquer un boost d'accélération pour compenser le ralentissement perçu
+                // Une puissance de 0.8 donne une courbe légèrement accélérée
+                const boostedPercent = Math.pow(scrollPercent, 0.8);
+                
                 // Calculer la progression (entre 10% et 100%)
-                const progressPercent = 10 + (scrollPercent * 90);
+                const progressPercent = 10 + (boostedPercent * 90);
                 
                 // Ne jamais régresser, seulement avancer
                 maxProgress = Math.max(maxProgress, progressPercent);

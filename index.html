@@ -477,16 +477,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const steps = document.querySelectorAll('.roadmap-step');
     const progress = document.querySelector('.roadmap-progress');
     const roadmapSection = document.querySelector('.roadmap-container');
+    const isMobile = window.innerWidth < 768;
     
-    // Animation de défilement - version améliorée du code original
+    // Amélioration: technique de throttling pour de meilleures performances
+    let isThrottled = false;
+    
     function animateOnScroll() {
-        // Calculer la position de défilement et les dimensions
-        const scrollPosition = window.scrollY + window.innerHeight * 0.6;
+        // Amélioration: utiliser document.documentElement.scrollTop pour compatibilité mobile
+        const scrollPosition = document.documentElement.scrollTop + window.innerHeight * 0.6;
         const sectionRect = roadmapSection.getBoundingClientRect();
-        const sectionTop = sectionRect.top + window.scrollY;
+        const sectionTop = sectionRect.top + document.documentElement.scrollTop;
         const sectionHeight = roadmapSection.offsetHeight;
         
-        // Ne rien faire si la section n'est pas proche de la vue
+        // Amélioration: ne pas continuer si la section est hors de vue
         if (scrollPosition < sectionTop - window.innerHeight || 
             scrollPosition > sectionTop + sectionHeight + window.innerHeight) {
             return;
@@ -494,8 +497,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Calcul de progression standard
         const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
-        
-        // Limiter la progression entre 0 et 1
         const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
         
         // Appliquer la hauteur à la barre de progression
@@ -503,33 +504,49 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Activer les étapes en fonction du défilement
         steps.forEach((step, index) => {
-            const stepTop = step.getBoundingClientRect().top + window.scrollY;
+            const stepTop = step.getBoundingClientRect().top + document.documentElement.scrollTop;
             
             if (scrollPosition > stepTop) {
                 step.classList.add('active');
             } else {
-                // Sur mobile, on garde les étapes actives
-                if (window.innerWidth >= 768) {
+                // Sur mobile, on garde les étapes actives une fois qu'elles sont activées
+                if (!isMobile) {
                     step.classList.remove('active');
                 }
             }
         });
     }
     
-    // Initialisation
-    window.addEventListener('scroll', animateOnScroll);
-    window.addEventListener('resize', animateOnScroll);
+    // Fonction throttle pour améliorer les performances sur mobile
+    function throttledAnimateOnScroll() {
+        if (isThrottled) return;
+        isThrottled = true;
+        
+        requestAnimationFrame(() => {
+            animateOnScroll();
+            setTimeout(() => {
+                isThrottled = false;
+            }, 50); // Ajustez ce délai selon les besoins de performance
+        });
+    }
+    
+    // Écouter les événements avec throttling
+    window.addEventListener('scroll', throttledAnimateOnScroll);
+    window.addEventListener('resize', throttledAnimateOnScroll);
     
     // Sur mobile, s'assurer que la première étape est active au début
-    if (window.innerWidth < 768 && steps.length > 0) {
+    if (isMobile && steps.length > 0) {
         steps[0].classList.add('active');
     }
     
-    // Déclencher une fois au chargement avec délai pour permettre le rendu
-    setTimeout(animateOnScroll, 300);
+    // Déclencher plusieurs fois au chargement pour s'assurer que ça fonctionne
+    setTimeout(animateOnScroll, 100);
+    setTimeout(animateOnScroll, 500);
     
-    // Assurer que l'animation fonctionne même sur les longs chargements
-    window.addEventListener('load', animateOnScroll);
+    // Assurer que l'animation fonctionne après le chargement complet
+    window.addEventListener('load', function() {
+        setTimeout(animateOnScroll, 300);
+    });
 });
     
 </script>

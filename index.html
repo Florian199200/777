@@ -492,9 +492,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // 2. Initialiser la barre à une valeur visible
         progress.style.height = '10%';
         
-        // Suivre la progression maximale pour éviter les régressions
-        let maxProgress = 10;
-        
         // 3. Utiliser un système basé sur la position de la section
         let progressInterval = setInterval(function() {
             const rect = roadmapSection.getBoundingClientRect();
@@ -503,24 +500,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (rect.top < window.innerHeight && rect.bottom > 0) {
                 // Calculer quelle partie de la section est visible
                 const sectionHeight = roadmapSection.offsetHeight;
-                const windowHeight = window.innerHeight;
-                
-                // Calculer le pourcentage de défilement de façon plus linéaire
-                // Plus on s'approche du haut de la section, plus la jauge monte
-                const relativeTop = Math.min(windowHeight, Math.max(0, windowHeight - rect.top));
-                
-                // Progression linéaire basée sur la position de la section
-                const scrollPercent = relativeTop / (sectionHeight * 0.8); // Facteur 0.8 pour ajuster la vitesse
-                const cappedPercent = Math.min(1, scrollPercent); // Limiter à 100%
+                const visiblePart = Math.min(window.innerHeight, rect.bottom) - Math.max(0, rect.top);
+                const visiblePercent = visiblePart / sectionHeight;
                 
                 // Calculer la progression (entre 10% et 100%)
-                const progressPercent = 10 + (cappedPercent * 90);
-                
-                // Ne jamais régresser, seulement avancer
-                maxProgress = Math.max(maxProgress, progressPercent);
+                const progressPercent = 10 + (visiblePercent * 90);
                 
                 // Appliquer à la barre
-                progress.style.height = maxProgress + '%';
+                progress.style.height = progressPercent + '%';
             }
         }, 100); // Vérifier toutes les 100ms
         

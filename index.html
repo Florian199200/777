@@ -474,23 +474,39 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Vérification du DOM
+    console.log(document.querySelectorAll('.roadmap-step'));
+    console.log(document.querySelector('.roadmap-progress'));
+    
     const steps = document.querySelectorAll('.roadmap-step');
     const progress = document.querySelector('.roadmap-progress');
     const roadmapSection = document.querySelector('.roadmap-container');
     const isMobile = window.innerWidth < 768;
     
-    // Sur mobile, activer toutes les étapes immédiatement
+    // Test des événements de défilement
+    window.addEventListener('scroll', () => {
+        console.log("Scroll event triggered");
+    });
+    
+    // Forcer l'activation des étapes sur mobile
     if (isMobile) {
         steps.forEach(step => {
             step.classList.add('active');
+            console.log("Step forced active:", step);
         });
     }
     
-    // Technique de throttling améliorée
+    // Vérification des dimensions de la section
+    const sectionRect = roadmapSection.getBoundingClientRect();
+    console.log("Section height:", roadmapSection.offsetHeight);
+    console.log("Section top:", sectionRect.top);
+    
+    // Technique de throttling pour de meilleures performances
     let isThrottled = false;
     
     function animateOnScroll() {
-        // Utiliser la méthode la plus fiable pour la position de défilement
+        console.log("animateOnScroll triggered");
+        
         const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
         const viewportOffset = window.innerHeight * 0.6;
         const adjustedScrollPosition = scrollPosition + viewportOffset;
@@ -512,50 +528,41 @@ document.addEventListener('DOMContentLoaded', function() {
         // Appliquer la hauteur à la barre de progression
         progress.style.height = (limitedProgress * 100) + '%';
         
-        // Logs pour le débogage
-        console.log("Scroll position:", adjustedScrollPosition);
-        console.log("Section Top:", sectionTop);
-        console.log("Progress Height:", progress.style.height);
-        
-        // Sur desktop seulement, activer/désactiver les étapes en fonction du défilement
-        if (!isMobile) {
-            steps.forEach((step, index) => {
-                const stepTop = step.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
-                
-                if (adjustedScrollPosition > stepTop) {
-                    step.classList.add('active');
-                } else {
+        // Activer les étapes en fonction du défilement
+        steps.forEach((step, index) => {
+            const stepTop = step.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
+            
+            if (adjustedScrollPosition > stepTop) {
+                step.classList.add('active');
+            } else {
+                // Sur mobile, ne pas désactiver les étapes une fois activées
+                if (!isMobile) {
                     step.classList.remove('active');
                 }
-                
-                console.log("Step " + index + " Active:", step.classList.contains('active'));
-            });
-        }
-    }
-    
-    // Utiliser requestAnimationFrame pour des performances optimales
-    function throttledAnimateOnScroll() {
-        if (isThrottled) return;
-        isThrottled = true;
-
-        requestAnimationFrame(() => {
-            animateOnScroll();
-            isThrottled = false;
+            }
+            
+            // Débogage
+            console.log("Step " + index + " Active:", step.classList.contains('active'));
         });
     }
     
-    // Écouter les événements avec throttling
+    // Problème de throttling - Test sans throttling
+    function throttledAnimateOnScroll() {
+        animateOnScroll(); // Test sans throttling
+    }
+    
+    // Écouter les événements
     window.addEventListener('scroll', throttledAnimateOnScroll);
     window.addEventListener('resize', throttledAnimateOnScroll);
     
     // Déclencher l'animation initiale
-    animateOnScroll();
+    setTimeout(animateOnScroll, 100);
     
     // Assurer que l'animation fonctionne après le chargement complet
     window.addEventListener('load', function() {
-        animateOnScroll();
+        setTimeout(animateOnScroll, 300);
     });
-    });    
+});
 </script>
 
 <!-- CODE HTML DU FOOTER -->

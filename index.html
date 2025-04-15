@@ -487,71 +487,53 @@ document.addEventListener('DOMContentLoaded', function() {
             step.classList.add('active');
         });
         
-        // Variables pour contrôler la progression
-        let targetProgress = 0;
-        let currentProgress = 0;
+        // Variables pour le suivi du défilement
+        let lastScrollY = window.pageYOffset;
+        let maxProgress = 0;
         
-        function updateProgressByStepPositions() {
-            // Calculer la progression cible basée sur les positions des étapes
-            let newTargetProgress = 0;
-            
-            // Vérifier la position de la section entière d'abord
-            const sectionRect = roadmapSection.getBoundingClientRect();
+        function updateProgressOnScroll() {
+            // Obtenir la position actuelle de la section par rapport à la fenêtre
+            const rect = roadmapSection.getBoundingClientRect();
             
             // Si la section est visible
-            if (sectionRect.top < window.innerHeight && sectionRect.bottom > 0) {
-                // Calculer quel pourcentage de la section a été défilé
-                const totalTravel = sectionRect.height + window.innerHeight;
-                const traveled = window.innerHeight - sectionRect.top;
-                const sectionProgress = Math.max(0, Math.min(1, traveled / totalTravel));
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                // Calculer la progression basée uniquement sur la position relative 
+                // de la section dans la fenêtre
                 
-                // Progression cible basée sur le défilement de la section
-                newTargetProgress = sectionProgress * 100;
+                // Distance totale que la section doit parcourir
+                const totalDistance = rect.height + window.innerHeight;
                 
-                // Limiter la progression maximale en fonction de l'étape la plus basse visible
-                let lowestVisibleStepIndex = -1;
+                // Distance déjà parcourue (depuis que le haut de la section est entré dans la vue)
+                const distanceTraveled = window.innerHeight - rect.top;
                 
-                steps.forEach((step, index) => {
-                    const stepRect = step.getBoundingClientRect();
-                    // Si l'étape est au moins partiellement visible
-                    if (stepRect.top < window.innerHeight && stepRect.bottom > 0) {
-                        lowestVisibleStepIndex = Math.max(lowestVisibleStepIndex, index);
-                    }
-                });
+                // Pourcentage de progression (0-100)
+                let currentProgress = (distanceTraveled / totalDistance) * 100;
                 
-                // Si au moins une étape est visible, limiter la progression
-                if (lowestVisibleStepIndex >= 0) {
-                    // Limiter à (index+1) * 25%, mais en tenant compte de la position relative
-                    const stepMaxProgress = (lowestVisibleStepIndex + 1) * 25;
-                    
-                    // Limiter la progression à une valeur raisonnable pour l'étape actuelle
-                    newTargetProgress = Math.min(newTargetProgress, stepMaxProgress + 10);
-                }
+                // Limiter entre 0 et 100
+                currentProgress = Math.max(0, Math.min(100, currentProgress));
+                
+                // Jamais régresser - seulement avancer
+                maxProgress = Math.max(maxProgress, currentProgress);
+                
+                // Appliquer directement à la barre - pas de lissage, juste le suivi du défilement
+                progress.style.cssText = `height: ${maxProgress}% !important;`;
             }
             
-            // Mise à jour de la cible
-            targetProgress = Math.max(targetProgress, newTargetProgress);
-            
-            // Progression fluide: avancer progressivement vers la cible
-            // Plus la différence est grande, plus on avance rapidement (mais jamais trop vite)
-            const diff = targetProgress - currentProgress;
-            const step = Math.min(0.5, diff * 0.05); // Ralentir ici (0.05 est un facteur de vitesse)
-            
-            if (diff > 0.1) { // Si la différence est significative
-                currentProgress += step;
-                // Appliquer à la barre - forcer le style
-                progress.style.cssText = `height: ${currentProgress}% !important;`;
-            }
+            // Mettre à jour la position de défilement
+            lastScrollY = window.pageYOffset;
         }
         
-        // Mettre à jour régulièrement et à chaque événement
-        let progressInterval = setInterval(updateProgressByStepPositions, 20); // Plus fréquent pour plus de fluidité
-        window.addEventListener('scroll', updateProgressByStepPositions);
-        window.addEventListener('touchmove', updateProgressByStepPositions);
+        // Écouter les événements de défilement
+        window.addEventListener('scroll', updateProgressOnScroll, { passive: true });
+        window.addEventListener('touchmove', updateProgressOnScroll, { passive: true });
         
-        // Exécuter immédiatement
-        updateProgressByStepPositions();
-        window.addEventListener('load', updateProgressByStepPositions);
+        // Mettre à jour également à intervalles réguliers pour s'assurer que ça fonctionne
+        // même si les événements de défilement sont manqués
+        let progressInterval = setInterval(updateProgressOnScroll, 16); // ~60fps
+        
+        // Initialiser
+        updateProgressOnScroll();
+        window.addEventListener('load', updateProgressOnScroll);
         
         // Nettoyer
         window.addEventListener('unload', function() {

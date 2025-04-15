@@ -474,52 +474,62 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Éléments nécessaires
     const steps = document.querySelectorAll('.roadmap-step');
     const progress = document.querySelector('.roadmap-progress');
     const roadmapSection = document.querySelector('.roadmap-container');
     
-    // Animation au défilement - identique pour mobile et desktop
-    function handleScroll() {
-        // Position de la section par rapport à la fenêtre
-        const rect = roadmapSection.getBoundingClientRect();
+    // Animation de défilement - version améliorée du code original
+    function animateOnScroll() {
+        // Calculer la position de défilement et les dimensions
+        const scrollPosition = window.scrollY + window.innerHeight * 0.6;
+        const sectionRect = roadmapSection.getBoundingClientRect();
+        const sectionTop = sectionRect.top + window.scrollY;
+        const sectionHeight = roadmapSection.offsetHeight;
         
-        // Si la section est visible
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            // Calculer la progression en fonction de la visibilité de la section
-            const viewportHeight = window.innerHeight;
-            const sectionVisibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-            const visibleRatio = sectionVisibleHeight / Math.min(roadmapSection.offsetHeight, viewportHeight);
+        // Ne rien faire si la section n'est pas proche de la vue
+        if (scrollPosition < sectionTop - window.innerHeight || 
+            scrollPosition > sectionTop + sectionHeight + window.innerHeight) {
+            return;
+        }
+        
+        // Calcul de progression standard
+        const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+        
+        // Limiter la progression entre 0 et 1
+        const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+        
+        // Appliquer la hauteur à la barre de progression
+        progress.style.height = (limitedProgress * 100) + '%';
+        
+        // Activer les étapes en fonction du défilement
+        steps.forEach((step, index) => {
+            const stepTop = step.getBoundingClientRect().top + window.scrollY;
             
-            // Progression basée sur la visibilité (0-100%)
-            const progressValue = visibleRatio * 100;
-            
-            // Appliquer la progression
-            progress.style.height = progressValue + '%';
-            
-            // Activer les étapes en fonction de la progression
-            steps.forEach((step, index) => {
-                // Calculer à partir de quand l'étape doit être active (25% pour la première, 50% pour la deuxième, etc.)
-                const activationThreshold = ((index + 1) / steps.length) * 100;
-                
-                if (progressValue >= activationThreshold) {
-                    step.classList.add('active');
-                } else {
+            if (scrollPosition > stepTop) {
+                step.classList.add('active');
+            } else {
+                // Sur mobile, on garde les étapes actives
+                if (window.innerWidth >= 768) {
                     step.classList.remove('active');
                 }
-            });
-        }
+            }
+        });
     }
     
-    // Listeners
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-    
     // Initialisation
-    handleScroll();
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('resize', animateOnScroll);
     
-    // Garantir que ça marche après le chargement complet
-    window.addEventListener('load', handleScroll);
+    // Sur mobile, s'assurer que la première étape est active au début
+    if (window.innerWidth < 768 && steps.length > 0) {
+        steps[0].classList.add('active');
+    }
+    
+    // Déclencher une fois au chargement avec délai pour permettre le rendu
+    setTimeout(animateOnScroll, 300);
+    
+    // Assurer que l'animation fonctionne même sur les longs chargements
+    window.addEventListener('load', animateOnScroll);
 });
     
 </script>

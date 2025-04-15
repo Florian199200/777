@@ -3185,30 +3185,37 @@ body, html {
 
     <style>
     
-/* Styles améliorés pour la section roadmap sur mobile */
+/* CSS de débogage pour la section roadmap */
+
+/* Problème de overflow dans le CSS - Ajouter une bordure pour visualiser la jauge */
+.roadmap-progress {
+    border: 2px solid red !important; /* Debug */
+}
+
+/* Vérifier que le conteneur n'a pas overflow: hidden */
+.roadmap-container, .roadmap-line {
+    overflow: visible !important;
+}
+
+/* Styles de base pour mobile */
 @media (max-width: 767px) {
-    /* Assurer que la ligne de progression est bien visible */
     .roadmap-line {
         left: 30px;
         width: 6px;
-        overflow: visible; /* Permet à la jauge de s'afficher correctement */
-        height: 100%;
         background-color: rgba(243, 242, 235, 0.3);
         position: absolute;
+        height: 100%;
     }
     
-    /* Styles de la jauge de progression */
     .roadmap-progress {
-        height: 0; /* Commencer à 0 */
+        position: absolute;
         width: 100%;
         transition: height 0.5s ease-in-out;
         background-color: #f3f2eb;
-        position: absolute;
     }
     
-    /* Améliorer la visibilité des étapes */
     .roadmap-step {
-        opacity: 0.8; /* Meilleure visibilité sur mobile selon Copilot */
+        opacity: 0.8; /* Meilleure visibilité sur mobile */
         transition: opacity 0.3s ease;
         padding-left: 60px;
         position: relative;
@@ -3218,44 +3225,4 @@ body, html {
     .roadmap-step.active {
         opacity: 1;
     }
-    
-    /* Nœuds bien visibles */
-    .roadmap-node {
-        position: absolute;
-        left: 30px;
-        transform: translateX(-50%);
-        z-index: 10;
-    }
-    
-    /* Style des nœuds actifs */
-    .roadmap-step.active .node-dot {
-        background-color: #f3f2eb;
-        border-color: #f3f2eb;
-        box-shadow: 0 0 10px rgba(243, 242, 235, 0.6);
-    }
-    
-    /* Animation de pulsation */
-    .active .node-pulse {
-        opacity: 1;
-        animation: mobilePulse 2s infinite;
-    }
-    
-    @keyframes mobilePulse {
-        0% {
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 1;
-        }
-        70% {
-            opacity: 0.7;
-        }
-        100% {
-            transform: translate(-50%, -50%) scale(1.2);
-            opacity: 0;
-        }
-    }
-}
-
-/* Style de transition global pour la barre de progression */
-.roadmap-progress {
-    transition: height 0.5s ease-in-out;
 }

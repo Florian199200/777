@@ -492,7 +492,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // 2. Initialiser la barre à une valeur visible
         progress.style.height = '10%';
         
-        // 3. Utiliser un système basé sur la position de la section
+        // Variables pour suivre la progression
+        let lastScrollPos = 0;
+        let currentProgress = 10;
+        
+        // 3. Utiliser un système basé sur la position de la section ET le défilement
         let progressInterval = setInterval(function() {
             const rect = roadmapSection.getBoundingClientRect();
             
@@ -501,22 +505,47 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Calculer quelle partie de la section est visible
                 const sectionHeight = roadmapSection.offsetHeight;
                 const visiblePart = Math.min(window.innerHeight, rect.bottom) - Math.max(0, rect.top);
-                const visiblePercent = visiblePart / sectionHeight;
+                const visiblePercent = Math.min(1, visiblePart / sectionHeight);
                 
-                // Calculer la progression (entre 10% et 100%)
-                const progressPercent = 10 + (visiblePercent * 90);
+                // Obtenir la position de défilement actuelle
+                const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
                 
-                // Appliquer à la barre
-                progress.style.height = progressPercent + '%';
+                // Déterminer la direction du défilement
+                const scrollDown = scrollPos > lastScrollPos;
+                lastScrollPos = scrollPos;
+                
+                // Si l'utilisateur défile vers le bas, augmenter la progression
+                if (scrollDown) {
+                    currentProgress = Math.min(100, currentProgress + 1); // Augmentation progressive
+                }
+                
+                // Calculer la progression basée sur la visibilité (entre la valeur actuelle et 100%)
+                const targetProgress = 10 + (visiblePercent * 90);
+                const newProgress = Math.max(currentProgress, targetProgress);
+                
+                // Appliquer à la barre avec style inline forcé
+                progress.style.cssText = `height: ${newProgress}% !important;`;
             }
-        }, 100); // Vérifier toutes les 100ms
+        }, 50); // Vérifier plus fréquemment (50ms)
+        
+        // Ajouter un écouteur d'événement de défilement pour s'assurer de capter tous les mouvements
+        window.addEventListener('scroll', function() {
+            const rect = roadmapSection.getBoundingClientRect();
+            
+            // Si on défile vers le bas et que la section est visible
+            if (rect.top < window.innerHeight) {
+                // Augmenter légèrement la progression à chaque événement de défilement
+                currentProgress = Math.min(100, currentProgress + 0.5);
+                progress.style.cssText = `height: ${currentProgress}% !important;`;
+            }
+        });
         
         // Nettoyer l'intervalle quand l'utilisateur quitte la page
         window.addEventListener('unload', function() {
             clearInterval(progressInterval);
         });
     } else {
-        // Code desktop original - garder votre code existant pour desktop ici
+        // Code desktop original
         function animateOnScroll() {
             const scrollPosition = window.scrollY + window.innerHeight * 0.6;
             const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;

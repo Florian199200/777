@@ -474,69 +474,124 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Vérification pour s'assurer que les sélecteurs fonctionnent
-    console.log("Script d'animation chargé");
-    
-    // Sélecteurs
     const steps = document.querySelectorAll('.roadmap-step');
     const progress = document.querySelector('.roadmap-progress');
     const roadmapSection = document.querySelector('.roadmap-container');
     
-    // Vérification des éléments
-    console.log("Étapes trouvées:", steps.length);
-    console.log("Barre de progression trouvée:", progress ? "Oui" : "Non");
-    console.log("Section roadmap trouvée:", roadmapSection ? "Oui" : "Non");
+    // Détection mobile fiable
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
     
-    // Détection mobile
-    const isMobile = window.innerWidth < 768;
-    console.log("Mode mobile détecté:", isMobile);
-    
-    // Solution ultra simple pour mobile: activer toutes les étapes et la jauge
     if (isMobile) {
-        console.log("Application du mode mobile");
-        
-        // Activer toutes les étapes immédiatement
-        steps.forEach((step, index) => {
+        // 1. Activer toutes les étapes immédiatement
+        steps.forEach(step => {
             step.classList.add('active');
-            console.log("Étape", index, "activée");
         });
         
-        // Fixer la jauge à 100% et lui donner un style visible
-        if (progress) {
-            progress.style.cssText = "height: 100% !important; background-color: #f3f2eb !important;";
-            console.log("Jauge réglée à 100%");
-        }
-    } else {
-        // Sur desktop - version simple du code original
-        console.log("Application du mode desktop");
+        // Variables pour contrôler la progression
+        let targetProgress = 0;
+        let currentProgress = 0;
         
-        // Fonction simplifiée pour activer les étapes au défilement
-        function activateOnScroll() {
-            steps.forEach((step) => {
-                const rect = step.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight * 0.8;
+        function updateProgressByStepPositions() {
+            // Calculer la progression cible basée sur les positions des étapes
+            let newTargetProgress = 0;
+            
+            // Vérifier la position de la section entière d'abord
+            const sectionRect = roadmapSection.getBoundingClientRect();
+            
+            // Si la section est visible
+            if (sectionRect.top < window.innerHeight && sectionRect.bottom > 0) {
+                // Calculer quel pourcentage de la section a été défilé
+                const totalTravel = sectionRect.height + window.innerHeight;
+                const traveled = window.innerHeight - sectionRect.top;
+                const sectionProgress = Math.max(0, Math.min(1, traveled / totalTravel));
                 
-                if (isVisible) {
+                // Progression cible basée sur le défilement de la section
+                newTargetProgress = sectionProgress * 100;
+                
+                // Limiter la progression maximale en fonction de l'étape la plus basse visible
+                let lowestVisibleStepIndex = -1;
+                
+                steps.forEach((step, index) => {
+                    const stepRect = step.getBoundingClientRect();
+                    // Si l'étape est au moins partiellement visible
+                    if (stepRect.top < window.innerHeight && stepRect.bottom > 0) {
+                        lowestVisibleStepIndex = Math.max(lowestVisibleStepIndex, index);
+                    }
+                });
+                
+                // Si au moins une étape est visible, limiter la progression
+                if (lowestVisibleStepIndex >= 0) {
+                    // Limiter à (index+1) * 25%, mais en tenant compte de la position relative
+                    const stepMaxProgress = (lowestVisibleStepIndex + 1) * 25;
+                    
+                    // Limiter la progression à une valeur raisonnable pour l'étape actuelle
+                    newTargetProgress = Math.min(newTargetProgress, stepMaxProgress + 10);
+                }
+            }
+            
+            // Mise à jour de la cible
+            targetProgress = Math.max(targetProgress, newTargetProgress);
+            
+            // Progression fluide: avancer progressivement vers la cible
+            // Plus la différence est grande, plus on avance rapidement (mais jamais trop vite)
+            const diff = targetProgress - currentProgress;
+            const step = Math.min(0.5, diff * 0.05); // Ralentir ici (0.05 est un facteur de vitesse)
+            
+            if (diff > 0.1) { // Si la différence est significative
+                currentProgress += step;
+                // Appliquer à la barre - forcer le style
+                progress.style.cssText = `height: ${currentProgress}% !important;`;
+            }
+        }
+        
+        // Mettre à jour régulièrement et à chaque événement
+        let progressInterval = setInterval(updateProgressByStepPositions, 20); // Plus fréquent pour plus de fluidité
+        window.addEventListener('scroll', updateProgressByStepPositions);
+        window.addEventListener('touchmove', updateProgressByStepPositions);
+        
+        // Exécuter immédiatement
+        updateProgressByStepPositions();
+        window.addEventListener('load', updateProgressByStepPositions);
+        
+        // Nettoyer
+        window.addEventListener('unload', function() {
+            clearInterval(progressInterval);
+        });
+    } else {
+        // Code desktop original
+        function animateOnScroll() {
+            const scrollPosition = window.scrollY + window.innerHeight * 0.6;
+            const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
+            const sectionHeight = roadmapSection.offsetHeight;
+            const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+            
+            // Limiter la progression entre 0 et 1
+            const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+            
+            // Appliquer la hauteur à la barre de progression
+            progress.style.height = (limitedProgress * 100) + '%';
+            
+            // Activer les étapes en fonction du défilement
+            steps.forEach((step, index) => {
+                const stepTop = step.getBoundingClientRect().top + window.scrollY;
+                
+                if (scrollPosition > stepTop) {
                     step.classList.add('active');
                 } else {
                     step.classList.remove('active');
                 }
             });
-            
-            // Mettre à jour la jauge en fonction de la visibilité de la section
-            if (progress && roadmapSection) {
-                const rect = roadmapSection.getBoundingClientRect();
-                const visibleRatio = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (roadmapSection.offsetHeight + window.innerHeight)));
-                progress.style.height = (visibleRatio * 100) + '%';
-            }
         }
         
-        // Ajouter les écouteurs d'événements
-        window.addEventListener('scroll', activateOnScroll);
-        window.addEventListener('resize', activateOnScroll);
+        // Initialisation pour desktop
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('resize', animateOnScroll);
         
-        // Activer immédiatement
-        activateOnScroll();
+        // Déclencher une fois au chargement
+        setTimeout(animateOnScroll, 300);
+        
+        // Assurer que l'animation fonctionne même sur les longs chargements
+        window.addEventListener('load', animateOnScroll);
     }
 });
 </script>

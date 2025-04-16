@@ -514,6 +514,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentProgress >= 100) {
     progress.style.height = '100%';
     clearInterval(interval); // Arrête les animations supplémentaires
+}        if (currentProgress >= 100) {
+    progress.style.height = '100%';
+    clearInterval(interval); // Arrête les animations supplémentaires
 }        // Code desktop original inchangé
         function animateOnScroll() {
             const scrollPosition = window.scrollY + window.innerHeight * 0.6;
@@ -527,17 +530,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // Appliquer la hauteur à la barre de progression
             progress.style.height = (limitedProgress * 100) + '%';
             
-            // Activer les étapes en fonction du défilement
-            steps.forEach((step, index) => {
-                const stepTop = step.getBoundingClientRect().top + window.scrollY;
-                
-                if (scrollPosition > stepTop) {
-                    step.classList.add('active');
-                } else {
-                    step.classList.remove('active');
-                }
-            });
-        }
+           steps.forEach((step, index) => {
+    const stepThreshold = (index + 1) * 25; // Chaque étape activée à 25%, 50%, 75%, 100%
+    if (currentProgress >= stepThreshold) {
+        step.classList.add('active');
+    } else {
+        step.classList.remove('active'); // Désactiver si la progression est insuffisante
+    }
+});
         
         // Initialisation pour desktop
         window.addEventListener('scroll', animateOnScroll);

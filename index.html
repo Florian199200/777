@@ -482,41 +482,49 @@ document.addEventListener('DOMContentLoaded', function() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
     
     if (isMobile) {
-        // Sur mobile RÉEL, utiliser une approche complètement différente
-        
-        // 1. Activer toutes les étapes immédiatement
+        // Activer toutes les étapes immédiatement sur mobile
         steps.forEach(step => {
             step.classList.add('active');
         });
         
-        // 2. Initialiser la barre à une valeur visible
-        progress.style.height = '10%';
+        // Commencer avec une progression minimum
+        let currentProgress = 10;
+        progress.style.height = currentProgress + '%';
         
-        // 3. Utiliser un système basé sur la position de la section
-        let progressInterval = setInterval(function() {
+        // Augmenter progressivement la jauge pendant le défilement
+        window.addEventListener('scroll', function() {
+            // Seulement augmenter, jamais diminuer
+            currentProgress += 0.5; // Augmentation fixe à chaque événement de défilement
+            if (currentProgress > 100) currentProgress = 100;
+            progress.style.height = currentProgress + '%';
+        }, { passive: true });
+        
+        // Assurer que la jauge avance même en l'absence d'événements de défilement
+        // en utilisant un intervalle pour l'augmenter progressivement
+        let interval = setInterval(function() {
+            // Récupérer la position de la section
             const rect = roadmapSection.getBoundingClientRect();
             
-            // Si la section est visible à l'écran
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                // Calculer quelle partie de la section est visible
-                const sectionHeight = roadmapSection.offsetHeight;
-                const visiblePart = Math.min(window.innerHeight, rect.bottom) - Math.max(0, rect.top);
-                const visiblePercent = visiblePart / sectionHeight;
+            // Si la section est visible et que la progression n'est pas complète
+            if (rect.top < window.innerHeight && rect.bottom > 0 && currentProgress < 100) {
+                // Augmenter progressivement
+                currentProgress += 0.2;
+                if (currentProgress > 100) currentProgress = 100;
+                progress.style.height = currentProgress + '%';
                 
-                // Calculer la progression (entre 10% et 100%)
-                const progressPercent = 10 + (visiblePercent * 90);
-                
-                // Appliquer à la barre
-                progress.style.height = progressPercent + '%';
+                // Si on a atteint 100%, nettoyer l'intervalle
+                if (currentProgress >= 100) {
+                    clearInterval(interval);
+                }
             }
-        }, 100); // Vérifier toutes les 100ms
+        }, 50);
         
         // Nettoyer l'intervalle quand l'utilisateur quitte la page
         window.addEventListener('unload', function() {
-            clearInterval(progressInterval);
+            clearInterval(interval);
         });
     } else {
-        // Code desktop original
+        // Code desktop original inchangé
         function animateOnScroll() {
             const scrollPosition = window.scrollY + window.innerHeight * 0.6;
             const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;

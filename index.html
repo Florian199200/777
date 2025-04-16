@@ -479,52 +479,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const roadmapSection = document.querySelector('.roadmap-container');
     
     // Détection mobile fiable
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
-    
     if (isMobile) {
-        // Activer toutes les étapes immédiatement sur mobile
-        steps.forEach(step => {
+    steps.forEach((step, index) => {
+        // Activer les étapes en fonction de la progression
+        if (index * 25 <= currentProgress) { // Par exemple 25% par étape
             step.classList.add('active');
-        });
-        
-        // Commencer avec une progression minimum
-        let currentProgress = 10;
-        progress.style.height = currentProgress + '%';
-        
-        // Augmenter progressivement la jauge pendant le défilement
-        window.addEventListener('scroll', function() {
-            // Seulement augmenter, jamais diminuer
-            currentProgress += 0.5; // Augmentation fixe à chaque événement de défilement
-            if (currentProgress > 100) currentProgress = 100;
-            progress.style.height = currentProgress + '%';
-        }, { passive: true });
-        
-        // Assurer que la jauge avance même en l'absence d'événements de défilement
-        // en utilisant un intervalle pour l'augmenter progressivement
-        let interval = setInterval(function() {
-            // Récupérer la position de la section
-            const rect = roadmapSection.getBoundingClientRect();
-            
-            // Si la section est visible et que la progression n'est pas complète
-            if (rect.top < window.innerHeight && rect.bottom > 0 && currentProgress < 100) {
-                // Augmenter progressivement
-                currentProgress += 0.2;
-                if (currentProgress > 100) currentProgress = 100;
-                progress.style.height = currentProgress + '%';
-                
-                // Si on a atteint 100%, nettoyer l'intervalle
-                if (currentProgress >= 100) {
-                    clearInterval(interval);
-                }
+        }
+    });
+
+    // Mettez à jour les étapes sur scroll
+    window.addEventListener('scroll', function() {
+        steps.forEach((step, index) => {
+            if (index * 25 <= currentProgress) {
+                step.classList.add('active');
             }
-        }, 50);
+        });
+    });
+}
+
+    // Calculer la progression uniquement si la section est visible
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const sectionHeight = roadmapSection.offsetHeight;
+        const scrollAmount = Math.min(1, (window.scrollY - rect.top) / sectionHeight); // Limite entre 0 et 1
+        currentProgress = Math.max(currentProgress, scrollAmount * 100); // Empêcher de redescendre
+        progress.style.height = currentProgress + '%';
+    }
+});
         
         // Nettoyer l'intervalle quand l'utilisateur quitte la page
         window.addEventListener('unload', function() {
             clearInterval(interval);
         });
     } else {
-        // Code desktop original inchangé
+        if (currentProgress >= 100) {
+    progress.style.height = '100%';
+    clearInterval(interval); // Arrête les animations supplémentaires
+}        // Code desktop original inchangé
         function animateOnScroll() {
             const scrollPosition = window.scrollY + window.innerHeight * 0.6;
             const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
@@ -560,6 +550,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('load', animateOnScroll);
     }
 });
+    
 </script>
 
 <!-- CODE HTML DU FOOTER -->

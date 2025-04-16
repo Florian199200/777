@@ -27,8 +27,6 @@
         </div>
     </div>
 </header>
-</body>
-</html>
 
     <div class="mobile-nav">
         <ul class="mobile-nav-links">
@@ -127,7 +125,7 @@
             </div>
             
             <div class="roadmap-steps">
-                <div class="roadmap-step active" data-step="1">
+                <div class="roadmap-step" data-step="1">
                     <div class="roadmap-node">
                         <div class="node-dot">
                             <div class="node-light"></div>
@@ -282,7 +280,7 @@
         width: 100%;
         height: 0;
         background-color: #f3f2eb; /* Couleur de la jauge de progression en clair pour contraste */
-        transition: height 0.5s ease-in-out;
+        transition: height 0.2s ease-out; /* Transition plus rapide et avec easing */
     }
     
     .roadmap-steps {
@@ -293,12 +291,14 @@
     .roadmap-step {
         display: flex;
         margin-bottom: 80px;
-        opacity: 0.6;
-        transition: opacity 0.3s ease;
+        opacity: 0.4; /* Un peu plus visible même inactive */
+        transform: translateY(10px); /* Légère translation pour l'animation */
+        transition: opacity 0.5s ease, transform 0.5s ease; /* Transition plus fluide */
     }
     
     .roadmap-step.active {
         opacity: 1;
+        transform: translateY(0); /* Revient à sa position normale quand active */
     }
     
     .roadmap-node {
@@ -365,7 +365,7 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         border-left: 5px solid #f3f2eb;
         position: relative;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         color: #f3f2eb; /* Texte clair pour meilleur contraste */
     }
     
@@ -470,78 +470,93 @@
             padding-left: 60px;
         }
     }
+    
+    /* Optimisation pour les appareils à écran tactile */
+    @media (hover: none) and (pointer: coarse) {
+        .roadmap-step {
+            opacity: 0.6; /* Plus visible sur mobile même inactive */
+        }
+    }
 </style>
 
 <script>
+// Script optimisé pour l'animation du roadmap
 document.addEventListener('DOMContentLoaded', function() {
+    // Sélecteurs principaux
     const steps = document.querySelectorAll('.roadmap-step');
     const progress = document.querySelector('.roadmap-progress');
     const roadmapSection = document.querySelector('.roadmap-container');
     
-    // Détection mobile fiable
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+    // Désactiver toutes les étapes au démarrage
+    steps.forEach(step => {
+        step.classList.remove('active');
+    });
     
+    // Détection de l'appareil - plus précise avec vérification d'écran tactile
+    const isMobile = ('ontouchstart' in window) || 
+                     navigator.maxTouchPoints > 0 || 
+                     window.innerWidth < 768;
+    
+    // Version mobile - comportement simplifié et plus réactif
     if (isMobile) {
-        // Activer toutes les étapes immédiatement sur mobile
-        steps.forEach(step => {
-            step.classList.add('active');
-        });
-        
-        // Commencer avec une progression minimum
-        let currentProgress = 10;
-        progress.style.height = currentProgress + '%';
-        
-        // Augmenter progressivement la jauge pendant le défilement
-        window.addEventListener('scroll', function() {
-            // Seulement augmenter, jamais diminuer
-            currentProgress += 0.5; // Augmentation fixe à chaque événement de défilement
-            if (currentProgress > 100) currentProgress = 100;
-            progress.style.height = currentProgress + '%';
-        }, { passive: true });
-        
-        // Assurer que la jauge avance même en l'absence d'événements de défilement
-        // en utilisant un intervalle pour l'augmenter progressivement
-        let interval = setInterval(function() {
-            // Récupérer la position de la section
+        // Fonction pour mettre à jour l'animation en fonction de la visibilité
+        function updateMobileProgress() {
             const rect = roadmapSection.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
             
-            // Si la section est visible et que la progression n'est pas complète
-            if (rect.top < window.innerHeight && rect.bottom > 0 && currentProgress < 100) {
-                // Augmenter progressivement
-                currentProgress += 0.2;
-                if (currentProgress > 100) currentProgress = 100;
-                progress.style.height = currentProgress + '%';
+            if (isVisible) {
+                // Calculer la progression basée sur la position visible
+                const visiblePercentage = Math.min(1, Math.max(0, 
+                    (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
+                ));
                 
-                // Si on a atteint 100%, nettoyer l'intervalle
-                if (currentProgress >= 100) {
-                    clearInterval(interval);
-                }
+                // Mise à jour de la progression
+                progress.style.height = (visiblePercentage * 100) + '%';
+                
+                // Activer les étapes progressivement
+                steps.forEach((step, index) => {
+                    const stepRect = step.getBoundingClientRect();
+                    if (stepRect.top < window.innerHeight * 0.8) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
             }
-        }, 50);
+        }
         
-        // Nettoyer l'intervalle quand l'utilisateur quitte la page
-        window.addEventListener('unload', function() {
-            clearInterval(interval);
-        });
+        // Déclencher immédiatement et à chaque défilement
+        updateMobileProgress();
+        window.addEventListener('scroll', updateMobileProgress, { passive: true });
+        
     } else {
-        // Code desktop original inchangé
+        // Version desktop - animation précise liée au défilement
         function animateOnScroll() {
-            const scrollPosition = window.scrollY + window.innerHeight * 0.6;
-            const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
+            // Récupérer les positions avec IntersectionObserver ou calcul direct
+            const windowHeight = window.innerHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Position de la section par rapport à la fenêtre
+            const rect = roadmapSection.getBoundingClientRect();
+            const sectionTop = rect.top + scrollTop;
             const sectionHeight = roadmapSection.offsetHeight;
-            const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
             
-            // Limiter la progression entre 0 et 1
-            const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+            // Calculer le point de déclenchement - plus précis
+            const triggerPosition = scrollTop + windowHeight * 0.7;
             
-            // Appliquer la hauteur à la barre de progression
-            progress.style.height = (limitedProgress * 100) + '%';
+            // Calculer la progression du défilement
+            let sectionProgress = (triggerPosition - sectionTop) / (sectionHeight + windowHeight * 0.3);
+            sectionProgress = Math.max(0, Math.min(1, sectionProgress));
             
-            // Activer les étapes en fonction du défilement
+            // Appliquer la progression à la barre
+            progress.style.height = (sectionProgress * 100) + '%';
+            
+            // Activer/désactiver les étapes en fonction du défilement
             steps.forEach((step, index) => {
-                const stepTop = step.getBoundingClientRect().top + window.scrollY;
+                const stepTop = step.getBoundingClientRect().top + scrollTop;
+                const stepTrigger = sectionTop + (sectionHeight * (index / steps.length));
                 
-                if (scrollPosition > stepTop) {
+                if (triggerPosition > stepTrigger) {
                     step.classList.add('active');
                 } else {
                     step.classList.remove('active');
@@ -549,14 +564,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Initialisation pour desktop
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('resize', animateOnScroll);
+        // Initialiser immédiatement et ajouter les écouteurs d'événements
+        animateOnScroll();
+        window.addEventListener('scroll', animateOnScroll, { passive: true });
+        window.addEventListener('resize', animateOnScroll, { passive: true });
         
-        // Déclencher une fois au chargement
-        setTimeout(animateOnScroll, 300);
-        
-        // Assurer que l'animation fonctionne même sur les longs chargements
+        // S'assurer que l'animation est correcte après le chargement complet
         window.addEventListener('load', animateOnScroll);
     }
 });

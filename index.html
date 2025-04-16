@@ -478,75 +478,124 @@ document.addEventListener('DOMContentLoaded', function() {
     const progress = document.querySelector('.roadmap-progress');
     const roadmapSection = document.querySelector('.roadmap-container');
     
-    // Détection mobile fiable
+    // Détection mobile
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
     
     if (isMobile) {
-        // Activer toutes les étapes immédiatement sur mobile
+        // APPROCHE COMPLÈTEMENT DIFFÉRENTE POUR MOBILE
+        
+        // 1. Supprimer l'animation JavaScript existante et utiliser uniquement CSS
+        
+        // 2. Activer toutes les étapes dès le début
         steps.forEach(step => {
             step.classList.add('active');
         });
         
-        // Variables pour suivre la progression et le défilement
-        let initialProgress = 10;
-        let currentProgress = initialProgress;
-        let lastScrollTop = 0;
-        let initialSectionTop = 0;
-        let sectionHeight = 0;
+        // 3. Ajouter une classe spéciale pour le mode mobile
+        roadmapSection.classList.add('mobile-view');
         
-        // Mesurer la section au chargement
-        function measureSection() {
-            const rect = roadmapSection.getBoundingClientRect();
-            initialSectionTop = rect.top + window.pageYOffset;
-            sectionHeight = roadmapSection.offsetHeight;
+        // 4. Ajouter un style inline pour la barre de progression
+        // Cette approche la fait progresser automatiquement via CSS
+        progress.style.cssText = `
+            height: 0%;
+            animation: progressAnimation 2s forwards;
+            animation-delay: 0.5s;
+        `;
+        
+        // 5. Créer et ajouter l'animation CSS directement
+        const styleElement = document.createElement('style');
+        styleElement.textContent = `
+            @keyframes progressAnimation {
+                0% { height: 0%; }
+                100% { height: 100%; }
+            }
             
-            // Initialiser la progression
-            progress.style.height = initialProgress + '%';
+            /* Style spécial pour le mode mobile */
+            .roadmap-container.mobile-view .roadmap-line {
+                position: absolute !important;
+                left: 30px !important;
+                height: 100% !important;
+                width: 6px !important;
+                z-index: 1 !important;
+                background-color: rgba(243, 242, 235, 0.3) !important;
+            }
+            
+            .roadmap-container.mobile-view .roadmap-progress {
+                position: absolute !important;
+                width: 100% !important;
+                background-color: #f3f2eb !important;
+                z-index: 2 !important;
+                transition: height 0.3s ease-out !important;
+            }
+            
+            .roadmap-container.mobile-view .roadmap-step {
+                opacity: 1 !important;
+                position: relative !important;
+                padding-left: 60px !important;
+                margin-bottom: 50px !important;
+            }
+            
+            .roadmap-container.mobile-view .roadmap-node {
+                position: absolute !important;
+                left: 30px !important;
+                transform: translateX(-50%) !important;
+                z-index: 10 !important;
+            }
+            
+            .roadmap-container.mobile-view .node-dot {
+                background-color: #f3f2eb !important;
+                border-color: #f3f2eb !important;
+                box-shadow: 0 0 10px rgba(243, 242, 235, 0.6) !important;
+            }
+            
+            .roadmap-container.mobile-view .node-pulse {
+                opacity: 1 !important;
+                animation: mobilePulse 2s infinite !important;
+            }
+            
+            @keyframes mobilePulse {
+                0% {
+                    transform: translate(-50%, -50%) scale(0);
+                    opacity: 1;
+                }
+                70% {
+                    opacity: 0.7;
+                }
+                100% {
+                    transform: translate(-50%, -50%) scale(1.2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(styleElement);
+        
+        // 6. Ajouter un écouteur au défilement pour déclencher l'animation
+        let hasStarted = false;
+        
+        function checkScroll() {
+            if (!hasStarted) {
+                const rect = roadmapSection.getBoundingClientRect();
+                
+                // Si la section est visible, démarrer l'animation
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    // Réappliquer l'animation avec style inline pour forcer le rendu
+                    progress.style.cssText = `
+                        height: 0%;
+                        animation: progressAnimation 4s forwards;
+                    `;
+                    
+                    hasStarted = true;
+                    
+                    // Nettoyer les écouteurs une fois que l'animation a démarré
+                    window.removeEventListener('scroll', checkScroll);
+                }
+            }
         }
         
-        // Mesurer au chargement et au redimensionnement
-        measureSection();
-        window.addEventListener('resize', measureSection);
+        // Vérifier au défilement et périodiquement
+        window.addEventListener('scroll', checkScroll);
+        setTimeout(checkScroll, 500);
         
-        // Suivre le défilement
-        window.addEventListener('scroll', function() {
-            // Obtenir la position actuelle
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Calculer combien de la section a été défilée
-            const sectionScrolled = scrollTop - initialSectionTop + window.innerHeight;
-            const totalTravel = sectionHeight + window.innerHeight;
-            const scrollPercent = Math.max(0, Math.min(1, sectionScrolled / totalTravel));
-            
-            // Calculer la nouvelle progression (entre initialProgress et 100%)
-            let newProgress = initialProgress + (scrollPercent * (100 - initialProgress));
-            
-            // Ne jamais diminuer la progression
-            currentProgress = Math.max(currentProgress, newProgress);
-            
-            // Appliquer à la barre
-            progress.style.cssText = `height: ${currentProgress}% !important;`;
-            
-            // Mettre à jour la dernière position
-            lastScrollTop = scrollTop;
-        }, { passive: true });
-        
-        // Au cas où les événements de défilement ne se déclenchent pas correctement
-        // vérifier périodiquement la position
-        let checkInterval = setInterval(function() {
-            // Déclencher manuellement un événement de défilement
-            window.dispatchEvent(new Event('scroll'));
-            
-            // Arrêter l'intervalle si la progression est complète
-            if (currentProgress >= 100) {
-                clearInterval(checkInterval);
-            }
-        }, 500);
-        
-        // Nettoyer
-        window.addEventListener('unload', function() {
-            clearInterval(checkInterval);
-        });
     } else {
         // Code desktop original inchangé
         function animateOnScroll() {
@@ -583,7 +632,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Assurer que l'animation fonctionne même sur les longs chargements
         window.addEventListener('load', animateOnScroll);
     }
-}); 
+});
 </script>
 
 <!-- CODE HTML DU FOOTER -->

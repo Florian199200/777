@@ -218,22 +218,8 @@
     </div>
 </section>
 
-<section id="contact" class="cta-section common-background">
-    <div class="cta-pattern"></div>
-    <div class="container">
-        <div class="cta-content">
-            <div class="coordinates">OBJET:DISCUSSION-STRATÉGIQUE</div>
-            <div class="tag">PASSEZ À L'ACTION</div>
-            <h2 class="cta-title">Prêt à augmenter significativement vos résultats?</h2>
-            <p class="cta-text">Prenons rendez-vous pour discuter de votre situation actuelle et identifier les opportunités de croissance pour votre marque dans l'univers de la pêche à la carpe.</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="big-cta-button">DEMANDER UN AUDIT STRATÉGIQUE</a>
-            </div>
-        </div>
-    </div>
-</section>
-
 <style>
+    /* Styles existants */
     .section-header.centered {
         text-align: center;
         max-width: 800px;
@@ -280,7 +266,7 @@
         width: 100%;
         height: 0;
         background-color: #f3f2eb; /* Couleur de la jauge de progression en clair pour contraste */
-        transition: height 0.2s ease-out; /* Transition plus rapide et avec easing */
+        transition: height 0.3s ease-out; /* Amélioration de la transition */
     }
     
     .roadmap-steps {
@@ -291,14 +277,12 @@
     .roadmap-step {
         display: flex;
         margin-bottom: 80px;
-        opacity: 0.4; /* Un peu plus visible même inactive */
-        transform: translateY(10px); /* Légère translation pour l'animation */
-        transition: opacity 0.5s ease, transform 0.5s ease; /* Transition plus fluide */
+        opacity: 0.5; /* Un peu plus visible même inactive */
+        transition: opacity 0.4s ease; /* Transition plus fluide */
     }
     
     .roadmap-step.active {
         opacity: 1;
-        transform: translateY(0); /* Revient à sa position normale quand active */
     }
     
     .roadmap-node {
@@ -365,7 +349,7 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         border-left: 5px solid #f3f2eb;
         position: relative;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         color: #f3f2eb; /* Texte clair pour meilleur contraste */
     }
     
@@ -470,108 +454,73 @@
             padding-left: 60px;
         }
     }
-    
-    /* Optimisation pour les appareils à écran tactile */
-    @media (hover: none) and (pointer: coarse) {
-        .roadmap-step {
-            opacity: 0.6; /* Plus visible sur mobile même inactive */
-        }
-    }
 </style>
 
+<section id="contact" class="cta-section common-background">
+    <div class="cta-pattern"></div>
+    <div class="container">
+        <div class="cta-content">
+            <div class="coordinates">OBJET:DISCUSSION-STRATÉGIQUE</div>
+            <div class="tag">PASSEZ À L'ACTION</div>
+            <h2 class="cta-title">Prêt à augmenter significativement vos résultats?</h2>
+            <p class="cta-text">Prenons rendez-vous pour discuter de votre situation actuelle et identifier les opportunités de croissance pour votre marque dans l'univers de la pêche à la carpe.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="big-cta-button">DEMANDER UN AUDIT STRATÉGIQUE</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <script>
-// Script optimisé pour l'animation du roadmap
+// Script corrigé pour l'animation du roadmap
 document.addEventListener('DOMContentLoaded', function() {
-    // Sélecteurs principaux
+    // Récupérer les éléments nécessaires
     const steps = document.querySelectorAll('.roadmap-step');
     const progress = document.querySelector('.roadmap-progress');
     const roadmapSection = document.querySelector('.roadmap-container');
     
-    // Désactiver toutes les étapes au démarrage
+    // Définir tous les éléments comme non-actifs au début
     steps.forEach(step => {
         step.classList.remove('active');
     });
     
-    // Détection de l'appareil - plus précise avec vérification d'écran tactile
-    const isMobile = ('ontouchstart' in window) || 
-                     navigator.maxTouchPoints > 0 || 
-                     window.innerWidth < 768;
-    
-    // Version mobile - comportement simplifié et plus réactif
-    if (isMobile) {
-        // Fonction pour mettre à jour l'animation en fonction de la visibilité
-        function updateMobileProgress() {
-            const rect = roadmapSection.getBoundingClientRect();
-            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-            
-            if (isVisible) {
-                // Calculer la progression basée sur la position visible
-                const visiblePercentage = Math.min(1, Math.max(0, 
-                    (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
-                ));
-                
-                // Mise à jour de la progression
-                progress.style.height = (visiblePercentage * 100) + '%';
-                
-                // Activer les étapes progressivement
-                steps.forEach((step, index) => {
-                    const stepRect = step.getBoundingClientRect();
-                    if (stepRect.top < window.innerHeight * 0.8) {
-                        step.classList.add('active');
-                    } else {
-                        step.classList.remove('active');
-                    }
-                });
+    // Fonction pour mettre à jour l'animation
+    function updateRoadmap() {
+        // Position actuelle de défilement
+        const scrollY = window.scrollY || window.pageYOffset;
+        // Position de la section par rapport au haut de la page
+        const sectionRect = roadmapSection.getBoundingClientRect();
+        const sectionTop = sectionRect.top + scrollY;
+        const sectionHeight = sectionRect.height;
+        
+        // Position de déclenchement (60% de la hauteur de la fenêtre)
+        const triggerPosition = scrollY + window.innerHeight * 0.6;
+        
+        // Calcul du pourcentage de progression
+        let progressPercent = (triggerPosition - sectionTop) / sectionHeight;
+        progressPercent = Math.min(1, Math.max(0, progressPercent)); // Limiter entre 0 et 1
+        
+        // Appliquer à la barre de progression
+        progress.style.height = progressPercent * 100 + '%';
+        
+        // Activation des étapes en fonction de la progression
+        const stepsArray = Array.from(steps);
+        const stepThreshold = 1 / (stepsArray.length + 1);
+        
+        stepsArray.forEach((step, index) => {
+            // Activer l'étape quand la progression dépasse son seuil
+            if (progressPercent >= stepThreshold * (index + 1)) {
+                step.classList.add('active');
+            } else {
+                step.classList.remove('active');
             }
-        }
-        
-        // Déclencher immédiatement et à chaque défilement
-        updateMobileProgress();
-        window.addEventListener('scroll', updateMobileProgress, { passive: true });
-        
-    } else {
-        // Version desktop - animation précise liée au défilement
-        function animateOnScroll() {
-            // Récupérer les positions avec IntersectionObserver ou calcul direct
-            const windowHeight = window.innerHeight;
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Position de la section par rapport à la fenêtre
-            const rect = roadmapSection.getBoundingClientRect();
-            const sectionTop = rect.top + scrollTop;
-            const sectionHeight = roadmapSection.offsetHeight;
-            
-            // Calculer le point de déclenchement - plus précis
-            const triggerPosition = scrollTop + windowHeight * 0.7;
-            
-            // Calculer la progression du défilement
-            let sectionProgress = (triggerPosition - sectionTop) / (sectionHeight + windowHeight * 0.3);
-            sectionProgress = Math.max(0, Math.min(1, sectionProgress));
-            
-            // Appliquer la progression à la barre
-            progress.style.height = (sectionProgress * 100) + '%';
-            
-            // Activer/désactiver les étapes en fonction du défilement
-            steps.forEach((step, index) => {
-                const stepTop = step.getBoundingClientRect().top + scrollTop;
-                const stepTrigger = sectionTop + (sectionHeight * (index / steps.length));
-                
-                if (triggerPosition > stepTrigger) {
-                    step.classList.add('active');
-                } else {
-                    step.classList.remove('active');
-                }
-            });
-        }
-        
-        // Initialiser immédiatement et ajouter les écouteurs d'événements
-        animateOnScroll();
-        window.addEventListener('scroll', animateOnScroll, { passive: true });
-        window.addEventListener('resize', animateOnScroll, { passive: true });
-        
-        // S'assurer que l'animation est correcte après le chargement complet
-        window.addEventListener('load', animateOnScroll);
+        });
     }
+    
+    // Appeler la fonction au chargement et au défilement
+    updateRoadmap();
+    window.addEventListener('scroll', updateRoadmap);
+    window.addEventListener('resize', updateRoadmap);
 });
 </script>
 

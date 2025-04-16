@@ -3297,3 +3297,24 @@ body, html {
     font-size: 1.2rem;
   }
 }
+
+.about-container {
+    margin-top: 80px; /* Ajustez selon la hauteur de votre header */
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column; /* Pour empiler les éléments */
+    }
+    .about-image img {
+        width: 100%; /* Ajuste l'image à l'écran */
+        height: auto;
+    }
+}
+
+.about-image img {
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}

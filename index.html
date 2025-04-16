@@ -487,28 +487,49 @@ document.addEventListener('DOMContentLoaded', function() {
             step.classList.add('active');
         });
         
-        // Commencer avec une progression minimum
+        // Variables pour le suivi du défilement et de la progression
         let currentProgress = 10;
+        let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let scrollTimeout = null;
+        let isScrolling = false;
+        
+        // Commencer avec une progression minimum
         progress.style.height = currentProgress + '%';
         
-        // Augmenter progressivement la jauge pendant le défilement
+        // Suivre quand l'utilisateur défile
         window.addEventListener('scroll', function() {
-            // Seulement augmenter, jamais diminuer
-            currentProgress += 0.5; // Augmentation fixe à chaque événement de défilement
-            if (currentProgress > 100) currentProgress = 100;
-            progress.style.height = currentProgress + '%';
+            // Déterminer la direction du défilement
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollDown = scrollTop > lastScrollTop;
+            lastScrollTop = scrollTop;
+            
+            // Marquer que l'utilisateur est en train de défiler
+            isScrolling = true;
+            
+            // Uniquement augmenter si on défile vers le bas
+            if (scrollDown) {
+                currentProgress += 1; // Augmentation à chaque défilement vers le bas
+                if (currentProgress > 100) currentProgress = 100;
+                progress.style.height = currentProgress + '%';
+            }
+            
+            // Réinitialiser le minuteur
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                isScrolling = false;
+            }, 100);
         }, { passive: true });
         
-        // Assurer que la jauge avance même en l'absence d'événements de défilement
-        // en utilisant un intervalle pour l'augmenter progressivement
+        // Intervalle très lent pour s'assurer que la jauge atteint 100% 
+        // mais uniquement quand l'utilisateur n'est pas en train de défiler
         let interval = setInterval(function() {
             // Récupérer la position de la section
             const rect = roadmapSection.getBoundingClientRect();
             
-            // Si la section est visible et que la progression n'est pas complète
-            if (rect.top < window.innerHeight && rect.bottom > 0 && currentProgress < 100) {
-                // Augmenter progressivement
-                currentProgress += 0.2;
+            // Si la section est visible, la progression n'est pas complète, et l'utilisateur ne défile pas
+            if (rect.top < window.innerHeight && rect.bottom > 0 && currentProgress < 100 && !isScrolling) {
+                // Augmentation très lente quand l'utilisateur ne défile pas
+                currentProgress += 0.05;
                 if (currentProgress > 100) currentProgress = 100;
                 progress.style.height = currentProgress + '%';
                 
@@ -517,11 +538,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     clearInterval(interval);
                 }
             }
-        }, 50);
+        }, 200);
         
-        // Nettoyer l'intervalle quand l'utilisateur quitte la page
+        // Nettoyer les timers quand l'utilisateur quitte la page
         window.addEventListener('unload', function() {
             clearInterval(interval);
+            clearTimeout(scrollTimeout);
         });
     } else {
         // Code desktop original inchangé

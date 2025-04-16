@@ -3370,3 +3370,8 @@ main.about-container,
   visibility: visible !important;
   opacity: 1 !important;
 }
+
+/* Solution simple pour éviter que la section "À propos" ne s'étire sous le header */
+main.about-container {
+  padding-top: 120px !important; /* Ajustez cette valeur selon la hauteur de votre header */
+}

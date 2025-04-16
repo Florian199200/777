@@ -3228,269 +3228,173 @@ body, html {
 }
 
 
-/* Styles pour la page À propos dans l'esthétique du site */
+/* Styles complémentaires pour la page À propos reproduisant exactement la structure de l'index */
 
-/* Structure de base assurant que la section commence sous le header */
-.about-section {
-    padding-top: 180px; /* Espace important sous le header */
-    padding-bottom: 80px;
-    background-color: var(--color-bg);
-    position: relative;
-    overflow: visible;
+/* S'assurer que la section hero commence au bon endroit sous le header */
+.hero {
+    padding-top: 200px; /* Identique à l'index pour assurer la bonne position sous le header */
 }
 
-/* Grille pour aligner texte et image comme sur la page d'accueil */
-.about-grid {
-    display: grid;
-    grid-template-columns: 5fr 4fr; /* Ratio légèrement différent pour donner plus d'espace au texte */
-    gap: 40px;
-    margin-top: 60px;
-    align-items: start;
-}
-
-/* Style du texte cohérent avec le site */
-.about-text-content {
-    position: relative;
-}
-
-.section-description {
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--color-text-light);
-    margin-bottom: 25px;
-}
-
-/* Section des valeurs */
-.about-values {
-    margin-top: 40px;
-    border-top: 1px solid var(--color-border);
-    padding-top: 30px;
-}
-
-.values-title {
-    font-family: var(--font-display);
+/* Styles pour la liste des valeurs dans la section hero */
+.about-subtitle {
     font-size: 24px;
-    margin-bottom: 25px;
+    font-family: var(--font-display);
     color: var(--color-primary);
-    position: relative;
+    margin: 40px 0 20px;
     font-weight: 600;
 }
 
-.values-list {
+.about-values-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 40px;
+    border-top: 1px solid var(--color-border);
 }
 
-.values-list li {
+.about-values-list li {
     padding: 12px 0;
     border-bottom: 1px solid var(--color-border);
     color: var(--color-text-light);
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.7;
     display: flex;
     flex-wrap: wrap;
 }
 
-.values-list li:last-child {
-    border-bottom: none;
-}
-
-.value-label {
+.value-name {
     color: var(--color-accent);
     font-weight: 600;
     font-family: var(--font-display);
     margin-right: 5px;
 }
 
-/* Conteneur d'image avec ratio 4:5 et style cohérent */
-.about-image-wrapper {
+/* Assurer que l'image a un ratio 4:5 */
+.hero-image {
+    aspect-ratio: 4/5; /* Méthode moderne pour ratio 4:5 */
+    height: auto !important; /* Écraser toute hauteur fixe existante */
     position: relative;
 }
 
-.about-image-container {
-    position: relative;
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-    /* Utiliser trois méthodes différentes pour garantir le ratio 4:5 partout */
-    aspect-ratio: 4/5; /* Méthode moderne */
-}
-
-/* Méthode de secours pour les navigateurs qui ne supportent pas aspect-ratio */
-.about-image-container::before {
+/* Fallback pour les navigateurs qui ne supportent pas aspect-ratio */
+.hero-image::before {
     content: "";
     display: block;
     padding-top: 125%; /* 5/4 = 1.25 = 125% */
 }
 
-.about-image {
+/* Assurer que l'image remplit bien son conteneur */
+.hero-image img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
-    filter: grayscale(20%) contrast(110%) saturate(90%); /* Filtre comme sur la page d'accueil */
 }
 
-.about-image-container:hover .about-image {
-    transform: scale(1.03); /* Effet subtil au survol comme sur la page d'accueil */
-}
-
-/* Éléments décoratifs comme sur la page d'accueil */
-.target-marks {
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    width: 100px;
-    height: 100px;
-    z-index: 1;
-}
-
-.target-marks::before, 
-.target-marks::after {
-    content: '';
-    position: absolute;
-    border: 1px dashed var(--color-accent);
-    border-radius: 50%;
-}
-
-.target-marks::before {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
-
-.target-marks::after {
-    width: 60%;
-    height: 60%;
-    top: 20%;
-    left: 20%;
-}
-
-.tech-frame {
-    position: absolute;
-    bottom: -15px;
-    left: -15px;
-    width: 120px;
-    height: 120px;
-    border-left: 1px solid var(--color-accent);
-    border-bottom: 1px solid var(--color-accent);
-    opacity: 0.8;
-    z-index: 1;
-}
-
-.tech-frame::before {
-    content: '';
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: 20px;
-    height: 20px;
-    border-left: 1px solid var(--color-accent);
-    border-bottom: 1px solid var(--color-accent);
-}
-
-/* Media queries pour assurer le responsive */
+/* Corrections responsives */
 @media (max-width: 992px) {
-    .about-section {
-        padding-top: 150px;
+    .hero {
+        padding-top: 150px; /* Ajusté pour tablette */
     }
     
-    .about-grid {
-        grid-template-columns: 1fr; /* Une seule colonne sur tablette */
-        gap: 30px;
+    .hero-content, .hero-visual {
+        width: 100%; 
     }
     
-    .about-image-wrapper {
-        order: -1; /* Place l'image avant le texte sur tablette et mobile */
-        max-width: 400px;
-        margin: 0 auto;
+    .hero .grid {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .hero-visual {
+        margin-top: 40px;
+        max-width: 450px;
+        align-self: center;
+        order: -1; /* Placer l'image avant le texte sur mobile/tablette */
+    }
+    
+    .about-subtitle {
+        font-size: 22px;
+        margin: 30px 0 15px;
     }
 }
 
 @media (max-width: 768px) {
-    .about-section {
-        padding-top: 120px;
-        padding-bottom: 60px;
+    .hero {
+        padding-top: 120px; /* Ajusté pour mobile */
+        padding-bottom: 80px;
     }
     
-    .section-header {
-        margin-bottom: 40px;
+    .about-values-list li {
+        font-size: 15px;
+        padding: 10px 0;
     }
     
-    .section-description {
-        font-size: 16px;
-    }
-    
-    .values-title {
+    .about-subtitle {
         font-size: 20px;
-        margin-bottom: 20px;
     }
     
-    .about-image-wrapper {
-        max-width: 350px;
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .hero-description {
+        font-size: 16px;
     }
 }
 
 @media (max-width: 576px) {
-    .about-section {
-        padding-top: 100px;
-        padding-bottom: 50px;
+    .hero {
+        padding-top: 100px; /* Ajusté pour petits mobiles */
     }
     
-    .section-header {
-        margin-bottom: 30px;
+    .hero-visual {
+        max-width: 350px;
     }
     
-    .about-grid {
-        margin-top: 30px;
-        gap: 25px;
+    /* Solution iPhone pour ratio 4:5 */
+    #hero-square-image {
+        position: relative !important;
+        width: 100% !important;
+        height: 0 !important;
+        padding-bottom: 125% !important; /* Force le ratio 4:5 */
+        overflow: hidden !important;
     }
     
-    .about-values {
-        margin-top: 30px;
-        padding-top: 20px;
+    #hero-square-image img {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
     }
     
-    .values-list li {
-        padding: 10px 0;
-        font-size: 15px;
-    }
-    
-    /* Éléments décoratifs plus petits sur mobile */
-    .target-marks {
-        width: 70px;
-        height: 70px;
-    }
-    
-    .tech-frame {
-        width: 80px;
-        height: 80px;
+    .hero-title {
+        font-size: 30px;
     }
 }
 
-/* Optimisations pour les très petits écrans */
+/* Très petits écrans */
 @media (max-width: 375px) {
-    .about-section {
+    .hero {
         padding-top: 90px;
+    }
+    
+    .hero-title {
+        font-size: 26px;
     }
     
     .target-marks, .tech-frame {
         display: none; /* Masquer les éléments décoratifs sur très petits écrans */
     }
-}
-
-/* Solution spécifique pour s'assurer que l'image maintient son ratio sur tous les appareils */
-@media (max-width: 576px) {
-    /* Fix pour iPhone */
-    .about-image-container {
-        height: 0 !important;
-        padding-bottom: 125% !important; /* Forcer le ratio 4:5 */
-        width: 100% !important;
+    
+    .about-values-list li {
+        font-size: 14px;
+    }
+    
+    .hero-visual {
+        max-width: 280px;
     }
 }

@@ -3227,29 +3227,57 @@ body, html {
     }
 }
 
-/* Conteneur principal pour la section "À propos" */
-.about-container {
+/* Reset global pour assurer un comportement cohérent */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header fixe qui garde sa couleur sur tous les écrans */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #1a1a1a; /* Couleur noire du header visible sur la capture */
+  transition: none; /* Désactive toute transition qui pourrait affecter la couleur */
+}
+
+/* Conteneur principal avec marge supérieure importante */
+main.about-container {
+  margin-top: 180px; /* Valeur plus élevée pour s'assurer qu'elle dépasse le header */
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px; /* Augmentation du padding supérieur */
-  margin: 100px auto 0; /* Augmentation de la marge supérieure à 100px */
-  max-width: 1200px;
-  position: relative; /* Pour s'assurer qu'il respecte le flux du document */
-  visibility: visible;
-  opacity: 1;
+  width: 100%;
+  flex: 1; /* Prend tout l'espace disponible */
+  position: relative; /* Pour le positionnement relatif */
+  z-index: 1; /* Pour s'assurer qu'il s'affiche au-dessus d'autres éléments s'il y en a */
 }
 
-/* Contenu "À propos" */
+/* Contenu de la section "À propos" */
 .about-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px; /* Augmentation de l'espace entre image et texte */
+  gap: 30px;
   width: 100%;
+  max-width: 1200px;
+  background-color: #fff; /* Fond blanc pour être sûr */
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Ombre légère pour délimiter visuellement */
 }
 
-/* Image au ratio 4:5 */
+/* Image avec dimensions contrôlées */
 .about-image {
   width: 100%;
   max-width: 400px;
@@ -3260,53 +3288,66 @@ body, html {
   aspect-ratio: 4/5;
   object-fit: cover;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Ombre plus prononcée */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: block; /* Empêche les marges blanches sous l'image */
 }
 
-/* Texte de la section "À propos" */
+/* Texte de la section */
 .about-text {
   text-align: center;
-  padding: 0 15px;
   width: 100%;
 }
 
 .about-text h1 {
   font-size: 2rem;
-  margin-bottom: 20px; /* Plus d'espace sous le titre */
-  color: #333; /* Couleur assortie au texte */
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .about-text p {
   font-size: 1rem;
   color: #333;
   line-height: 1.6;
-  max-width: 800px; /* Largeur maximale pour le texte */
-  margin: 0 auto;
 }
 
-/* Responsivité pour les écrans larges */
+/* Footer placement */
+footer.site-footer {
+  width: 100%;
+  margin-top: auto; /* S'assure que le footer reste en bas si le contenu est court */
+  position: relative;
+}
+
+/* Media queries pour les grands écrans */
 @media (min-width: 768px) {
+  main.about-container {
+    margin-top: 150px; /* Légèrement réduit pour les écrans plus grands */
+  }
+  
   .about-content {
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-between; /* Meilleure distribution de l'espace */
+    justify-content: space-between;
   }
   
   .about-image {
-    flex: 0 0 40%; /* Ne prend que 40% de la largeur */
+    flex: 0 0 40%;
   }
   
   .about-text {
-    flex: 0 0 55%; /* Prend 55% de la largeur */
+    flex: 0 0 55%;
     text-align: left;
-    padding: 0;
+    padding-left: 20px;
   }
 }
 
-/* Responsivité pour les écrans très larges */
-@media (min-width: 1024px) {
-  .about-container {
-    margin-top: 120px; /* Encore plus d'espace pour les grands écrans */
+/* Media queries pour les écrans très grands */
+@media (min-width: 1200px) {
+  main.about-container {
+    margin-top: 120px; /* Encore moins pour les très grands écrans */
+  }
+  
+  .about-content {
+    padding: 40px;
   }
   
   .about-text h1 {
@@ -3318,28 +3359,12 @@ body, html {
   }
 }
 
-/* Ajustement pour les petits écrans */
-@media (max-width: 767px) {
-  .about-container {
-    margin-top: 80px; /* Un peu moins d'espace sur mobile */
-    padding: 20px;
-  }
-  
-  .about-content {
-    gap: 20px;
-  }
-  
-  .about-image {
-    max-width: 300px; /* Image un peu plus petite sur mobile */
-  }
-}
-
-/* S'assurer que le header ne cache pas le contenu */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: #fff; /* Ou votre couleur actuelle */
+/* Forcer l'affichage sur tous les écrans */
+main.about-container,
+.about-content,
+.about-image,
+.about-text {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }

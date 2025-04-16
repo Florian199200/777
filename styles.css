@@ -3227,3 +3227,204 @@ body, html {
     }
 }
 
+
+    /* Styles simples pour la page À propos */
+
+/* Structure de base de la section À propos */
+.about-section {
+    padding: 180px 0 80px; /* Espace suffisant sous le header fixe */
+    position: relative;
+    background-color: var(--color-bg);
+}
+
+/* En-tête de la section */
+.about-header {
+    margin-bottom: 60px;
+}
+
+.about-title {
+    font-size: clamp(32px, 5vw, 50px);
+    line-height: 1.2;
+    margin-bottom: 30px;
+    color: var(--color-primary);
+}
+
+.about-title .highlight {
+    color: var(--color-accent);
+    position: relative;
+    display: inline-block;
+}
+
+.about-title .highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(164, 152, 105, 0.2);
+    z-index: -1;
+}
+
+/* Contenu principal */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Texte descriptif */
+.about-text {
+    flex: 1 1 500px; /* Flexible mais avec une largeur minimale */
+}
+
+.about-description {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    color: var(--color-text-light);
+}
+
+.about-subtitle {
+    font-size: 24px;
+    margin: 40px 0 20px;
+    color: var(--color-primary);
+}
+
+/* Liste des valeurs */
+.values-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+}
+
+.values-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.values-list li:last-child {
+    border-bottom: none;
+}
+
+.values-list li strong {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Conteneur d'image avec ratio 4:5 */
+.about-image-container {
+    flex: 0 1 400px; /* Ne pas dépasser 400px, ne pas rétrécir */
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+/* Maintenir le ratio 4:5 en utilisant aspect-ratio moderne */
+.about-image-container {
+    aspect-ratio: 4/5;
+}
+
+/* Fallback pour les navigateurs qui ne supportent pas aspect-ratio */
+.about-image-container::before {
+    content: "";
+    display: block;
+    padding-top: 125%; /* 5/4 = 1.25 = 125% */
+}
+
+/* Image qui remplit le conteneur */
+.about-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Adaptation responsive */
+@media (max-width: 992px) {
+    .about-section {
+        padding: 150px 0 60px;
+    }
+    
+    .about-content {
+        flex-direction: column-reverse; /* Image au-dessus sur tablette et mobile */
+    }
+    
+    .about-image-container {
+        width: 100%;
+        max-width: 350px; /* Limite la taille sur tablette */
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 120px 0 50px;
+    }
+    
+    .about-description {
+        font-size: 16px;
+    }
+    
+    .about-subtitle {
+        font-size: 20px;
+        margin: 30px 0 15px;
+    }
+    
+    .values-list li {
+        padding: 10px 0;
+        font-size: 15px;
+    }
+}
+
+/* Optimisations pour les petits écrans */
+@media (max-width: 576px) {
+    .about-section {
+        padding: 100px 0 40px;
+    }
+    
+    .about-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .about-header {
+        margin-bottom: 30px;
+    }
+    
+    .about-image-container {
+        max-width: 280px; /* Plus petit sur mobile */
+    }
+    
+    .values-list li {
+        font-size: 14px;
+    }
+}
+
+/* iPhone SE et autres très petits écrans */
+@media (max-width: 375px) {
+    .about-section {
+        padding: 90px 0 30px;
+    }
+    
+    .about-title {
+        font-size: 24px;
+    }
+    
+    .about-image-container {
+        max-width: 100%; /* Pleine largeur sur très petits écrans */
+    }
+}
+
+/* Fix pour s'assurer que le contenu ne passe pas sous le header */
+main, section {
+    position: relative;
+    z-index: 2; /* Au-dessus du header qui est à 1000 */
+}

@@ -473,256 +473,93 @@
 </style>
 
 <script>
-<style>
-/* Nouveau style pour la section méthodologie */
-.new-roadmap-container {
-    padding: 80px 0;
-    position: relative;
-    background-color: #464a3e;
-    color: #f3f2eb;
-}
-
-.new-roadmap-steps {
-    position: relative;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-/* Ligne centrale verticale */
-.new-roadmap-steps::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 4px;
-    background-color: rgba(243, 242, 235, 0.2);
-    transform: translateX(-50%);
-}
-
-/* Style des cartes */
-.new-roadmap-card {
-    position: relative;
-    width: 45%;
-    margin-bottom: 60px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.new-roadmap-card.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Alternance gauche/droite */
-.new-roadmap-card:nth-child(odd) {
-    margin-left: auto;
-    padding-left: 40px;
-}
-
-.new-roadmap-card:nth-child(even) {
-    padding-right: 40px;
-}
-
-/* Points sur la ligne */
-.new-roadmap-card::before {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    background-color: #f3f2eb;
-    border-radius: 50%;
-    top: 20px;
-    z-index: 1;
-}
-
-.new-roadmap-card:nth-child(odd)::before {
-    left: -12px;
-}
-
-.new-roadmap-card:nth-child(even)::before {
-    right: -12px;
-}
-
-/* Style du contenu de la carte */
-.new-roadmap-content {
-    background-color: rgba(243, 242, 235, 0.1);
-    border-radius: 8px;
-    padding: 30px;
-    border-left: 4px solid #f3f2eb;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.new-roadmap-number {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    background-color: #f3f2eb;
-    color: #464a3e;
-    border-radius: A50%;
-    text-align: center;
-    line-height: 40px;
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
-.new-roadmap-title {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #f3f2eb;
-    font-weight: 600;
-}
-
-.new-roadmap-checklist {
-    list-style: none;
-    padding-left: 0;
-}
-
-.new-roadmap-checklist li {
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 10px;
-    line-height: 1.5;
-    opacity: 0;
-    transform: translateX(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    transition-delay: 0.3s;
-}
-
-.new-roadmap-card.active .new-roadmap-checklist li {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.new-roadmap-checklist li:nth-child(2) {
-    transition-delay: 0.4s;
-}
-
-.new-roadmap-checklist li:nth-child(3) {
-    transition-delay: 0.5s;
-}
-
-.new-roadmap-checklist li:nth-child(4) {
-    transition-delay: 0.6s;
-}
-
-.new-roadmap-checklist li:before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #f3f2eb;
-    font-weight: bold;
-}
-
-.new-roadmap-time {
-    display: inline-block;
-    background-color: rgba(243, 242, 235, 0.2);
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 14px;
-    color: #f3f2eb;
-    font-weight: 600;
-    margin-top: 15px;
-}
-
-/* Styles responsive */
-@media (max-width: 767px) {
-    .new-roadmap-steps::before {
-        left: 30px;
-    }
-    
-    .new-roadmap-card {
-        width: auto;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding-left: 60px !important;
-        padding-right: 15px !important;
-    }
-    
-    .new-roadmap-card::before {
-        left: 18px !important;
-        right: auto !important;
-    }
-}
-</style>
-
-<script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Convertir l'ancien format au nouveau
-    const oldSteps = document.querySelectorAll('.roadmap-step');
-    const oldContainer = document.querySelector('.roadmap-container');
+    const steps = document.querySelectorAll('.roadmap-step');
+    const progress = document.querySelector('.roadmap-progress');
+    const roadmapSection = document.querySelector('.roadmap-container');
     
-    if (oldContainer && oldSteps.length > 0) {
-        // Créer le nouveau conteneur
-        const newContainer = document.createElement('div');
-        newContainer.className = 'new-roadmap-container';
-        
-        // Créer le conteneur des étapes
-        const newSteps = document.createElement('div');
-        newSteps.className = 'new-roadmap-steps';
-        
-        // Convertir chaque étape
-        oldSteps.forEach((oldStep, index) => {
-            // Extraire les données de l'ancien format
-            const number = oldStep.querySelector('.roadmap-number').textContent;
-            const title = oldStep.querySelector('.roadmap-title').textContent;
-            const description = oldStep.querySelector('.roadmap-details p').textContent;
-            
-            // Créer les éléments de liste à partir des points de l'ancienne étape
-            const listItems = [];
-            oldStep.querySelectorAll('.roadmap-checklist li').forEach(item => {
-                listItems.push(item.textContent);
-            });
-            
-            // Créer la nouvelle carte
-            const card = document.createElement('div');
-            card.className = 'new-roadmap-card';
-            
-            // Remplir avec le contenu
-            card.innerHTML = `
-                <div class="new-roadmap-content">
-                    <div class="new-roadmap-number">${number}</div>
-                    <h3 class="new-roadmap-title">${title}</h3>
-                    <p>${description}</p>
-                    <ul class="new-roadmap-checklist">
-                        ${listItems.map(item => `<li>${item}</li>`).join('')}
-                    </ul>
-                    <div class="new-roadmap-time">Étape ${index + 1} de ${oldSteps.length}</div>
-                </div>
-            `;
-            
-            // Ajouter au nouveau conteneur
-            newSteps.appendChild(card);
+    // Détection mobile fiable
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+    
+    if (isMobile) {
+        // Activer toutes les étapes immédiatement sur mobile
+        steps.forEach(step => {
+            step.classList.add('active');
         });
         
-        // Ajouter les étapes au conteneur
-        newContainer.appendChild(newSteps);
+        // Commencer avec une progression minimum
+        let currentProgress = 10;
+        progress.style.height = currentProgress + '%';
         
-        // Remplacer l'ancien conteneur par le nouveau
-        oldContainer.parentNode.replaceChild(newContainer, oldContainer);
+        // Augmenter progressivement la jauge pendant le défilement
+        window.addEventListener('scroll', function() {
+            // Seulement augmenter, jamais diminuer
+            currentProgress += 0.5; // Augmentation fixe à chaque événement de défilement
+            if (currentProgress > 100) currentProgress = 100;
+            progress.style.height = currentProgress + '%';
+        }, { passive: true });
         
-        // Animation au défilement
-        function checkVisibility() {
-            const cards = document.querySelectorAll('.new-roadmap-card');
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    card.classList.add('active');
+        // Assurer que la jauge avance même en l'absence d'événements de défilement
+        // en utilisant un intervalle pour l'augmenter progressivement
+        let interval = setInterval(function() {
+            // Récupérer la position de la section
+            const rect = roadmapSection.getBoundingClientRect();
+            
+            // Si la section est visible et que la progression n'est pas complète
+            if (rect.top < window.innerHeight && rect.bottom > 0 && currentProgress < 100) {
+                // Augmenter progressivement
+                currentProgress += 0.2;
+                if (currentProgress > 100) currentProgress = 100;
+                progress.style.height = currentProgress + '%';
+                
+                // Si on a atteint 100%, nettoyer l'intervalle
+                if (currentProgress >= 100) {
+                    clearInterval(interval);
+                }
+            }
+        }, 50);
+        
+        // Nettoyer l'intervalle quand l'utilisateur quitte la page
+        window.addEventListener('unload', function() {
+            clearInterval(interval);
+        });
+    } else {
+        // Code desktop original inchangé
+        function animateOnScroll() {
+            const scrollPosition = window.scrollY + window.innerHeight * 0.6;
+            const sectionTop = roadmapSection.getBoundingClientRect().top + window.scrollY;
+            const sectionHeight = roadmapSection.offsetHeight;
+            const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+            
+            // Limiter la progression entre 0 et 1
+            const limitedProgress = Math.max(0, Math.min(1, sectionProgress));
+            
+            // Appliquer la hauteur à la barre de progression
+            progress.style.height = (limitedProgress * 100) + '%';
+            
+            // Activer les étapes en fonction du défilement
+            steps.forEach((step, index) => {
+                const stepTop = step.getBoundingClientRect().top + window.scrollY;
+                
+                if (scrollPosition > stepTop) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
                 }
             });
         }
         
-        // Vérifier la visibilité au défilement et au chargement
-        window.addEventListener('scroll', checkVisibility);
-        window.addEventListener('resize', checkVisibility);
-        checkVisibility();
+        // Initialisation pour desktop
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('resize', animateOnScroll);
+        
+        // Déclencher une fois au chargement
+        setTimeout(animateOnScroll, 300);
+        
+        // Assurer que l'animation fonctionne même sur les longs chargements
+        window.addEventListener('load', animateOnScroll);
     }
 });
-</script>
-    
 </script>
 
 <!-- CODE HTML DU FOOTER -->

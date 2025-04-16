@@ -3361,17 +3361,21 @@ footer.site-footer {
   }
 }
 
-/* Forcer l'affichage sur tous les écrans */
-main.about-container,
-.about-content,
-.about-image,
-.about-text {
+main.about-container {
+  padding-top: 200px !important;
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+  position: relative !important;
+  z-index: 2 !important;
+  background-color: white !important; /* Pour s'assurer qu'elle est visible */
+  min-height: 500px !important; /* Force une hauteur minimale importante */
 }
 
-/* Solution simple pour éviter que la section "À propos" ne s'étire sous le header */
-main.about-container {
-  padding-top: 120px !important; /* Ajustez cette valeur selon la hauteur de votre header */
+.about-content {
+  display: block !important;
+  visibility: visible !important;
+  border: 3px solid red !important; /* Bordure rouge pour visualiser clairement la section */
+  padding: 20px !important;
+  margin: 20px !important;
 }

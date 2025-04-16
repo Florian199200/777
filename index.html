@@ -473,34 +473,45 @@
 </style>
 
 <script>
-<script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Vérification pour s'assurer que les sélecteurs fonctionnent
+    console.log("Script d'animation chargé");
+    
+    // Sélecteurs
     const steps = document.querySelectorAll('.roadmap-step');
-    const isMobile = window.innerWidth < 768;
-    
-    // Supprimer complètement la jauge
     const progress = document.querySelector('.roadmap-progress');
-    if (progress) progress.style.display = 'none';
+    const roadmapSection = document.querySelector('.roadmap-container');
     
-    // Animation simple: faire apparaître les étapes une par une
+    // Vérification des éléments
+    console.log("Étapes trouvées:", steps.length);
+    console.log("Barre de progression trouvée:", progress ? "Oui" : "Non");
+    console.log("Section roadmap trouvée:", roadmapSection ? "Oui" : "Non");
+    
+    // Détection mobile
+    const isMobile = window.innerWidth < 768;
+    console.log("Mode mobile détecté:", isMobile);
+    
+    // Solution ultra simple pour mobile: activer toutes les étapes et la jauge
     if (isMobile) {
-        // Sur mobile, afficher les étapes avec un délai
+        console.log("Application du mode mobile");
+        
+        // Activer toutes les étapes immédiatement
         steps.forEach((step, index) => {
-            // Cacher initialement toutes les étapes
-            step.style.opacity = '0';
-            step.style.transform = 'translateY(20px)';
-            step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            
-            // Ajouter une classe qui les montre progressivement
-            setTimeout(() => {
-                step.style.opacity = '1';
-                step.style.transform = 'translateY(0)';
-                step.classList.add('active');
-            }, 300 + (index * 500)); // Délai croissant pour chaque étape
+            step.classList.add('active');
+            console.log("Étape", index, "activée");
         });
+        
+        // Fixer la jauge à 100% et lui donner un style visible
+        if (progress) {
+            progress.style.cssText = "height: 100% !important; background-color: #f3f2eb !important;";
+            console.log("Jauge réglée à 100%");
+        }
     } else {
-        // Sur desktop, garder l'apparition au défilement
-        function checkVisibility() {
+        // Sur desktop - version simple du code original
+        console.log("Application du mode desktop");
+        
+        // Fonction simplifiée pour activer les étapes au défilement
+        function activateOnScroll() {
             steps.forEach((step) => {
                 const rect = step.getBoundingClientRect();
                 const isVisible = rect.top < window.innerHeight * 0.8;
@@ -511,13 +522,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     step.classList.remove('active');
                 }
             });
+            
+            // Mettre à jour la jauge en fonction de la visibilité de la section
+            if (progress && roadmapSection) {
+                const rect = roadmapSection.getBoundingClientRect();
+                const visibleRatio = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (roadmapSection.offsetHeight + window.innerHeight)));
+                progress.style.height = (visibleRatio * 100) + '%';
+            }
         }
         
-        window.addEventListener('scroll', checkVisibility);
-        checkVisibility(); // Vérifier au chargement
+        // Ajouter les écouteurs d'événements
+        window.addEventListener('scroll', activateOnScroll);
+        window.addEventListener('resize', activateOnScroll);
+        
+        // Activer immédiatement
+        activateOnScroll();
     }
 });
-</script>
 </script>
 
 <!-- CODE HTML DU FOOTER -->

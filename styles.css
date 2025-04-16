@@ -3253,12 +3253,14 @@ header {
 
 /* Conteneur principal avec marge supérieure importante */
 main.about-container {
-  margin-top: 180px; /* Valeur plus élevée pour s'assurer qu'elle dépasse le header */
+  margin-top: 180px !important; /* Valeur plus élevée pour s'assurer qu'elle dépasse le header */
   padding: 40px 20px;
-  display: flex;
+  display: block !important ;
   flex-direction: column;
   align-items: center;
   width: 100%;
+visibility: visible !important; 
+    
   flex: 1; /* Prend tout l'espace disponible */
   position: relative; /* Pour le positionnement relatif */
   z-index: 1; /* Pour s'assurer qu'il s'affiche au-dessus d'autres éléments s'il y en a */

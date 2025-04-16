@@ -3226,3 +3226,74 @@ body, html {
         opacity: 1;
     }
 }
+
+/* Conteneur principal pour la section "À propos" */
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Contenu "À propos" */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Image au ratio 4:5 */
+.about-image img {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Texte de la section "À propos" */
+.about-text {
+  text-align: center;
+  padding: 0 15px;
+}
+
+.about-text h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.about-text p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Responsivité pour les écrans larges */
+@media (min-width: 768px) {
+  .about-content {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .about-text {
+    text-align: left;
+    max-width: 600px;
+  }
+}
+
+/* Responsivité pour les écrans très larges */
+@media (min-width: 1024px) {
+  .about-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .about-text p {
+    font-size: 1.2rem;
+  }
+}

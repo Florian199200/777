@@ -3421,42 +3421,71 @@ body, html {
     }
 }
 
-   @media (max-width: 768px) {
-    /* Cible uniquement l'image dans index.html */
-    .hero-visual .hero-image img {
-        width: 100%; /* Prend toute la largeur du conteneur */
-        height: auto; /* Conserve les proportions */
-        object-fit: contain; /* Garantit que l'image n'est pas recadrée */
-    }
-    .hero-visual {
-        width: 100%; /* Étend le conteneur de l'image */
-        padding: 0; /* Supprime uniquement le padding de ce conteneur */
-    }
 
-    /* Cible uniquement l'image dans services.html */
-    .square-image-container .square-image {
-        width: 100%; /* Prend toute la largeur */
-        height: auto; /* Conserve les proportions */
-        object-fit: contain;
-    }
-    .square-image-container {
-        width: 100%; /* Étend le conteneur */
-        padding: 0; /* Supprime uniquement le padding de ce conteneur */
-    }
+/* Solution pour que les images prennent toute la largeur en mobile */
+
+/* Styles spécifiques pour l'image hero sur la page d'accueil */
+@media (max-width: 768px) {
+  /* Ajustement pour la première image de la page d'accueil */
+  #hero-square-image {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  #hero-square-image img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    position: relative !important;  /* Change de absolute à relative */
+  }
+  
+  /* Ajustement de la grid pour qu'elle s'adapte correctement */
+  .hero .grid {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .hero-visual {
+    width: 100%;
+    padding: 0;
+  }
+  
+  /* Suppression des contraintes de hauteur fixe */
+  .hero-image {
+    height: auto !important;
+    min-height: unset !important;
+  }
+  
+  /* Suppression du pseudo-élément qui force le ratio 1:1 */
+  .hero-image::before,
+  .square-image-container::before {
+    display: none !important;
+  }
 }
 
+/* Styles pour la page services (même problème) */
 @media (max-width: 768px) {
-    .section img {
-        display: block; /* Supprime les espaces indésirables autour de l'image */
-        width: 100%; /* Assure que l'image occupe toute la largeur disponible */
-        max-width: 100%; /* Évite tout débordement */
-        height: auto; /* Maintient le ratio d'aspect */
-        object-fit: cover; /* Si nécessaire, ajuste l'image sans déformation */
-    }
-
-    .section { /* Ajout pour s'assurer que le conteneur ne limite pas l'image */
-        width: 100%; /* S'assure que le conteneur occupe toute la largeur */
-        padding: 0; /* Évite les marges internes qui pourraient gêner */
-        margin: 0; /* Évite les marges externes */
-    }
+  .service-image img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+  }
+  
+  .service-image {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Pour les autres conteneurs d'images carrées */
+  .square-image-container {
+    width: 100% !important;
+    height: auto !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .square-image {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+  }
 }

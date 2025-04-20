@@ -3444,3 +3444,19 @@ body, html {
         padding: 0; /* Supprime uniquement le padding de ce conteneur */
     }
 }
+
+@media (max-width: 768px) {
+    .section img {
+        display: block; /* Supprime les espaces indésirables autour de l'image */
+        width: 100%; /* Assure que l'image occupe toute la largeur disponible */
+        max-width: 100%; /* Évite tout débordement */
+        height: auto; /* Maintient le ratio d'aspect */
+        object-fit: cover; /* Si nécessaire, ajuste l'image sans déformation */
+    }
+
+    .section { /* Ajout pour s'assurer que le conteneur ne limite pas l'image */
+        width: 100%; /* S'assure que le conteneur occupe toute la largeur */
+        padding: 0; /* Évite les marges internes qui pourraient gêner */
+        margin: 0; /* Évite les marges externes */
+    }
+}

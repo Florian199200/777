@@ -3422,34 +3422,3 @@ body, html {
 }
 
 
-@media (max-width: 768px) {
-  /* Réinitialiser toutes les propriétés qui pourraient affecter l'image */
-  #hero-square-image,
-  .hero-image,
-  .square-image-container {
-    all: initial !important; /* Reset toutes les propriétés */
-    width: 100% !important;
-    display: block !important;
-    overflow: visible !important;
-  }
-  
-  #hero-square-image img,
-  .hero-image img,
-  .square-image {
-    all: initial !important;
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-  }
-  
-  /* Supprimer explicitement tous les pseudo-éléments */
-  #hero-square-image::before,
-  #hero-square-image::after,
-  .hero-image::before,
-  .hero-image::after,
-  .square-image-container::before,
-  .square-image-container::after {
-    display: none !important;
-    content: none !important;
-  }
-}

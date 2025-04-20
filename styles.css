@@ -3422,78 +3422,34 @@ body, html {
 }
 
 
-/* Solution optimisée qui préserve les marges de la section */
-
 @media (max-width: 768px) {
-  /* Ciblage spécifique de l'image et de son conteneur */
-  #hero-square-image {
-    width: 100% !important; /* Utilise 100% de son parent */
-    height: auto !important;
-    aspect-ratio: unset !important;
-    position: relative !important;
-  }
-  
-  #hero-square-image img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: cover !important;
-    position: relative !important;
-    display: block !important;
-  }
-  
-  /* Restaurer les marges du conteneur parent */
-  .hero .container {
-    padding-left: 24px !important; /* Valeur standard de votre design */
-    padding-right: 24px !important;
-    max-width: 1320px !important; /* Restaurer la largeur max du container */
-    margin: 0 auto !important;
-  }
-  
-  /* Permettre à .hero-visual de prendre toute la largeur du container */
-  .hero-visual {
-    width: 100% !important;
-  }
-  
-  /* S'assurer que la grille fonctionne correctement */
-  .hero .grid {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-  }
-  
-  /* Supprimer les pseudo-éléments qui pourraient causer des problèmes */
-  #hero-square-image::before,
-  #hero-square-image::after {
-    display: none !important;
-  }
-}
-
-/* Appliquer les mêmes règles pour la page services */
-@media (max-width: 768px) {
-  .service-image {
-    width: 100% !important;
-    height: auto !important;
-    position: relative !important;
-  }
-  
-  .service-image img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: cover !important;
-    position: relative !important;
-    display: block !important;
-  }
-  
+  /* Réinitialiser toutes les propriétés qui pourraient affecter l'image */
+  #hero-square-image,
+  .hero-image,
   .square-image-container {
+    all: initial !important; /* Reset toutes les propriétés */
     width: 100% !important;
-    height: auto !important;
-    position: relative !important;
+    display: block !important;
+    overflow: visible !important;
   }
   
+  #hero-square-image img,
+  .hero-image img,
   .square-image {
+    all: initial !important;
     width: 100% !important;
     height: auto !important;
-    position: relative !important;
     display: block !important;
+  }
+  
+  /* Supprimer explicitement tous les pseudo-éléments */
+  #hero-square-image::before,
+  #hero-square-image::after,
+  .hero-image::before,
+  .hero-image::after,
+  .square-image-container::before,
+  .square-image-container::after {
+    display: none !important;
+    content: none !important;
   }
 }

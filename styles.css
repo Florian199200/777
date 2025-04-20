@@ -3421,21 +3421,26 @@ body, html {
     }
 }
 
-    @media (max-width: 768px) {
-    .hero-image img, 
-    .square-image {
-        width: 100%; /* L'image prendra toute la largeur de son conteneur */
-        height: auto; /* Conserve les proportions de l'image */
-        object-fit: contain; /* Garantit que l'image est contenue sans être étirée */
+   @media (max-width: 768px) {
+    /* Cible uniquement l'image dans index.html */
+    .hero-visual .hero-image img {
+        width: 100%; /* Prend toute la largeur du conteneur */
+        height: auto; /* Conserve les proportions */
+        object-fit: contain; /* Garantit que l'image n'est pas recadrée */
+    }
+    .hero-visual {
+        width: 100%; /* Étend le conteneur de l'image */
+        padding: 0; /* Supprime uniquement le padding de ce conteneur */
     }
 
-    .hero-visual, 
+    /* Cible uniquement l'image dans services.html */
+    .square-image-container .square-image {
+        width: 100%; /* Prend toute la largeur */
+        height: auto; /* Conserve les proportions */
+        object-fit: contain;
+    }
     .square-image-container {
-        width: 100%; /* Le conteneur prend toute la largeur */
-        padding: 0; /* Supprime les marges ou paddings éventuels */
-    }
-
-    .container {
-        padding: 0; /* Supprime le padding horizontal pour permettre à l'image de s'étendre */
+        width: 100%; /* Étend le conteneur */
+        padding: 0; /* Supprime uniquement le padding de ce conteneur */
     }
 }

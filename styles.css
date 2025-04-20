@@ -3421,11 +3421,21 @@ body, html {
     }
 }
 
-@media only screen and (max-width: 768px) {
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto; /* Centrer l'image dans son conteneur */
-  }
+    @media (max-width: 768px) {
+    .hero-image img, 
+    .square-image {
+        width: 100%; /* L'image prendra toute la largeur de son conteneur */
+        height: auto; /* Conserve les proportions de l'image */
+        object-fit: contain; /* Garantit que l'image est contenue sans être étirée */
+    }
+
+    .hero-visual, 
+    .square-image-container {
+        width: 100%; /* Le conteneur prend toute la largeur */
+        padding: 0; /* Supprime les marges ou paddings éventuels */
+    }
+
+    .container {
+        padding: 0; /* Supprime le padding horizontal pour permettre à l'image de s'étendre */
+    }
 }

@@ -3422,70 +3422,77 @@ body, html {
 }
 
 
-/* Solution pour que les images prennent toute la largeur en mobile */
+/* Solution révisée pour les images en mobile avec sélecteurs très spécifiques */
 
-/* Styles spécifiques pour l'image hero sur la page d'accueil */
+/* MÉTHODE 1: Ciblage très spécifique avec sélecteurs d'ID */
 @media (max-width: 768px) {
-  /* Ajustement pour la première image de la page d'accueil */
   #hero-square-image {
-    width: 100% !important;
+    width: 100vw !important; /* Utilise la largeur de la fenêtre */
+    max-width: 100vw !important;
     height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    aspect-ratio: unset !important;
+    position: static !important;
   }
   
   #hero-square-image img {
     width: 100% !important;
     height: auto !important;
-    object-fit: cover !important;
-    position: relative !important;  /* Change de absolute à relative */
+    object-fit: contain !important;
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
   }
   
-  /* Ajustement de la grid pour qu'elle s'adapte correctement */
-  .hero .grid {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .hero-visual {
-    width: 100%;
-    padding: 0;
-  }
-  
-  /* Suppression des contraintes de hauteur fixe */
-  .hero-image {
-    height: auto !important;
-    min-height: unset !important;
-  }
-  
-  /* Suppression du pseudo-élément qui force le ratio 1:1 */
-  .hero-image::before,
-  .square-image-container::before {
-    display: none !important;
+  /* Forcer tous les parents à être larges */
+  .hero-visual, .hero .grid, .hero .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 
-/* Styles pour la page services (même problème) */
+/* MÉTHODE 2: Reset complet des propriétés */
 @media (max-width: 768px) {
-  .service-image img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: cover !important;
-  }
-  
-  .service-image {
-    width: 100% !important;
-    height: auto !important;
-  }
-  
-  /* Pour les autres conteneurs d'images carrées */
+  /* Réinitialiser toutes les propriétés qui pourraient affecter l'image */
+  #hero-square-image,
+  .hero-image,
   .square-image-container {
+    all: initial !important; /* Reset toutes les propriétés */
     width: 100% !important;
-    height: auto !important;
-    padding-bottom: 0 !important;
+    display: block !important;
+    overflow: visible !important;
   }
   
+  #hero-square-image img,
+  .hero-image img,
   .square-image {
+    all: initial !important;
     width: 100% !important;
     height: auto !important;
-    position: relative !important;
+    display: block !important;
+  }
+  
+  /* Supprimer explicitement tous les pseudo-éléments */
+  #hero-square-image::before,
+  #hero-square-image::after,
+  .hero-image::before,
+  .hero-image::after,
+  .square-image-container::before,
+  .square-image-container::after {
+    display: none !important;
+    content: none !important;
   }
 }
+
+/* MÉTHODE 3: Solution inline (À appliquer directement dans le HTML si nécessaire) */
+/*
+Ajoutez ces styles directement dans votre HTML :
+
+<div id="hero-square-image" class="hero-image" style="width:100% !important; height:auto !important; position:static !important;">
+  <img src="..." alt="..." style="width:100% !important; height:auto !important; position:static !important; object-fit:contain !important;">
+</div>
+*/

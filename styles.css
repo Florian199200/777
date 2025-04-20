@@ -3421,4 +3421,48 @@ body, html {
     }
 }
 
+    /* Solution CSS simple à ajouter à la fin de votre fichier styles.css */
 
+@media (max-width: 768px) {
+    /* Correction pour l'image hero sur mobile */
+    #hero-square-image {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+    
+    #hero-square-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    
+    /* Désactiver toutes les contraintes d'aspect ratio ou de hauteur */
+    .hero-image::before,
+    .hero-image::after {
+        display: none;
+    }
+    
+    .hero-image {
+        max-height: none;
+        aspect-ratio: auto;
+        padding-top: 0;
+    }
+    
+    /* Même correction pour la page services */
+    .service-image,
+    .square-image-container {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .service-image img,
+    .square-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}

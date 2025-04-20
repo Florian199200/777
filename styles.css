@@ -3421,48 +3421,68 @@ body, html {
     }
 }
 
-    /* Solution CSS simple à ajouter à la fin de votre fichier styles.css */
+ /* Solution CSS aggressive pour forcer la largeur sur mobile */
 
 @media (max-width: 768px) {
-    /* Correction pour l'image hero sur mobile */
+    /* Forcer tous les aspects de l'image et de son conteneur */
     #hero-square-image {
-        display: block;
-        max-width: 100%;
-        height: auto;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: auto !important;
+        min-height: auto !important;
+        position: relative !important;
+        overflow: visible !important;
+        aspect-ratio: unset !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
     
     #hero-square-image img {
-        display: block;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+        display: block !important;
+        object-fit: contain !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     
-    /* Désactiver toutes les contraintes d'aspect ratio ou de hauteur */
+    /* Supprimer tout pseudo-élément qui pourrait interférer */
     .hero-image::before,
-    .hero-image::after {
-        display: none;
+    .hero-image::after,
+    #hero-square-image::before,
+    #hero-square-image::after {
+        display: none !important;
+        content: none !important;
     }
     
-    .hero-image {
-        max-height: none;
-        aspect-ratio: auto;
-        padding-top: 0;
+    /* Ajuster les conteneurs parents si nécessaire */
+    .hero-visual {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+        position: relative !important;
     }
     
-    /* Même correction pour la page services */
+    /* Pour les autres pages */
     .service-image,
     .square-image-container {
-        display: block;
-        max-width: 100%;
-        height: auto;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: auto !important;
+        position: relative !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
     }
     
     .service-image img,
     .square-image {
-        display: block;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
     }
 }

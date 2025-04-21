@@ -3525,3 +3525,32 @@ body, html {
         margin-right: -5px !important;
     }
 }
+
+    /* Solution de restauration minimaliste */
+
+/* Commençons par restaurer l'affichage de base */
+@media (max-width: 768px) {
+  /* S'assurer que l'image est visible */
+  #hero-square-image {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  
+  /* Rétablir les propriétés de base de l'image */
+  #hero-square-image img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Supprimer tout ce qui pourrait interférer */
+  #hero-square-image:before,
+  #hero-square-image:after {
+    display: none !important;
+  }
+}

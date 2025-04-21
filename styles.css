@@ -3421,124 +3421,69 @@ body, html {
     }
 }
 
-/* Solution CSS complète avec support pour petits iPhones et coins arrondis */
+/* Solution universelle qui devrait fonctionner sur TOUS les iPhones */
 
-/* Media query standard pour mobiles */
-@media (max-width: 768px) {
-    #hero-square-image {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        min-height: auto !important;
-        position: relative !important;
-        overflow: visible !important;
-        aspect-ratio: unset !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        display: block !important;
-        border-radius: 8px !important;
-    }
-    
-    #hero-square-image img {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        position: relative !important;
-        display: block !important;
-        object-fit: contain !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border-radius: 8px !important;
-    }
-    
-    /* Supprimer tout pseudo-élément qui pourrait interférer */
-    .hero-image::before,
-    .hero-image::after,
-    #hero-square-image::before,
-    #hero-square-image::after {
-        display: none !important;
-        content: none !important;
-    }
-    
-    /* Ajuster les conteneurs parents */
-    .hero-visual {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow: visible !important;
-        position: relative !important;
-        padding: 0 !important;
-    }
-    
-    /* Pour les autres pages */
-    .service-image,
-    .square-image-container {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        position: relative !important;
-        border-radius: 8px !important;
-    }
-    
-    .service-image img,
-    .square-image {
-        width: 100% !important;
-        height: auto !important;
-        object-fit: contain !important;
-        border-radius: 8px !important;
-    }
-    
-    /* Correction pour les problèmes de conteneur */
-    .container {
-        max-width: 100% !important;
-    }
-    
-    .grid {
-        display: block !important;
-    }
-}
-
-/* Media query spécifique pour très petits appareils (iPhone SE, etc.) */
-@media (max-width: 375px) {
-    /* Correction plus agressive pour les petits appareils */
-    #hero-square-image {
-        width: calc(100% - 20px) !important; /* Un peu moins que 100% pour éviter tout débordement */
-        margin: 0 auto !important;
-        left: 0 !important;
-        transform: none !important;
-    }
-    
-    #hero-square-image img {
-        width: 100% !important;
-        border-radius: 8px !important;
-    }
-    
-    /* S'assurer que .hero-visual se comporte correctement */
-    .hero-visual {
-        width: 100% !important;
-        padding: 0 10px !important; /* Petit padding pour éviter de toucher les bords */
-    }
-    
-    /* Pour les autres pages sur petit mobile */
-    .service-image,
-    .square-image-container {
-        width: calc(100% - 20px) !important;
-        margin: 0 auto !important;
-        left: 0 !important;
-        transform: none !important;
-    }
-}
-
-/* Pour s'assurer que les coins arrondis sont bien appliqués */
-@media (max-width: 768px) {
+/* Base pour mobiles */
+@media (max-width: 900px) {
+    /* Reset absolu des styles problématiques */
     #hero-square-image,
-    #hero-square-image img,
-    .service-image,
-    .service-image img,
-    .square-image-container,
-    .square-image {
-        -webkit-border-radius: 8px !important;
-        -moz-border-radius: 8px !important;
+    .hero-image,
+    .square-image-container {
+        all: initial !important; /* Reset total des propriétés */
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
         border-radius: 8px !important;
         overflow: hidden !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+    }
+    
+    #hero-square-image img,
+    .hero-image img, 
+    .square-image {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        border-radius: 8px !important;
+        object-fit: cover !important;
+    }
+    
+    /* Forcer .hero-visual à ne pas interférer */
+    .hero-visual {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    /* S'assurer que la grille ne perturbe pas */
+    .hero .grid {
+        display: block !important;
+    }
+    
+    /* Ajouter du padding au conteneur principal pour les marges */
+    .hero .container,
+    .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    /* Hack pour iOS Safari */
+    @supports (-webkit-touch-callout: none) {
+        #hero-square-image,
+        .service-image,
+        .square-image-container {
+            width: 100% !important;
+            border-radius: 8px !important;
+        }
+        
+        #hero-square-image img,
+        .service-image img,
+        .square-image {
+            width: 100% !important;
+            border-radius: 8px !important;
+        }
     }
 }

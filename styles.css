@@ -3421,31 +3421,29 @@ body, html {
     }
 }
 
+/* Solution radicale pour l'image sur mobile */
 @media (max-width: 768px) {
-  /* Réinitialiser tous les styles qui pourraient interférer */
-  #hero-square-image {
-    position: static !important;
+  .hero-direct-image {
+    display: block !important;
     width: 100% !important;
     height: auto !important;
-    max-width: none !important;
-    max-height: none !important;
-    aspect-ratio: auto !important;
-  }
-  
-  /* Réinitialiser l'image elle-même */
-  #hero-square-image img {
-    position: static !important;
-    width: 100% !important;
-    height: auto !important;
-    max-width: none !important;
-    max-height: none !important;
-    object-fit: cover !important;
     border-radius: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
-  /* Supprimer tous les pseudo-éléments */
-  #hero-square-image:before,
-  #hero-square-image:after {
+  /* Masquer l'image d'origine si elle existe encore */
+  #hero-square-image {
     display: none !important;
+  }
+}
+
+/* Styles pour desktop - Pour éviter de casser le desktop */
+@media (min-width: 769px) {
+  .hero-direct-image {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 8px;
   }
 }

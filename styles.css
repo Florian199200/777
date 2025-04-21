@@ -3554,3 +3554,34 @@ body, html {
     display: none !important;
   }
 }
+
+    /* Ajustements progressifs après restauration de l'image */
+
+/* Base qui fonctionne déjà */
+@media (max-width: 768px) {
+  /* Garder les styles qui font réapparaître l'image */
+  
+  /* Ajouter des coins arrondis */
+  #hero-square-image img {
+    border-radius: 8px !important;
+  }
+}
+
+/* Ajustements spécifiques pour iPhone et appareils moyens */
+@media (max-width: 576px) {
+  #hero-square-image {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+/* Ajustements pour petits appareils */
+@media (max-width: 375px) {
+  #hero-square-image {
+    width: 100% !important;
+  }
+  
+  #hero-square-image img {
+    border-radius: 8px !important;
+  }
+}

@@ -3421,13 +3421,13 @@ body, html {
     }
 }
 
-/* Solution CSS aggressive pour forcer la largeur sur mobile, avec coins arrondis */
+/* Solution CSS complète avec support pour petits iPhones et coins arrondis */
 
+/* Media query standard pour mobiles */
 @media (max-width: 768px) {
-    /* Forcer tous les aspects de l'image et de son conteneur */
     #hero-square-image {
-        width: 100vw !important;
-        max-width: 100vw !important;
+        width: 100% !important;
+        max-width: 100% !important;
         height: auto !important;
         min-height: auto !important;
         position: relative !important;
@@ -3436,9 +3436,7 @@ body, html {
         padding: 0 !important;
         margin: 0 !important;
         display: block !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        border-radius: 8px !important; /* Ajout des coins arrondis pour le conteneur */
+        border-radius: 8px !important;
     }
     
     #hero-square-image img {
@@ -3450,7 +3448,7 @@ body, html {
         object-fit: contain !important;
         padding: 0 !important;
         margin: 0 !important;
-        border-radius: 8px !important; /* Ajout des coins arrondis pour l'image */
+        border-radius: 8px !important;
     }
     
     /* Supprimer tout pseudo-élément qui pourrait interférer */
@@ -3462,24 +3460,23 @@ body, html {
         content: none !important;
     }
     
-    /* Ajuster les conteneurs parents si nécessaire */
+    /* Ajuster les conteneurs parents */
     .hero-visual {
         width: 100% !important;
         max-width: 100% !important;
         overflow: visible !important;
         position: relative !important;
+        padding: 0 !important;
     }
     
     /* Pour les autres pages */
     .service-image,
     .square-image-container {
-        width: 100vw !important;
-        max-width: 100vw !important;
+        width: 100% !important;
+        max-width: 100% !important;
         height: auto !important;
         position: relative !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        border-radius: 8px !important; /* Ajout des coins arrondis */
+        border-radius: 8px !important;
     }
     
     .service-image img,
@@ -3487,6 +3484,61 @@ body, html {
         width: 100% !important;
         height: auto !important;
         object-fit: contain !important;
-        border-radius: 8px !important; /* Ajout des coins arrondis */
+        border-radius: 8px !important;
+    }
+    
+    /* Correction pour les problèmes de conteneur */
+    .container {
+        max-width: 100% !important;
+    }
+    
+    .grid {
+        display: block !important;
+    }
+}
+
+/* Media query spécifique pour très petits appareils (iPhone SE, etc.) */
+@media (max-width: 375px) {
+    /* Correction plus agressive pour les petits appareils */
+    #hero-square-image {
+        width: calc(100% - 20px) !important; /* Un peu moins que 100% pour éviter tout débordement */
+        margin: 0 auto !important;
+        left: 0 !important;
+        transform: none !important;
+    }
+    
+    #hero-square-image img {
+        width: 100% !important;
+        border-radius: 8px !important;
+    }
+    
+    /* S'assurer que .hero-visual se comporte correctement */
+    .hero-visual {
+        width: 100% !important;
+        padding: 0 10px !important; /* Petit padding pour éviter de toucher les bords */
+    }
+    
+    /* Pour les autres pages sur petit mobile */
+    .service-image,
+    .square-image-container {
+        width: calc(100% - 20px) !important;
+        margin: 0 auto !important;
+        left: 0 !important;
+        transform: none !important;
+    }
+}
+
+/* Pour s'assurer que les coins arrondis sont bien appliqués */
+@media (max-width: 768px) {
+    #hero-square-image,
+    #hero-square-image img,
+    .service-image,
+    .service-image img,
+    .square-image-container,
+    .square-image {
+        -webkit-border-radius: 8px !important;
+        -moz-border-radius: 8px !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
     }
 }

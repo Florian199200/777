@@ -3421,69 +3421,31 @@ body, html {
     }
 }
 
-/* Solution universelle qui devrait fonctionner sur TOUS les iPhones */
-
-/* Base pour mobiles */
-@media (max-width: 900px) {
-    /* Reset absolu des styles problématiques */
-    #hero-square-image,
-    .hero-image,
-    .square-image-container {
-        all: initial !important; /* Reset total des propriétés */
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border-radius: 8px !important;
-        overflow: hidden !important;
-        box-sizing: border-box !important;
-        position: relative !important;
-    }
-    
-    #hero-square-image img,
-    .hero-image img, 
-    .square-image {
-        width: 100% !important;
-        height: auto !important;
-        display: block !important;
-        border-radius: 8px !important;
-        object-fit: cover !important;
-    }
-    
-    /* Forcer .hero-visual à ne pas interférer */
-    .hero-visual {
-        display: block !important;
-        width: 100% !important;
-        padding: 0 !important;
-    }
-    
-    /* S'assurer que la grille ne perturbe pas */
-    .hero .grid {
-        display: block !important;
-    }
-    
-    /* Ajouter du padding au conteneur principal pour les marges */
-    .hero .container,
-    .container {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-    }
-    
-    /* Hack pour iOS Safari */
-    @supports (-webkit-touch-callout: none) {
-        #hero-square-image,
-        .service-image,
-        .square-image-container {
-            width: 100% !important;
-            border-radius: 8px !important;
-        }
-        
-        #hero-square-image img,
-        .service-image img,
-        .square-image {
-            width: 100% !important;
-            border-radius: 8px !important;
-        }
-    }
+@media (max-width: 768px) {
+  /* Réinitialiser tous les styles qui pourraient interférer */
+  #hero-square-image {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+  }
+  
+  /* Réinitialiser l'image elle-même */
+  #hero-square-image img {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Supprimer tous les pseudo-éléments */
+  #hero-square-image:before,
+  #hero-square-image:after {
+    display: none !important;
+  }
 }

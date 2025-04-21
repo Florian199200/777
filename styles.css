@@ -3421,7 +3421,7 @@ body, html {
     }
 }
 
- /* Solution CSS aggressive pour forcer la largeur sur mobile */
+/* Solution CSS aggressive pour forcer la largeur sur mobile, avec coins arrondis */
 
 @media (max-width: 768px) {
     /* Forcer tous les aspects de l'image et de son conteneur */
@@ -3438,6 +3438,7 @@ body, html {
         display: block !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
+        border-radius: 8px !important; /* Ajout des coins arrondis pour le conteneur */
     }
     
     #hero-square-image img {
@@ -3449,6 +3450,7 @@ body, html {
         object-fit: contain !important;
         padding: 0 !important;
         margin: 0 !important;
+        border-radius: 8px !important; /* Ajout des coins arrondis pour l'image */
     }
     
     /* Supprimer tout pseudo-élément qui pourrait interférer */
@@ -3477,6 +3479,7 @@ body, html {
         position: relative !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
+        border-radius: 8px !important; /* Ajout des coins arrondis */
     }
     
     .service-image img,
@@ -3484,5 +3487,6 @@ body, html {
         width: 100% !important;
         height: auto !important;
         object-fit: contain !important;
+        border-radius: 8px !important; /* Ajout des coins arrondis */
     }
 }
